@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.6.1058" />
+    <meta name="TEMPLATEBASE" content="book-w-index" />
+    <meta name="LASTUPDATED" content="10/27/04 10:15:14" />
+    <title>Working With Projects</title>
+    <link rel="StyleSheet" href="document.css" type="text/css" />
+    <link rel="StyleSheet" href="catalog.css" type="text/css" />
+    <link rel="Table of Contents" href="index.html" />
+    <link rel="Previous" href="developing.html" />
+    <link rel="Next" href="emulator.html" />
+    <link rel="Index" href="indexa.html" />
+  </head>
+
+  <body>
+
+    <table class="full-width" id="SummaryNotReq1"
+        cellspacing="0" cellpadding="0" border="0">
+	  <!-- formatting table -->
+      <tr><td class="sun-darkblue">&#160;</td></tr>
+      <tr><td class="sun-lightblue">&#160;</td></tr>
+    </table>
+    
+    <table class="full-width" id="SummaryNotReq2"
+        cellspacing="0" cellpadding="0" border="0">
+	  <!-- formatting table -->
+      <tr>
+        <td class="go-left">
+          <p class="nav-link">
+            <a accesskey="h" href="../../index.html">Documentation Home</a>
+            &gt;
+            <a accesskey="c" href="index.html"><i>User's Guide</i></a>
+            &gt;
+            Working With Projects
+          </p>
+        </td>
+        <td class="go-right">
+        <a accesskey="c" href="index.html">
+          <img id="LongDescNotReq1" src="images/toc.gif" border="0"
+            alt="Contents" /></a>
+	<a accesskey="p" href="developing.html">
+	  <img id="LongDescNotReq2" src="images/prev.gif" border="0"
+            alt="Previous" /></a>
+        <a accesskey="n" href="emulator.html">
+	  <img id="LongDescNotReq3" src="images/next.gif" border="0"
+            alt="Next" /></a>
+        <a accesskey="i" href="indexa.html">
+	  <img id="LongDescNotReq4" src="images/index.gif" border="0"
+            alt="Index" /></a>
+        </td>
+      </tr>
+    </table>
+
+<a name="wp54130"> </a><h2 class="pChapNum">
+Chapter &#160; 3
+</h2>
+<a name="wp50462"> </a><h2 class="pTitle">
+Working With Projects
+</h2>
+<hr />
+<a name="wp50455"> </a><p class="pBody">
+In the last chapter, you learned how the J2ME Wireless Toolkit helps you with the MIDP development cycle. This chapter delves more deeply into the details of working with projects, including the following:
+</p>
+<ul class="pBullet1"><a name="wp47788"> </a><div class="pBullet1"><li>Selecting the target APIs for a project</li></div>
+<a name="wp47792"> </a><div class="pBullet1Plus"><li>Manipulating MIDlet suite attributes, including the list of MIDlets</li></div>
+<a name="wp47793"> </a><div class="pBullet1Plus"><li>Understanding the project directory structure</li></div>
+<a name="wp51675"> </a><div class="pBullet1Last"><li>Including third-party libraries in a project</li></div>
+</ul>
+<a name="wp51677"> </a><h2 class="pHeading1">
+3.1	Selecting APIs
+</h2>
+<a name="wp54135"> </a><p class="pBody">
+Each project is built against some set of APIs. The J2ME Wireless Toolkit supports many APIs; the full list is detailed in <a  href="introduction.html#wp32456"><span class="cZ_Xref">Chapter&#160;1, </span>&#8220;Introduction</a>.&#8221; The toolkit allows you to develop applications for some subset of APIs based on the type of devices you expect to run your software.
+</p>
+<a name="wp51685"> </a><p class="pBody">
+For example, even though the toolkit supports JSR 184, the Mobile 3D Graphics API, you might want to develop applications that don&#8217;t make use of that API. The project&#8217;s <b class="cBold">API Selection</b> settings make it possible to choose only the APIs you want to use.
+</p>
+<a name="wp51686"> </a><p class="pBody">
+To see how this works, launch KToolbar and open a project. Then click on <b class="cBold">Settings...</b> to bring up the following window:
+</p>
+<a name="wp51687"> </a><div class="pFigureCaption">
+FIGURE&#160;13&#160;&#160;&#8211;&#160;&#160;The project settings window
+<br /><br />
+</div><a name="wp54167"> </a><p class="pBody">
+<img src="images/settings-apiselection.gif" alt="The project settings window" border="0" hspace="0" vspace="0"/>
+</p>
+<a name="wp54173"> </a><p class="pBody">
+On the <b class="cBold">API Selection</b> tab, the <b class="cBold">Target Platform</b> setting controls the appearance of the rest of the tab. Choose the setting that best suits your need, and tweak your selection with the controls below. For example, if you&#8217;re developing applications for JTWI-compliant devices, choose <b class="cBold">JTWI</b> from the combo box. Then use the controls below to specify which version of CLDC you want to use and whether MMAPI should be present.
+</p>
+<a name="wp54174"> </a><p class="pBody">
+The toolkit applies your selections when you compile your source code.
+</p>
+<hr class="pHr"/><div class="note">
+<a name="wp54175"> </a>
+<b>Note &#8211;</b>  API selections do not apply to the emulator. The emulator always supports all the available APIs. The API selections you make in the project settings apply only to building a project. In essence, the API selections choose which classpath the toolkit uses for compiling and preverifying your source files.
+<hr class="pHr"/></div>
+<a name="wp51703"> </a><h2 class="pHeading1">
+3.2	Changing MIDlet Suite Attributes
+</h2>
+<a name="wp51608"> </a><p class="pBody">
+The project settings window also allows you to control the MIDlet suite attributes, which are stored in the descriptor as well as the manifest file of the MIDlet suite JAR.
+</p>
+<a name="wp47242"> </a><p class="pBody">
+To see the attributes, run KToolbar and open a project. Then click on <b class="cBold">Settings...</b>. The three tabs that define attributes are <b class="cBold">Required</b>, <b class="cBold">Optional</b>, and <b class="cBold">User Defined</b>.
+</p>
+<a name="wp47247"> </a><p class="pBody">
+Consult the MIDP 2.0 specification for the definitions of the required and optional attributes. The J2ME Wireless Toolkit takes care of most of the details. In the early stages of development, you might not have to worry about the attributes at all. Once your application is stable and you&#8217;re starting to think about deploying on real devices and going to market, you should come back and adjust the values.
+</p>
+<a name="wp47257"> </a><p class="pBody">
+To adjust a value on the <b class="cBold">Required</b> or <b class="cBold">Optional</b> tabs, click on the cell next to the attribute key you wish to change. Type in the new value.
+</p>
+<a name="wp47258"> </a><div class="pFigureCaption">
+FIGURE&#160;14&#160;&#160;&#8211;&#160;&#160;Editing MIDlet suite attributes
+<br /><br />
+</div><a name="wp54209"> </a><p class="pBody">
+<img src="images/attributes12.gif" alt="Editing MIDlet suite attributes" border="0" hspace="0" vspace="0"/>
+</p>
+<a name="wp47278"> </a><p class="pBody">
+To create new user-defined attributes, click on the <b class="cBold">User Defined</b> tab. Press <b class="cBold">Add</b> and fill in the key name. You can then edit the attribute value by clicking in the value column next to the key, just as you would with required or optional attributes.
+</p>
+<a name="wp47285"> </a><p class="pBody">
+Select an attribute and click on <b class="cBold">Remove</b> if you wish to remove the key and value entirely.
+</p>
+<a name="wp47281"> </a><h2 class="pHeading1">
+3.3	Manipulating MIDlets
+</h2>
+<a name="wp47297"> </a><p class="pBody">
+The project settings also provide a way to add or modify the MIDlets that are contained in the current MIDlet suite project. To see how this works, start KToolbar and open an existing project. Click on <b class="cBold">Settings...</b> and choose the <b class="cBold">MIDlets</b> tab. You will see a list of all MIDlets in the project. If you just created a new project, the toolkit automatically fills in the first MIDlet entry.
+</p>
+<a name="wp47298"> </a><div class="pFigureCaption">
+FIGURE&#160;15&#160;&#160;&#8211;&#160;&#160;The list of MIDlets in a project
+<br /><br />
+</div><a name="wp54243"> </a><p class="pBody">
+<img src="images/midlets13.gif" alt="The list of MIDlets in a project" border="0" hspace="0" vspace="0"/>
+</p>
+<a name="wp47321"> </a><p class="pBody">
+To add a new MIDlet, click on <b class="cBold">Add</b>. Fill in the name, icon file name, and class name. You can leave the icon file name blank if you wish. To change values or remove MIDlet entries, use the <b class="cBold">Edit</b> and <b class="cBold">Remove</b> buttons.
+</p>
+<a name="wp47350"> </a><p class="pBody">
+The MIDlet names are presented to the user in the order shown when the MIDlet suite is launched. You can modify the order by selecting a MIDlet and clicking <b class="cBold">Move Up</b> or <b class="cBold">Move Down</b>. 
+</p>
+<a name="wp47810"> </a><h2 class="pHeading1">
+3.4	Using the Push Registry
+</h2>
+<a name="wp47814"> </a><p class="pBody">
+You can also use project settings to work with a MIDlet suite&#8217;s push registry settings. Click on <b class="cBold">Settings...</b> and choose the <b class="cBold">Push Registry</b> tab.
+</p>
+<a name="wp47849"> </a><div class="pFigureCaption">
+FIGURE&#160;16&#160;&#160;&#8211;&#160;&#160;Project push registry settings
+<br /><br />
+</div><a name="wp54277"> </a><p class="pBody">
+<img src="images/settings-pushregistry4.gif" alt="Project push registry settings" border="0" hspace="0" vspace="0"/>
+</p>
+<a name="wp47865"> </a><p class="pBody">
+To add an entry to the push registry, press <b class="cBold">Add</b> and fill in values for the connection URL, MIDlet class, and allowed sender. To edit an entry, select the entry and press the <b class="cBold">Edit</b> button. To remove a push registry entry, select it and press <b class="cBold">Remove</b>.
+</p>
+<a name="wp47838"> </a><p class="pBody">
+If you do make push registry entries for your application, make sure you also enter the appropriate permissions. See <a  href="security.html#wp39771"><span class="cZ_Xref">Chapter&#160;6, </span>&#8220;Security and MIDlet Signing</a>,&#8221; for details.
+</p>
+<a name="wp47628"> </a><h2 class="pHeading1">
+3.5	Project Directory Structure
+</h2>
+<a name="wp47654"> </a><p class="pBody">
+Projects have a standard directory structure. The project itself is represented by a directory in <em class="cEmphasis">{toolkit}</em><code class="cCode">\apps</code>. For example, the <code class="cCode">demos</code> project is contained in <em class="cEmphasis">{toolkit}</em><code class="cCode">\apps\demos</code>. Inside a project directory, the following directories are used:</p><div align="left">
+<table border="0" cellpadding="7" summary="Project directory structure" id="wp47631">
+  <caption><a name="wp47631"> </a><div class="pTableCaption">
+TABLE&#160;2&#160;&#160;&#8211;&#160;&#160;Project directory structure
+</div>
+</caption>
+<thead>
+<tr >    <th  class="sun-verylightblue" scope="col"><a name="wp47635"> </a><div class="pTableHead">
+Directory
+</div>
+
+</th>
+    <th  class="sun-verylightblue" scope="col"><a name="wp47637"> </a><div class="pTableHead">
+Description
+</div>
+
+</th>
+</tr>
+</thead>
+  <tr>    <td><a name="wp47639"> </a><div class="pTableText">
+<code class="cCode">bin</code>
+</div>
+</td>
+    <td><a name="wp47641"> </a><div class="pTableText">
+The MIDlet suite descriptor and JAR are placed in this directory when you package the project. This directory also contains the unpackaged manifest information and might include an HTML file that is used internally when you do <b class="cBold">Run via OTA</b>.
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp47643"> </a><div class="pTableText">
+<code class="cCode">classes</code>
+</div>
+</td>
+    <td><a name="wp47645"> </a><div class="pTableText">
+This directory is used by the toolkit to store compiled class files.
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp47647"> </a><div class="pTableText">
+<code class="cCode">lib</code>
+</div>
+</td>
+    <td><a name="wp47649"> </a><div class="pTableText">
+Place a third-party library in this directory to include it in this project.
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp47651"> </a><div class="pTableText">
+<code class="cCode">res</code>
+</div>
+</td>
+    <td><a name="wp47653"> </a><div class="pTableText">
+Images, sounds, and other resource files go in this directory. They are packaged into the root of the MIDlet suite JAR.
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp47660"> </a><div class="pTableText">
+<code class="cCode">src</code>
+</div>
+</td>
+    <td><a name="wp47662"> </a><div class="pTableText">
+Place source files in this directory.
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp47664"> </a><div class="pTableText">
+<code class="cCode">tmpclasses</code>
+</div>
+</td>
+    <td><a name="wp47666"> </a><div class="pTableText">
+This directory is used by the toolkit.
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp47668"> </a><div class="pTableText">
+<code class="cCode">tmpsrc</code>
+</div>
+</td>
+    <td><a name="wp47670"> </a><div class="pTableText">
+This directory is used by the toolkit.
+</div>
+</td>
+</tr>
+<tr><td colspan="15"><hr class="pTableHr" /></td></tr>
+</table>
+</div>
+<p class="pBody">
+
+</p>
+<a name="wp47656"> </a><p class="pBody">
+In addition, the project directory contains a <code class="cCode">project.properties</code> file which contains information about the project.
+</p>
+<a name="wp47728"> </a><p class="pBody">
+If you want to remove temporary directories and files from the project, choose <b class="cBold">Project &gt; Clean</b> from the KToolbar menu.
+</p>
+<a name="wp47758"> </a><h2 class="pHeading1">
+3.6	Using Third-Party Libraries
+</h2>
+<a name="wp47762"> </a><p class="pBody">
+The J2ME Wireless Toolkit allows you to incorporate third-party libraries in your applications. Using third-party libraries can cut down on your development time by providing functionality you don&#8217;t wish to build yourself, but you should keep a close eye on the size of your MIDlet suite JAR.
+</p>
+<a name="wp47361"> </a><p class="pBody">
+When you use a third-party library in your application, your JAR will expand by the size of the third-party library. You can use an obfuscator to reduce the code size, and a good obfuscator will even eliminate whatever parts of the library you are not using. Even with the use of an obfuscator, a third-party library will probably still be larger than your own custom code, carefully written from scratch. You have to evaluate the tradeoff between reducing your development time and the size of your MIDlet suite JAR.
+</p>
+<a name="wp47369"> </a><h3 class="pHeading2">
+3.6.1	Third-Party Libraries for One Project
+</h3>
+<a name="wp47371"> </a><p class="pBody">
+Any library files placed in your project&#8217;s <code class="cCode">lib</code> directory will be included in the building and packaging of your project. Libraries should be JAR or Zip files of Java classes.
+</p>
+<a name="wp48344"> </a><p class="pBody">
+For example, if you installed the J2ME Wireless Toolkit in <code class="cCode">C:\WTK22</code> and your application is called <code class="cCode">Tiny,</code> the class library would go in <code class="cCode">C:\WTK22\apps\Tiny\lib</code>. When you build, run, debug, and package your project, the class files in the <code class="cCode">lib</code> directory are used.
+</p>
+<a name="wp47379"> </a><h3 class="pHeading2">
+3.6.2	Third-Party Libraries for All Projects
+</h3>
+<a name="wp47381"> </a><p class="pBody">
+Some devices have libraries available to all installed MIDlet suites. A manufacturer, for example, can make additional APIs available on all their devices. In this case, you want to be able to use these libraries when you build and test your application. You don&#8217;t want the libraries to be included in your packaged MIDlet suite because you will be installing the MIDlet suite on devices where the library is already present.
+</p>
+<a name="wp47437"> </a><p class="pBody">
+You can accomplish this by placing libraries in the <em class="cEmphasis">{toolkit}</em><code class="cCode">\apps\lib</code> directory. For example, if you installed the J2ME Wireless Toolkit in <code class="cCode">C:\WTK22,</code> you would place the class libraries in <code class="cCode">C:\WTK22\apps\lib</code>. Libraries in this directory are available for all projects.
+</p>
+<a name="wp49873"> </a><h2 class="pHeading1">
+3.7	Configuring KToolbar
+</h2>
+<a name="wp49875"> </a><p class="pBody">
+KToolbar includes some advanced configuration options. You can use these options by editing the <em class="cEmphasis">{toolkit}</em><code class="cCode">\wtklib\</code><em class="cEmphasis">{platform}</em><code class="cCode">\ktools.properties</code> file. To see the effects of your changes, restart KToolbar.
+</p>
+<a name="wp49876"> </a><h3 class="pHeading2">
+3.7.1	Setting the Application Directory
+</h3>
+<a name="wp49878"> </a><p class="pBody">
+By default, the J2ME Wireless Toolkit stores applications in directories under <em class="cEmphasis">{toolkit}</em><code class="cCode">\apps</code>. You can change this by adding a line to <code class="cCode">ktools.properties</code> of the following form:
+</p>
+<div class="pPreformatted"><pre class="pPreformatted">
+kvem.apps.dir: <em class="cEmphasis">&lt;application_directory&gt;</em><a name="wp49880"> </a>
+</pre></div>
+<a name="wp49881"> </a><p class="pBody">
+Any backslash (&#39;\&#39;) characters in the directory&#8217;s path should be preceded by another backslash. Also, the directory&#8217;s path should not contain any spaces.
+</p>
+<a name="wp49882"> </a><p class="pBody">
+For example, to set the application directory to <code class="cCode">D:\dev\midlets</code>, you would use:
+</p>
+<div class="pPreformatted"><pre class="pPreformatted">
+kvem.apps.dir: D:\\dev\\midlets<a name="wp49883"> </a>
+</pre></div>
+<a name="wp49884"> </a><h3 class="pHeading2">
+3.7.2	Setting the javac Encoding Property
+</h3>
+<a name="wp49885"> </a><p class="pBody">
+By default, the Java compiler uses the encoding set in the J2SE environment that you are running. For information on how to override the default source file encoding, see <a  href="internationalization.html#wp6947"><span class="cZ_Xref">Appendix&#160;C,  </span>&#8220;Internationalization</a>.&#8221;
+</p>
+<a name="wp49958"> </a><h3 class="pHeading2">
+3.7.3	Working with Revision Control Systems
+</h3>
+<a name="wp49960"> </a><p class="pBody">
+Using the <code class="cCode">filterRevisionControl</code> property, you can configure KToolbar to recognize and ignore auxiliary files created by the SCCS, RCS and CVS revision control systems. 
+</p>
+<a name="wp49895"> </a><p class="pBody">
+To recognize and ignore auxiliary files, include the following line in <code class="cCode">ktools.properties</code>:
+</p>
+<div class="pPreformatted"><pre class="pPreformatted">
+kvem.filterRevisionControl: true<a name="wp49896"> </a>
+</pre></div>
+<a name="wp49898"> </a><p class="pBody">
+As a result, you prevent KToolbar from treating revision control files as source and resource files. For example, KToolbar would treat a file named <code class="cCode">src\SCCS\s.MyClass.java</code> as being an SCCS revision control file and not a Java source file.
+</p>
+<a name="wp49871"> </a><p class="pBody">
+
+</p>
+
+    <p>&#160;</p>
+    <hr class="pHr" />
+
+    <table class="full-width" id="SummaryNotReq3">
+	  <!-- formatting table -->
+      <tr>
+        <td class="go-left">
+          <a accesskey="c" href="index.html">
+            <img id="LongDescNotReq1" src="images/toc.gif" border="0"
+              alt="Contents" /></a>
+          <a accesskey="p" href="developing.html">
+            <img id="LongDescNotReq2" src="images/prev.gif" border="0"
+              alt="Previous" /></a>
+          <a accesskey="n" href="emulator.html">
+            <img id="LongDescNotReq3" src="images/next.gif" border="0"
+              alt="Next" /></a>
+          <a accesskey="i" href="indexa.html">
+            <img id="LongDescNotReq4" src="images/index.gif" border="0"
+              alt="Index" /></a>
+        </td>
+        <td class="go-right">
+          <span class="copyright">J2ME Wireless Toolkit User's Guide <br /> J2ME Wireless Toolkit 2.2</span>
+        </td>
+      </tr>
+    </table>
+
+    <p>&#160;</p>
+    <p class="copyright">
+      <a href="copyright.html">Copyright</a> &#169; 2004 Sun Microsystems, Inc. 
+      All rights reserved.
+      Use is subject to the <a href="../../BinaryLicense.html">license terms</a>.
+    </p>
+  </body>
+</html>

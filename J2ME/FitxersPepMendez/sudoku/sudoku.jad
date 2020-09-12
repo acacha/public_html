@@ -1,0 +1,10 @@
+MIDlet-1: Sudoku, /org/nico/midlets/games/sudoku/images/icon.png, org.nico.midlets.games.sudoku.controller.Sudoku
+MIDlet-Description: Juego japonés de ingenio y lógica
+MIDlet-Icon: /org/nico/midlets/games/sudoku/images/icon.png
+MIDlet-Jar-Size: 634648
+MIDlet-Jar-URL: sudoku.jar
+MIDlet-Name: Sudoku Suite
+MIDlet-Vendor: Pep Mendez
+MIDlet-Version: 3.3.0.1
+MicroEdition-Configuration: CLDC-1.1
+MicroEdition-Profile: MIDP-2.0

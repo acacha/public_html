@@ -1,0 +1,352 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>Frequently Asked Questions - J2ME Wireless Toolkit</title>
+  <link rel="stylesheet" href="docs/document.css" type="text/css">
+</head>
+
+<body>
+
+<a name="_top"></a>
+
+<table width=100% cellspacing=0 cellpadding=0 border=0
+       summary="This table is for formatting purposes only.">
+  <tr> 
+    <td class=sun-darkblue>&nbsp;</td>
+  </tr>
+  <tr> 
+    <td class=sun-darkblue>
+      <h1>Frequently Asked Questions</h1>
+      <h2>
+        J2ME Wireless Toolkit
+        <br>
+        2.2
+      </h2>
+      <h4>October 2004</h4>
+    </td>
+   </tr>
+   <tr>
+     <td class="sun-lightblue">&nbsp;</td>
+   </tr>                                
+</table>
+
+<table id="SummaryNotReq1" class="full-width"
+    cellspacing="0" cellpadding="0" border="0">
+  <!-- formatting table -->
+  <tr>
+    <td class="go-left">
+      <p class="nav-link">
+        <a href="index.html">Documentation Home</a>
+        &gt;
+        Frequently Asked Questions
+      </p>
+    </td>
+  </tr>
+</table>
+
+<p><b>
+What's the fastest way to get started?
+</b></p>
+
+<blockquote><p>
+To get started using KToolbar, try opening some of the demonstration
+projects and running them. You can also examine and modify the source
+code for the demonstrations. More information is
+<a href="docs/UserGuide-html/demonstrations.html">here</a>.
+</p></blockquote>
+
+<p><b>
+Why does the emulator ask me if I can connect to the network?
+</b></p>
+
+<blockquote><p>
+Depending on the protection domain in which your application runs, the
+emulator may ask permission for certain operations including network
+access. For an overview of permissions and protection domains in MIDP
+2.0, see
+<a href="http://developers.sun.com/techtopics/mobility/midp/articles/permissions/">
+  <i>Understanding MIDP 2.0's Security Architecture</i></a>.
+</p></blockquote>
+
+<p><b>
+How can I test the push registry?
+</b></p>
+
+<blockquote><p>
+To observe MIDlets being launched in response to incoming network
+connections, you will need to run your application using the <b>Run via
+OTA</b> feature. <b>Run via OTA</b> simulates the process of installing
+an application on a device and will correctly respond to incoming
+network connections based on entries in the push registry. See the
+<i>User's Guide</i> for more information.
+</p></blockquote>
+
+<p><b>
+Can I use an obfuscator?
+</b></p>
+
+<blockquote><p>
+Yes. The toolkit supports
+<a href="http://proguard.sourceforge.net/">ProGuard</a> and includes an
+architecture for supporting any obfuscator. See the <i>User's Guide</i>
+for more information.
+</p></blockquote>
+
+<p><b>
+Can I use a debugger?
+</b></p>
+
+<blockquote><p>
+Yes. Most likely you will use the J2ME Wireless Toolkit in conjunction with the
+debugger in an IDE. The <i>User's Guide</i>
+has more information on using a debugger.
+</p></blockquote>
+
+<p><b>
+I created a new project. Now what do I do?
+</b></p>
+
+<blockquote><p>
+The next step is to edit source code for the project. The messages in
+the KToolbar console tell you where to put the source code, resource
+files, and library files. If you're still not sure what to do, Chapter 2
+of the <i>User's Guide</i> contains a simple example.
+</p></blockquote>
+
+<p><b>
+Where are my project's JAD and JAR files?
+</b></p>
+
+<blockquote><p>
+First you need to package the project by choosing <b>Project &gt;
+Package &gt; Create Package</b> from the KToolbar menu. The MIDlet suite
+descriptor and JAR will be placed in the <i>bin</i> directory of your
+project.
+</p></blockquote>
+
+<p><b>
+My MIDlet won't talk to my server. What's wrong?
+</b></p>
+
+<blockquote><p>
+Make sure your server is speaking the right version of HTTP. You can
+adjust the version used by the emulator in the KToolbar preferences. A
+good way to debug network problems is to use the network monitor. See
+the <i>User's Guide</i> for details. 
+</p></blockquote>
+
+<p><b>
+How do I learn about MIDP?
+</b></p>
+
+<blockquote><p>
+A great place to start is
+<a href="http://developers.sun.com/techtopics/mobility/learn/midp/midp20/">
+  <i>Learning Path: Getting Started with MIDP 2.0</i></a>.
+</p></blockquote>
+
+<p><b>
+Why won't my device recognize my signed MIDlet suite?
+</b></p>
+
+<blockquote><p>
+Real devices on real networks may have root certificates that are
+specific to the manufacturer or wireless carrier. Check with your device
+manufacturer or wireless carrier for details on signed MIDlets.
+</p></blockquote>
+
+<p><b>
+Can I build applications for MIDP 1.0 devices?
+</b></p>
+
+<blockquote><p>
+Yes, you can build applications for a wide variety of software stacks.
+Click on the <b>Settings...</b> button to edit project settings, then
+choose the configuration, profile, and optional packages you would like
+on the <b>API Selection</b> tab.
+</p></blockquote>
+
+<p><b>
+When running my MIDlet, a security alert is displayed and
+cannot be dismissed.
+</b></p>
+
+<blockquote><p>
+You are probably trying to access a protected API (for example,
+opening a connection) from your <code>commandAction()</code> method, which is
+locking the UI thread. Access to protected APIs should be done from
+a separate thread. Refer to the NetworkDemo for an example on how this
+can be done.
+</p></blockquote>
+
+<p><b>
+How can I make sure that my application only uses specific
+APIs, for example only MIDP 2.0 APIs?
+</b></p>
+
+<blockquote><p>
+Select the "API Selection" tab in the Settings dialog box
+and select the Target Platform and APIs that you want to use.
+</p></blockquote>
+
+<p><b>
+I can still use an API in the emualtor even though it's not selected in
+the API selection project settings. What's going on?
+</b></p>
+
+<blockquote><p>
+The API selection project settings applies to building only. The
+emulator always supports all available APIs.
+</p></blockquote>
+
+<p><b>
+Where can I find out more about MIDP, CLDC, MMAPI, and WMA?
+</b></p>
+
+<blockquote><p>
+See
+<a href="http://java.sun.com/products/midp/">http://java.sun.com/products/midp</a>,
+<a href="http://java.sun.com/products/cldc/">http://java.sun.com/products/cldc</a>,
+<a href="http://java.sun.com/products/mmapi/">http://java.sun.com/products/mmapi</a>,
+and
+<a href="http://java.sun.com/products/wma/">http://java.sun.com/products/wma</a>.
+</p></blockquote>
+
+<p><b>
+I want to use an external library, but when I try to build a
+MIDlet suite that uses it, I get <code>Error preverifying
+class...</code> messages.
+</b></p>
+
+<blockquote><p>
+If you get this error, you are probably using a class library that was
+written for Java 2 Platform, Standard Edition. This toolkit
+supports the development of MIDP applications, which have
+limited capabilities compared to their J2SE counterparts.
+</p></blockquote>
+
+<p><b>
+I get <code>Error loading class...</code> messages when running the
+preverifier.
+</b></p>
+
+<blockquote>
+<p>
+First, check that your Java sources and libraries can be used with
+CLDC and MIDP APIs.
+</p>
+
+<p>
+Then, ensure that you installed the J2ME Wireless Toolkit in a
+directory whose path does not contain any spaces. For example, the
+toolkit will not work with the path
+<code>C:\Program Files\WTK22</code>.
+</p>
+
+<p>
+If you installed the toolkit in a directory whose path contains
+spaces, you must uninstall the toolkit and reinstall it in a directory
+whose pathname does not contain any spaces.
+</p>
+</blockquote>
+
+<p><b>
+Can I use network protocols other than HTTP and HTTPS in J2ME
+applications?
+</b></p>
+
+<blockquote><p>
+Yes. The MIDP 2.0 specification introduces optional support for
+socket, server socket, datagram, SSL, and serial (COMM)
+communication. The WMA specification provides support
+for SMS, CBS, and MMS messaging. The toolkit's support for JSR 75 and
+JSR 82 adds file, Bluetooth, and OBEX connections as well.
+</p></blockquote>
+
+<p><b>
+The Emulator incorrectly displays text in languages other
+than English. How can I change the fonts?
+</b></p>
+
+<blockquote>
+<p>
+To display text in languages other than English, you should do one of
+the following actions:
+</p>
+
+<ul>
+  <li>
+    Set the default locale of the desktop to the language you are trying to display.
+  </li>
+  <li>
+    Update the font configuration of the emulated device.
+    See the
+    <a href="docs/BasicCustomizationGuide-html/index.html"><i>Basic Customization Guide</i></a>
+    for details.
+  </li>
+</ul>
+</blockquote>
+
+<p><b>
+The device image displayed by the emulator is too small. How can I
+enlarge it?
+<br>
+How can I enable touch screen events in the emulator?
+<br>
+How can I change the set of character encoding converters available for
+a device?
+</b></p>
+
+<blockquote><p>
+See the
+<a href="docs/BasicCustomizationGuide-html/index.html"><i>Basic Customization Guide</i></a>
+for information on modifying the default emulator.
+</p></blockquote>
+
+<p><b>
+How can I transfer a MIDlet Suite to a real device?
+</b></p>
+
+<blockquote><p>
+It depends entirely on the device. Each device manufacturer that
+supports MIDP must provide a mechanism for transferring MIDlets onto
+its devices.
+</p></blockquote>
+
+<p><b>
+How can I access a Comm port when running on Linux?
+</b></p>
+
+<blockquote><p>
+You must set the following permission at the command line (note that you
+must have root privileges):
+<br>
+<br>
+<code>chmod a+w /dev/ttyS[01]</code>
+</p></blockquote>
+
+
+<p><b>
+I have another question, and I can't find the answer here.
+</b></p>
+
+<blockquote><p>
+Send your questions to
+<img src="docs/images/email.gif" align="top" id="LongDescNotReq"
+alt="Feedback email address" border="0">. 
+</p></blockquote>
+
+<p class="nav-link">[<a href="#_top">Top</a>]</p>
+
+<hr class="pHr">      
+
+<p class="copyright">
+<a href="copyright.html">Copyright &#169; 2004</a> Sun Microsystems, Inc.
+All rights reserved.
+Use is subject to the <a href="BinaryLicense.html">license terms</a>.
+</p>
+
+</body>
+</html>
+

@@ -1,0 +1,51 @@
+# Descompactar el fitxer amb el codi del kernel
+# Descompactar el fichero con el código del kernel
+tar -xjf linux-2.6.20.1.tar.bz2
+
+# Compilar kernel
+cd linux-2.6.20.1
+cp ../.config .
+make
+cd ..
+
+# Instal.lació de qemu (si no està instal.lat)
+# Instalación de qemu (si no está instalado)
+tar -xzf qemu-0.9.0-i386.tar.gz	-C /  #Descompactar qemu sobre / (root user)
+PATH=$PATH:/usr/local/bin	      #Modificar variable PATH
+
+# Boot màquina guest
+# Boot máquina guest
+./boot.sh
+
+# Preparar cscope
+cd linux-2.6.20.1
+cp ../cscope.files .
+cscope -k
+cd ..
+
+# Compilar moduls
+# Compilar módulos
+cd moduls/exemple1
+make
+cd ../..
+
+cd moduls/exemple2
+make
+cd ../..
+
+cd moduls/exemple3
+make
+cd ../..
+
+# Copiar mòduls a la màquina guest muntant el seu sistema de fitxers
+# (Cal haver aturat la màquina guest)
+# (Cal ser l'usuari root a la màquina host)
+
+# Copiar módulos a la máquina guest montando su sistema de ficheros
+# (Hay que detener la màquina guest)
+# (Es necesario ser usuario root en la máquina host)
+
+./mount_image.sh
+cp moduls/exemple?/*.ko image/root
+./mount_image.sh -u
+

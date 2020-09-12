@@ -1,0 +1,1018 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>J2ME Low-Level Network Programming with MIDP 2.0</title>
+
+<meta http-equiv="content-language" content="en">
+<meta name="collection" content="reference">
+<meta name="keywords" content="MIDP, MIDP 2.0, J2ME, Java, wireless, mobile, CLDC, GCF, Generic Connection Framework, sockets, datagrams, network">
+<meta name="description" content="This article provides an overview of the MIDP 2.0 CLDC Generic Connection Framework, and examines the new support for sockets and datagrams.">
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta name="Releases" content="J2ME MIDP:1.0">
+<meta name="archive" content="false">
+<meta name="Section" content="midp">
+<meta name="archive" content="FALSE">
+<meta name="date" content="2003-04-18">
+<link rel="stylesheet" href="J2ME%20Low-Level%20Network%20Programming%20with%20MIDP%202.0_files/default_developer.css">
+<script type="text/JavaScript" src="J2ME%20Low-Level%20Network%20Programming%20with%20MIDP%202.0_files/popUp.js"></script><!--stopindex--></head>
+
+
+
+
+
+
+
+
+
+<body leftmargin="0" topmargin="0" rightmargin="0" bgcolor="#ffffff" marginheight="0" marginwidth="0">
+
+<a name="top"></a>
+<!-- BEGIN GENERIC MASTHEAD -->
+<!-- BEGIN VNV1 COMPONENT V0  -->
+<script type="text/JavaScript" src="J2ME%20Low-Level%20Network%20Programming%20with%20MIDP%202.0_files/showHide.js"></script>
+<div class="vnv1sunlogo"><a href="http://www.sun.com/"><img src="J2ME%20Low-Level%20Network%20Programming%20with%20MIDP%202.0_files/vnv1_sunlogo.gif" alt="sun.com" border="0" height="24" width="55"></a></div>
+<div class="vnv1" id="vnv1v0">
+<div class="cornerTL"><div class="cornerTR"><div class="cornerBL"><div class="cornerBR">
+
+<div class="vnv1search">
+	<input name="charset" value="utf-8" type="hidden">
+	<input value="dev-reference" name="col" type="hidden">
+	<table class="topnavlight" border="0" cellpadding="0" cellspacing="0">
+	<form action="http://developers.sun.com/search/onesearch/index.jsp" accept-charset="utf-8" method="get"></form>
+	<tbody><tr>
+	<td nowrap="nowrap"><span class="rightarrowwhite">»</span>&nbsp;<a href="http://developers.sun.com/global/search_tips.html">search tips</a>&nbsp;</td>
+	<td><input name="qt" class="searchfield" size="7" onfocus="if( this.value==this.defaultValue ) this.value='';" value="Search"></td>
+	<td align="left" valign="middle"><input src="J2ME%20Low-Level%20Network%20Programming%20with%20MIDP%202.0_files/vnv1_bttn_search.gif" alt="Submit Search" border="0" type="image"></td>
+
+	</tr>
+	</tbody></table>
+</div>
+
+<div class="vnv1topiclinks">
+<table border="0" cellpadding="1" cellspacing="0">
+<tbody><tr>
+<td rowspan="2"><a href="http://java.sun.com/" title="java.sun.com"><img src="J2ME%20Low-Level%20Network%20Programming%20with%20MIDP%202.0_files/a.gif" alt="Home Page" class="sunlogo" border="0" height="58" width="96"></a></td>
+<td colspan="4"><a href="http://developers.sun.com/" title="developers.sun.com"><img src="J2ME%20Low-Level%20Network%20Programming%20with%20MIDP%202.0_files/a.gif" alt="" border="0" height="32" width="250"></a></td>
+</tr>
+<tr>
+<td><img src="J2ME%20Low-Level%20Network%20Programming%20with%20MIDP%202.0_files/a.gif" alt="" id="ip1" border="0" height="1" width="1"></td>
+<td class="navlinks" id="navlink1"><a href="http://developers.sun.com/global/products_technologies.html">Products and Technologies</a></td>
+<td><img src="J2ME%20Low-Level%20Network%20Programming%20with%20MIDP%202.0_files/a.gif" alt="" id="ip2" border="0" height="1" width="1"></td>
+<td class="navlinks" id="navlink2"><a href="http://developers.sun.com/global/technical_topics.html">Technical Topics</a></td>
+</tr>
+
+</tbody></table>
+</div>
+
+</div></div></div></div>
+</div>
+<!-- END VNV1 COMPONENT V0  -->
+
+
+
+
+<!-- END GENERIC MASTHEAD -->
+<!-- BEGIN BREADCRUMB -->
+<table class="vatop" border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr>
+<td>      
+<div class="breadcrumb">
+<a href="http://developers.sun.com/index.html">Developers Home</a> &gt; <a href="http://developers.sun.com/techtopics/index.html">Technical Topics</a> &gt; <a href="http://developers.sun.com/techtopics/mobility/index.jsp">Mobility</a> &gt; <a href="http://developers.sun.com/techtopics/mobility/midp/index.html">MIDP</a> &gt; <a href="http://developers.sun.com/techtopics/mobility/midp/reference/index.html">Reference</a> &gt; <a href="http://developers.sun.com/techtopics/mobility/midp/reference/techart/index.html">Technical Articles and Tips</a> &gt;
+</div>
+</td>
+<td align="right" nowrap="nowrap"><div class="breadcrumb">
+<a href="http://developers.sun.com/global/join_sdn.html"><img src="J2ME%20Low-Level%20Network%20Programming%20with%20MIDP%202.0_files/sdn_join_sdn.gif" alt="Join SDN" align="bottom" border="0" height="18" width="74"></a><a href="http://developers.sun.com/global/why_join.html"><img src="J2ME%20Low-Level%20Network%20Programming%20with%20MIDP%202.0_files/sdn_why_join.gif" alt="Why Join" valign="bottom" border="0" height="18" width="73"></a><a href="http://developers.sun.com/global/my_profile.html"><img src="J2ME%20Low-Level%20Network%20Programming%20with%20MIDP%202.0_files/sdn_my_profile.gif" alt="My Profile" align="bottom" border="0" height="18" width="73"></a>
+</div></td></tr>
+<tr><td colspan="2"><img src="J2ME%20Low-Level%20Network%20Programming%20with%20MIDP%202.0_files/a.gif" alt=" " border="0" height="1" width="770"></td></tr>
+</tbody></table>
+<span class="sp5">&nbsp;</span><br>     
+<!-- END BREADCRUMB -->
+<!-- BEGIN PAGETITLE -->
+<div class="pagetitle2">Article</div>
+<div class="pagetitle">J2ME Low-Level Network Programming with MIDP 2.0</div>
+<!-- END PAGETITLE -->
+<!-- BEGIN WRAPPER TABLE, 2 COLUMN, MAIN/RIGHT -->
+<table border="0" cellpadding="10" cellspacing="0" width="100%">
+<tbody><tr><td valign="top" width="100%">
+<!-- BEGIN CENTRAL COLUMN COMPONENTS -->
+<!--startindex-->
+<!-- ============ -->
+<!-- MAIN CONTENT -->
+<!-- ============ -->
+<a name="skip2content"></a>
+<!--  BEGIN VCD4 PFV  -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr>
+<td class="smaller" valign="top"><em></em></td>
+<td width="10">&nbsp;</td>
+<td align="right" valign="bottom"><div class="sitelinks" style="padding: 0px;">
+<table border="0" cellpadding="0" cellspacing="0">
+<tbody><tr>
+<td align="right" valign="bottom">&nbsp;</td>
+<td class="smaller" nowrap="nowrap" valign="bottom"><a href="http://developers.sun.com/jsp_utils/PrintPage.jsp" target="printFriendlyView" onclick="openPopup('','printFriendlyView',710,650,'no',1,1,0,0,0,0); return true;"><img src="J2ME%20Low-Level%20Network%20Programming%20with%20MIDP%202.0_files/ic_print.gif" alt="Print-friendly Version" border="0" height="12" hspace="4" width="14">Print-friendly Version</a><br></td>
+</tr></tbody></table></div>
+</td></tr>
+</tbody></table>
+<!--  END VCD4 PFV -->
+<div class="contentdivider"><table class="grey4" border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr><td><img src="J2ME%20Low-Level%20Network%20Programming%20with%20MIDP%202.0_files/a.gif" alt=" " border="0" height="4" width="1"></td></tr></tbody></table></div>
+<!-- ================== -->
+<!-- Start Main Content -->
+<!-- ================== -->
+<br>
+<p><span class="byline">
+by <a href="#about">Qusay H. Mahmoud</a><br>
+April 2003
+</span></p>
+<p>
+Version 1.0 of the Mobile Information Device Profile (MIDP) lacks
+low-level networking support for TCP/IP sockets and UDP/IP datagrams,
+but the MIDP 2.0 specification (JSR 118) has responded to the needs of
+the 2.5G and 3G networks now being deployed by adding support for
+sockets and datagrams, thus providing mobile applications more capable
+networking interfaces. This support is based on the Generic Connection
+Framework (GCF) of the Connected Limited Device Configuration (CLDC).
+The word "optional" here means that the specification does not mandate
+such support; it is entirely up to the handset manufacturers and
+network operators to deploy these capabilities if doing so makes sense
+to them. Consequently, platform developers must carefully weigh the
+cost of particular phones in terms of footprint, processing power, and
+network capability.
+</p>
+<p>This article provides an overview of the CLDC Generic Connection
+Framework and examines the new support for sockets and datagrams. The
+article:
+</p>
+<ul>
+<li>Discusses the new support for low-level networking</li>
+<li>Describes how to run the networking demos in the J2ME Wireless Toolkit 2.0</li>
+<li>Demonstrates how to use the new low-level networking support</li>
+<li>Provides sample code listings for a time MIDlet and an email MIDlet</li>
+</ul>
+<p>
+</p><h3>Overview of CLDC Generic Connection Framework</h3>
+
+<p>
+The <code>java.io.*</code> and <code>java.net.*</code> packages of
+J2SE require much more memory than many hand-held wireless devices can
+afford. In addition, the following requirements for various
+communication mechanisms call for the design of a new set of
+abstractions that can be used at the programming level:
+</p>
+<p>
+</p><ul>
+<li>Device manufacturers that work with circuit-switched networks
+require stream-based connections such as the Transport Control Protocol
+(TCP), a connection-oriented protocol.</li>
+<li>Device manufacturers that work with packet-switched networks
+require datagram-based connections such as the User Datagram Protocol
+(UDP), a connectionless protocol.</li>
+<li>Other hand-held devices have specific mechanisms for communications.</li>
+</ul>
+<p>
+These variations make the design of networking facilities for
+CLDC-based devices quite a challenge, and shaped the design of the
+Generic Connection Framework. The GCF provides a single set of related
+abstractions you can use at the programming level to handle multiple
+forms of communications, instead of using different abstractions for
+different protocols.
+</p>
+<p>
+In this framework, all connections are created using the <code>open</code> static method of the <code>Connector</code>
+class. If successful, this method returns an object that implements one
+of the generic connection interfaces. Figure 1 shows the <i>is-a</i> relationships of these interfaces in an inheritance hierarchy. The <code>Connection</code> interface is the base interface. <code>StreamConnectionNotifier</code> <i>is a</i> <code>Connection</code> and <code>InputConnection</code> <i>is a</i> <code>Connection</code> too. In this figure all yellow interfaces are part of CLDC 1.0, the <code>HttpConnection</code> interface was added by MIDP 1.0, and the blue interfaces are among the interfaces added by MIDP2.0.
+</p>
+<table align="center" border="0" cellpadding="3" cellspacing="0">
+<tbody><tr>
+<td align="center">
+<a href="http://developers.sun.com/techtopics/mobility/midp/articles/midp2network/fig1.gif"><img src="J2ME%20Low-Level%20Network%20Programming%20with%20MIDP%202.0_files/fig1_thumb.gif" alt="Interface Hierarchy of the Generic Connection Framework" border="0" height="299" width="425"></a><br>
+<i>Figure 1: The Interface Hierarchy of the Generic Connection Framework</i><br>
+<font size="-1"><i><a href="http://developers.sun.com/techtopics/mobility/midp/articles/midp2network/fig1.gif">(Click to Enlarge)</a></i></font>
+</td>
+</tr>
+</tbody></table><br>
+<p>
+You use <code>Connector.open</code> as in the next code fragment, supplying a single <code>String</code> parameter that specifies a protocol, an address, and parameters:
+</p>
+<blockquote>
+<!-- BEGIN VCD7 CODE SAMPLE COMPONENT  -->
+<table class="grey4" border="0" cellpadding="10" cellspacing="0" width="100%">
+<tbody><tr><td><pre>...
+try {
+   Connector.open("<b>protocol</b>:<b>address</b>;<b>parameters</b>");
+} catch (ConnectionNotFoundExeption e) {
+   // no handler available for socket connections
+}
+...
+</pre></td></tr></tbody></table>
+<span class="sp20"> </span><br>
+<!-- END VCD7 CODE SAMPLE COMPONENT  -->
+</blockquote>
+<!--begin note -->
+<table border="0" cellpadding="0" cellspacing="0">
+<tbody><tr><td colspan="5" class="dkgray" height="1"><img src="J2ME%20Low-Level%20Network%20Programming%20with%20MIDP%202.0_files/spacer.gif" alt="." border="0" height="1" width="1"></td></tr>
+<tr><td rowspan="3" class="dkgray" width="1"><img src="J2ME%20Low-Level%20Network%20Programming%20with%20MIDP%202.0_files/spacer.gif" alt="." border="0" height="1" width="1"></td>
+<td colspan="3" class="gray" height="10"><img src="J2ME%20Low-Level%20Network%20Programming%20with%20MIDP%202.0_files/spacer.gif" alt="." border="0" height="1" width="1"></td>
+<td rowspan="3" class="dkgray" width="1"><img src="J2ME%20Low-Level%20Network%20Programming%20with%20MIDP%202.0_files/spacer.gif" alt="." border="0" height="1" width="1"></td></tr>
+<tr><td class="gray" width="10"><img src="J2ME%20Low-Level%20Network%20Programming%20with%20MIDP%202.0_files/spacer.gif" alt="." border="0" height="1" width="1"></td>
+<td class="gray">
+<span class="body">
+<b>Note</b>: The original design of the Generic Connection Framework
+implied that, at deployment time, URL connection strings might be used
+as interchangeable access mechanisms; all <code>StreamConnection</code> applications would use convenience methods such as <code>Connector.openInputStream(url)</code>. In practice, however, the connections are rarely used in such a generic fashion. When using an <code>HttpConnection</code>, for example, your code should always call the <code>getResponseCode</code>
+method before assuming the input stream returned from the server has
+the data the application expects, and that no proxy- or server-reported
+error or redirection must be handled before accessing the stream data.
+Therefore, connections aren't really generic.<br><br>
+Note also a difference between message- and stream-oriented connections: For message-oriented connections, not all of the <code>Connector</code> convenience methods are supported.
+</span>
+</td>
+<td class="gray" width="10"><img src="J2ME%20Low-Level%20Network%20Programming%20with%20MIDP%202.0_files/spacer.gif" alt="." border="0" height="1" width="1"></td></tr>
+<tr><td colspan="3" class="gray" height="10"><img src="J2ME%20Low-Level%20Network%20Programming%20with%20MIDP%202.0_files/spacer.gif" alt="." border="0" height="1" width="1"></td></tr>
+<tr><td colspan="5" class="dkgray" height="1"><img src="J2ME%20Low-Level%20Network%20Programming%20with%20MIDP%202.0_files/spacer.gif" alt="." border="0" height="1" width="1"></td></tr>
+</tbody></table>
+<!-- end note -->
+<br>
+<p>
+A few examples:
+</p>
+<ul>
+<li>HTTP Connection: <code>Connector.open("http://java.sun.com/wireless")</code></li>
+<li>Socket Connection: <code>Connector.open("socket://java.sun.com:<b>port</b>")</code></li>
+<li>Datagram Connection: <code>Connector.open("datagram://java.sun.com:<b>port</b>")</code></li>
+</ul>
+<p>
+The syntax of <code>open</code> isolates the differences between
+the setup of one protocol and the setup of another into a simple string
+that characterizes the type of connection. Most of the application's
+code remains the same regardless of the protocol you use.
+</p>
+<!--begin note -->
+<table border="0" cellpadding="0" cellspacing="0">
+<tbody><tr><td colspan="5" class="dkgray" height="1"><img src="J2ME%20Low-Level%20Network%20Programming%20with%20MIDP%202.0_files/spacer.gif" alt="." border="0" height="1" width="1"></td></tr>
+<tr><td rowspan="3" class="dkgray" width="1"><img src="J2ME%20Low-Level%20Network%20Programming%20with%20MIDP%202.0_files/spacer.gif" alt="." border="0" height="1" width="1"></td>
+<td colspan="3" class="gray" height="10"><img src="J2ME%20Low-Level%20Network%20Programming%20with%20MIDP%202.0_files/spacer.gif" alt="." border="0" height="1" width="1"></td>
+<td rowspan="3" class="dkgray" width="1"><img src="J2ME%20Low-Level%20Network%20Programming%20with%20MIDP%202.0_files/spacer.gif" alt="." border="0" height="1" width="1"></td></tr>
+<tr><td class="gray" width="10"><img src="J2ME%20Low-Level%20Network%20Programming%20with%20MIDP%202.0_files/spacer.gif" alt="." border="0" height="1" width="1"></td>
+<td class="gray">
+<span class="body">
+<b>Note</b>: The <code>Connector.open</code> method is a <i>factory</i> for connections. You do not use the <code>new</code>
+operator to instantiate connections. This is a smart mechanism, which
+keeps the static footprint small when the platform does not include
+implementations for specific connections. The method throws <code>ConnectionNotFoundException</code> if the desired protocol handler is not available.<br>
+</span>
+</td>
+<td class="gray" width="10"><img src="J2ME%20Low-Level%20Network%20Programming%20with%20MIDP%202.0_files/spacer.gif" alt="." border="0" height="1" width="1"></td></tr>
+<tr><td colspan="3" class="gray" height="10"><img src="J2ME%20Low-Level%20Network%20Programming%20with%20MIDP%202.0_files/spacer.gif" alt="." border="0" height="1" width="1"></td></tr>
+<tr><td colspan="5" class="dkgray" height="1"><img src="J2ME%20Low-Level%20Network%20Programming%20with%20MIDP%202.0_files/spacer.gif" alt="." border="0" height="1" width="1"></td></tr>
+</tbody></table>
+<!-- end note -->
+<br>
+<p>
+Remember that implementers of the MIDP specification are required to
+provide support for HTTP connections. Requiring MIDP support of HTTP
+was a very clever idea. When doing network programming, you can always
+revert to the HTTP programming model when you need to, confident that
+your application will run on any MIDP device, whether it is a GSM phone
+with a WAP stack, a phone with i-mode, a Palm VII wireless, or a
+hand-held device with Bluetooth. In addition, HTTP is
+firewall-friendly.
+</p>
+<!--begin note -->
+<table border="0" cellpadding="0" cellspacing="0">
+<tbody><tr><td colspan="5" class="dkgray" height="1"><img src="J2ME%20Low-Level%20Network%20Programming%20with%20MIDP%202.0_files/spacer.gif" alt="." border="0" height="1" width="1"></td></tr>
+<tr><td rowspan="3" class="dkgray" width="1"><img src="J2ME%20Low-Level%20Network%20Programming%20with%20MIDP%202.0_files/spacer.gif" alt="." border="0" height="1" width="1"></td>
+<td colspan="3" class="gray" height="10"><img src="J2ME%20Low-Level%20Network%20Programming%20with%20MIDP%202.0_files/spacer.gif" alt="." border="0" height="1" width="1"></td>
+<td rowspan="3" class="dkgray" width="1"><img src="J2ME%20Low-Level%20Network%20Programming%20with%20MIDP%202.0_files/spacer.gif" alt="." border="0" height="1" width="1"></td></tr>
+<tr><td class="gray" width="10"><img src="J2ME%20Low-Level%20Network%20Programming%20with%20MIDP%202.0_files/spacer.gif" alt="." border="0" height="1" width="1"></td>
+<td class="gray">
+<span class="body">
+<b>Note</b>: MIDP 2.0 implementers <i>must</i> provide support for HTTP 1.1 servers as well as secure HTTP connections. They <i>should</i>
+also provide support for low-level IP networking, but this decision is
+left to the handset manufacturers and network operators. In certain
+circumstances they may have valid reasons to ignore this
+recommendation, but they must understand and carefully weigh the
+implications before choosing a different communication mechanism.
+</span>
+</td>
+<td class="gray" width="10"><img src="J2ME%20Low-Level%20Network%20Programming%20with%20MIDP%202.0_files/spacer.gif" alt="." border="0" height="1" width="1"></td></tr>
+<tr><td colspan="3" class="gray" height="10"><img src="J2ME%20Low-Level%20Network%20Programming%20with%20MIDP%202.0_files/spacer.gif" alt="." border="0" height="1" width="1"></td></tr>
+<tr><td colspan="5" class="dkgray" height="1"><img src="J2ME%20Low-Level%20Network%20Programming%20with%20MIDP%202.0_files/spacer.gif" alt="." border="0" height="1" width="1"></td></tr>
+</tbody></table>
+<!-- end note -->
+<br>
+<h3>Low-Level IP Networking Support in MIDP 2.0</h3>
+<p>
+The new interfaces added to enable low-level IP networking are:
+</p>
+<blockquote>
+<!-- BEGIN VCD7 CODE SAMPLE COMPONENT  -->
+<table class="grey4" border="0" cellpadding="10" cellspacing="0" width="100%">
+<tbody><tr><td><pre>javax.microedition.io.SocketConnection
+javax.microedition.io.ServerSocketConnection
+javax.microedition.io.UDPDatagramConnection
+</pre></td></tr></tbody></table>
+<span class="sp20"> </span><br>
+<!-- END VCD7 CODE SAMPLE COMPONENT  -->
+</blockquote>
+<p>
+Note that <code>Datagram</code> and <code>DatagramConnection</code> were included in the CLDC 1.0 specification.
+</p>
+<p>
+A call like <code>Connector.open("socket://<b>host</b>:<b>port</b>")</code> returns a <code>SocketConnection</code>, and a call like <code>Connector.open("socket://:<b>port</b>")</code> returns a  <code>ServerSocketConnection</code>.
+A MIDlet should specify a host when requesting an outbound client
+connection and omit the host when requesting an inbound server
+connection. If you leave out the port parameter when obtaining a server
+socket &#8211; as in <code>Connector.open("socket://")</code> &#8211; an available port number is assigned dynamically. You can use the <code>getLocalPort</code> method to discover the assigned port number, and the <code>getLocalAddress</code> method to discover the local address to which the socket is bound. Note well that <code><b>host</b></code> and <code><b>port</b></code> are variables, which you must replace when you construct the URL string.
+</p>
+<p>
+A call like <code>Connector.open("datagram://<b>host</b>:<b>port</b>")</code> returns a <code>UDPDatagramConnection</code>.
+Note, however, that the UDP protocol is transaction-oriented, and
+delivery and duplicate protection are not guaranteed. Therefore, if
+your applications require ordered, reliable delivery and streams of
+data, you should use TCP/IP stream connections. This article will
+discuss only the TCP/IP stream connections. If you'd like to see an
+example of UDP datagrams, the networking demo in the J2ME Wireless
+Toolkit v2.0, discussed later, includes one.
+</p>
+<p>
+<b>The <code>SocketConnection</code> Interface</b>
+</p>
+<p>
+The <code>SocketConnection</code> interface defines the socket
+stream connection. You use it when writing MIDlets that access TCP/IP
+servers, as in the following code snippet:
+</p>
+<blockquote>
+<!-- BEGIN VCD7 CODE SAMPLE COMPONENT  -->
+<table class="grey4" border="0" cellpadding="10" cellspacing="0" width="100%">
+<tbody><tr><td><pre>...
+SocketConnection client = (SocketConnection) Connector.open("socket://" + hostname + ":" + port);
+// set application-specific options on the socket. Call setSocketOption to set other options
+client.setSocketOption(DELAY, 0);
+client.setSocketOption(KEEPALIVE, 0);
+InputStream is = client.openInputStream();
+OutputStream os = client.openOutputStream();
+// send something to server
+os.write("some string".getBytes());
+// read server response
+int c = 0;
+while((c = is.read()) != -1) {
+   // do something with the response
+}
+// close streams and connection
+is.close();
+os.close();
+client.close();
+...
+</pre></td></tr></tbody></table>
+<span class="sp20"> </span><br>
+<!-- END VCD7 CODE SAMPLE COMPONENT  -->
+</blockquote>
+<p>
+<code>SocketConnection</code> provides some useful constants, <code>DELAY</code> and <code>KEEPALIVE</code>, among others. Please refer to the <a href="http://jcp.org/aboutJava/communityprocess/final/jsr118/">MIDP 2.0 specification</a> for a full description of these options, which are outside the scope of this article.
+</p>
+<p>
+<b>The <code>ServerSocketConnection</code> Interface</b>
+</p>
+<p>
+The <code>ServerSocketConnection</code> interface defines the
+server socket stream connection. You use it when requesting an inbound
+server connection, as in the following snippet:
+</p>
+<blockquote>
+<!-- BEGIN VCD7 CODE SAMPLE COMPONENT  -->
+<table class="grey4" border="0" cellpadding="10" cellspacing="0" width="100%">
+<tbody><tr><td><pre>... // create a server to listen on port 2500
+ServerSocketConnection server = (ServerSocketConnection) Connector.open("socket://:2500");
+// wait for a connection
+SocketConnection client = (SocketConnection) server.acceptAndOpen();
+// set application-specific options on the socket;
+// call setSocketOption to set other options
+client.setSocketOption(DELAY, 0);
+client.setSocketOption(KEEPALIVE, 0);
+// open streams
+DataInputStream dis = client.openDataInputStream();
+DataOutputStream dos = client.openDataOutputStream();
+// read client request
+String result = is.readUTF();
+// process request and send response
+os.writeUTF(...);
+// close streams and connections
+is.close();
+os.close();
+client.close();
+server.close();
+...
+</pre></td></tr></tbody></table>
+<span class="sp20"> </span><br>
+<!-- END VCD7 CODE SAMPLE COMPONENT  -->
+</blockquote>
+<h4>Running the Sample Programs</h4>
+<p>
+If you want to run the example programs, and you haven't already installed the <a href="http://java.sun.com/products/j2mewtoolkit/index.html">J2ME Wireless Toolkit 2.0</a>, you'll need to download and install it now.
+</p>
+<p>
+To run the sample low-level IP network application, open the <code>NetworkDemo</code> project and run it as shown in Figure 2.
+</p>
+<table align="center" border="0" cellpadding="3" cellspacing="0">
+<tbody><tr>
+<td align="center">
+<img src="J2ME%20Low-Level%20Network%20Programming%20with%20MIDP%202.0_files/fig2.gif" alt="J2ME Wireless Toolkit Network Demo" border="0" height="209" width="180"><br>
+<i>Figure 2: J2ME Wireless Toolkit Network Demo</i>
+</td>
+</tr>
+</tbody></table>
+<br>
+<p>Select Datagram Demo. You're going to run two phone instances, as
+shown in Figure 3. In the first instance select the server peer. Once
+it is running, start another phone instance as in Figure 2, run the
+Datagram Demo again, and this time select the client peer. The client
+connects to the server and they can exchange messages as shown:
+</p>
+<table align="center" border="0" cellpadding="3" cellspacing="0">
+<tbody><tr>
+<td align="center">
+<a href="http://developers.sun.com/techtopics/mobility/midp/articles/midp2network/fig3.gif"><img src="J2ME%20Low-Level%20Network%20Programming%20with%20MIDP%202.0_files/fig3_thumb.gif" alt="J2ME Wireless Toolkit Datagram Demo" border="0" height="129" width="450"></a><br>
+<i>Figure 3: J2ME Wireless Toolkit Datagram Demo</i><br>
+<font size="-1"><i><a href="http://developers.sun.com/techtopics/mobility/midp/articles/midp2network/fig3.gif">(Click to Enlarge)</a></i></font>
+</td>
+</tr>
+</tbody></table><br>
+<h3>Developing Sample Applications</h3>
+<p>Now, let's look at a couple of sample applications that make use of
+the new support for low-level IP networking. I'll show the source code
+for a time MIDlet and an email MIDlet.
+</p>
+<h4>Time MIDlet</h4>
+
+<p>Imagine a simple but useful location-dependent mobile service: When
+you get off a plane in a different time zone, your phone adjusts to the
+local time automatically. The MIDlet can retrieve the current time in
+several ways. In this example, when the phone is co-located or turned
+on, it connects to a <i>daytime server</i>.
+</p>
+<p>
+The daytime protocol is widely used by computers running UNIX and other
+operating systems. In this protocol, the server listens for client
+requests on port 13. When a client opens a connection to port 13, the
+server immediately supplies the current date and time. You can try it
+out simply by telneting to port 13 of a machine that is running the
+daytime protocol. Try this:
+</p>
+<p>
+<code>c:\&gt; telnet prep.ai.mit.edu 13</code>
+</p>
+<p>
+If all goes well, you should see a message, <i>Connection to host lost</i>, along with the current day and time of the remote machine.
+</p>
+<p>
+Code Sample 1 shows the front end of the Time MIDlet. When the user runs <code>TimeMIDlet</code>, it establishes a connection to the time server by creating an instance of <code>TimeClient</code>, which you'll see in Code Sample 2.
+</p>
+<p>
+<b>Code Sample 1</b>: TimeMIDlet.java
+</p>
+<blockquote>
+<!-- BEGIN VCD7 CODE SAMPLE COMPONENT  -->
+<table class="grey4" border="0" cellpadding="10" cellspacing="0" width="100%">
+<tbody><tr><td><pre>import javax.microedition.midlet.*;
+import javax.microedition.io.*;
+import javax.microedition.lcdui.*;
+import java.io.*;
+
+public class TimeMIDlet extends MIDlet implements CommandListener {
+
+   private static Display display;
+   private Form f;
+   private boolean isPaused;
+   private StringItem si;
+   private TimeClient client;
+   private Command exitCommand = new Command("Exit", Command.EXIT, 1);
+   private Command startCommand = new Command("GetTime", Command.ITEM, 1);
+
+   public TimeMIDlet() {
+      display = Display.getDisplay(this);
+      f = new Form("Time Demo");
+      si = new StringItem("Select GetTime to get the current Time! ", " ");
+      f.append(si);
+      f.addCommand(exitCommand);
+      f.addCommand(startCommand);
+      f.setCommandListener(this);
+      display.setCurrent(f);
+   } 
+   public void startApp() {
+      isPaused = false;
+   }
+
+   public void pauseApp() {
+      isPaused = true;
+   }
+
+   public void destroyApp(boolean unconditional) {
+   }
+
+   public void commandAction(Command c, Displayable s) {
+      if (c == exitCommand) {
+         destroyApp(true);
+         notifyDestroyed();
+      } else if (c == startCommand) {
+         client = new TimeClient(this);
+         client.start();
+      }
+   }
+}
+</pre></td></tr></tbody></table>
+<span class="sp20"> </span><br>
+<!-- END VCD7 CODE SAMPLE COMPONENT  -->
+</blockquote>
+<p>
+In Code Sample 2, <code>TimeClient.java</code> establishes a socket
+connection with a time server running on port 13 on a remote machine.
+The client doesn't send any data; the server treats the new connection
+itself as a service request, and immediately responds with the current
+date and time.
+</p>
+<p>
+<b>Code Sample 2</b>: TimeClient.java
+</p>
+<blockquote>
+<!-- BEGIN VCD7 CODE SAMPLE COMPONENT  -->
+<table class="grey4" border="0" cellpadding="10" cellspacing="0" width="100%">
+<tbody><tr><td><pre>import javax.microedition.midlet.*;
+import javax.microedition.io.*;
+import javax.microedition.lcdui.*;
+import java.io.*;
+
+public class TimeClient implements Runnable {
+   private TimeMIDlet parent;
+   private Display display;
+   private Form f;
+   private StringItem si;
+   private SocketConnection sc;
+   private InputStream is;
+   private String remoteTimeServerAddress;
+
+   public TimeClient(TimeMIDlet m) {
+      parent = m;
+      display = Display.getDisplay(parent);
+      f = new Form("Time Client");
+      si = new StringItem("Time:" , " ");
+      f.append(si);
+      display.setCurrent(f);
+   }
+
+    public void start() {
+       Thread t = new Thread(this);
+       t.start();
+    }
+
+   public void run() {
+ 
+      try {
+        sc = (SocketConnection)
+           Connector.open("socket://"+remoteTimeServerAddress+":13");
+        is = sc.openInputStream();
+        StringBuffer sb = new StringBuffer();
+        int c = 0;
+        while (((c = is.read()) != '\n') &amp;&amp; (c != -1)) {
+           sb.append((char) c);
+        }
+        si.setText(sb.toString());
+      
+      } catch(IOException e) {
+
+         Alert a = new Alert
+            ("TimeClient", "Cannot connect to server. Ping the server 
+              to make sure it is running...", null, AlertType.ERROR);
+         a.setTimeout(Alert.FOREVER);
+         display.setCurrent(a);
+
+      } finally {
+         try {
+           if(is != null) {
+             is.close();
+           }
+           if(sc != null) {
+             sc.close();
+           }
+         } catch(IOException e) {
+           e.printStackTrace();
+         }
+      }    
+   } 
+
+   public void commandAction(Command c, Displayable s) {
+      if (c == Alert.DISMISS_COMMAND) {
+         parent.notifyDestroyed();
+         parent.destroyApp(true);
+      }
+   }
+}
+</pre></td></tr></tbody></table>
+<span class="sp20"> </span><br>
+<!-- END VCD7 CODE SAMPLE COMPONENT  -->
+</blockquote>
+<p>
+Run the <code>TimeMIDlet</code> and you'll see a series of screens
+(as in Figure 4) that you need to go through to connect to a daytime
+server and retrieve the current date and time. Easier screen navigation
+would be nice &#8211; and is left to you as an exercise. The security
+permission screen is worth noting.
+</p>
+<table align="center" border="0" cellpadding="3" cellspacing="0">
+<tbody><tr>
+<td align="center">
+<a href="http://developers.sun.com/techtopics/mobility/midp/articles/midp2network/fig4.gif"><img src="J2ME%20Low-Level%20Network%20Programming%20with%20MIDP%202.0_files/fig4_thumb.gif" alt="MIDlet Retrieves Time from Daytime Server" border="0" height="162" width="425"></a><br>
+<i>Figure 4: MIDlet Retrieves Time from Daytime Server</i><br>
+<font size="-1"><i><a href="http://developers.sun.com/techtopics/mobility/midp/articles/midp2network/fig4.gif">(Click to Enlarge)</a></i></font>
+</td>
+</tr>
+</tbody></table><br>
+<p>
+When you choose the <b>GetTime</b> command to establish the connection, the MIDlet invokes <code>Connector.open</code>.
+The toolkit's emulator prompts you to grant or deny permission to make
+the connection. If you allow the connection, the MIDlet continues
+normally. If you deny permission, <code>Connector.open</code> throws a <code>SecurityException</code>. For more information on permissions and protection domains, please see <a href="http://developers.sun.com/techtopics/mobility/midp/articles/permissions/">Understanding MIDP 2.0's Security Architecture</a>.
+</p>
+<p>
+If <code>TimeMIDlet</code> can't connect to the time server (perhaps because it's not running or can't be reached), you see the alert shown in Figure 5:
+</p>
+<table align="center" border="0" cellpadding="3" cellspacing="0">
+<tbody><tr>
+<td align="center">
+<img src="J2ME%20Low-Level%20Network%20Programming%20with%20MIDP%202.0_files/fig5.gif" alt="Alert: Cannot Connect to Server" border="0" height="208" width="179"><br>
+<i>Figure 5: Alert: Cannot Connect to Server</i>
+</td>
+</tr>
+</tbody></table><br>
+<h4>SMTP Email MIDlet</h4>
+<p>
+As its name suggests, the Email MIDlet allows you to send email
+messages using the Simple Mail Transfer Protocol (SMTP). The SMTP
+service runs on port 25.
+</p>
+<p>
+The <code>EmailMIDlet</code>'s GUI enables you to compose an email message, entering the recipient, subject, and body, as in Code Sample 3.
+</p>
+<p>
+<b>Code Sample 3</b>: EmailMIDlet.java
+</p>
+<blockquote>
+<!-- BEGIN VCD7 CODE SAMPLE COMPONENT  -->
+<table class="grey4" border="0" cellpadding="10" cellspacing="0" width="100%">
+<tbody><tr><td><pre>import javax.microedition.lcdui.*;
+import javax.microedition.midlet.*;
+import javax.microedition.io.*;
+import java.io.*;
+
+public class EmailMIDlet extends MIDlet implements CommandListener {
+   Display display = null;
+
+   // email form fields     
+   TextField toField = null;
+   TextField subjectField = null;
+   TextField msgField = null;
+   Form form;
+
+   static final Command sendCommand = new Command("send", Command.OK, 2);
+   static final Command clearCommand = new Command("clear", Command.STOP, 3); 
+   String to;
+   String subject;
+   String msg;
+
+   public EmailMIDlet() {
+      display = Display.getDisplay(this);
+      form = new Form("Compose Message");
+      toField = new TextField("To:", "", 25, TextField.EMAILADDR);
+      subjectField = new TextField("Subject:", "", 15, TextField.ANY);
+      msgField = new TextField("MsgBody:", "", 90, TextField.ANY);
+   }
+
+   public void startApp() throws MIDletStateChangeException {
+      form.append(toField);
+      form.append(subjectField);
+      form.append(msgField);
+      form.addCommand(clearCommand);
+      form.addCommand(sendCommand);
+      form.setCommandListener(this);
+      display.setCurrent(form);
+   }
+
+   public void pauseApp() {
+   }
+
+   public void destroyApp(boolean unconditional) {
+      notifyDestroyed();
+   }
+
+   public void commandAction(Command c, Displayable d) {
+      String label = c.getLabel();
+      if(label.equals("clear")) {
+         destroyApp(true);
+      } else if (label.equals("send")) {
+         to = toField.getString();
+         subject = subjectField.getString();
+         msg = msgField.getString();
+         EmailClient client = new EmailClient
+            (this,"qmahmoud@javacourses.com", to, subject, msg);
+         client.start();
+      } 
+   }
+}
+</pre></td></tr></tbody></table>
+<span class="sp20"> </span><br>
+<!-- END VCD7 CODE SAMPLE COMPONENT  -->
+</blockquote>
+<p>
+When you choose the <b>Send</b> button, the <code>EmailMIDlet</code> retrieves the information you entered and creates an instance of the <code>EmailClient</code> class, which establishes a connection to the SMTP server and communicates with it, as in Code Sample 4.
+</p>
+<p>
+<b>Code Sample 4</b>: EmailClient.java
+</p>
+<blockquote>
+<!-- BEGIN VCD7 CODE SAMPLE COMPONENT  -->
+<table class="grey4" border="0" cellpadding="10" cellspacing="0" width="100%">
+<tbody><tr><td><pre>import javax.microedition.midlet.*;
+import javax.microedition.io.*;
+import javax.microedition.lcdui.*;
+import java.io.*;
+import java.util.*;
+
+public class EmailClient implements Runnable {
+   private EmailMIDlet parent;
+   private Display display;
+   private Form f;
+   private StringItem si;
+   private SocketConnection sc;
+   private InputStream is;
+   private OutputStream os;
+   private String smtpServerAddress;
+
+   private String from, to, subject, msg;
+
+   public EmailClient
+      (EmailMIDlet m, String from, String to, String subject, String msg) {
+      parent = m;
+      this.from = from;
+      this.to = to;
+      this.subject = subject;
+      this.msg = msg;
+
+      display = Display.getDisplay(parent);
+      f = new Form("Email Client");
+      si = new StringItem("Response:" , " ");
+      f.append(si);
+      display.setCurrent(f);
+   }
+
+   public void start() {
+      Thread t = new Thread(this);
+      t.start();
+   }
+
+   public void run() {
+ 
+      try {
+         sc = (SocketConnection)
+            Connector.open("socket://"+smtpServerAddress+":25");
+         is = sc.openInputStream();
+         os = sc.openOutputStream();
+
+         os.write(("HELO there" + "\r\n").getBytes()); 
+         os.write(("MAIL FROM: "+ from +"\r\n").getBytes());
+         os.write(("RCPT TO: "+ to + "\r\n").getBytes());
+         os.write("DATA\r\n".getBytes());
+         // stamp the msg with date
+         os.write(("Date: " + new Date() + "\r\n").getBytes()); 
+         os.write(("From: "+from+"\r\n").getBytes());
+         os.write(("To: "+to+"\r\n").getBytes());
+         os.write(("Subject: "+subject+"\r\n").getBytes());
+         os.write((msg+"\r\n").getBytes()); // message body
+         os.write(".\r\n".getBytes());
+         os.write("QUIT\r\n".getBytes());
+
+         // debug
+         StringBuffer sb = new StringBuffer();
+         int c = 0;
+         while (((c = is.read()) != -1) ) {
+            sb.append((char) c);
+         }
+         si.setText("SMTP server response - " + sb.toString());      
+
+      } catch(IOException e) {
+
+         Alert a = new Alert
+            ("TimeClient", "Cannot connect to SMTP server. Ping the server
+              to make sure it is running...", null, AlertType.ERROR);
+         a.setTimeout(Alert.FOREVER);
+         display.setCurrent(a); 
+      } finally {
+         try {
+            if(is != null) {
+               is.close();
+            }
+            if(os != null) {
+               os.close();
+            }
+            if(sc != null) {
+               sc.close();
+            }
+         } catch(IOException e) {
+            e.printStackTrace();
+         }
+      }    
+   } 
+
+   public void commandAction(Command c, Displayable s) {
+      if (c == Alert.DISMISS_COMMAND) {
+         parent.notifyDestroyed();
+         parent.destroyApp(true);
+      }
+   }
+}
+</pre></td></tr></tbody></table>
+<span class="sp20"> </span><br>
+<!-- END VCD7 CODE SAMPLE COMPONENT  -->
+</blockquote>
+<p>
+Figure 6 shows the Email MIDlet in action. As in <code>TimeMidlet</code>, when you select the <b>Send</b>
+command, the emulator prompts you for permission to connect. If you
+allow the connection to be made, the MIDlet continues processing. When
+the message is sent you'll see the SMTP server's response to each SMTP
+command. If <code>EmailClient</code> cannot establish a connection with the SMTP server, it displays an error message like the one in Figure 5.
+</p>
+<table align="center" border="0" cellpadding="3" cellspacing="0">
+<tbody><tr>
+<td align="center">
+<img src="J2ME%20Low-Level%20Network%20Programming%20with%20MIDP%202.0_files/fig6.gif" alt="Email MIDlet" border="0" height="212" width="372"><br>
+<i>Figure 6: Email MIDlet</i>
+</td>
+</tr>
+</tbody></table><br>
+<p>
+Now you may wonder: How can such an Email MIDlet be implemented if the
+MIDP implementer has elected not to provide support for low-level IP
+networking? The answer: The MIDlet can communicate with a servlet using
+HTTP, and let the servlet handle all the low-level IP networking stuff.
+For more information on this, including sample code, please see <a href="http://developers.sun.com/techtopics/mobility/midp/articles/socketRMI/">Advanced MIDP Networking, Accessing Using Sockets and RMI from MIDP-enabled Devices</a>
+</p>
+<p>
+<b>Conclusion</b>:
+</p>
+<p>
+MIDP 2.0 has added support for low-level IP networking based on the
+CLDC Generic Connection Framework. This article discussed the new
+classes that support low-level IP networking and described how to use
+them. The code samples in this article demonstrated how straightforward
+it is to use the new classes.
+</p>
+<p>MIDP 2.0 implementers are required to provide support for HTTP 1.1
+communication, but support for low-level TCP/IP sockets and UDP/IP
+datagrams is optional. Wireless software developers, therefore, should
+develop their applications with this uncertainty in mind -- write your
+applications in such a way that they can revert to the HTTP
+communication protocol if TCP/IP sockets or UDP/IP datagrams cannot be
+used. Sometimes, however, it may be that only a socket will do.
+Therefore, not all applications can run on all platforms.
+</p>
+<h4>For more information</h4>
+<ul>
+<li><a href="http://java.sun.com/products/j2mewtoolkit/">Download the J2ME Wireless Toolkit 2.0</a></li>
+<li><a href="http://www.jcp.org/en/jsr/detail?id=118">MIDP 2.0 (JSR 118)</a></li>
+<li><a href="http://www.jcp.org/en/jsr/detail?id=139">CLDC 1.1 (JSR 139)</a></li>
+<li><a href="http://developers.sun.com/techtopics/mobility/midp/articles/permissions/">Understanding MIDP 2.0's Security Architecture</a></li>
+<li><a href="http://developers.sun.com/techtopics/mobility/midp/articles/network">MIDP Network Programming using HTTP and the Connection Framework</a></li>
+<li><a href="http://developers.sun.com/techtopics/mobility/midp/articles/socketRMI/">Advanced MIDP Networking, Accessing Using Sockets and RMI from MIDP-enabled Devices</a></li>
+</ul>
+<h4>Acknowledgments</h4>
+<p>
+Special thanks to Gary Adams of Sun Microsystems, whose feedback helped improve the article.
+</p>
+<!-- BEGIN FRAGMENT | HR TAG -->
+<div class="contentdivider"><table class="grey4" border="0" cellpadding="0" cellspacing="0" width="100%"><tbody><tr><td><img src="J2ME%20Low-Level%20Network%20Programming%20with%20MIDP%202.0_files/a.gif" alt=" " border="0" height="4" width="1"></td></tr></tbody></table></div>
+<!-- END FRAGMENT | HR TAG -->
+<a name="about"></a>
+<!-- about -->
+<span class="byline"><b>About the Author:</b> <a href="mailto:qmahmoud@javacourses.com">Qusay H. Mahmoud</a> provides Java consulting and training services. He has published dozens of articles on Java, and is the author of <i>Distributed Programming with Java</i> (Manning Publications, 1999) and <i>Learning Wireless Java</i> (O'Reilly &amp; Associates, 2002).
+</span>
+<br>
+<!-- BEGIN FRAGMENT | HR TAG -->
+<div class="contentdivider"><table class="grey4" border="0" cellpadding="0" cellspacing="0" width="100%"><tbody><tr><td><img src="J2ME%20Low-Level%20Network%20Programming%20with%20MIDP%202.0_files/a.gif" alt=" " border="0" height="4" width="1"></td></tr></tbody></table></div>
+<!-- END FRAGMENT | HR TAG -->
+<br>
+<!-- BEGIN RATE AND REVIEW -->
+<script type="text/javascript">
+<!-- Hide script from older browsers
+// Popup window function
+function onRateSubmitHandler()
+{
+var w = window.open("","rr","width=800,height=600,status=no,toolbar=no,scrollbars=yes");
+w.setTimeout("window.close();", 30000 );
+return true;
+}
+// End of javascript 
+-->
+</script>
+<br>
+<form name="article_rating" method="post" action="http://survey.sun.com/ViewsFlash/servlet/viewsflash" onsubmit="return onRateSubmitHandler()" target="rr">
+<table class="white" style="margin-top: 7px;" border="0" cellpadding="1" cellspacing="0" width="100%"><tbody><tr><td>
+<table border="0" cellpadding="4" cellspacing="0" width="100%">
+<tbody><tr><td class="dkgrey1"><b>Reader Feedback</b></td></tr>
+<tr><td class="ltgrey"><b>
+<a name="VFquality"></a>
+<input name="quality" value="Excellent" type="radio"> Excellent&nbsp;&nbsp;
+<input name="quality" value="Good" type="radio"> Good&nbsp;&nbsp;
+<input name="quality" value="Fair" type="radio"> Fair&nbsp;&nbsp;
+<input name="quality" value="Poor" type="radio"> Poor&nbsp;&nbsp;
+</b></td></tr>
+<tr><td class="ltgrey">
+<p>
+If you have other comments or ideas for future technical tips, please type them here: 
+</p>
+<a name="VFcomments"></a>
+<b>Comments:</b><br><textarea name="comments" cols="60" rows="3" wrap="virtual"></textarea></td></tr>
+<tr><td class="ltgrey">
+<a name="VFEmail"></a>
+<b>If you would like a reply to your comment, please submit your email address:</b><br>
+<input name="Email" value="" size="35" maxlength="60" type="text"> Note: We may not respond to all
+submitted comments.</td></tr>
+<tr><td class="ltgrey">
+<input value="&nbsp;Submit »&nbsp;" border="0" type="submit">
+<a name="VFURL"></a>
+<input name="URL" value="developers.sun.com/techtopics/mobility/midp/articles/midp2network/" type="hidden">
+<a name="VFArticleTitle"></a>
+<input name="ArticleTitle" value="J2ME Low-Level Network Programming with MIDP 2.0" type="hidden">
+<a name="VFArticleAuthor"></a>
+<input name="ArticleAuthor" value="Qusay H. Mahmoud" type="hidden">
+<input name="cmd" value="tally" type="hidden">
+<input name="pollid" value="CNP!tGreene" type="hidden">
+<input name="results" value="? http://developers.sun.com/contact/thankyou.jsp?dlink=javascript:window.close();&amp;lname=article&amp;mesg=%3Ca+href%3D%22http%3A%2F%2Fdeveloper.java.sun.com%2Fsubscription%22%3ESubscribe+to+a+newsletter%3C%2Fa%3E" type="hidden">
+<input name="charset" value="ISO-8859-1" type="hidden">
+<p> 
+Have a question about Java programming? Use <a href="http://java.sun.com/developer/support/">Java Online Support</a>. 
+</p>
+</td></tr></tbody></table></td></tr>
+</tbody></table></form>
+<!-- END RATE AND REVIEW -->
+<br>
+<!-- BEGIN FRAGMENT | HR TAG -->
+<div class="contentdivider"><table class="grey4" border="0" cellpadding="0" cellspacing="0" width="100%"><tbody><tr><td><img src="J2ME%20Low-Level%20Network%20Programming%20with%20MIDP%202.0_files/a.gif" alt=" " border="0" height="4" width="1"></td></tr></tbody></table></div>
+<!-- END FRAGMENT | HR TAG -->
+<br>
+<span class="body"><a href="#top">Back To Top</a></span><br>
+<!-- ================ -->
+<!-- End Main Content -->
+<!-- ================ -->
+<!-- =================== -->
+<!-- END OF MAIN CONTENT -->
+<!-- =================== -->
+<!--stopindex-->
+<!-- END CENTRAL COLUMN COMPONENTS -->
+</td><td valign="top">
+<!-- BEGIN RIGHT COLUMN COMPONENTS -->
+<!-- END RIGHT COLUMN COMPONENTS -->
+</td></tr>
+<!-- BEGIN SPACER ROW -->
+<tr><td><img src="J2ME%20Low-Level%20Network%20Programming%20with%20MIDP%202.0_files/a.gif" alt=" " border="0" height="1" width="560"></td><td><img src="J2ME%20Low-Level%20Network%20Programming%20with%20MIDP%202.0_files/a.gif" alt=" " border="0" height="1" width="170"></td></tr>
+<!-- END SPACER ROW -->
+</tbody></table>
+<!-- END WRAPPER TABLE, 2 COLUMN, MAIN/RIGHT -->
+<!-- BEGIN VNV5 FOOTER  -->
+<table border="0" cellpadding="0" cellspacing="10" width="100%">
+<tbody><tr>
+<td>
+<table class="vatop" border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr>
+<td colspan="4" class="grey3" valign="top"><img src="J2ME%20Low-Level%20Network%20Programming%20with%20MIDP%202.0_files/a.gif" alt="" border="0" height="2" width="1"></td></tr>
+<tr>
+<td><img src="J2ME%20Low-Level%20Network%20Programming%20with%20MIDP%202.0_files/a.gif" alt="" border="0" height="1" width="190"><br>
+<a href="http://www.sun.com/"><img src="J2ME%20Low-Level%20Network%20Programming%20with%20MIDP%202.0_files/logo_sun_small_sdn.gif" alt="" border="0" height="29" vspace="5" width="61"></a></td>
+<td valign="top" width="100%"><img src="J2ME%20Low-Level%20Network%20Programming%20with%20MIDP%202.0_files/a.gif" alt="" border="0" height="1" width="350"><br>
+<div class="footer">
+<a href="http://developers.sun.com/global/aboutsun.html">About Sun</a> &nbsp;|&nbsp;
+<a href="http://developers.sun.com/global/aboutsdn.html">About This Site</a> &nbsp;|&nbsp;
+<a href="http://developers.sun.com/global/newsletters.html">Newsletters</a> &nbsp;|&nbsp;
+<a href="http://developers.sun.com/global/contact.html">Contact Us</a> &nbsp;|&nbsp;
+<a href="http://developers.sun.com/global/employment.html">Employment</a><br>
+<a href="http://developers.sun.com/global/howtobuy.html">How to Buy</a> &nbsp;|&nbsp;
+<a href="http://developers.sun.com/global/licensing.html">Licensing</a> &nbsp;|&nbsp;
+<a href="http://developers.sun.com/global/termsofuse.html">Terms of Use</a> &nbsp;|&nbsp;
+<a href="http://developers.sun.com/global/privacy.html">Privacy</a> &nbsp;|&nbsp;
+<a href="http://developers.sun.com/global/trademarks.html">Trademarks</a>
+<br><span class="sp10">&nbsp;</span><br>
+<br><span class="sp10">&nbsp;</span><br>
+Copyright 1994-2006 Sun Microsystems, Inc.
+</div></td>
+<td><img src="J2ME%20Low-Level%20Network%20Programming%20with%20MIDP%202.0_files/a.gif" alt="" border="0" height="1" width="40"></td>
+<td valign="top"><div class="footer"><b><a href="http://developers.sun.com/global/aboutsdn.html">A Sun Developer Network Site</a></b></div>
+<div class="footer">
+<img src="J2ME%20Low-Level%20Network%20Programming%20with%20MIDP%202.0_files/a.gif" alt="" border="0" height="1" width="170"><br>
+Unless otherwise licensed, code in all technical manuals herein (including articles, FAQs, samples) is provided under this <a href="http://developers.sun.com/global/berkeley_license.html">License</a>.
+<br><span class="sp5">&nbsp;</span><br>
+<a href="http://developers.sun.com/global/rss_sdn.html"><img src="J2ME%20Low-Level%20Network%20Programming%20with%20MIDP%202.0_files/button_xml.gif" alt="XML" align="top" border="0" height="14" width="36"></a>&nbsp;<a href="http://developers.sun.com/global/content_feeds.html">Content Feeds</a>
+</div></td></tr>
+<tr><td colspan="4" class="grey3" valign="top"><img src="J2ME%20Low-Level%20Network%20Programming%20with%20MIDP%202.0_files/a.gif" alt="" border="0" height="2" width="1"></td></tr>
+</tbody></table>
+</td></tr>
+</tbody></table>
+<!-- END VNV5 FOOTER -->
+<script language="JavaScript" src="J2ME%20Low-Level%20Network%20Programming%20with%20MIDP%202.0_files/s_code_remote.js"></script><img src="J2ME%20Low-Level%20Network%20Programming%20with%20MIDP%202.0_files/s11866427933054.gif" name="s_i_sunglobal" alt="" border="0" height="1" width="1"></body></html>

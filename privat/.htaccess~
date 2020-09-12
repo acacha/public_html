@@ -1,0 +1,3 @@
+AuthType Basic
+AuthName "Restricted Files"
+AuthUserFile /home/sergi/.secrets/.passwds1

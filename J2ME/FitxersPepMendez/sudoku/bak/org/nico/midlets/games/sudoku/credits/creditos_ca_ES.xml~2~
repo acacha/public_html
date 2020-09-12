@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<creditos>
+<autor>
+  <nombre>Pep Mendez</nombre>
+  <cv>SUN Java Programmer, Developer &amp; Web Component Developer Certified</cv>
+  <email>pep.mendez@hotmail.com</email>
+</autor>
+<aplicacion>
+  <titulo>Sudoku Game v. 3.3.0.1</titulo>
+  <fecha>12/08/2006</fecha>
+  <comentarios>Joc de logica i enginy</comentarios>
+  <dedicatoria>Dedicat al meu nebot Javier</dedicatoria>
+</aplicacion>
+</creditos>

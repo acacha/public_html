@@ -1,0 +1,80 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font: 62.5% Tahoma, sans-serif;
+}
+
+p {
+	font-size: 1.5em;
+	margin-bottom: 10px;
+}
+
+a {
+	text-decoration: none;
+	}
+	a:hover {
+		color: #990000;
+	}
+
+h2 { font-size: 2.0em; }
+
+.clear {
+	clear: both;
+}
+
+#page-wrap {
+	width: 900px;
+	margin: 25px auto;
+}
+
+#content-explorer {
+	padding-top: 20px;
+    width:100%;
+    line-height:normal;
+	
+	}
+	#content-explorer ul {
+		margin:0;
+		padding:10px 10px 0;
+		list-style:none;
+		max-width: 770px;
+		background: url(images/menu_bg.gif) bottom repeat-x;
+		height: 31px;
+		}
+		#content-explorer ul li {
+			float: left;
+			background: url(images/right.gif) right top no-repeat;
+			text-align: center;
+			overflow: hidden;
+			margin-left: 5px;
+			}
+			#content-explorer ul li a {
+				display: block;
+				background: url(images/left.gif) left top no-repeat;
+				padding: 10px 20px 6px 20px;
+				font-size: 1.5em;
+				font-weight: bold;
+				color: #999;
+			}
+			#content-explorer ul li a:hover {
+				color: #990000;
+			}
+			#content-explorer ul li.selected {
+				background: url(images/right_cur.gif) right top no-repeat;
+			}
+			#content-explorer ul li.selected a {
+				background: url(images/left_cur.gif) left top no-repeat;
+				padding-bottom: 8px;
+				color: #990000;
+			}
+			
+div.yui-content {
+	overflow: auto;
+	border-bottom: 2px solid black;
+	border-right: 2px solid black;
+	border-left: 2px solid black;
+	padding: 20px;
+}

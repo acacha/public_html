@@ -1,0 +1,7 @@
+MIDlet-2: SendMail, ,edu.escolatreball.correuelectronic.SendMail
+MIDlet-1: Correu Electrònic,/edu/escolatreball/correuelectronic/email.png,edu.escolatreball.correuelectronic.CorreuElectronicMidlet
+MIDlet-Vendor: Vendor
+MIDlet-Version: 1.0
+MIDlet-Name: MobileApplication2
+MicroEdition-Configuration: CLDC-1.1
+MicroEdition-Profile: MIDP-2.0

@@ -1,0 +1,86 @@
+package org.nico.midlets.games.sudoku.resources;
+
+import org.nico.midlets.resources.ListResourceBundle;
+
+/**
+ * <p>Title: Sudoku</p>
+ * <p>Description: Juego japones</p>
+ * <p>Comments: Version recursiva</p>
+ * <p>Date: 06/07/06</p>
+ * @author Pep Mendez
+ */
+public class ApplicationResources_ca_ES extends ListResourceBundle {
+
+  public ApplicationResources_ca_ES() {
+    super();
+  }
+  private Object[][] recursos = {
+      {"titulo.principal", "Sudoku"},
+      {"titulo.creditos", "Crèdits"},
+      {"titulo.ganador", "Felicitacions"},
+      {"subtitulo.ganador", "Ohhhhhhhhhhhhhhhhhhhhh\nFelicitacions\nJuga de nou..."},
+      {"titulo.reglas", "Regles del joc"},
+      {"subtitulo.reglas", "Sudoku, del japonès su 'número' i doku 'solitari', es juga en un tauler de 9x9, 9 files i 9 columnes, que està dividit en 9 caixes de 3x3 cel·les.\nInicialment, es presenten alguns números, i es tracta de col·locar els números de l'1 al 9 que falten en cada caixa, fila i columna.\nEs recomana començar per les caixes amb més números."},
+      {"info.pensando", "Pensant..."},
+      {"info.juego.inconsistente", "El joc no és consistent"},
+      {"info.juego.sin.solucion", "No té solució"},
+      {"info.juego.generado", "Joc generat en "},
+      {"info.juego.solucionado", "Joc solucionat en "},
+      {"info.intentalo.de.nuevo", "Torna-ho a intentar"},
+      {"info.tablero.vacio", "El tauler és buit"},
+      {"info.tablero.lleno", "El tauler és ple"},
+      {"info.correcto", "Correcte, pots continuar"},
+      {"info.incorrecto", "Incorrecte, corregeix els errors"},
+      {"info.pistas.disponibles", "No n'hi ha més pistes"},
+      {"nivel1", "\tElemental"},
+      {"nivel2", "\tBàsic"},
+      {"nivel3", "\tMolt fàcil"},
+      {"nivel4", "\tFàcil"},
+      {"nivel5", "\tIntermig"},
+      {"nivel6", "\tDifícil"},
+      {"nivel7", "\tMolt difícil"},
+      {"nivel8", "\tAvançat"},
+      {"nivel9", "\tProfessional"},
+      {"ayuda0", "\tActivada, es mostraràn missatges d'ajuda"},
+      {"ayuda1", "\tDesactivada, no es mostraràn missatge d'ajuda"},
+      {"presentacion0", "\t\"Números\""},
+      {"presentacion1", "\t\"Lletres\""},
+      {"menu.salir", "Sortir"},
+      {"menu.resolver", "Resoldre"},
+      {"menu.reset", "Reset"},
+      {"menu.nuevo", "Nou"},
+      {"menu.plantear", "Plantejar"},
+      {"menu.configuracion", "Configuració"},
+      {"menu.pista", "Pista"},
+      {"menu.creditos", "Crèdits"},
+      {"menu.revisar", "Revisar"},
+      {"menu.reglas", "Instruccions"},
+      {"alert.creditos", "Crèdits"},
+      {"alert.felicidades", "Felicitacions, joc resolt en "},
+      {"etiqueta.fila", "A la fila "},
+      {"etiqueta.columna", " columna "},
+      {"etiqueta.un", " un "},
+      {"formulario.configuracion.titulo", "Configuració"},
+      {"formulario.configuracion.menu.aceptar", "Acceptar"},
+      {"formulario.configuracion.menu.cancelar", "Cancel·lar"},
+      {"formulario.configuracion.ayuda.activada", "Activada"},
+      {"formulario.configuracion.ayuda.desactivada", "Desactivada"},
+      {"formulario.configuracion.ayuda.on.line", "Ajuda en línia"},
+      {"formulario.configuracion.ayuda.interactiva", "Ajuda interactiva seleccionada: "},
+      {"formulario.configuracion.selector.nivel", "Selector de nivell"},
+      {"formulario.configuracion.nivel.juego", "Nivell de joc seleccionat: "},
+      {"formulario.configuracion.presentacion.titulo", "Representació gràfica"},
+      {"formulario.configuracion.presentacion.comentario", "Símbols seleccionats: "},
+      {"formulario.configuracion.presentacion.numeros", "Números"},
+      {"formulario.configuracion.presentacion.letras", "Lletres"},
+      {"url.creditos.xml.file", "/org/nico/midlets/games/sudoku/credits/creditos_ca_ES.xml"},
+  };
+
+  /**
+   * getContents
+   * @return Object[][]
+   */
+  public Object[][] getContents() {
+    return recursos;
+  }
+}

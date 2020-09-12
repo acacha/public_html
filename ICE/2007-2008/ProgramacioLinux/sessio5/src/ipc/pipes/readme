@@ -1,0 +1,6 @@
+The example in this directory uses a named pipe.  Please execute:
+
+mknod a_pipe p
+
+before running the read_pipe and write_pipe example programs.
+

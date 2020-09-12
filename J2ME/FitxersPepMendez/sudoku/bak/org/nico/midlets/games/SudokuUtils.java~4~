@@ -1,0 +1,120 @@
+package org.nico.midlets.games;
+
+import org.kxml.Xml;
+import org.kxml.parser.ParseEvent;
+import java.io.InputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import org.kxml.parser.XmlParser;
+import javax.microedition.media.MediaException;
+import javax.microedition.media.Manager;
+
+/**
+ * <p>Title: Sudoku</p>
+ * <p>Description: Juego japones</p>
+ * <p>Comments: Version recursiva</p>
+ * <p>Date: 08/08/06</p>
+ * <p>Last update: 08/08/06</p>
+ * @author Pep Mendez
+ */
+public class SudokuUtils implements ISudokuConstants {
+
+  /**
+   *
+   * @param is InputStream
+   * @return String
+   * @throws IOException
+   */
+  public static String restoreCredits(InputStream is) throws IOException {
+    String credits = null;
+    InputStreamReader reader = new InputStreamReader(is);
+    XmlParser parser = new XmlParser(reader);
+    boolean endOfFile = false;
+    do {
+      ParseEvent evt = parser.read();
+      switch (evt.getType()) {
+        case Xml.TEXT:
+          credits += evt.getText() + "\n";
+          break;
+        case Xml.END_DOCUMENT:
+          endOfFile = true;
+          break;
+      }
+    }
+    while (!endOfFile);
+    // me salto el ultimo intro
+    credits = credits.substring(0, credits.length() - 1);
+    return credits;
+  }
+
+  /**
+   * Expresa el tiempo transcurrido en milisegundos o segundos
+   * @param interval long
+   * @return String
+   */
+  public static String duracion(long interval) {
+
+    if (interval < 1000) { // en milisegundos
+      return info_msg_juego_fin_proceso + interval +
+          (interval > 1 ? " milisegundos" : " milisegundo");
+    }
+    else { // en segundos, desprecio el resto
+      long secs = interval / 1000;
+      return info_msg_juego_fin_proceso + secs +
+          (secs > 1 ? " segundos" : " segundo");
+    }
+  }
+
+  /**
+   * Un beep()
+   * @param duracion int
+   * @param vol int
+   */
+  public static void tonoError(int duracion, int vol) {
+    try {
+      //  SEMITONE_CONST = 17.31234049066755 = 1/(ln(2^(1/12)))
+      // nota (0-127), duracion (ms), volumen (0-100)
+      // nota = ln(freq_en_hz / 8.176) * 17.31234049066755
+      // una freq de 440 Hz es igual a la nota musical A, nota MIDI 69 (0x45)
+
+      Manager.playTone(100, duracion, vol);
+      Thread.sleep(duracion);
+    }
+    catch (MediaException ex) {}
+    catch (InterruptedException ex) {}
+  }
+
+  /**
+   * Pasa milisegundo a formato String h:mm:ss
+   * @param ms long
+   * @return String
+   */
+  public static String longToTime(long ms) {
+    String ret = null;
+
+    long s = ms / 1000;
+    long h = s / 3600;
+    s -= h * 3600;
+    long m = s / 60;
+    s -= m * 60;
+    String sm = String.valueOf(m);
+    if (m < 10) {
+      sm = "0" + sm;
+    }
+    String ss = String.valueOf(s);
+    if (s < 10) {
+      ss = "0" + ss;
+    }
+    if (h == 0) {
+      if (m == 0) {
+        return (s == 1 ? ss + " segundo" : ss + " segundos");
+      }
+      else { // m > 0
+        return sm + "'" + ss + "''";
+      }
+    }
+    else { // h > 0
+      return h + ":" + sm + ":" + ss;
+    }
+  }
+}

@@ -1,0 +1,9 @@
+[PropertyInfo]
+ayudaOnLine,boolean,false,false,ayudaOnLine,ayudaOnLine,true,<default>
+level,int,false,false,level,level,true,<default>
+seed,int,false,false,seed,seed,true,<default>
+[IconNames]
+
+
+
+

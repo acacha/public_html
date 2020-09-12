@@ -1,0 +1,10 @@
+[PropertyInfo]
+ayudaOnLine,boolean,false,false, , ,true,<default>
+bundle,org.nico.midlets.resources.ResourceBundle,false,false, , ,true,<default>
+level,int,false,false, , ,true,<default>
+presentation,int,false,false,presentation,presentation,true,<default>
+[IconNames]
+
+
+
+

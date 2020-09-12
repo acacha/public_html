@@ -1,0 +1,1344 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.6.1058" />
+    <meta name="TEMPLATEBASE" content="book-w-index" />
+    <meta name="LASTUPDATED" content="10/27/04 10:15:38" />
+    <title>Command Line Reference</title>
+    <link rel="StyleSheet" href="document.css" type="text/css" />
+    <link rel="StyleSheet" href="catalog.css" type="text/css" />
+    <link rel="Table of Contents" href="index.html" />
+    <link rel="Previous" href="demonstrations.html" />
+    <link rel="Next" href="internationalization.html" />
+    <link rel="Index" href="indexa.html" />
+  </head>
+
+  <body>
+
+    <table class="full-width" id="SummaryNotReq1"
+        cellspacing="0" cellpadding="0" border="0">
+	  <!-- formatting table -->
+      <tr><td class="sun-darkblue">&#160;</td></tr>
+      <tr><td class="sun-lightblue">&#160;</td></tr>
+    </table>
+    
+    <table class="full-width" id="SummaryNotReq2"
+        cellspacing="0" cellpadding="0" border="0">
+	  <!-- formatting table -->
+      <tr>
+        <td class="go-left">
+          <p class="nav-link">
+            <a accesskey="h" href="../../index.html">Documentation Home</a>
+            &gt;
+            <a accesskey="c" href="index.html"><i>User's Guide</i></a>
+            &gt;
+            Command Line Reference
+          </p>
+        </td>
+        <td class="go-right">
+        <a accesskey="c" href="index.html">
+          <img id="LongDescNotReq1" src="images/toc.gif" border="0"
+            alt="Contents" /></a>
+	<a accesskey="p" href="demonstrations.html">
+	  <img id="LongDescNotReq2" src="images/prev.gif" border="0"
+            alt="Previous" /></a>
+        <a accesskey="n" href="internationalization.html">
+	  <img id="LongDescNotReq3" src="images/next.gif" border="0"
+            alt="Next" /></a>
+        <a accesskey="i" href="indexa.html">
+	  <img id="LongDescNotReq4" src="images/index.gif" border="0"
+            alt="Index" /></a>
+        </td>
+      </tr>
+    </table>
+
+<a name="wp35715"> </a><h2 class="pAppxNum">
+Appendix &#160; B
+</h2>
+<a name="wp32207"> </a><h2 class="pTitle">
+Command Line Reference
+</h2>
+<hr />
+<a name="wp23245"> </a><p class="pBody">
+This appendix describes how to operate the J2ME Wireless Toolkit from the command line and details the steps required to build and run an application. It also describes the J2ME Wireless Toolkit certificate manager utility, called MEKeyTool, and the MIDlet signing utility, called JAD Tool (Java Application Descriptor Tool). 
+</p>
+<a name="wp23282"> </a><h2 class="pHeading1">
+B.1	Prerequisites
+</h2>
+<a name="wp24143"> </a><p class="pBody">
+Before building and running an application from the command line, verify that you have a version no earlier than 1.4.2 of the J2SE SDK. Run the <code class="cCode">jar.exe</code> command (make sure the command is in your PATH) and then run <code class="cCode">java -version</code> at the command line to verify that the version of the J2SE SDK that is actually being used is 1.4.2. 
+</p>
+<a name="wp30751"> </a><p class="pBody">
+For more examples, see the files <code class="cCode">build.bat</code> and <code class="cCode">run.bat</code> in the <code class="cCode">bin</code> directories of the demonstration applications. You can find these files under the <br /><em class="cEmphasis">{toolkit}</em><code class="cCode">\apps\&lt;demo&gt;\bin</code> directory where <em class="cEmphasis">{toolkit}</em> is the installation directory of the J2ME Wireless Toolkit and <code class="cCode">&lt;demo&gt;</code> is the name of one of the demo applications.
+</p>
+<a name="wp26498"> </a><h2 class="pHeading1">
+B.2	The Development Cycle
+</h2>
+<a name="wp26504"> </a><p class="pBody">
+For a full description of developing MIDP applications, see <a  href="developing.html#wp20925"><span class="cZ_Xref">Chapter&#160;2, </span>&#8220;Developing MIDlet Suites</a>.&#8221; This section describes how to accomplish each of the steps in the development cycle from the command line.
+</p>
+<a name="wp26508"> </a><h3 class="pHeading2">
+B.2.1	Build
+</h3>
+<a name="wp26585"> </a><p class="pBody">
+Using KToolbar, building a project is a single step. Behind the scenes, however, there are actually two steps. First, Java source files are compiled into Java class files. Next, the class files are <em class="cEmphasis">preverified</em>, which means they are prepared for the CLDC KVM.
+</p>
+<a name="wp26586"> </a><p class="pBody">
+Use the <code class="cCode">javac</code> compiler from the J2SE SDK to compile Java source files. You can use the existing J2ME Wireless Toolkit project directory structure. You&#8217;ll need to use the <code class="cCode">-bootclasspath</code> option to tell the compiler to use the MIDP APIs, and you&#8217;ll use the <code class="cCode">-d</code> option to tell the compiler where to put the compiled class files.
+</p>
+<a name="wp26595"> </a><p class="pBody">
+The following example shows how you could compile a MIDP 2.0 application, taking source files from the <code class="cCode">src</code> directory and placing the class files in the <code class="cCode">tmpclasses</code> directory. Newlines have been added for clarity.
+</p>
+<div class="pPreformatted"><pre class="pPreformatted">
+javac<a name="wp26598"> </a>
+&#160;&#160;-bootclasspath ..\..\lib\cldcapi10.jar;..\..\lib\midpapi20.jar<a name="wp26624"> </a>
+&#160;&#160;-d tmpclasses<a name="wp26625"> </a>
+&#160;&#160;src\*.java<a name="wp26626"> </a>
+</pre></div>
+<a name="wp26587"> </a><p class="pBody">
+If you want to use the optional APIs that are supported by the toolkit, add their JAR files to the <code class="cCode">-bootclasspath</code> option.
+</p>
+<a name="wp26636"> </a><p class="pBody">
+For more information on <code class="cCode">javac</code>, consult the J2SE documentation.
+</p>
+<a name="wp26627"> </a><p class="pBody">
+The next step is to preverify the class files. In the <code class="cCode">bin</code> directory of the J2ME Wireless Toolkit lives a handy utility called <code class="cCode">preverify</code>. The syntax for the preverify command is as follows:
+</p>
+<div class="pPreformatted"><pre class="pPreformatted">
+preverify [<em class="cEmphasis">options</em>] &lt;<em class="cEmphasis">files</em> | <em class="cEmphasis">directories</em>&gt;<a name="wp26559"> </a>
+</pre></div>
+<a name="wp26564"> </a><p class="pBody">
+Some of the options are as follows:
+</p>
+<a name="wp26566"> </a><p class="pIndented1">
+<code class="cCode">-classpath</code> &lt;<em class="cEmphasis">classpath</em>&gt;
+</p>
+<a name="wp26567"> </a><p class="pIndented1">
+Specify the directories or JAR files (given as a semicolon-delimited list) from which classes are loaded.
+</p>
+<a name="wp26568"> </a><p class="pIndented1">
+<code class="cCode">-d </code>&lt;<em class="cEmphasis">output directory</em>&gt;
+</p>
+<a name="wp26569"> </a><p class="pIndented1">
+Specify the directory into which the preverifier should output classes. This directory must exist before preverifying. If this option is not used, the preverifier places the classes in a directory called output.
+</p>
+<a name="wp26572"> </a><p class="pBody">
+Following the example for compiling, use the following command to verify the compiled class files. As before, newlines have been added for clarity.
+</p>
+<div class="pPreformatted"><pre class="pPreformatted">
+preverify<a name="wp26662"> </a>
+&#160;&#160;-classpath ..\..\lib\cldcapi10.jar;..\..\lib\midpapi20.jar<a name="wp26671"> </a>
+&#160;&#160;-d classes<a name="wp26674"> </a>
+&#160;&#160;tmpclasses<a name="wp26675"> </a>
+</pre></div>
+<a name="wp28274"> </a><p class="pBody">
+As a result of this command, preverified class files are placed in the <code class="cCode">classes</code> directory. If your application uses WMA, MMAPI, or other versions of CLDC or MIDP, be sure to include the relevant <code class="cCode">.jar</code> files in the classpath.
+</p>
+<a name="wp28275"> </a><h3 class="pHeading2">
+B.2.2	Package
+</h3>
+<a name="wp28277"> </a><p class="pBody">
+To package a MIDlet suite, you must create a manifest file, an application JAR, and finally, a MIDlet suite descriptor.
+</p>
+<a name="wp26699"> </a><p class="pBody">
+Create a manifest file containing the appropriate attributes as specified in the MIDP specification. You can use any text editor to create the manifest file. A manifest might have the following contents, for example:
+</p>
+<div class="pPreformatted"><pre class="pPreformatted">
+MIDlet-1: My MIDlet, MyMIDlet.png, MyMIDlet<a name="wp26701"> </a>
+MIDlet-Name: MyMIDlet<a name="wp26702"> </a>
+MIDlet-Vendor: My Organization<a name="wp26703"> </a>
+MIDlet-Version: 1.0<a name="wp26704"> </a>
+MicroEdition-Configuration: CLDC-1.0<a name="wp26705"> </a>
+MicroEdition-Profile: MIDP-2.0<a name="wp26706"> </a>
+</pre></div>
+<a name="wp26708"> </a><p class="pBody">
+Create a JAR file containing the manifest as well as the suite&#8217;s class and resource files. To create the JAR file, use the <code class="cCode">jar</code> tool that comes with the J2SE SDK. The syntax is as follows:
+</p>
+<div class="pPreformatted"><pre class="pPreformatted">
+jar cfm &lt;<em class="cEmphasis">file</em>&gt; &lt;<em class="cEmphasis">manifest</em>&gt; -C &lt;<em class="cEmphasis">class_directory</em>&gt; . -C &lt;<em class="cEmphasis">resource_directory</em>&gt; .<a name="wp26710"> </a>
+</pre></div>
+<a name="wp26711"> </a><p class="pBody">
+The arguments are as follows:
+</p>
+<a name="wp26712"> </a><p class="pIndented1">
+&lt;<em class="cEmphasis">file</em>&gt;: The JAR file to create.
+</p>
+<a name="wp26714"> </a><p class="pIndented1">
+&lt;<em class="cEmphasis">manifest</em>&gt;: The manifest file for the MIDlets.
+</p>
+<a name="wp26716"> </a><p class="pIndented1">
+&lt;<em class="cEmphasis">class_directory</em>&gt;: The directory containing the application&#8217;s classes.
+</p>
+<a name="wp26718"> </a><p class="pIndented1">
+&lt;<em class="cEmphasis">resource_directory</em>&gt;: The directory containing the application&#8217;s resources.
+</p>
+<a name="wp26720"> </a><p class="pBody">
+For example, to create a JAR file named <code class="cCode">MyApp.jar</code> whose classes are in the <code class="cCode">classes</code> directory and resources are in the <code class="cCode">res</code> directory, use the following command:
+</p>
+<div class="pPreformatted"><pre class="pPreformatted">
+jar cfm MyApp.jar MANIFEST.MF -C classes . -C res .<a name="wp26723"> </a>
+</pre></div>
+<a name="wp26725"> </a><p class="pBody">
+Create a JAD file containing the appropriate attributes as specified in the MIDP specification. You can use any text editor to create the JAD file. This file must have the extension <code class="cCode">.jad</code>.
+</p>
+<hr class="pHr"/><div class="note">
+<a name="wp26726"> </a>
+<b>Note &#8211;</b>  You need to set the <code class="cCode">MIDlet-Jar-Size</code> entry to the size of the JAR file created in the previous step.
+<hr class="pHr"/></div>
+<a name="wp26728"> </a><p class="pBody">
+For example, a JAD file might have the following contents:
+</p>
+<div class="pPreformatted"><pre class="pPreformatted">
+MIDlet-Name: MyMIDlet<a name="wp26729"> </a>
+MIDlet-Vendor: My Organization<a name="wp26730"> </a>
+MIDlet-Version: 1.0<a name="wp26731"> </a>
+MIDlet-Jar-URL: MyApp.jar<a name="wp26732"> </a>
+MIDlet-Jar-Size: 24601<a name="wp26733"> </a>
+</pre></div>
+<a name="wp26532"> </a><h3 class="pHeading2">
+B.2.3	Run
+</h3>
+<a name="wp26823"> </a><p class="pBody">
+You can run the emulator from the command line. The J2ME Wireless Toolkit&#8217;s <code class="cCode">bin</code> directory contains the command <code class="cCode">emulator</code>. The syntax for the <code class="cCode">emulator</code> command is as follows: 
+</p>
+<div class="pPreformatted"><pre class="pPreformatted">
+emulator [<em class="cEmphasis">options</em>]<a name="wp26825"> </a>
+</pre></div>
+<a name="wp26828"> </a><p class="pBody">
+The general options are:
+</p>
+<a name="wp26883"> </a><p class="pIndented1">
+<code class="cCode">-help</code>: Display a list of valid options.
+</p>
+<a name="wp26831"> </a><p class="pIndented1">
+<code class="cCode">-version</code>: Display version information about the emulator.
+</p>
+<a name="wp26833"> </a><p class="pIndented1">
+<code class="cCode">-Xquery</code>: Print emulator skin information on the standard output stream and exit immediately. The information includes the skin name, screen size, and other capabilities.
+</p>
+<a name="wp26946"> </a><p class="pBody">
+Options that pertain to running MIDlet suites are:
+</p>
+<a name="wp26836"> </a><p class="pIndented1">
+<code class="cCode">-Xdevice:</code>&lt;<em class="cEmphasis">skin_name</em>&gt;: Run an application on the emulator using the given skin name. For a list of skin names, see <a  href="emulator.html#wp41655"><span class="cZ_Xref">Chapter&#160;4, </span>&#8220;Using the Emulator</a>.&#8221;
+</p>
+<a name="wp26845"> </a><p class="pIndented1">
+<code class="cCode">-Xdescriptor:</code>&lt;<em class="cEmphasis">jad_file</em>&gt;: Run an application locally using the given JAD file.
+</p>
+<a name="wp26847"> </a><p class="pIndented1">
+<code class="cCode">-classpath</code> &lt;<em class="cEmphasis">classpath</em>&gt;: Specify the classpath for libraries required to run the application. Use this option when running an application locally. 
+</p>
+<a name="wp26849"> </a><p class="pIndented1">
+<code class="cCode">-D </code>&lt;<em class="cEmphasis">runtime_property</em>&gt;: Set the HTTP and HTTPS proxy servers. Valid properties include:
+</p>
+<a name="wp26851"> </a><p class="pIndented2">
+<code class="cCode">com.sun.midp.io.http.proxy=&lt;</code><em class="cEmphasis">proxy host</em><code class="cCode">&gt;:&lt;</code><em class="cEmphasis">proxy port</em><code class="cCode">&gt;</code>
+</p>
+<a name="wp26852"> </a><p class="pIndented1">
+<code class="cCode">-Xjam:&lt;</code><em class="cEmphasis">command</em><code class="cCode">&gt;=&lt;</code><em class="cEmphasis">application</em><code class="cCode">&gt;</code>: Run an application remotely using the Application Management System (AMS) to run using OTA provisioning. If no application is specified with the argument, the graphical AMS is run.
+</p>
+<a name="wp26854"> </a><p class="pIndented2">
+<code class="cCode">install=&lt;</code><em class="cEmphasis">jad_file_url</em><code class="cCode">&gt; | force | list | storageNames|</code>
+</p>
+<a name="wp26855"> </a><p class="pIndented3">
+Install the application with the specified JAD file onto a device. 
+</p>
+<a name="wp26856"> </a><p class="pIndented2">
+<code class="cCode">run=[&lt;</code><em class="cEmphasis">storage_name</em><code class="cCode">&gt; | &lt;</code><em class="cEmphasis">storage_number</em><code class="cCode">&gt;] </code>
+</p>
+<a name="wp26857"> </a><p class="pIndented3">
+Run a previously installed application. The application is specified by its valid storage name or storage number.
+</p>
+<a name="wp26858"> </a><p class="pIndented2">
+<code class="cCode">remove=[&lt;</code><em class="cEmphasis">storage_name</em><code class="cCode">&gt; | &lt;</code><em class="cEmphasis">storage_number</em><code class="cCode">&gt; | all] </code>
+</p>
+<a name="wp26859"> </a><p class="pIndented3">
+Remove a previously installed application. The application is specified by its valid storage name or storage number. Specifying <code class="cCode">all</code>, all previously installed applications are removed.
+</p>
+<a name="wp26860"> </a><p class="pIndented2">
+<code class="cCode">transient=&lt;</code><em class="cEmphasis">jad_file_url</em><code class="cCode">&gt;</code>
+</p>
+<a name="wp26861"> </a><p class="pIndented3">
+Install, run, and remove the application with the specified JAD file. Specifying <code class="cCode">transient</code> causes the application to be installed and run and then removed three times.
+</p>
+<a name="wp26971"> </a><h3 class="pHeading2">
+B.2.4	Debugging
+</h3>
+<a name="wp27006"> </a><p class="pBody">
+You can use the following options with the emulator for debugging and tracing.
+</p>
+<a name="wp26974"> </a><p class="pIndented1">
+<code class="cCode">-Xverbose:</code>&lt;<em class="cEmphasis">trace_options</em>&gt;
+</p>
+<a name="wp26976"> </a><p class="pIndented1">
+Display trace output, as specified by a list of comma-separated options:
+</p>
+<a name="wp26977"> </a><p class="pIndented2">
+<code class="cCode">class</code> : trace class loading
+</p>
+<a name="wp26979"> </a><p class="pIndented2">
+<code class="cCode">gc</code> : trace garbage collection
+</p>
+<a name="wp26981"> </a><p class="pIndented2">
+<code class="cCode">all</code> : use all tracing options
+</p>
+<a name="wp26984"> </a><p class="pIndented1">
+<code class="cCode">-Xdebug</code>
+</p>
+<a name="wp26986"> </a><p class="pIndented1">
+Enable runtime debugging. The <code class="cCode">-Xrunjdwp</code> option must also be used.
+</p>
+<a name="wp26988"> </a><p class="pIndented1">
+<code class="cCode">-Xrunjdwp:</code>&lt;<em class="cEmphasis">debug_settings</em>&gt;
+</p>
+<a name="wp26989"> </a><p class="pIndented1">
+Start a JDWP debug session, as specified by a list of comma-separated debug settings. The <code class="cCode">-Xdebug</code> option must also be used. Valid debug settings include:
+</p>
+<a name="wp26990"> </a><p class="pIndented2">
+<code class="cCode">transport=</code>&lt;<em class="cEmphasis">transport_mechanism</em>&gt;
+</p>
+<a name="wp26991"> </a><p class="pIndented2">
+The transport mechanism used to communicate with the debugger. The only transport mechanism supported is <code class="cCode">dt_socket</code>.
+</p>
+<a name="wp26992"> </a><p class="pIndented2">
+<code class="cCode">address=</code>&lt;<em class="cEmphasis">host:port</em>&gt;
+</p>
+<a name="wp26993"> </a><p class="pIndented2">
+The transport address for the debugger connection. You can omit providing a <em class="cEmphasis">host</em>. If <em class="cEmphasis">host</em> is omitted, <em class="cEmphasis">localhost</em> is assumed to be the host machine.
+</p>
+<a name="wp26994"> </a><p class="pIndented2">
+<code class="cCode">server=</code><em class="cEmphasis">{y|n}</em>
+</p>
+<a name="wp26995"> </a><p class="pIndented2">
+Start the debug agent as a server. The debugger must connect to the port specified. The possible values are <code class="cCode">y</code> and <code class="cCode">n</code>. Currently, only <code class="cCode">y</code> is supported (the emulator must act as a server).
+</p>
+<a name="wp26518"> </a><h2 class="pHeading1">
+B.3	Launching Toolkit GUI Components
+</h2>
+<a name="wp27303"> </a><p class="pBody">
+The components of the J2ME Wireless Toolkit can all be launched from the command line. Each component is in the toolkit&#8217;s <code class="cCode">bin</code> directory.</p><div align="left">
+<table border="0" cellpadding="7" summary="Toolkit component commands" id="wp27306">
+  <caption><a name="wp27306"> </a><div class="pTableCaption">
+TABLE&#160;12&#160;&#160;&#8211;&#160;&#160;Toolkit component commands
+</div>
+</caption>
+<thead>
+<tr >    <th  class="sun-verylightblue" scope="col"><a name="wp27310"> </a><div class="pTableHead">
+Command
+</div>
+
+</th>
+    <th  class="sun-verylightblue" scope="col"><a name="wp27312"> </a><div class="pTableHead">
+Description
+</div>
+
+</th>
+</tr>
+</thead>
+  <tr>    <td><a name="wp27314"> </a><div class="pTableText">
+<code class="cCode">DefaultDevice</code>
+</div>
+</td>
+    <td><a name="wp27316"> </a><div class="pTableText">
+Pops up a dialog that allows you to choose the default emulator skin
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp27318"> </a><div class="pTableText">
+<code class="cCode">ktoolbar</code>
+</div>
+</td>
+    <td><a name="wp27320"> </a><div class="pTableText">
+Launches KToolbar
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp27322"> </a><div class="pTableText">
+<code class="cCode">prefs</code>
+</div>
+</td>
+    <td><a name="wp27324"> </a><div class="pTableText">
+Launches the toolkit preferences
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp27326"> </a><div class="pTableText">
+<code class="cCode">utils</code>
+</div>
+</td>
+    <td><a name="wp27328"> </a><div class="pTableText">
+Launches the toolkit utilities window
+</div>
+</td>
+</tr>
+<tr><td colspan="15"><hr class="pTableHr" /></td></tr>
+</table>
+</div>
+<p class="pBody">
+
+</p>
+<a name="wp27329"> </a><h2 class="pHeading1">
+B.4	Setting Emulator Preferences
+</h2>
+<a name="wp27336"> </a><p class="pBody">
+You can change the emulator preferences from the command line by using the <code class="cCode">-Xprefs</code> option for the <code class="cCode">emulator</code> command. The format is as follows:
+</p>
+<a name="wp27345"> </a><p class="pIndented1">
+<code class="cCode">-Xprefs:&lt;</code><em class="cEmphasis">filename</em><code class="cCode">&gt;</code>
+</p>
+<a name="wp27346"> </a><p class="pIndented1">
+The <em class="cEmphasis">filename </em>you provide should be the full path name of a property file whose values override the values in the preferences dialog box. The property file can contain the following properties:
+</p>
+<a name="wp27554"> </a><p class="pIndented1">
+</p><div align="left">
+<table border="0" cellpadding="7"   id="SummaryNotReq27347">
+  <caption><a name="wp27350"> </a><div class="pTableCaption">
+TABLE&#160;13&#160;&#160;&#8211;&#160;&#160;Emulator Preferences Properties List
+</div>
+</caption>
+<thead>
+<tr >    <th  class="sun-verylightblue" scope="col"><a name="wp27354"> </a><div class="pTableHead">
+Property Name
+</div>
+
+</th>
+    <th  class="sun-verylightblue" scope="col"><a name="wp27356"> </a><div class="pTableHead">
+Property Description and Legal Values
+</div>
+
+</th>
+</tr>
+</thead>
+  <tr>    <td><a name="wp27358"> </a><div class="pTableText">
+<code class="cCode">http.version</code>
+</div>
+</td>
+    <td><a name="wp27360"> </a><div class="pTableText">
+Network Configuration &gt; HTTP Version
+</div>
+<a name="wp27361"> </a><div class="pTableText">
+Value: HTTP/1.1 | HTTP/1.0
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp27363"> </a><div class="pTableText">
+<code class="cCode">http.proxyHost</code>
+</div>
+</td>
+    <td><a name="wp27365"> </a><div class="pTableText">
+Network Configuration &gt; HTTP Address
+</div>
+<a name="wp27366"> </a><div class="pTableText">
+Value: hostname
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp27368"> </a><div class="pTableText">
+<code class="cCode">http.proxyPort</code>
+</div>
+</td>
+    <td><a name="wp27370"> </a><div class="pTableText">
+Network Configuration &gt; HTTP Port
+</div>
+<a name="wp27371"> </a><div class="pTableText">
+Value: integer
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp27373"> </a><div class="pTableText">
+<code class="cCode">https.proxyHost</code>
+</div>
+</td>
+    <td><a name="wp27375"> </a><div class="pTableText">
+Network Configuration &gt; HTTPS Address
+</div>
+<a name="wp27376"> </a><div class="pTableText">
+Value: hostname
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp27378"> </a><div class="pTableText">
+<code class="cCode">https.proxyPort</code>
+</div>
+</td>
+    <td><a name="wp27380"> </a><div class="pTableText">
+Network Configuration &gt; HTTPS Port
+</div>
+<a name="wp27381"> </a><div class="pTableText">
+Value: integer
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp27383"> </a><div class="pTableText">
+<code class="cCode">kvem.memory.monitor.enable</code>
+</div>
+</td>
+    <td><a name="wp27385"> </a><div class="pTableText">
+Monitor &gt; Enable memory monitor
+</div>
+<a name="wp27386"> </a><div class="pTableText">
+Value: true | false
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp27388"> </a><div class="pTableText">
+<code class="cCode">kvem.netmon.comm.enable</code>
+</div>
+</td>
+    <td><a name="wp27390"> </a><div class="pTableText">
+Monitor &gt; Enable Comm monitoring
+</div>
+<a name="wp27391"> </a><div class="pTableText">
+Value: true | false
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp27393"> </a><div class="pTableText">
+<code class="cCode">kvem.netmon.datagram.enable</code>
+</div>
+</td>
+    <td><a name="wp27395"> </a><div class="pTableText">
+Monitor &gt; Enable Datagram monitoring
+</div>
+<a name="wp27396"> </a><div class="pTableText">
+Value: true | false
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp27398"> </a><div class="pTableText">
+<code class="cCode">kvem.netmon.http.enable</code>
+</div>
+</td>
+    <td><a name="wp27400"> </a><div class="pTableText">
+Monitor &gt; Enable HTTP monitoring
+</div>
+<a name="wp27401"> </a><div class="pTableText">
+Value: true | false
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp27403"> </a><div class="pTableText">
+<code class="cCode">kvem.netmon.https.enable</code>
+</div>
+</td>
+    <td><a name="wp27405"> </a><div class="pTableText">
+Monitor &gt; Enable HTTPS monitoring
+</div>
+<a name="wp27406"> </a><div class="pTableText">
+Value: true | false
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp27408"> </a><div class="pTableText">
+<code class="cCode">kvem.netmon.socket.enable</code>
+</div>
+</td>
+    <td><a name="wp27410"> </a><div class="pTableText">
+Monitor &gt; Enable Socket monitoring
+</div>
+<a name="wp27411"> </a><div class="pTableText">
+Value: true | false
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp27413"> </a><div class="pTableText">
+<code class="cCode">kvem.netmon.ssl.enable</code>
+</div>
+</td>
+    <td><a name="wp27415"> </a><div class="pTableText">
+Monitor &gt; Enable SSL monitoring
+</div>
+<a name="wp27416"> </a><div class="pTableText">
+Value: true | false
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp27418"> </a><div class="pTableText">
+<code class="cCode">kvem.profiler.enable</code>
+</div>
+</td>
+    <td><a name="wp27420"> </a><div class="pTableText">
+Monitor &gt; Enable profiling
+</div>
+<a name="wp27421"> </a><div class="pTableText">
+Value: true | false
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp27423"> </a><div class="pTableText">
+<code class="cCode">netspeed.bitpersecond</code>
+</div>
+</td>
+    <td><a name="wp27425"> </a><div class="pTableText">
+Performance &gt; bits/sec combo box
+</div>
+<a name="wp27426"> </a><div class="pTableText">
+Value: integer
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp27428"> </a><div class="pTableText">
+<code class="cCode">netspeed.enableSpeedEmulation</code>
+</div>
+</td>
+    <td><a name="wp27430"> </a><div class="pTableText">
+Performance &gt; Enable network throughput                                emulation
+</div>
+<a name="wp27431"> </a><div class="pTableText">
+Value: true | false
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp27433"> </a><div class="pTableText">
+<code class="cCode">screen.graphicsLatency</code>
+</div>
+</td>
+    <td><a name="wp27435"> </a><div class="pTableText">
+Performance &gt; Graphics primitives latency
+</div>
+<a name="wp27436"> </a><div class="pTableText">
+Value: integer
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp27438"> </a><div class="pTableText">
+<code class="cCode">screen.refresh.mode</code>
+</div>
+</td>
+    <td><a name="wp27440"> </a><div class="pTableText">
+Performance &gt; Display refresh (radio button)
+</div>
+<a name="wp27441"> </a><div class="pTableText">
+ Value: default | immediate | periodic
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp27443"> </a><div class="pTableText">
+<code class="cCode">screen.refresh.rate</code>
+</div>
+</td>
+    <td><a name="wp27445"> </a><div class="pTableText">
+Performance &gt; Display refresh (slider)
+</div>
+<a name="wp27446"> </a><div class="pTableText">
+Value: integer
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp27448"> </a><div class="pTableText">
+<code class="cCode">vmspeed.bytecodespermilli</code>
+</div>
+</td>
+    <td><a name="wp27450"> </a><div class="pTableText">
+Performance &gt; Enable VM speed                                emulation (check box)
+</div>
+<a name="wp27451"> </a><div class="pTableText">
+Value: integer
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp27453"> </a><div class="pTableText">
+<code class="cCode">vmspeed.enableEmulation</code>
+</div>
+</td>
+    <td><a name="wp27455"> </a><div class="pTableText">
+Performance &gt; Enable VM speed emulation (slider) 
+</div>
+<a name="wp27456"> </a><div class="pTableText">
+Value: true | false
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp27458"> </a><div class="pTableText">
+<code class="cCode">storage.root</code>
+</div>
+</td>
+    <td><a name="wp27460"> </a><div class="pTableText">
+Storage &gt; Storage root directory
+</div>
+<a name="wp27461"> </a><div class="pTableText">
+Value: String (relative path to <em class="cEmphasis">appdb</em>)
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp27463"> </a><div class="pTableText">
+<code class="cCode">storage.size</code>
+</div>
+</td>
+    <td><a name="wp27465"> </a><div class="pTableText">
+Storage &gt; Storage size
+</div>
+<a name="wp27466"> </a><div class="pTableText">
+Value: integer
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp27468"> </a><div class="pTableText">
+<code class="cCode">mm.control.capture</code>
+</div>
+</td>
+    <td><a name="wp27470"> </a><div class="pTableText">
+MMedia &gt; Audio Capture
+</div>
+<a name="wp27471"> </a><div class="pTableText">
+Value: true | false
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp27473"> </a><div class="pTableText">
+<code class="cCode">mm.control.midi</code>
+</div>
+</td>
+    <td><a name="wp27475"> </a><div class="pTableText">
+MMedia &gt; MIDI tones
+</div>
+<a name="wp27476"> </a><div class="pTableText">
+Value: true | false
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp27478"> </a><div class="pTableText">
+<code class="cCode">mm.control.mixing</code>
+</div>
+</td>
+    <td><a name="wp27480"> </a><div class="pTableText">
+MMedia &gt; Audio Mixing
+</div>
+<a name="wp27481"> </a><div class="pTableText">
+Value: true | false
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp27483"> </a><div class="pTableText">
+<code class="cCode">mm.control.record</code>
+</div>
+</td>
+    <td><a name="wp27485"> </a><div class="pTableText">
+MMedia &gt; Audio Record
+</div>
+<a name="wp27486"> </a><div class="pTableText">
+Value: true | false
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp27488"> </a><div class="pTableText">
+<code class="cCode">mm.control.volume</code>
+</div>
+</td>
+    <td><a name="wp27490"> </a><div class="pTableText">
+Value: true | false
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp27492"> </a><div class="pTableText">
+<code class="cCode">mm.format.midi</code>
+</div>
+</td>
+    <td><a name="wp27494"> </a><div class="pTableText">
+MMedia &gt; MIDI format
+</div>
+<a name="wp27495"> </a><div class="pTableText">
+Value: true | false
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp27497"> </a><div class="pTableText">
+<code class="cCode">mm.format.video</code>
+</div>
+</td>
+    <td><a name="wp27499"> </a><div class="pTableText">
+MMedia &gt; Video format
+</div>
+<a name="wp27500"> </a><div class="pTableText">
+Value: true | false
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp27502"> </a><div class="pTableText">
+<code class="cCode">mm.format.wav</code>
+</div>
+</td>
+    <td><a name="wp27504"> </a><div class="pTableText">
+MMedia &gt; WAV Audio format
+</div>
+<a name="wp27505"> </a><div class="pTableText">
+Value: true | false
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp27507"> </a><div class="pTableText">
+<code class="cCode">wma.client.phoneNumber</code>
+</div>
+</td>
+    <td><a name="wp27509"> </a><div class="pTableText">
+WMA &gt; Phone Number of Next Emulator
+</div>
+<a name="wp27510"> </a><div class="pTableText">
+Value: integer
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp27517"> </a><div class="pTableText">
+<code class="cCode">wma.server.firstAssignedPhoneNumber</code>
+</div>
+</td>
+    <td><a name="wp27519"> </a><div class="pTableText">
+WMA &gt; First Assigned Phone Number
+</div>
+<a name="wp27520"> </a><div class="pTableText">
+Value: integer
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp27522"> </a><div class="pTableText">
+<code class="cCode">wma.server.percentFragmentLoss</code>
+</div>
+</td>
+    <td><a name="wp27524"> </a><div class="pTableText">
+WMA &gt; % Random Message Fragment Loss
+</div>
+<a name="wp27525"> </a><div class="pTableText">
+Value: integer
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp27527"> </a><div class="pTableText">
+<code class="cCode">wma.server.deliveryDelayMS</code>
+</div>
+</td>
+    <td><a name="wp27529"> </a><div class="pTableText">
+WMA &gt; Message Fragment Delivery Delay (ms)
+</div>
+<a name="wp27530"> </a><div class="pTableText">
+Value: integer
+</div>
+</td>
+</tr>
+<tr><td colspan="15"><hr class="pTableHr" /></td></tr>
+</table>
+</div>
+<p class="pIndented1">
+
+</p>
+<a name="wp27331"> </a><h2 class="pHeading1">
+B.5	Using Security Features
+</h2>
+<a name="wp27560"> </a><p class="pBody">
+The full spectrum of the J2ME Wireless Toolkit&#8217;s security features are also available from the command line. You can adjust the emulator&#8217;s default protection domain, sign MIDlet suites, and manage certificates.
+</p>
+<a name="wp27564"> </a><h3 class="pHeading2">
+B.5.1	Changing the Emulator&#8217;s Default Protection Domain
+</h3>
+<a name="wp27595"> </a><p class="pBody">
+To adjust the emulator&#8217;s default protection domain, use the following option with the <code class="cCode">emulator</code> command:
+</p>
+<a name="wp27579"> </a><p class="pIndented1">
+<code class="cCode">-Xdomain &lt;</code><em class="cEmphasis">domain_type</em><code class="cCode">&gt;</code>
+</p>
+<a name="wp27580"> </a><p class="pIndented1">
+Assigns a security domain to the MIDlet suite. Domain types include <code class="cCode">untrusted</code>, <code class="cCode">trusted</code>, <code class="cCode">minimum</code>, and <code class="cCode">maximum</code>.
+</p>
+<a name="wp27539"> </a><h3 class="pHeading2">
+B.5.2	Signing MIDlet Suites
+</h3>
+<a name="wp27676"> </a><p class="pBody">
+<code class="cCode">JadTool</code> is a command-line interface for signing MIDlet suites using public key cryptography according to the MIDP 2.0 specification. Signing a MIDlet suite is the process of adding the signer certificates and the digital signature of the JAR file to a JAD file. 
+</p>
+<a name="wp27622"> </a><p class="pBody">
+<code class="cCode">JadTool</code> only uses certificates and keys from J2SE keystores. J2SE provides <code class="cCode">keytool</code>, the command-line tool to manage J2SE keystores.
+</p>
+<a name="wp27625"> </a><p class="pBody">
+<code class="cCode">JadTool</code> is packaged in a JAR file. To run it, open a command prompt, change the current directory to {<em class="cEmphasis">toolkit</em>}<code class="cCode">\bin</code>, and enter the following command:
+</p>
+<div class="pPreformatted"><pre class="pPreformatted">
+java -jar JADTool.jar &lt;<em class="cEmphasis">command</em>&gt;<a name="wp27626"> </a>
+</pre></div>
+<a name="wp27627"> </a><p class="pBody">
+The commands are as follows:
+</p>
+<a name="wp27628"> </a><p class="pIndented1">
+<code class="cCode">-help</code>
+</p>
+<a name="wp27629"> </a><p class="pIndented1">
+Print the usage instructions for JADTool.
+</p>
+<a name="wp27630"> </a><p class="pIndented1">
+<code class="cCode">-addcert -keystore</code> &lt;<em class="cEmphasis">keystore</em>&gt; <code class="cCode">-alias &lt;</code><em class="cEmphasis">alias</em><code class="cCode">&gt; -storepass</code> &lt;<em class="cEmphasis">password&gt;<br /></em><code class="cCode">[-certnum</code> <code class="cCode">&lt;</code><em class="cEmphasis">number</em><code class="cCode">&gt;]</code> <code class="cCode">[-chainnum</code> <code class="cCode">&lt;</code><em class="cEmphasis">number</em><code class="cCode">&gt;]</code> <code class="cCode">-inputjad</code> &lt;<em class="cEmphasis">input_jadfile</em>&gt; <code class="cCode">-outputjad</code> &lt;<em class="cEmphasis">output_jadfile&gt;</em>
+</p>
+<a name="wp27631"> </a><p class="pIndented2">
+Add the certificate of the key pair from the given keystore to the JAD file. The default keystore is {<em class="cEmphasis">toolkit</em>}<code class="cCode">\appdb\_main.ks</code>.
+</p>
+<a name="wp27632"> </a><p class="pIndented1">
+<code class="cCode">-addjarsig -jarfile</code> &lt;<em class="cEmphasis">jarfile</em>&gt; <code class="cCode">-keystore</code> &lt;<em class="cEmphasis">keystore</em>&gt; <code class="cCode">-alias</code> <code class="cCode">&lt;</code><em class="cEmphasis">alias</em><code class="cCode">&gt;</code> <code class="cCode">-storepass</code> &lt;<em class="cEmphasis">password&gt; </em><code class="cCode">-keypass</code> &lt;<em class="cEmphasis">password</em>&gt; <code class="cCode">-inputjad</code> &lt;<em class="cEmphasis">input_jadfile</em>&gt; <code class="cCode">-outputjad</code> &lt;<em class="cEmphasis">output_jadfile&gt;</em>
+</p>
+<a name="wp27633"> </a><p class="pIndented2">
+Add the digital signature of the given JAR file to the specified JAD file. The default value for <code class="cCode">-jarfile</code> is the <code class="cCode">MIDlet-Jar-URL</code> property in the JAD file. The default ME keystore is {<em class="cEmphasis">toolkit</em>}<code class="cCode">\appdb\_main.ks</code>.
+</p>
+<a name="wp27634"> </a><p class="pIndented1">
+<code class="cCode">-showcert</code> <code class="cCode">[([-certnum</code> <code class="cCode">&lt;</code><em class="cEmphasis">number</em><code class="cCode">&gt;]</code> <code class="cCode">[-chainnum</code> <code class="cCode">&lt;</code><em class="cEmphasis">number</em><code class="cCode">&gt;])</code> <code class="cCode">|-all</code> <code class="cCode">[-encoding</code> <code class="cCode">&lt;</code><em class="cEmphasis">encoding</em><code class="cCode">&gt;]</code> <code class="cCode">-inputjad</code> <code class="cCode">&lt;</code><em class="cEmphasis">filename</em><code class="cCode">&gt;</code>
+</p>
+<a name="wp27635"> </a><p class="pIndented2">
+Display the list of certificates in the given JAD file. 
+</p>
+<a name="wp27636"> </a><p class="pIndented2">
+The default value for:
+</p>
+<a name="wp27637"> </a><p class="pIndented2">
+<code class="cCode">-encoding</code> is <code class="cCode">UTF-8</code>
+</p>
+<a name="wp27638"> </a><p class="pIndented2">
+<code class="cCode">-jarfile</code> is the <code class="cCode">MIDlet-Jar-URL</code> property in the JAD
+</p>
+<a name="wp27639"> </a><p class="pIndented2">
+<code class="cCode">-keystore</code> is <code class="cCode">%HOMEPATH%\.keystore</code>
+</p>
+<a name="wp27640"> </a><p class="pIndented2">
+<code class="cCode">-certnum</code> is 1
+</p>
+<a name="wp27641"> </a><p class="pIndented2">
+<code class="cCode">-chainnum</code> is 1
+</p>
+<a name="wp22416"> </a><h3 class="pHeading2">
+B.5.3	Managing Certificates
+</h3>
+<a name="wp22783"> </a><p class="pBody">
+<code class="cCode">MEKeyTool</code> manages the public keys of certificate authorities (CAs), making it functionally similar to the <code class="cCode">keytool</code> utility that comes with the J2SE SDK. The keys can be used to facilitate secure HTTP communication over SSL (HTTPS).
+</p>
+<a name="wp22417"> </a><p class="pBody">
+Before using <code class="cCode">MEKeyTool</code>, you must first have access to a Java Cryptography Extension (JCE) keystore. You can create one using the J2SE <code class="cCode">keytool</code> utility; see <a  href="http://java.sun.com/j2se/1.4/docs/tooldocs/win32/keytool.html">http://java.sun.com/j2se/1.4/docs/tooldocs/win32/keytool.html </a>for more information.
+</p>
+<a name="wp22364"> </a><p class="pBody">
+To run <code class="cCode">MEKeyTool</code>, open a command prompt, change the current directory to <code class="cCode">{</code><em class="cEmphasis">toolkit</em><code class="cCode">}\bin</code>, and enter the following command:
+</p>
+<div class="pPreformatted"><pre class="pPreformatted">
+mekeytool.exe &lt;<em class="cEmphasis">command</em>&gt;<a name="wp21973"> </a>
+</pre></div>
+<a name="wp22003"> </a><p class="pBody">
+The commands are as follows:
+</p>
+<a name="wp22758"> </a><p class="pIndented1">
+<code class="cCode">-help</code>
+</p>
+<a name="wp22759"> </a><p class="pIndented2">
+Print the usage instructions for MEKeyTool.
+</p>
+<a name="wp22769"> </a><p class="pIndented1">
+<code class="cCode">-import -alias &lt;</code><em class="cEmphasis">alias</em><code class="cCode">&gt; [-keystore &lt;</code><em class="cEmphasis">JCEkeystore</em><code class="cCode">&gt;] [-storepass &lt;</code><em class="cEmphasis">storepass</em><code class="cCode">&gt;] -domain &lt;</code><em class="cEmphasis">domain_name</em><code class="cCode">&gt;</code>
+</p>
+<a name="wp22770"> </a><p class="pIndented2">
+Import a public key into the ME keystore from the given JCE keystore using the given JCE keystore password. The default ME keystore is {<em class="cEmphasis">toolkit</em>}<code class="cCode">\appdb\_main.ks</code> and the default JCE keystore is {<em class="cEmphasis">user.home</em>}<code class="cCode">\.keystore</code>.
+</p>
+<a name="wp22219"> </a><p class="pIndented1">
+<code class="cCode">-list</code>
+</p>
+<a name="wp22222"> </a><p class="pIndented2">
+List the keys in the ME keystore, including the owner and validity period for each. The ME keystore is {<em class="cEmphasis">toolkit</em>}<code class="cCode">\appdb\_main.ks</code>.
+</p>
+<a name="wp31724"> </a><p class="pIndented1">
+<code class="cCode">-delete (-owner &lt;owner&gt; | -number &lt;key number&gt;)</code>
+</p>
+<a name="wp31725"> </a><p class="pIndented2">
+Delete a key from the given ME keystore with the given owner. The ME keystore is {<em class="cEmphasis">toolkit</em>}<code class="cCode">\appdb\_main.ks</code>.
+</p>
+<hr class="pHr"/><div class="note">
+<a name="wp22822"> </a>
+<b>Note &#8211;</b>  The J2ME Wireless Toolkit contains an ME keystore called <code class="cCode">_main.ks,</code> which is located in the <code class="cCode">appdb</code> subdirectory. This keystore includes all the certificates that exist in the default J2SE keystore, which comes with the J2SE SDK installation.
+<hr class="pHr"/></div>
+<a name="wp35756"> </a><h2 class="pHeading1">
+B.6	Using the Stub Generator
+</h2>
+<a name="wp35758"> </a><p class="pBody">
+J2ME Clients can use the Stub Generator to access web services. The wscompile tool generates stubs, ties, serializers, and WSDL files used in JAX-RPC clients and services. The tool reads a configuration file, which specifies either a WSDL file, a model file, or a compiled service endpoint interface.
+</p>
+<a name="wp35760"> </a><p class="pBody">
+The syntax for the stub generator command is as follows:
+</p>
+<div class="pPreformatted"><pre class="pPreformatted">
+wscompile [<em class="cEmphasis">options</em>] <em class="cEmphasis">configuration_files</em> <a name="wp35761"> </a>
+</pre></div>
+<a name="wp35762"> </a><h3 class="pHeading2">
+B.6.1	Options
+</h3>
+<a name="wp35837"> </a><p class="pBody">
+</p><div align="left">
+<table border="0" cellpadding="7"   id="SummaryNotReq35763">
+  <caption><a name="wp35766"> </a><div class="pTableCaption">
+TABLE&#160;14&#160;&#160;&#8211;&#160;&#160;Options for the wscompile Command 
+</div>
+</caption>
+<thead>
+<tr >    <th  class="sun-verylightblue" scope="col"><a name="wp35770"> </a><div class="pTableHead">
+Option
+</div>
+
+</th>
+    <th  class="sun-verylightblue" scope="col"><a name="wp35772"> </a><div class="pTableHead">
+Description
+</div>
+
+</th>
+</tr>
+</thead>
+  <tr>    <td><a name="wp35774"> </a><div class="pTableText">
+<code class="cCode">-d</code><em class="cEmphasis"> &lt;output directory&gt; </em>
+</div>
+</td>
+    <td><a name="wp35776"> </a><div class="pTableText">
+specify where to place generated output files
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp35778"> </a><div class="pTableText">
+<code class="cCode">-f:</code><em class="cEmphasis">&lt;features&gt;</em>
+</div>
+</td>
+    <td><a name="wp35780"> </a><div class="pTableText">
+enable the given features
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp35782"> </a><div class="pTableText">
+<code class="cCode">-features:</code><em class="cEmphasis">&lt;features&gt;</em>
+</div>
+</td>
+    <td><a name="wp35784"> </a><div class="pTableText">
+same as<code class="cCode"> -f:</code><em class="cEmphasis">&lt;features&gt;</em>
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp35786"> </a><div class="pTableText">
+<code class="cCode">-g</code>
+</div>
+</td>
+    <td><a name="wp35788"> </a><div class="pTableText">
+generate debugging info
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp35790"> </a><div class="pTableText">
+<code class="cCode">-gen</code>
+</div>
+</td>
+    <td><a name="wp35792"> </a><div class="pTableText">
+same as <code class="cCode">-gen:client</code>
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp35794"> </a><div class="pTableText">
+<code class="cCode">-gen:client</code>
+</div>
+</td>
+    <td><a name="wp35796"> </a><div class="pTableText">
+generate client artifacts (stubs, etc.)
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp35798"> </a><div class="pTableText">
+<code class="cCode">-httpproxy:</code><em class="cEmphasis">&lt;host&gt;:&lt;port&gt;</em>
+</div>
+</td>
+    <td><a name="wp35800"> </a><div class="pTableText">
+specify a HTTP proxy server (port defaults to 8080)
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp35802"> </a><div class="pTableText">
+<code class="cCode">-import</code>
+</div>
+</td>
+    <td><a name="wp35804"> </a><div class="pTableText">
+generate interfaces and value types only
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp35806"> </a><div class="pTableText">
+<code class="cCode">-model </code><em class="cEmphasis">&lt;file&gt;</em>
+</div>
+</td>
+    <td><a name="wp35808"> </a><div class="pTableText">
+write the internal model to the given file
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp35810"> </a><div class="pTableText">
+<code class="cCode">-O</code>
+</div>
+</td>
+    <td><a name="wp35812"> </a><div class="pTableText">
+optimize generated code
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp35814"> </a><div class="pTableText">
+<code class="cCode">-s </code><em class="cEmphasis">&lt;directory&gt;</em>
+</div>
+</td>
+    <td><a name="wp35816"> </a><div class="pTableText">
+specify where to place generated source files
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp35818"> </a><div class="pTableText">
+<code class="cCode">-verbose</code>
+</div>
+</td>
+    <td><a name="wp35820"> </a><div class="pTableText">
+output messages about what the compiler is doing
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp35822"> </a><div class="pTableText">
+<code class="cCode">-version</code>
+</div>
+</td>
+    <td><a name="wp35824"> </a><div class="pTableText">
+print version information
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp35826"> </a><div class="pTableText">
+<code class="cCode">-cldc1.0</code>
+</div>
+</td>
+    <td><a name="wp35828"> </a><div class="pTableText">
+Set the CLDC version to 1.0 (default) (float and double become String)
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp35830"> </a><div class="pTableText">
+<code class="cCode">-cldc1.1</code>
+</div>
+</td>
+    <td><a name="wp35832"> </a><div class="pTableText">
+Set the CLDC version to 1.1 (float and double are ok)
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp35834"> </a><div class="pTableText">
+<code class="cCode">-cldc1.0info</code>
+</div>
+</td>
+    <td><a name="wp35836"> </a><div class="pTableText">
+Show all CLDC 1.0 info/warning messages.
+</div>
+</td>
+</tr>
+<tr><td colspan="15"><hr class="pTableHr" /></td></tr>
+</table>
+</div>
+<p class="pBody">
+
+</p>
+<hr class="pHr"/><div class="note">
+<a name="wp35838"> </a>
+<b>Note &#8211;</b>  Exactly one <code class="cCode">-gen</code> option must be specified. The <code class="cCode">-f</code> option requires a comma-separated list of features.
+<hr class="pHr"/></div>
+<a name="wp35842"> </a><p class="pBody">
+<a  href="commandline.html#wp35847"><span class="cZ_Xref">TABLE&#160;15</span></a> lists the features (delimited by commas) that can follow the <code class="cCode">-f</code> option. The wscompile tool reads a WSDL file, compiled service endpoint interface (SEI), or model file as input. The Type of File column indicates which of these files can be used with a particular feature.</p><div align="left">
+<table border="0" cellpadding="7"   id="SummaryNotReq35843">
+  <caption><a name="wp35847"> </a><div class="pTableCaption">
+TABLE&#160;15&#160;&#160;&#8211;&#160;&#160;Command Supported Features (-f) for wscompile 
+</div>
+</caption>
+<thead>
+<tr >    <th  class="sun-verylightblue" scope="col"><a name="wp35853"> </a><div class="pTableHead">
+Option
+</div>
+
+</th>
+    <th  class="sun-verylightblue" scope="col"><a name="wp35855"> </a><div class="pTableHead">
+Description
+</div>
+
+</th>
+    <th  class="sun-verylightblue" scope="col"><a name="wp35857"> </a><div class="pTableHead">
+Type of File
+</div>
+
+</th>
+</tr>
+</thead>
+  <tr>    <td><a name="wp35859"> </a><div class="pTableText">
+<code class="cCode">explicitcontext</code>
+</div>
+</td>
+    <td><a name="wp35861"> </a><div class="pTableText">
+turn on explicit service context mapping
+</div>
+</td>
+    <td><a name="wp35863"> </a><div class="pTableText">
+WSDL
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp35865"> </a><div class="pTableText">
+<code class="cCode">nodatabinding</code>
+</div>
+</td>
+    <td><a name="wp35867"> </a><div class="pTableText">
+turn off data binding for literal encoding
+</div>
+</td>
+    <td><a name="wp35869"> </a><div class="pTableText">
+WSDL
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp35871"> </a><div class="pTableText">
+<code class="cCode">noencodedtypes</code>
+</div>
+</td>
+    <td><a name="wp35873"> </a><div class="pTableText">
+turn off encoding type information
+</div>
+</td>
+    <td><a name="wp35875"> </a><div class="pTableText">
+WSDL, SEI, model 
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp35877"> </a><div class="pTableText">
+<code class="cCode">nomultirefs</code>
+</div>
+</td>
+    <td><a name="wp35879"> </a><div class="pTableText">
+turn off support for multiple references
+</div>
+</td>
+    <td><a name="wp35881"> </a><div class="pTableText">
+WSDL, SEI, model 
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp35883"> </a><div class="pTableText">
+<code class="cCode">novalidation</code>
+</div>
+</td>
+    <td><a name="wp35885"> </a><div class="pTableText">
+turn off full validation of imported WSDL documents
+</div>
+</td>
+    <td><a name="wp35887"> </a><div class="pTableText">
+WSDL
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp35889"> </a><div class="pTableText">
+<code class="cCode">searchschema</code>
+</div>
+</td>
+    <td><a name="wp35891"> </a><div class="pTableText">
+search schema aggressively for subtypes
+</div>
+</td>
+    <td><a name="wp35893"> </a><div class="pTableText">
+WSDL 
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp35895"> </a><div class="pTableText">
+<code class="cCode">serializeinterfaces</code>
+</div>
+</td>
+    <td><a name="wp35897"> </a><div class="pTableText">
+turn on direct serialization of interface types
+</div>
+</td>
+    <td><a name="wp35899"> </a><div class="pTableText">
+WSDL, SEI, model 
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp35901"> </a><div class="pTableText">
+<code class="cCode">wsi</code>
+</div>
+</td>
+    <td><a name="wp35903"> </a><div class="pTableText">
+enable WSI-Basic Profile features (default)
+</div>
+</td>
+    <td><a name="wp35905"> </a><div class="pTableText">
+&#160;
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp35907"> </a><div class="pTableText">
+<code class="cCode">resolveidref</code>
+</div>
+</td>
+    <td><a name="wp35909"> </a><div class="pTableText">
+Resolve <code class="cCode">xsd:IDREF</code>
+</div>
+</td>
+    <td><a name="wp35911"> </a><div class="pTableText">
+&#160;
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp35913"> </a><div class="pTableText">
+<code class="cCode">nounwrap</code>
+</div>
+</td>
+    <td><a name="wp35915"> </a><div class="pTableText">
+No unwrap.
+</div>
+</td>
+    <td><a name="wp35917"> </a><div class="pTableText">
+&#160;
+</div>
+</td>
+</tr>
+<tr><td colspan="15"><hr class="pTableHr" /></td></tr>
+</table>
+</div>
+<p class="pBody">
+
+</p>
+<a name="wp35918"> </a><p class="pTOC5">
+
+</p>
+<div class="pPreformatted"><pre class="pPreformatted">
+wscompile -gen -d generated config.xml<a name="wp35919"> </a>
+</pre></div>
+<a name="wp23150"> </a><p class="pBody">
+wscompile -gen -f:nounwrap -O -cldc1.1 -d generated config.xml
+</p>
+
+    <p>&#160;</p>
+    <hr class="pHr" />
+
+    <table class="full-width" id="SummaryNotReq3">
+	  <!-- formatting table -->
+      <tr>
+        <td class="go-left">
+          <a accesskey="c" href="index.html">
+            <img id="LongDescNotReq1" src="images/toc.gif" border="0"
+              alt="Contents" /></a>
+          <a accesskey="p" href="demonstrations.html">
+            <img id="LongDescNotReq2" src="images/prev.gif" border="0"
+              alt="Previous" /></a>
+          <a accesskey="n" href="internationalization.html">
+            <img id="LongDescNotReq3" src="images/next.gif" border="0"
+              alt="Next" /></a>
+          <a accesskey="i" href="indexa.html">
+            <img id="LongDescNotReq4" src="images/index.gif" border="0"
+              alt="Index" /></a>
+        </td>
+        <td class="go-right">
+          <span class="copyright">J2ME Wireless Toolkit User's Guide <br /> J2ME Wireless Toolkit 2.2</span>
+        </td>
+      </tr>
+    </table>
+
+    <p>&#160;</p>
+    <p class="copyright">
+      <a href="copyright.html">Copyright</a> &#169; 2004 Sun Microsystems, Inc. 
+      All rights reserved.
+      Use is subject to the <a href="../../BinaryLicense.html">license terms</a>.
+    </p>
+  </body>
+</html>

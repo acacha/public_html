@@ -1,0 +1,717 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>Java.net - the Source for Java(tm) Technology Collaboration</title><!--  CSS stylesheet  -->
+
+
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Tutorial_files/default_developer.css"></head>
+
+<body bgcolor="#ffffff" text="#000000">
+
+<table class="vatop" border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr>
+<td><div class="breadcrumb">
+<a href="http://www.java.net/">java.net</a> &gt; <a href="http://today.java.net/pub/q/articles">All Articles</a> &gt; <a href="http://today.java.net/pub/a/today/2005/02/09/j2me1.html">http://today.java.net/pub/a/today/2005/02/09/j2me1.html</a>
+</div>
+</td>
+<td align="right" nowrap="nowrap"><div class="breadcrumb">
+</div></td></tr>
+<tr><td colspan="2"><img src="Tutorial_files/a.gif" alt=" " border="0" height="1" width="770"></td></tr>
+</tbody></table>
+
+<br clear="all">
+<!-- CS_PAGE_BREAK -->
+<h2>
+<img src="Tutorial_files/111-j2me_tutorial.gif" alt="J2ME Tutorial, Part 1: Creating MIDlets" align="left" border="0" height="91" hspace="10" vspace="0" width="111">
+J2ME Tutorial, Part 1: Creating MIDlets</h2>
+by <a href="http://today.java.net/pub/au/179">Vikram Goyal</a><br>
+02/09/2005<br clear="all">
+<!--  sidebar begins  -->
+<!--  don't move sidebars  -->
+<!--  sidebar ends  -->
+<!--  sidebar begins  -->
+<!--  TOC  -->
+<table align="right" border="0" cellpadding="0" cellspacing="0">
+<tbody><tr><td bgcolor="#000000"><img src="Tutorial_files/a.gif" height="1" width="10"></td></tr>
+<tr><td>
+<table align="right" border="0" cellpadding="6" cellspacing="0">
+<tbody><tr><td><img src="Tutorial_files/a.gif" height="1" width="10"><br>
+<b>Contents</b></td></tr>
+<tr><td><a href="#introduction">J2ME Introduction</a></td></tr>
+<tr><td><a href="#acquiring">Acquiring and Installing the J2ME Development Kit</a></td></tr>
+<tr><td><a href="http://today.java.net/pub/a/today/2005/02/09/j2me1.html?page=2#understanding">Understanding the Process of MIDlet Creation--Without the Toolkit</a></td></tr>
+<tr><td>   <a href="http://today.java.net/pub/a/today/2005/02/09/j2me1.html?page=2#step1">Step 1: Design</a></td></tr>
+<tr><td>   <a href="http://today.java.net/pub/a/today/2005/02/09/j2me1.html?page=2#step2">Step 2: Code</a></td></tr>
+<tr><td>   <a href="http://today.java.net/pub/a/today/2005/02/09/j2me1.html?page=2#step3">Step 3: Compile</a></td></tr>
+<tr><td>   <a href="http://today.java.net/pub/a/today/2005/02/09/j2me1.html?page=2#step4">Step 4: Preverify</a></td></tr>
+<tr><td>   <a href="http://today.java.net/pub/a/today/2005/02/09/j2me1.html?page=2#step5">Step 5: Package</a></td></tr>
+<tr><td>   <a href="http://today.java.net/pub/a/today/2005/02/09/j2me1.html?page=2#step6">Step 6: Test</a></td></tr>
+<tr><td>   <a href="http://today.java.net/pub/a/today/2005/02/09/j2me1.html?page=2#step7">Step 7: Deploy</a></td></tr>
+<tr><td><a href="http://today.java.net/pub/a/today/2005/02/09/j2me1.html?page=3#toolkit">Understanding the Process of MIDlet Creation--Using the Toolkit</a></td></tr>
+<tr><td><a href="http://today.java.net/pub/a/today/2005/02/09/j2me1.html?page=3#lifecycle">The MIDlet Lifecycle</a></td></tr>
+</tbody></table>
+</td></tr>
+<tr><td bgcolor="#000000"><img src="Tutorial_files/a.gif" height="1" width="10"></td></tr>
+</tbody></table>
+<!--  sidebar ends  -->
+<p>Java 2 Micro Edition (J2ME)  combines a resource-constrained JVM and a set of 
+Java APIs for developing applications for mobile devices. 
+This article is the first in a series. This time, after a quick introduction 
+ to J2ME,  I will provide a step-by-step guide to creating J2ME applications, 
+ also known as <i>MIDlets</i>, using a simple example. This will cover how to 
+ test and deploy these MIDlets as well. Finally, I will round out this installment  
+ with a look at the lifecycle of a MIDlet.</p>
+    
+    <h2 id="introduction">J2ME Introduction</h2>
+   
+<p>What is J2ME? Cut away the hype and the excess fat and you are left with 
+  yet another (set of) Java APIs. Since these APIs cannot run on a traditional Java
+  Virtual  Machine (JVM), due to the limited size of mobile devices in regards to memory 
+  and resource  availability, J2ME defines a limited version of the JVM as well. In 
+  a nutshell:</p>
+<p><i>J2ME combines a resource constrained JVM and a set of Java APIs for 
+developing   applications for mobile devices</i>.</p>
+<p>Do you, as a developer, have to install this JVM and the APIs on mobile devices? 
+  No. Device manufacturers install and prepackage their devices with this JVM 
+  (and associated APIs). As a developer, you only need to develop applications 
+  targeting these devices and install them. Easier said than done!</p>
+<p>J2ME can be divided into three parts, as shown in Figure 1: a configuration, 
+  a profile, and optional packages. A configuration contains the JVM (not the traditional 
+  JVM, but the cut-down version) and some class libraries; a profile builds on 
+  top of these base class libraries by providing a useful set of APIs; and optional 
+  packages, are well, an optional set of APIs that you may or may not use when creating 
+  your applications. Optional packages are traditionally not packaged by the device 
+  manufacturers, and you have to package and distribute them with your application. 
+  The configuration and profile are supplied by the device manufacturers and they 
+  embedded them in the devices. </p>
+
+<p><img src="Tutorial_files/j2mestack.gif" alt="Figure 1" height="324" width="210"><br>
+<i>Figure 1. The J2ME stack</i></p>
+<p>The most popular profile and configuration that Sun provides are the Mobile Information Device Profile (MIDP) 
+  and Connected Limited Device Configuration (CLDC), respectively. As the name suggests, 
+  CLDC is for devices with limited configurations; for example, devices that have 
+  only 128 to 512KB of memory available for Java applications. Consequently, 
+  the JVM that it provides is very limited and supports only a small number of 
+  traditional Java classes. (This limited JVM is actually called the <i>KVM</i>.) Its 
+  counterpart, the Connected Device Configuration (CDC) is for devices with at 
+  least 2MB of memory available and supports a more feature-rich JVM (but still 
+  not a standard JVM).</p>
+<p>The MID profile complements the CLDC configuration very well because it minimizes 
+  both the memory and power required for limited devices. It provides the basic 
+  API that is used for creating application for these devices. For example, it 
+  provides the <code>javax.microedition.lcdui</code> package that allows us to 
+  create the GUI elements that can be shown on a (limited) device running the 
+  MID profile on top of a CLDC configuration. Note that MIDP cannot be used with 
+  CDC devices. CDC devices get their own set of profiles, like the Foundation 
+  and Personal profiles. However, I will not cover these profiles or the CDC here, 
+  and will concentrate on using MIDP and CLDC only.</p>
+<p>The latest versions of MIDP and CLDC are 2.0 and 1.1, respectively. Not many devices 
+  currently support these versions, but the list is growing rapidly. Sun maintains 
+  a <a href="http://developers.sun.com/techtopics/mobility/device/">list of devices according to version</a>.</p>
+
+
+<h2 id="acquiring">Acquiring and Installing the J2ME Development Kit</h2>
+
+<p>Getting started with developing applications (henceforth called "MIDlets") for 
+  the J2ME platform is easy.  Although device manufacturers install and prepackage their devices with this JVM 
+  (and associated APIs),  you still need to install the <a href="http://java.sun.com/products/j2mewtoolkit/download-2_2.html">J2ME 
+  Wireless Toolkit 2.2</a> on your development machine. Before that, however, you 
+  must also have the Java Development Kit (JDK), version 1.4.2 or greater, installed.</p>
+<blockquote> 
+  <p><b>Warning</b>: I had problems getting the Wireless Toolkit to work properly with 
+    JDK 5.0. If you don't need the latest features in version 5.0, it is best 
+    to stick to any 1.4.2 version. I have used 1.4.2_05 for all examples in this 
+    series.</p>
+</blockquote>
+<p>You need this Toolkit because it contains tools that are important in generating 
+  MIDlets. This Toolkit provides 
+  the development environment for the MIDP 2.0 and CLDC 1.1 (and for MIDP 1.0 
+  and CLDC 1.0, since these parameters are backwards compatible), and it provides 
+  the optional packages required for the optional libraries, like 3D and Mobile 
+  Media applications. Lastly, it provides the ability to sign your MIDlets so 
+  that they can be authenticated before installation on a remote mobile device.</p>
+<p>Once you download the installation package for the Toolkit, install it in the 
+  directory of your choice. The default, on Windows, is <i>C:\WTK22</i>, and this will be the 
+  installation directory for the examples in this series as well. I will not explain 
+  the directories created under this folder just now. Before I do that, let us try and 
+  understand the process of generating a MIDlet from scratch.</p>
+  
+<table border="0" cellpadding="0" cellspacing="0" width="100%"><tbody><tr><td><p>
+<!-- CS_PAGE_INDEX -->
+</p></td><td><p align="right">
+<a href="http://today.java.net/lpt/a/%3C%21--CS_NEXT_REF--%3E">
+ </a></p></td></tr></tbody></table>
+
+
+
+<!-- CS_PAGE_BREAK -->
+
+<p>
+
+
+
+
+<!-- CS_PAGE_INDEX -->
+</p>
+  
+<h2 id="understanding">Understanding the Process of MIDlet Creation--Without the Toolkit</h2>
+
+<p>There are seven steps in the creation of a MIDlet. These steps are: designing, 
+  coding, compiling, preverification, packaging, testing, and deployment. Some 
+  of these steps are not strictly MIDlet-centric (for example, every application 
+  needs to be designed, coded, and compiled), but we will cover them here because 
+  there are MIDlet-centric differences. The Toolkit abstracts a lot of 
+  these steps so that it is easier for you in the overall scheme of things. This 
+  is fine and dandy once you know the process, but when you are only starting 
+  out, you really should be coding by hand, rather than using a sugar-coated abstraction. </p>
+<p>To ensure that we get a hands-on understanding of these steps, let us take the 
+  help of a simple example. We will create a MIDlet that, when executed, will 
+  print the current date and time on a mobile device for a short time. Along with 
+  this in mind, keep Figure 2 handy to understand the sequence of these steps. 
+  Also, note that I will explain the lifecycle of MIDlets later. For the moment, 
+  let's get a simple MIDlet up and running, which will illustrate these steps. 
+</p>
+<p><img src="Tutorial_files/j2mesteps.gif" alt="Figure 2" height="213" width="453"><br>
+<i>Figure 2. Steps to MIDlet creation</i></p>
+
+<h5 id="step1">Step 1: Design</h5>
+
+<p> MIDlets are different from other applications 
+  that you may have created, simply because MIDlets run in an environment that 
+  is very different. There are several issues, not just those that are most visible 
+  (for example, the interactivity of your MIDlet with the user), but others that 
+  impact its usability.</p>
+<p>For the example application, our Date-Time MIDlet does not need user interactivity. 
+  It needs to display the current date and time for a few seconds when the user 
+  executes the MIDlet. For simple cases like this, it is perhaps sufficient to 
+  mimic the design of the MIDlet by drawing it on a piece of paper. For more complex 
+  designs with multiple screens, it is best to design the screens professionally 
+  before starting the actual coding process.</p>
+  
+<h5 id="step2">Step 2: Code</h5>
+
+<p>
+  Each MIDlet must extend the abstract <code>MIDlet</code> class found in the 
+  <code>javax.microedition.midlet</code> package, much like creating an applet 
+  by extending the <code>java.applet.Applet</code> class. At the minimum, your 
+  MIDlet must override three methods of this abstract class, <code>startApp()</code>, 
+  <code>pauseApp()</code>, and <code>destroyApp(boolean unconditional)</code>. 
+ Here is the <code>DateTimeApp</code> class:</p>
+ 
+<pre><code>
+package com.j2me.part1;
+
+import java.util.Date;
+
+import javax.microedition.lcdui.Alert;
+import javax.microedition.lcdui.Display;
+import javax.microedition.midlet.MIDlet;
+
+public class DateTimeApp extends MIDlet {
+
+  Alert timeAlert;
+
+  public DateTimeApp() {
+    timeAlert = new Alert("Alert!");
+    timeAlert.setString(new Date().toString());
+  }
+
+  public void startApp() {
+    Display.getDisplay(this).setCurrent(timeAlert);
+  }
+
+  public void pauseApp() {
+  }
+
+  public void destroyApp(boolean unconditional) {
+  }
+}
+</code></pre>
+
+<p>In this example, <code>DateTimeApp</code>'s constructor creates the element that is 
+  necessary to display the time on a device's screen and the <code>startApp</code> 
+  method does the actual task of displaying this element. Don't worry if you don't 
+  understand how the <code>Alert</code> element works, or when the constructor 
+  or the other methods are called. I will cover the former in the next part, when 
+  we look at the GUI elements of MIDP 2.0, and the latter later in this article 
+  in the MIDlet Lifecycle section.</p>
+<p>Copy this code into a file called <i>DateTimeApp.java</i> and save it in a folder that 
+  mimics its package structure (<i>com\j2me\part1</i>). You can save it anywhere you 
+  want on your machine; as far as this article is concerned, we will save 
+  it in the folder <i>C:\WTK22\article\com\j2me\part1</i>.</p>
+  
+<h5 id="step3">Step 3: Compile</h5>
+
+<p>With this simple code in place, you now need to know how to compile it so that 
+  it is ready for mobile devices. Compiling MIDlets is not very much different 
+  from compiling normal Java applications. You still use <code>javac</code> as the compiler, 
+  except you need to change the boot <code>CLASSPATH</code> while compiling MIDlets. This has 
+  the effect of changing the base Java classes that the Java compiler uses to 
+  compile your MIDlet against, thereby ensuring that compilation is targeted towards 
+  the narrow set of Java's APIs for the J2ME platform. So instead of compiling 
+  against the <code>java.lang.Date</code> in "normal" Java, you actually want compilation 
+  done for J2ME's <code>java.lang.Date</code>. This is done by pointing to the CLDC and MIDP classes 
+  for <code>javac</code>'s <code>-bootclasspath</code> option while compiling. 
+  This is shown below for the DateTimeApp MIDlet compilation. To do this compilation, 
+  make sure you that you enter the command by navigating to the directory <i>C:\WTK22\article</i> 
+  via the command prompt.</p>
+<p><code>C:\WTK22\article&gt;javac -bootclasspath ..\lib\cldcapi11.jar;..\lib\midpapi20.jar 
+  com\j2me\part1\DateTimeApp.java</code></p>
+<p>Notice that I have done the compilation against the CLDC API's 1.1 and MIDP 
+  API's 2.0 versions, respectively, by including these libraries in the <code>bootclasspath</code> 
+  option. I could have done the compilation against other versions if it was required, 
+  by simply pointing to their respective libraries.</p>
+  
+<h5 id="step4">Step 4: Preverify</h5>
+
+<p>Before you can deploy your MIDlet class, it needs to be preverified. 
+Verification of byte code is a step performed by the JVM before it runs any 
+  class file to ensure that the class file is structurally and conceptually correct 
+  as per the JVM specification. If the class file fails this check, it is rejected 
+  and the JVM shuts down, indicating either security or integrity violation of 
+  the class file. This verification is done by all JVMs, even the tiny JVM contained 
+  in a CLDC configuration for a J2ME device. Although this is not a problem for 
+  "normal" applications, verification in J2ME devices is a resource 
+  and memory constraint that they simply cannot handle (or should not handle). 
+  Therefore, the need for preverification.</p>
+<p>Preverification is one part of a special two-step verification process, especially 
+  designed for constrained devices, such as the ones running CLDC-based JVMs. 
+  The idea is to let a developer preverify his classes, which limits the amount 
+  of work needed to be performed when the classes are verified in the device. 
+  This preverification process adds special information to the classes that identifies 
+  them as preverified and makes the process on the device much more efficient.</p>
+<p>Keeping this in mind, preverify your Date-Time MIDlet. The Wireless Toolkit 
+  comes with a preverification tool in the bin folder of its installation (<i>C:\WTK22\bin</i>). 
+  The following command, when executed from <i>C:\WTK22\article</i>, will preverify the 
+  <i>DateTimeApp.class</i> created in the previous step.</p>
+<p><code>C:\WTK22\article&gt;..\bin\preverify.exe -classpath ..\lib\cldcapi11.jar;..\lib\midpapi20.jar 
+  com.j2me.part1.DateTimeApp</code></p>
+
+<p>By default, the preverifier will create the <i>preverified</i> version of your 
+  <i>DateTimeApp.class</i> file in a folder called <i>output</i> in the current directory. It 
+  will preserve the package structure, so your preverified class will now be in 
+  the folder <i>C:\WTK22\article\output\com\j2me\part1\</i>. You can, of course, point 
+  the output to another folder, using the <code>-d</code> option for the preverify tool, but 
+  for the moment, use the default output folder.</p>
+  
+<h5 id="step5">Step 5: Package</h5>
+
+<p>Packaging your MIDlet so that it ready for testing and deployment is a fairly 
+  involved process, with several steps. Although each step is straightforward,   they must be followed in proper sequence.</p>
+<p>The first step is to create a Manifest file. This Manifest file describes the 
+  contents of the Java Archive (JAR) file that we will be creating in the next 
+  step. There are several attributes that can go in this file, but for your Date-Time 
+  MIDlet, stick to only the ones that are required. This file's contents are shown 
+  here:</p>
+<p><code>MIDlet-Name: DateTimeApp<br>
+  MIDlet-Version: 1.0.0<br>
+  MIDlet-Vendor: Vikram Goyal</code></p>
+<p>Save this file as <i>Manifest.mf</i> in the <i>C:\WTK22\article\output</i> folder. (Note 
+  the newline after the last attribute, <code>MIDlet-Vendor</code>. It <b>must</b> be present, otherwise 
+  this attribute will not be recognized.)</p>
+<p>Next, create the JAR file that packages up the preverified <i>DateTimeApp.class</i> 
+  file and the Manifest file. To create this JAR file, navigate to the <i>C:\WTK22\article\output</i> 
+  directory and issue the following command:</p>
+
+<p>C:\WTK22\article\output&gt;jar cvfm DateTimeApp.jar Manifest.mf .\com</p>
+
+<p>This will create the <i>DateTimeApp.jar</i> file in the current (<i>C:\WTK22\article\output</i>) 
+  folder.</p>
+<p>The second-to-last step is to create a file that has an extension of .jad. A Java 
+  Application Descriptor (JAD) file points to the location of the MIDlet it describes 
+  so that a J2ME device can install it. Again, this file can contain several attributes 
+  for a single MIDlet (or for several MIDlets), but for your Date-Time MIDlet, 
+  you will stick with the ones that are required.</p>
+<p><code>MIDlet-1: DateTimeApp, , com.j2me.part1.DateTimeApp<br>
+  MIDlet-Name: DateTimeApp<br>
+  MIDlet-Version: 1.0.0<br>
+  MIDlet-Vendor: Vikram Goyal<br>
+  MIDlet-Jar-URL: DateTimeApp.jar<br>
+  MIDlet-Jar-Size: <br>
+  MicroEdition-Profile: MIDP-2.0<br>
+  MicroEdition-Configuration: CLDC-1.1<br>
+  </code> </p>
+<p>Save this file as <i>DateTimeApp.jad</i> in the same folder as the JAR file (<i>C:\WTK22\article\output</i>). 
+  I will explain the attributes in this file later, but for now, note that the 
+  value of the <code>MIDlet-Jar-Size</code> attribute is missing. This missing 
+  value brings you to the last step of the packaging step, where you determine 
+  the size of the <i>DateTimeApp.jar</i> file, and put that value in this JAD file, in 
+  actual bytes. It is very important to get this exactly right, as the installation 
+  of this MIDlet will fail if this value is different from the actual size. On 
+  my machine, this value is 1469 bytes, and therefore, this is what this attribute 
+  looks like on my machine:</p>
+<p><code>MIDlet-Jar-Size: 1469</code></p>
+<p>This completes the packaging part. Well, actually, there are other steps in 
+  the packaging that I could talk about (for example, signing and obfuscation), 
+  but to keep things simple, I will leave those steps for later discussion. For 
+  now, you will move on to testing of your MIDlet.</p>
+  
+<h5 id="step6">Step 6: Test</h5>
+
+<p>Before deploying your MIDlets, they must be tested by using a base
+common emulator device that mimics the functionality of an actual
+device on your computer. This emulator is part of the Wireless Toolkit
+and provides functionality that is sure to be present in the majority
+of devices for which the MIDlet is targeted. This emulator is present
+in the bin folder of the Toolkit.</p>
+<p>From the output directory created in the preverify step earlier, and where 
+  we now have a packaged MIDlet in the form of JAR and JAD files, issue the following 
+  command to run the emulator with this JAD file as an option.</p>
+
+<p><code>C:\WTK22\article\output&gt;..\..\bin\emulator.exe -Xdescriptor DateTimeApp.jad</code></p>
+
+<p>You should see the emulator pop up on your screen as shown in Figure 3, with 
+  the DateTimeApp MIDlet selected. If it doesn't, the most likely error at this 
+  point would be incorrect JAR size information. Make sure you have the exact 
+  size listed in the JAD file.</p>
+<p><img src="Tutorial_files/run.gif" alt="Figure 3" height="743" width="382"><br>
+  <i>Figure 3. Testing the DateTimeApp</i></p>
+<p>At the lower right-hand corner of the emulated device's screen, you can see the "Launch" menu item 
+  listed. The emulator has installed the MIDlet and is ready to launch it. Click 
+  on the phone button just underneath that menu item and the MIDlet should display 
+  the current date time for a few seconds and then disappear. Note that the MIDlet 
+  is still running even after the date and time disappear, because in code, you did 
+  not destroy it.</p>
+  
+<h5 id="step7">Step 7: Deploy</h5>
+
+<p>This is it! Now you have reached the stage where you can deploy the MIDlet 
+  directly on your mobile device. There are two ways to do this. The first is via 
+  a network connection between your computer and your handset. This can either 
+  be via a USB cable or a Bluetooth wireless connection, depending on your device. 
+  Most Java-enabled devices will allow you to install J2ME applications via this 
+  connection.</p>
+<p>Second, and the one that is more interesting, because it opens up your MIDlet 
+  to the outside world, is via the Internet. After all, what good is your MIDlet 
+  if the rest of the world cannot see it? Of course, this means that your device 
+  should be able to connect to the Internet using its internal browser.</p>
+<p>Before you proceed further, recall that when you created the JAD
+file, you entered two attributes in it that specified the version of
+CLDC (1.1) and MIDP (2.0) for which the MIDlet was created. Since the
+DateTimeApp MIDlet does not use any of the features of these versions,
+it should theoretically run on devices that support the lower versions
+of these attributes, as well. Therefore, the DateTimeApp MIDlet should
+run on CLDC 1.0 and MIDP 1.0, but because the JAD file restricts these
+versions to the newer ones, devices will fail to install this MIDlet if
+they do not support these new versions. If this is the case with your
+device, fear not! As I said before, because we are not using any
+MIDP-2.0- or CLDC-1.1-specific features, you can simply change these
+version numbers in the JAD file, and this will be sufficient to install
+this device on all Java-enabled devices. If this is the case with your
+device, or the device that you are going to test this MIDlet on, simply
+change these values in the JAD file and you are good to go.</p>
+<p>To be able to deploy your MIDlet via the Internet, you need to have access 
+  to a web server with a real-world IP address or domain name. You also need to 
+  have administrative privileges to be able to modify the configuration files 
+  of your web server to add some Multipurpose Internet Mail Exchange (MIME) types 
+  for the JAD and JAR extensions. If you are using Jakarta/Tomcat as your web 
+  server, you don't need to do this, as it already has these MIME types. For the Apache 
+  web server, modify the <i>mime.types</i> file and add the following extension types.</p>
+<p><code>text/vnd.sun.j2me.app-descriptor jad</code></p>
+<p><code>application/java-archive jar</code></p>
+<p> By adding these MIME types, you are informing the browser, or any 
+  client accessing these files from the server, how to handle these files when they 
+  are downloaded into the device.</p>
+<p>Next, create an HTML file that will become the point of reference. Strictly, 
+  this is not necessary, because a device that can access an HTML page can also 
+  access a JAD file. But an HTML page provides a point of reference, and therefore, 
+  let's create one for your Date-Time MIDlet. The HTML doesn't need to be anything 
+  fancy. Don't forget that users will be accessing this page via a mobile device, 
+  so it is prudent to keep the size of this page to the minimum. This is shown 
+  in Listing 2.</p>
+
+<pre><code>&lt;HTML&gt;
+   Click &lt;a href="DateTimeApp.jad"&gt;here&lt;/a&gt; to download DateTimeApp MIDlet!
+&lt;/HTML&gt;</code></pre>
+<p><i>Listing 2. <i>DateTimeApp.html</i> page for accessing the DateTimeApp MIDlet</i></p>
+
+<p>The page provides a link to the JAD file, and the JAD file provides a link 
+  to the associated JAR file via the <code>MIDlet-Jar-URL: DateTimeApp.jar</code> 
+  attribute. However, since this is now going to be accessed via a web server 
+  over the Internet, it is advisable to make this link absolute instead of relative. 
+  (The behavior of relative URLs is inconsistent as far as MIDlet access is concerned.) 
+  Since I am going to serve this MIDlet via a web site (<a href="http://www.craftbits.com/">Craftbits.com</a>) 
+  I manage, I have modified this link to an absolute URL using this web site.</p>
+<p><code>MIDlet-Jar-URL: http://www.craftbits.com/j2me/DateTimeApp.jar</code></p>
+<p>You will, of course, need to change this URL to your own domain.</p>
+<p>Finally, upload the modified JAD file, the newly created HTML file, and the 
+  original JAR file to your web server to a directory location where you will 
+  be able to navigate to the HTML page via your mobile device browser. Now, anyone 
+  with a mobile device that can browse the Internet should be able to point to 
+  your <i>DateTimeApp.html</i> file and download, install, and run the DateTimeApp MIDlet.</p>
+<p>For those who don't have access to a web server, I have uploaded these files 
+  to my web server. Simply point to <i>http://www.craftbits.com/j2me/DateTimeApp.html</i> 
+  through your device and you will be able to see this MIDlet in action.</p>
+<p>That's it! You have completed all the steps required to manually create and 
+  deploy a MIDlet. This process has helped you to understand what goes on behind 
+  the scenes and given you confidence in all the steps of MIDlet creation. Because 
+  a lot of these steps are repetitive, it makes sense to use an automated tool. 
+  This is where the Wireless Toolkit comes in, and you will use it to create the 
+  rest of the MIDlets in this article series. For the moment, let's recreate the 
+  same MIDlet using this Toolkit so that you can get familiar with its interface.</p>
+  
+<table border="0" cellpadding="0" cellspacing="0" width="100%"><tbody><tr><td><p>
+<!-- CS_PAGE_INDEX -->
+</p></td><td><p align="right">
+<a href="http://today.java.net/lpt/a/%3C%21--CS_NEXT_REF--%3E">
+ </a></p></td></tr></tbody></table>
+
+
+
+<!-- CS_PAGE_BREAK -->
+
+<p>
+
+
+
+
+<!-- CS_PAGE_INDEX -->
+</p>
+
+<h2 id="toolkit">Understanding the Process of MIDlet Creation--Using the Toolkit</h2>
+
+<p>In the section Acquiring and Installing J2ME Development Kit above, you 
+  downloaded the Toolkit and installed it in the folder <i>C:\WTK22</i> (as far as this 
+  article series is concerned; you may have downloaded and installed it in a different 
+  folder). Let's explore the contents of this folder. Figure 4 shows these contents 
+  as they should now look on your machine.</p>
+<p><img src="Tutorial_files/folder.gif" alt="Figure 4" height="313" width="508"><br>
+  <i>Figure 4. Wireless Toolkit folder contents</i></p>
+<p>Note that the default installation of the Toolkit would <b>not</b> have created 
+  the <i>article</i> folder, and that you created it in the previous 
+  section.</p>
+<p>As far as a MIDlet developer is concerned, the most important folders are the 
+  <i>apps</i> and <i>bin</i> folders, but here is a short summary 
+  of each of these folders.</p>
+<table border="1" width="69%">
+  <tbody><tr>
+    <td width="9%"><b>Folder Name</b></td>
+    <td width="91%"><b>Folder Description</b></td>
+  </tr>
+  <tr>
+    <td width="9%"><i>appdb</i></td>
+    <td width="91%">Directory that acts as a simulation for mobile device file 
+      system</td>
+  </tr>
+  <tr>
+    <td width="9%"><i>apps</i></td>
+    <td width="91%">MIDlets created using the Toolkit reside in this directory</td>
+  </tr>
+  <tr>
+    <td width="9%"><i>bin</i></td>
+    <td width="91%">Contains executables for the various tools, including the 
+      Toolkit itself, and various other tools like the preverifier and the emulator</td>
+  </tr>
+  <tr>
+    <td width="9%"><i>docs</i></td>
+    <td width="91%">The Wireless Toolkit documentation including API documentation 
+      for MIDP 2.0 and MIDP 1.1</td>
+  </tr>
+  <tr>
+    <td width="9%"><i>lib</i></td>
+    <td width="91%">Contains the JAR files for MIDP (both 2.0 and 1.1), CLDC (both 
+      1.1 and 1.0) and several other optional libraries</td>
+  </tr>
+  <tr>
+    <td width="9%"><i>sessions</i></td>
+    <td width="91%">Directory where network and profiling sessions are maintained</td>
+  </tr>
+  <tr>
+    <td width="9%"><i>wtklib</i></td>
+    <td width="91%">Contains the libraries for the Toolkit itself, including the 
+      properties of various device emulators</td>
+  </tr>
+</tbody></table>
+<p>The <i>apps</i> folder is the directory where all the MIDlets that are 
+  created using the Toolkit are installed. Browse this folder, and you will notice 
+  several example MIDlets provided in their own folders. These have their own 
+  directory structure that allows clean separation of source code, libraries, 
+  and rest of the files associated with a MIDlet project.</p>
+<p>The <i>bin</i> folder contains the executables for the Toolkit. The most 
+  important one is  <code>ktoolbar.exe</code> (on Windows), which starts the main interface 
+  window for the Toolkit. This folder contains other executables as well, some 
+  of which we came across earlier (for example, <code>preverify.exe</code> and <code>emulator.exe</code>). 
+  Let us, however, concentrate on using the Toolkit now by running the <code>ktoolbar.exe</code> from the <i>bin</i> folder. The Toolkit will start and you will get the window 
+  shown in Figure 5.</p>
+<p><img src="Tutorial_files/toolkit.gif" alt="Figure 5" height="273" width="498"><br>
+  <i>Figure 5. Main Toolkit window</i></p>
+<p>As the message in the window says, from here, you can either create a new project 
+  or open an existing one. When you click on the Open Project menu button, you 
+  will be presented with a list of projects. As you may have guessed, this list 
+  of projects is the directory listing of the <i>apps</i> folder. Selecting 
+  a project from this list will open up the project and allow you 
+  to change its settings, build it (which includes compilation, preverification, 
+  and packaging) and run it. The steps of designing and coding are still to be 
+  done outside of this Toolkit.</p>
+<p>Let's use the Toolkit to create the Date-Time MIDlet from the previous section. 
+  Click on New Project menu button, and enter the details in the window that comes 
+  up, as shown in Figure 6.</p>
+<p><img src="Tutorial_files/newproject.gif" alt="Figure 6" height="109" width="444"><br>
+  <i>Figure 6. Creating a new project</i></p>
+<p>The next window that comes up will allow you to change settings that control 
+  the target platform of your MIDlet. In this case, you want to target this MIDlet 
+  towards the MIDP 2.0 and CLDC 1.1 platforms and therefore, keep the Target Platform 
+  as JTWI, which preselects the MIDP 2.0 Profile. However, you will need to change 
+  the Configuration to CLDC 1.1 and uncheck the Optional Mobile Media API library, 
+  as shown in Figure 7.</p>
+<p><img src="Tutorial_files/settings1.gif" alt="Figure 7" height="543" width="465"><br>
+  <i>Figure 7. Changing project settings</i></p>
+<p>You can review the rest of the settings by clicking on the tabs at the top, 
+  but for the moment, your project is ready to be created. Do so by clicking the 
+  OK button at the bottom. The project will be created with information about 
+  where to place the project files displayed on the screen, as shown in Figure 
+  8. You can verify that the Toolkit has created a <i>DateTimeApp</i> folder 
+  under the <i>apps</i> folder by navigating to it.</p>
+<p><img src="Tutorial_files/created.gif" alt="Figure 8" height="273" width="498"><br>
+  <i>Figure 8. Project DateTimeApp created</i></p>
+<p>You have already created the only required src file for this MIDlet in the 
+  previous section. Copy this file, <i>DateTimeApp.java</i>, from the folder <i>C:\WTK22\article\com\j2me\part1\</i> 
+  to the fully qualified <i>src</i> folder (<i>C:\WTK22\apps\DateTimeApp\src\com\j2me\part1</i>). 
+  Note that the Toolkit created the fully qualified path based on the package 
+  name, so you don't have to. Once the copy is done, come back to the Toolkit, 
+  and hit the Run menu button. The Toolkit will compile, preverify, and package, and, 
+  provided everything goes OK, will run the DateTimeApp in the emulator. 
+  Seems simple enough, doesn't it? All you had to do was to create a new project, 
+  set the settings, write the code, drop it in the right directory, and hit the 
+  Run button. The Toolkit took care of the rest.</p>
+<p>Before you leave this section, examine the rest of the folders under the DateTimeApp 
+  project. The <i>bin</i> folder under the <i>DateTimeApp</i> folder contains the 
+  JAD and the Manifest files, while the <i>classes</i> folder contains compiled 
+  classes. But where is the JAR file for this MIDlet? Well, the JAR file is not 
+  created by just running (or building) your application in the Toolkit. To create 
+  the JAR file, you will need to select the Project menu item, and then select 
+  one of the options under the Package submenu, as shown in Figure 9.</p>
+<p><img src="Tutorial_files/package.gif" alt="Figure 9" height="257" width="497"><br>
+  <i>Figure 9. Creating the MIDlet's JAR file</i></p>
+<p>By creating this package, the JAR file will be created, with correct Manifest 
+  information in the JAD file. You can even create the HTML file that we created 
+  in the deploy section previously, by clicking on the Run via OTA (Over The Air) 
+  menu. This will not only allow you to simulate your emulator running this MIDlet 
+  via the Internet, but also create the HTML file for you in the <i>bin</i> 
+  folder. Before you can use this HTML file to deploy on your own server, along 
+  with the JAD and the JAR files, you will need to change the hostname, which 
+  defaults to "localhost."</p>
+<p>You now know how to create a simple MIDlet, both using the Toolkit, and without 
+  it. It's now time to look at the MIDlet lifecycle to understand what actually 
+  happens when your MIDlet is deployed and run.</p>
+  
+<h2 id="lifecycle">The MIDlet Lifecycle</h2>
+
+<p>Mobile devices, whether emulators or real, interact with a MIDlet using their 
+  own software, which is called Application Management Software (AMS). The AMS 
+  is responsible for initializing, starting, pausing, resuming, and destroying 
+  a MIDlet. (Besides these services, AMS may be responsible for installing and 
+  removing a MIDlet, as well.) To facilitate this management, a MIDlet can be in 
+  one of three states which is controlled via the <code>MIDlet</code> class methods, 
+  that every MIDlet extends and overrides. These states are active, paused and 
+  destroyed.</p>
+<p><img src="Tutorial_files/states.gif" alt="Figure 10" height="466" width="511"><br>
+  <i>Figure 10. The possible states of a MIDlet and the transition between them</i></p>
+<p>As you can see from Figure 11, an installed MIDlet is put into a paused 
+  state by the AMS creating an instance of it, by calling its <code>no-args</code> constructor. 
+  This is of course, not the only way that the MIDlet can be in a paused 
+  state. It can enter this state when the AMS calls the <code>pauseApp()</code> 
+  method on an active MIDlet (and the method returns successfully). 
+  It can also enter this state when the MIDlet pauses itself by calling the <code>notifyPaused()</code> 
+  method, as opposed to the <code>pauseApp()</code> method, which is called by 
+  the AMS. However, what exactly is happening with the MIDlet in the paused 
+  state?</p>
+<p>In a paused state, the MIDlet is waiting for a chance to get into 
+  the active state. Theoretically, in this state, it should not be 
+  holding or using any of the device resources and should be passive in nature. 
+  Once the MIDlet is created, this is the state to be in before becoming active. 
+  Also, entering the paused state is necessary when the device requires 
+  it to consume fewer resources, because these resources may be required for handling 
+  other device functions, like handling an incoming call. This is when the device 
+  invokes the <code>pauseApp()</code> method through the AMS. If the MIDlet should 
+  inform the AMS that it has paused, it should invoke the <code>notifyPaused()</code> 
+  method, which tells the AMS that the MIDlet has indeed paused.</p>
+<p>One final way in which a MIDlet can get into a paused state is 
+  when the MIDlet's <code>startApp()</code> method, which is called when the AMS 
+  invokes it to start the MIDlet (either the first time or from a paused 
+  state), throws a <code>MIDletStateChangeException</code>. Essentially, in case of an error, 
+  the MIDlet takes the safe road of staying in the paused state.</p>
+<p>The active state is where every MIDlet wants to be! This is when 
+  the MIDlet can do its functions, hold the device resources and generally, do 
+  what it is supposed to do. As said previously, a MIDlet is in an active 
+  state when the AMS calls the <code>startApp()</code> method on a paused 
+  MIDlet (actually, the MIDlet enters the active state just <i>before</i> 
+  this method is called by the AMS). A paused MIDlet can request to 
+  go into the active state by calling the method <code>resumeRequest()</code>, 
+  which informs the AMS that the MIDlet wishes to become active. The 
+  AMS may of course, choose to ignore this request or, alternatively, queue it 
+  if there are other MIDlets requesting the same.</p>
+<p>The destroyed state is entered when a MIDlet's <code>destroyApp(boolean 
+  unconditional)</code> method is called and returns successfully, either from 
+  an active or paused state. This method is called by 
+  the AMS when it feels that there is no need for the MIDlet to keep running and 
+  is the place the MIDlet may perform cleanup and other last minute activities. 
+  The MIDlet can enter this state itself, by calling the <code>notifyDestroyed()</code> 
+  method, which informs the AMS that the MIDlet has cleaned up its resources 
+  and is eligible for destruction. Of course, since in this case, the <code>destroyApp(boolean 
+  unconditional)</code> method is not called by the AMS, any last-minute activities 
+  must be done before this method is invoked.</p>
+<p>What happens if the AMS calls the <code>destroyApp(boolean unconditional)</code> 
+  method in the middle of an important step that the MIDlet may be doing, and 
+may be loath to be destroyed? This is where the Boolean <code>unconditional</code> 
+  flag comes into the picture. If this flag is set to true, the MIDlet will be 
+  destroyed, irrespective of what the MIDlet is doing. However, if this flag is 
+  false, effectively, the AMS is telling the MIDlet that it wants the MIDlet to 
+  be destroyed, but if the MIDlet is doing something important, it can raise a 
+  <code>MIDletStateChangeException</code>, and the AMS will not destroy it just 
+yet. However, note that even then, there are no guarantees that the MIDlet will 
+not be destroyed, and it remains up to each device to decide how they should handle 
+the request. If the device does honor the MIDlet's request, it may try and invoke 
+  the <code>destroyApp(boolean unconditional)</code> at a later stage.</p>
+<p>Note that a destroyed state means that the MIDlet <i>instance</i> 
+has been destroyed, but not uninstalled from the device. The MIDlet remains installed 
+  in the device, and a new instance of it may be created later.</p>
+<p>Let me end this section, and this article, with a flow chart of a typical sequence 
+of events while using the DateTimeApp MIDlet that we created in the previous 
+  sections, and the corresponding AMS actions and MIDlet states. This flow chart 
+  is shown in Figure 11.</p>
+<p><img src="Tutorial_files/eventseq.gif" alt="Figure 11" height="260" width="500"><br>
+<i>Figure 11. AMS actions and MIDlet states through a sequence of events</i></p>
+<p>In the next part of this series, you will start creating useful MIDlets by 
+understanding the User Interface API of MIDP 2.0. This will allow you to create 
+  powerful user interfaces, a key requirement for any MIDlet.</p>
+<p><em><a href="http://today.java.net/pub/au/179">Vikram Goyal</a> is a serious Java lover with over eight years of experience.</em></p>
+
+
+<div class="pad3x0">
+<table bgcolor="#000000" border="0" cellpadding="0" cellspacing="0" width="100%"><tbody><tr><td><img src="Tutorial_files/a.gif" alt=" " border="0" height="1" width="1"></td></tr></tbody></table></div>
+
+
+<br clear="all">
+<!--  BEGIN VNV5 FOOTER   -->
+<!--  BEGIN VNV5 FOOTER   -->
+<table border="0" cellpadding="0" cellspacing="10" width="100%">
+<tbody><tr>
+<td>
+&nbsp;<a href="http://today.java.net/pub/q/java_net_rss"><img src="Tutorial_files/xml.gif" alt="XML" align="middle" border="0" height="14" width="36"></a>&nbsp;<b>java.net RSS</b><br>
+<div class="grayline"></div>
+<table class="vatop" border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr>
+<td><img src="Tutorial_files/a.gif" alt=" " border="0" height="1" width="190"><br>
+<a href="http://www.sun.com/"><img src="Tutorial_files/logo_sun_small.gif" alt=" " border="0" height="29" vspace="5" width="61"></a></td>
+<td valign="top" width="60%">
+<div class="footer">
+<a href="https://java-net.dev.java.net/feedback.html">Feedback</a> &nbsp;|&nbsp;<a href="http://java.net/faq.csp">FAQ</a> &nbsp;|&nbsp;<a href="http://java.net/presscenter/">Press</a>&nbsp;|&nbsp;<a href="http://java.net/terms.csp">Terms of Participation</a><br>
+<a href="http://www.sun.com/share/text/termsofuse.html">Terms of Use</a> &nbsp;|&nbsp;
+<a href="http://www.sun.com/privacy/">Privacy</a> &nbsp;|&nbsp;
+<a href="http://www.sun.com/suntrademarks/">Trademarks</a>&nbsp;|&nbsp;<a href="https://java-net.dev.java.net/sitemap.html">Site Map</a>
+<br><span class="sp5">&nbsp;</span><br>
+Your use of this web site or any of its content or software indicates your agreement to be bound by these <a href="http://java.net/terms.csp">Terms of Participation</a>.<br>
+<span class="sp5">&nbsp;</span><br>
+Copyright © 1995-2006 Sun Microsystems, Inc.
+</div></td>
+<td align="right" valign="top" width="40%"><div class="footer">
+<a href="http://www.oreilly.com/"><img src="Tutorial_files/montague_logo_oreilly.gif" alt="Oreilly Logo" border="0" height="19" width="74"></a><a href="http://www.collab.net/"><img src="Tutorial_files/montague_logo_collabnet.gif" alt="Collabnet Logo" border="0" height="19" width="85"></a><br>
+Powered by Sun Microsystems, Inc.,<br> O'Reilly and CollabNet
+</div></td></tr>
+<!--  <tr><td colspan="3" valign="top" class="grey3"><img src="/im/a.gif" width="1" height="2" border="0" alt=" " /></td></tr>  -->
+</tbody></table>
+<div class="grayline"></div>
+</td></tr>
+</tbody></table>
+<!--  END VNV5 FOOTER  -->
+</body></html>

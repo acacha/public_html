@@ -1,0 +1,481 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.6.1058" />
+    <meta name="TEMPLATEBASE" content="book-w-index" />
+    <meta name="LASTUPDATED" content="10/27/04 10:15:10" />
+    <title>Developing MIDlet Suites</title>
+    <link rel="StyleSheet" href="document.css" type="text/css" />
+    <link rel="StyleSheet" href="catalog.css" type="text/css" />
+    <link rel="Table of Contents" href="index.html" />
+    <link rel="Previous" href="introduction.html" />
+    <link rel="Next" href="projects.html" />
+    <link rel="Index" href="indexa.html" />
+  </head>
+
+  <body>
+
+    <table class="full-width" id="SummaryNotReq1"
+        cellspacing="0" cellpadding="0" border="0">
+	  <!-- formatting table -->
+      <tr><td class="sun-darkblue">&#160;</td></tr>
+      <tr><td class="sun-lightblue">&#160;</td></tr>
+    </table>
+    
+    <table class="full-width" id="SummaryNotReq2"
+        cellspacing="0" cellpadding="0" border="0">
+	  <!-- formatting table -->
+      <tr>
+        <td class="go-left">
+          <p class="nav-link">
+            <a accesskey="h" href="../../index.html">Documentation Home</a>
+            &gt;
+            <a accesskey="c" href="index.html"><i>User's Guide</i></a>
+            &gt;
+            Developing MIDlet Suites
+          </p>
+        </td>
+        <td class="go-right">
+        <a accesskey="c" href="index.html">
+          <img id="LongDescNotReq1" src="images/toc.gif" border="0"
+            alt="Contents" /></a>
+	<a accesskey="p" href="introduction.html">
+	  <img id="LongDescNotReq2" src="images/prev.gif" border="0"
+            alt="Previous" /></a>
+        <a accesskey="n" href="projects.html">
+	  <img id="LongDescNotReq3" src="images/next.gif" border="0"
+            alt="Next" /></a>
+        <a accesskey="i" href="indexa.html">
+	  <img id="LongDescNotReq4" src="images/index.gif" border="0"
+            alt="Index" /></a>
+        </td>
+      </tr>
+    </table>
+
+<a name="wp37760"> </a><h2 class="pChapNum">
+Chapter &#160; 2
+</h2>
+<a name="wp20925"> </a><h2 class="pTitle">
+Developing MIDlet Suites
+</h2>
+<hr />
+<a name="wp24154"> </a><p class="pBody">
+This chapter describes how you can use the J2ME Wireless Toolkit to create applications. It begins with a description of toolkit projects, then works through the development process.
+</p>
+<a name="wp24155"> </a><p class="pBody">
+There are two basic development cycles you are likely to follow in creating MIDlet suite applications. The first is quicker and simpler; you will probably use it in your initial development. The second cycle is longer but allows for more comprehensive and realistic testing.
+</p>
+<a name="wp24407"> </a><p class="pBody">
+Toward the end of the chapter you&#8217;ll read about how to use the J2ME Wireless Toolkit with advanced development tools like an obfuscator and a debugger. A final section briefly describes how to configure a web server to serve MIDP applications.
+</p>
+<a name="wp23583"> </a><h2 class="pHeading1">
+2.1	About Projects
+</h2>
+<a name="wp23665"> </a><p class="pBody">
+In the J2ME Wireless Toolkit, MIDlet suites are organized into <em class="cEmphasis">projects</em>, where the end result of one project is one MIDlet suite. A project contains all of the files that will be used to build a MIDlet suite, including Java source files, resource files, and the MIDlet descriptor.
+</p>
+<a name="wp23670"> </a><p class="pBody">
+The J2ME Wireless Toolkit works on one project at a time. You can create a new project or open an existing project.
+</p>
+<a name="wp23674"> </a><p class="pBody">
+In this chapter you will work with a very simple example project. As you read about each step in the development cycles, you can work along in the toolkit.
+</p>
+<a name="wp30856"> </a><p class="pBody">
+To create a new project, first start KToolbar. On Windows, choose <b class="cBold">Start &gt; Programs &gt; J2ME Wireless Toolkit 2.2 &gt; KToolbar</b>.<a href="#wp30860"><span class="Footnote">1</span></a> You&#8217;ll see the KToolbar window.
+</p>
+<a name="wp30861"> </a><div class="pFigureCaption">
+FIGURE&#160;2&#160;&#160;&#8211;&#160;&#160;The KToolbar window
+<br /><br />
+</div><a name="wp37791"> </a><p class="pBody">
+<img src="images/ktoolbara.gif" alt="The KToolbar window" border="0" hspace="0" vspace="0"/>
+</p>
+<a name="wp23695"> </a><p class="pBody">
+Click on <b class="cBold">New Project...</b> The toolkit will ask you for the name of the project and the name of the MIDlet class you will write. Fill in the names and click <b class="cBold">Create Project</b>.
+</p>
+<a name="wp23699"> </a><div class="pFigureCaption">
+FIGURE&#160;3&#160;&#160;&#8211;&#160;&#160;Creating a new project
+<br /><br />
+</div><a name="wp37825"> </a><p class="pBody">
+<img src="images/newproject2.gif" alt="Creating a new project" border="0" hspace="0" vspace="0"/>
+</p>
+<a name="wp23712"> </a><p class="pBody">
+The project options automatically pop up, allowing you to set up the build environment for the project. The default options are fine for this example; just click on <b class="cBold">OK</b> to dismiss the window. In the KToolbar console, you&#8217;ll see some messages telling you exactly where to store the source code and resource files for this project.
+</p>
+<a name="wp25266"> </a><div class="pFigureCaption">
+FIGURE&#160;4&#160;&#160;&#8211;&#160;&#160;File locations in the console
+<br /><br />
+</div><a name="wp37859"> </a><p class="pBody">
+<img src="images/newproject23.gif" alt="File locations in the console" border="0" hspace="0" vspace="0"/>
+</p>
+<a name="wp25271"> </a><h2 class="pHeading1">
+2.2	The Simple Development Cycle
+</h2>
+<a name="wp24183"> </a><p class="pBody">
+The simple development cycle looks like this:
+</p>
+<a name="wp24184"> </a><p class="pIndented1">
+Edit source code &gt;
+ Build &gt;
+ Run
+</p>
+<ol class="pList1"><a name="wp24185"> </a><div class="pList1"><li><b class="cBold">Edit source code</b>. In this step, you create Java source files and resource files that will be used by your application.</li></div>
+<a name="wp24186"> </a><div class="pList1Plus"><li><b class="cBold">Build</b>. The J2ME Wireless Toolkit compiles and preverifies your Java source files.</li></div>
+<a name="wp24187"> </a><div class="pList1Last"><li><b class="cBold">Run</b>. The compiled Java class files are run on the emulator.</li></div>
+</ol>
+<a name="wp24188"> </a><p class="pBody">
+If an error occurs when the toolkit attempts to compile your source files, go back and edit them again. If you find a bug when you are testing your application in the emulator, edit the source files to fix the bug.
+</p>
+<a name="wp23933"> </a><p class="pBody">
+Now that you understand the simple development cycle at a high level, the rest of this section illustrates how you can accomplish each step using the J2ME Wireless Toolkit.
+</p>
+<a name="wp23575"> </a><h3 class="pHeading2">
+2.2.1	Edit Source Code
+</h3>
+<a name="wp23658"> </a><p class="pBody">
+Editing source code is the only step in which the J2ME Wireless Toolkit is no help at all. You will need to use the text editor of your choice to create and edit source code files.
+</p>
+<a name="wp23728"> </a><p class="pBody">
+If you are following along with the example project, create a new Java source file <code class="cCode">TinyMIDlet.java</code>. It should be saved in the source directory of your project, which will be <em class="cEmphasis">{toolkit}</em><code class="cCode">\apps\Tiny\src\TinyMIDlet.java</code> where <em class="cEmphasis">{toolkit}</em> is the installation directory of the toolkit. The contents of the file are a very simple MIDlet:
+</p>
+<div class="pPreformatted"><pre class="pPreformatted">
+import javax.microedition.lcdui.*;<a name="wp23731"> </a>
+import javax.microedition.midlet.MIDlet;<a name="wp23732"> </a>
+<a name="wp23733"> </a>
+public class TinyMIDlet<a name="wp23734"> </a>
+    extends MIDlet<a name="wp23735"> </a>
+    implements CommandListener {<a name="wp23736"> </a>
+  public void startApp() {<a name="wp23737"> </a>
+    Display display = Display.getDisplay(this);<a name="wp23738"> </a>
+    <a name="wp23739"> </a>
+    Form mainForm = new Form(&quot;TinyMIDlet&quot;);<a name="wp23740"> </a>
+    mainForm.append(&quot;Welcome to the world of MIDlets!&quot;);<a name="wp23741"> </a>
+    <a name="wp23742"> </a>
+    Command exitCommand = new Command(&quot;Exit&quot;, Command.EXIT, 0);<a name="wp23743"> </a>
+    mainForm.addCommand(exitCommand);<a name="wp23744"> </a>
+    mainForm.setCommandListener(this);<a name="wp23745"> </a>
+    <a name="wp23746"> </a>
+    display.setCurrent(mainForm);<a name="wp23747"> </a>
+  }<a name="wp23748"> </a>
+  <a name="wp23749"> </a>
+  public void pauseApp () {}<a name="wp23750"> </a>
+  <a name="wp23751"> </a>
+  public void destroyApp(boolean unconditional) {}<a name="wp23752"> </a>
+  <a name="wp23753"> </a>
+  public void commandAction(Command c, Displayable s) {<a name="wp23754"> </a>
+    if (c.getCommandType() == Command.EXIT)<a name="wp23755"> </a>
+      notifyDestroyed();<a name="wp23756"> </a>
+  }<a name="wp23757"> </a>
+}<a name="wp23729"> </a>
+</pre></div>
+<a name="wp23569"> </a><p class="pBody">
+Save the file when you&#8217;re finished.
+</p>
+<a name="wp23785"> </a><h3 class="pHeading2">
+2.2.2	Build
+</h3>
+<a name="wp23796"> </a><p class="pBody">
+The next step is to build your source code. The toolkit makes this part very easy.
+</p>
+<a name="wp23797"> </a><p class="pBody">
+In the KToolbar window, click on the <b class="cBold">Build</b> button. Assuming you saved your source file in the right place, the toolkit will find it and compile it. Compilation errors are displayed in the KToolbar console. If you have errors, go back and edit the source code to fix them. Once you&#8217;ve eliminated your errors, the KToolbar console tells you the project was successfully built.
+</p>
+<a name="wp23798"> </a><div class="pFigureCaption">
+FIGURE&#160;5&#160;&#160;&#8211;&#160;&#160;Messages about building
+<br /><br />
+</div><a name="wp37893"> </a><p class="pBody">
+<img src="images/buildsuccess4.gif" alt="Messages about building" border="0" hspace="0" vspace="0"/>
+</p>
+<a name="wp29647"> </a><p class="pBody">
+Behind the scenes, the J2ME Wireless Toolkit also preverifies the compiled class files. MIDlet class files must be preverified before they can be run on a MIDP device or emulator. The toolkit quietly handles this detail for you; you probably won&#8217;t ever realize it&#8217;s happening. See the CLDC specification for more information on preverification.
+</p>
+<a name="wp23807"> </a><h3 class="pHeading2">
+2.2.3	Run
+</h3>
+<a name="wp23813"> </a><p class="pBody">
+Once the project builds successfully, you are ready to try it out in the emulator. Click on the <b class="cBold">Run</b> button. The emulator pops up and shows a list of all the MIDlets in your project.
+</p>
+<a name="wp23786"> </a><div class="pFigureCaption">
+FIGURE&#160;6&#160;&#160;&#8211;&#160;&#160;List of project MIDlets
+<br /><br />
+</div><a name="wp37927"> </a><p class="pBody">
+<img src="images/run15.gif" alt="List of project MIDlets" border="0" hspace="0" vspace="0"/>
+</p>
+<a name="wp23840"> </a><p class="pBody">
+Choose the MIDlet you want and select <b class="cBold">Launch</b>. If you&#8217;re following along with the <code class="cCode">TinyMIDlet</code> example, you&#8217;ll see the fruit of your labors:
+</p>
+<a name="wp23846"> </a><div class="pFigureCaption">
+FIGURE&#160;7&#160;&#160;&#8211;&#160;&#160;TinyMIDlet in action
+<br /><br />
+</div><a name="wp37961"> </a><p class="pBody">
+<img src="images/TinyMIDlet6.gif" alt="TinyMIDlet in action" border="0" hspace="0" vspace="0"/>
+</p>
+<a name="wp24161"> </a><h2 class="pHeading1">
+2.3	The Full Development Cycle
+</h2>
+<a name="wp24162"> </a><p class="pBody">
+The second development cycle is slightly more complicated:
+</p>
+<a name="wp24163"> </a><p class="pIndented1">
+Edit source code &gt;
+ Package &gt;
+ Install &gt;
+ Run
+</p>
+<ol class="pList1"><a name="wp24164"> </a><div class="pList1"><li><b class="cBold">Edit source code</b>. This is the same as in the simple cycle.</li></div>
+<a name="wp24169"> </a><div class="pList1Plus"><li><b class="cBold">Package</b>. In this step, the J2ME Wireless Toolkit compiles and preverifies the source files (essentially the same as the <b class="cBold">Build</b> step from before). Then it bundles the Java class files and resource files into a MIDlet suite JAR file and a MIDlet suite descriptor.</li></div>
+<a name="wp24170"> </a><div class="pList1Plus"><li><b class="cBold">Install</b>. MIDlet suites need to be installed before they can be run. You can install the MIDlet suite into the J2ME Wireless Toolkit emulator or a real device.</li></div>
+<a name="wp24174"> </a><div class="pList1Last"><li><b class="cBold">Run</b>. As in the simple development cycle, run your application and test for bugs.</li></div>
+</ol>
+<a name="wp23817"> </a><p class="pBody">
+In the full development cycle, the first step is identical to the simple development cycle. Editing source code is the same as always. The <b class="cBold">Build</b> step is now incorporated in packaging.
+</p>
+<a name="wp23861"> </a><p class="pBody">
+The full development cycle includes two new steps, packaging and installing. Finally, running an installed application is different in important ways from running an application in the simple development cycle.
+</p>
+<a name="wp23866"> </a><h3 class="pHeading2">
+2.3.1	Package
+</h3>
+<a name="wp23870"> </a><p class="pBody">
+The J2ME Wireless Toolkit automates the task of packaging a MIDlet suite. The end result of packaging is two files, a MIDlet descriptor and a MIDlet suite JAR. The descriptor is a small text file that contains information about the MIDlet suite. The JAR contains the class files and resources that make up the MIDlet suite. Devices can use the descriptor to learn about the application before downloading the entire JAR, an important consideration in a memory-lean, bandwidth-starved wireless world.
+</p>
+<a name="wp23874"> </a><p class="pBody">
+To ask the toolkit to package your MIDlet suite, choose <b class="cBold">Project &gt; Package &gt; Create Package</b> from the KToolbar menu. The MIDlet suite descriptor and JAR are generated and placed in the <code class="cCode">bin</code> directory of your project.
+</p>
+<a name="wp24519"> </a><p class="pBody">
+Packaging might involve additional steps. You can use a code obfuscator to shrink the size of the MIDlet suite JAR, a technique that is described later in this chapter. In addition, the J2ME Wireless Toolkit provides tools to allow you to cryptographically sign MIDlet suites. See <a  href="security.html#wp39771"><span class="cZ_Xref">Chapter&#160;6, </span>&#8220;Security and MIDlet Signing</a>,&#8221; for more information.
+</p>
+<a name="wp24523"> </a><h3 class="pHeading2">
+2.3.2	Install
+</h3>
+<a name="wp23901"> </a><p class="pBody">
+To properly test a MIDlet suite, you should install it into the toolkit&#8217;s emulator or a real device. When you press the <b class="cBold">Run</b> button in KToolbar, the MIDlet suite is not installed into the emulator. Instead, the emulator runs the MIDlet classes directly.
+</p>
+<a name="wp23906"> </a><p class="pBody">
+The emulator also has the capability of installing applications into its memory in a process that resembles how applications are transmitted and installed on real devices. To install applications in the J2ME Wireless Toolkit emulator, choose <b class="cBold">Project &gt; Run via OTA</b>.
+</p>
+<a name="wp23943"> </a><p class="pBody">
+The emulator window pops open, but instead of running your MIDlet classes directly, this time the emulator shows the welcome screen of its Application Management Software (AMS). The emulator&#8217;s AMS is an example of the type of software that real devices must have to manage MIDlet suites.
+</p>
+<a name="wp23982"> </a><div class="pFigureCaption">
+FIGURE&#160;8&#160;&#160;&#8211;&#160;&#160;Emulator AMS welcome screen
+<br /><br />
+</div><a name="wp37995"> </a><p class="pBody">
+<img src="images/ams17.gif" alt="Emulator AMS welcome screen" border="0" hspace="0" vspace="0"/>
+</p>
+<a name="wp23983"> </a><p class="pBody">
+Choose <b class="cBold">Apps</b> to go to the main list of installed applications. Select <b class="cBold">Install Application</b> and press the select button on the emulator. The emulator prompts you for the URL location of the application you want to install. The URL is already filled in for you.
+</p>
+<a name="wp23992"> </a><div class="pFigureCaption">
+FIGURE&#160;9&#160;&#160;&#8211;&#160;&#160;URL prompt
+<br /><br />
+</div><a name="wp38029"> </a><p class="pBody">
+<img src="images/ams28.gif" alt="URL prompt" border="0" hspace="0" vspace="0"/>
+</p>
+<a name="wp25544"> </a><p class="pBody">
+Choose <b class="cBold">Go</b> from the menu to begin the installation. The emulator shows a list of the applications it finds at the URL. Choose the only one and select <b class="cBold">Install</b> from the menu. The emulator gives you one last chance to confirm your intentions.
+</p>
+<a name="wp25545"> </a><div class="pFigureCaption">
+FIGURE&#160;10&#160;&#160;&#8211;&#160;&#160;Confirming the installation
+<br /><br />
+</div><a name="wp38063"> </a><p class="pBody">
+<img src="images/ams39.gif" alt="Confirming the installation" border="0" hspace="0" vspace="0"/>
+</p>
+<a name="wp24001"> </a><p class="pBody">
+Choose <b class="cBold">Install</b> again to finish the installation. You&#8217;ll be returned to the emulator&#8217;s installed list of applications, which now includes the application you just installed.
+</p>
+<a name="wp24041"> </a><div class="pFigureCaption">
+FIGURE&#160;11&#160;&#160;&#8211;&#160;&#160;The application menu, again
+<br /><br />
+</div><a name="wp38097"> </a><p class="pBody">
+<img src="images/ams410.gif" alt="The application menu, again" border="0" hspace="0" vspace="0"/>
+</p>
+<a name="wp23988"> </a><p class="pBody">
+<b class="cBold">Run via OTA</b> is an extremely useful mechanism that makes it easy to install your MIDlet suite on the toolkit emulator. Some features <em class="cEmphasis">must</em> be tested using this technique, including the push registry and the installation of signed MIDlet suites.
+</p>
+<a name="wp23965"> </a><p class="pBody">
+If you want to test your MIDlet suite on a real device, you&#8217;ll need to install it first. How this happens depends heavily on the device you are using. There are two likely possibilities:
+</p>
+<a name="wp23966"> </a><div class="pBullet1Plus"><li>You can deploy the application on a web server, then transmit the application from server to device using the Over the Air (OTA) protocol described in the MIDP 2.0 specification. This is most likely the same mechanism that users will encounter when they go to purchase or install your application.</li></div>
+<a name="wp23970"> </a><div class="pBullet1Plus"><li>You might be able to transfer the MIDlet suite to the device using a Bluetooth, infrared, or serial connection. This is quite a bit simpler than running a web server, and although it won&#8217;t give you any insights into the process of installing your application on the device via OTA, it allows you to see how your application performs on the device.</li></div>
+<a name="wp23787"> </a><h3 class="pHeading2">
+2.3.3	Run
+</h3>
+<a name="wp23942"> </a><p class="pBody">
+Once the application is installed, running it is simple. Just choose the application from the list and choose <b class="cBold">Launch</b> from the menu.
+</p>
+<a name="wp24215"> </a><p class="pBody">
+
+</p>
+<a name="wp24054"> </a><div class="pFigureCaption">
+FIGURE&#160;12&#160;&#160;&#8211;&#160;&#160;Launching the installed application
+<br /><br />
+</div><a name="wp38131"> </a><p class="pBody">
+<img src="images/run211.gif" alt="Launching the installed application" border="0" hspace="0" vspace="0"/>
+</p>
+<a name="wp23961"> </a><p class="pBody">
+Running an application on a real device depends heavily on the device itself. Consult your device documentation for information.
+</p>
+<a name="wp24219"> </a><h2 class="pHeading1">
+2.4	Using an Obfuscator
+</h2>
+<a name="wp24223"> </a><p class="pBody">
+An <em class="cEmphasis">obfuscator</em> is a tool that reduces the size of class files. MIDlet suites need to be compact, both to minimize download times and to comply with sometimes stringent limits on JAR size imposed by manufacturers or carriers. Using an obfuscator is one way (not the only way) that you can keep your MIDlet suite JAR small.
+</p>
+<a name="wp24227"> </a><p class="pBody">
+You can use an obfuscator in the packaging step of the development cycle. Although the J2ME Wireless Toolkit doesn&#8217;t come with an obfuscator, it is already configured to use the ProGuard obfuscator. All you need to do is download ProGuard and put it in a place where the toolkit can find it.
+</p>
+<a name="wp24246"> </a><p class="pBody">
+ProGuard is published under the terms of the GNU General Public License (GPL). If you are comfortable with the terms of the license, you can download and use ProGuard free of charge.
+</p>
+<a name="wp24269"> </a><p class="pBody">
+Installing ProGuard in the J2ME Wireless Toolkit is straightforward:
+</p>
+<ol class="pList1"><a name="wp24255"> </a><div class="pList1"><li>Go to the ProGuard web site, <a  href="http://proguard.sourceforge.net/">http://proguard.sourceforge.net/</a>.</li></div>
+<a name="wp24280"> </a><div class="pList1Plus"><li>Download the latest version.</li></div>
+<a name="wp24281"> </a><div class="pList1Last"><li>Uncompress the <code class="cCode">proguard.jar</code> file from the <code class="cCode">lib</code> directory of the ProGuard installation to the <code class="cCode">bin</code> directory of your J2ME Wireless Toolkit installation.</li></div>
+</ol>
+<a name="wp24287"> </a><p class="pBody">
+Once ProGuard is installed, you can use it by choosing <b class="cBold">Project &gt; Package &gt; Create Obfuscated Package</b>. 
+</p>
+<a name="wp24342"> </a><p class="pBody">
+In some cases you will need to provide a script file that controls how the obfuscator works. If you are loading classes using <code class="cCode">Class.forName()</code>, for example, you need to tell ProGuard to leave the class names unchanged.
+</p>
+<a name="wp24347"> </a><p class="pBody">
+Create a script file using a text editor, then save it under the project&#8217;s main directory. Consult the ProGuard documentation for information on script files. Next you need to tell the toolkit how to find this file. To do this, edit <em class="cEmphasis">{toolkit}</em><code class="cCode">\wtklib\</code><em class="cEmphasis">{platform}</em><code class="cCode">\ktools.properties</code>, where <em class="cEmphasis">{platform}</em> is the name of your underlying platform (most likely <code class="cCode">Windows</code> or <code class="cCode">Linux</code>). Add a line as follows:
+</p>
+<div class="pPreformatted"><pre class="pPreformatted">
+obfuscate.script.name: scriptfile <a name="wp24350"> </a>
+</pre></div>
+<a name="wp24348"> </a><p class="pBody">
+Replace &#8220;scriptfile&#8221; with the name you used for the script file. You will need to quit and restart KToolbar for the change to take effect.
+</p>
+<a name="wp30715"> </a><p class="pBody">
+The J2ME Wireless Toolkit also includes support for RetroGuard. If you want to use RetroGuard, you&#8217;ll need to download it separately and change the toolkit&#8217;s configuration.
+</p>
+<ol class="pList1"><a name="wp30717"> </a><div class="pList1"><li>Go to the RetroGuard web site, <a  href="http://www.retrologic.com/retroguard-main.html">http://www.retrologic.com/retroguard-main.html</a>.</li></div>
+<a name="wp30722"> </a><div class="pList1Plus"><li>Download the latest version.</li></div>
+<a name="wp30723"> </a><div class="pList1Plus"><li>Extract the <code class="cCode">retroguard.jar</code> file from downloaded zip file to the <code class="cCode">bin</code> directory of your J2ME Wireless Toolkit installation.</li></div>
+<a name="wp30745"> </a><div class="pList1Last"><li>Edit <em class="cEmphasis">{toolkit}</em><code class="cCode">\wtklib\</code><em class="cEmphasis">{platform}</em><code class="cCode">\ktools.properties</code> so that it uses the RetroGuard obfuscator plug-in:</li></div>
+</ol>
+<div class="pPreformatted"><pre class="pPreformatted">
+obfuscator.runner.class.name: com.sun.kvem.ktools.RunRetro<a name="wp30754"> </a>
+obfuscator.runner.classpath: wtklib\\ktools.zip<a name="wp30755"> </a>
+</pre></div>
+<a name="wp30752"> </a><p class="pBody">
+Retroguard will be used when you create an obfuscated package.
+</p>
+<a name="wp30735"> </a><p class="pBody">
+To switch back to ProGuard, edit the obfuscator lines in the <code class="cCode">ktools.properties</code> file as follows:
+</p>
+<div class="pPreformatted"><pre class="pPreformatted">
+obfuscator.runner.class.name: com.sun.kvem.ktools.RunPro<a name="wp30766"> </a>
+obfuscator.runner.classpath: wtklib\\ktools.zip<a name="wp30767"> </a>
+</pre></div>
+<a name="wp24340"> </a><p class="pBody">
+If you want to use a different obfuscator, you&#8217;ll have to implement an obfusctor plug-in yourself. See the <em class="cEmphasis">J2ME Wireless Toolkit Basic Customization Guide</em> for an example of how to implement an obfuscator plug-in.
+</p>
+<a name="wp24381"> </a><h2 class="pHeading1">
+2.5	Using a Debugger
+</h2>
+<a name="wp24385"> </a><p class="pBody">
+A variation on running your application is running it with a debugger. A debugger allows you to monitor the running application more closely, set breakpoints, and examine variables.
+</p>
+<a name="wp24388"> </a><p class="pBody">
+You will need to supply your own debugger. You can use the <code class="cCode">jdb</code> debugger from J2SE&#8482; or another debugger of your choice.
+</p>
+<a name="wp24457"> </a><p class="pBody">
+Begin by choosing <b class="cBold">Project &gt; Debug</b> from the KToolbar menu. Enter the TCP/IP port number that the debugger will use to connect to the emulator. Click on <b class="cBold">Debug</b>. The emulator begins running and waits for a connection from a debugger.
+</p>
+<a name="wp24468"> </a><p class="pBody">
+Start up your debugger and attach it to the port you specified. Make sure to set the remote debugger to run in remote mode and to use TCP/IP. For more information, consult the debugger&#8217;s documentation.
+</p>
+<a name="wp24444"> </a><p class="pBody">
+Information about using <code class="cCode">jdb</code> with the J2ME Wireless Toolkit is here:
+</p>
+<a name="wp26953"> </a><p class="pBody">
+<em class="cEmphasis">Debugging MIDlets</em>
+</p>
+<a name="wp24492"> </a><p class="pBody">
+<a  href="http://developers.sun.com/techtopics/mobility/midp/questions/jdb/">http://developers.sun.com/techtopics/mobility/midp/questions/jdb/</a>
+</p>
+<a name="wp28387"> </a><h2 class="pHeading1">
+2.6	Deploying Applications on a Web Server
+</h2>
+<a name="wp28440"> </a><p class="pBody">
+The MIDP 2.0 specification includes the <em class="cEmphasis">Over The Air User Initiated Provisioning Specification</em>, which describes how MIDlet suites can be transferred over-the-air (OTA) to a device. You can test this type of scenario using the J2ME Wireless Toolkit emulator.
+</p>
+<a name="wp28389"> </a><p class="pBody">
+To deploy a packaged MIDP application remotely on a Web server:
+</p>
+<ol class="pList1"><a name="wp28390"> </a><div class="pList1"><li>Change the JAD file&#8217;s MIDlet-Jar-URL property to the URL of the JAR file. The URL should be an absolute path. For example:</li></div>
+<div class="pPreformatted"><pre class="pPreformatted">
+MIDlet-Jar-URL: http://your.server.com/midlets/example.jar<a name="wp28392"> </a>
+</pre></div>
+<a name="wp28393"> </a><div class="pList1Last"><li>Ensure that the Web server uses the correct MIME types for JAD and JAR files:</li></div>
+</ol>
+<ol type="a" class="pList2"><a name="wp28502"> </a><div class="pList2"><li>For MIDlet suite descriptors, map the <code class="cCode">.jad</code> extension to the <code class="cCode">text/vnd.sun.j2me.app-descriptor</code> MIME type.</li></div>
+<a name="wp28506"> </a><div class="pList2Last"><li>For MIDlet suite JARs, map the <code class="cCode">.jar</code> extension to the <code class="cCode">application/java-archive</code> MIME type.</li></div>
+</ol>
+<a name="wp28396"> </a><p class="pBody">
+The details of how to configure a Web server depend on the specific software used.
+</p>
+<a name="wp28475"> </a><p class="pBody">
+The emulator implements the device behavior during OTA provisioning. You can use the emulator to test and demonstrate the full provisioning process of MIDlet suites from a server to the device. All you need to do is launch the emulator&#8217;s AMS. (You may already be familiar with the AMS if you have used KToolbar&#8217;s <b class="cBold">Run via OTA</b> option.
+</p>
+<a name="wp28529"> </a><p class="pBody">
+To launch the emulator&#8217;s AMS, you have two options:
+</p>
+<ul class="pBullet1"><a name="wp38366"> </a><div class="pBullet1"><li>In the Windows start menu, choose <b class="cBold">Start &gt; Programs &gt; J2ME Wireless Toolkit 2.2 &gt; OTA Provisioning</b>.</li></div>
+<a name="wp38368"> </a><div class="pBullet1Last"><li>From the command line, run:</li></div>
+</ul>
+<a name="wp28551"> </a><p class="pIndented2">
+<em class="cEmphasis">{toolkit}</em><code class="cCode">\bin\emulator -Xjam</code>
+</p>
+<a name="wp28408"> </a><p class="pBody">
+Now follow the AMS prompts to install your application. This process is very similar to the <b class="cBold">Run via OTA</b> option described earlier in this chapter, except you will need to enter the URL of your own server to install your application.
+</p>
+
+  <a name="wp30860"> </a><div class="pFootNote">
+<a href="#wp30856"><span class="Footnote">1</span></a>Depending on how Windows is configured, you might need to choose Start &gt; All Programs instead of Start &gt; 
+Programs.
+
+</div>
+
+    <p>&#160;</p>
+    <hr class="pHr" />
+
+    <table class="full-width" id="SummaryNotReq3">
+	  <!-- formatting table -->
+      <tr>
+        <td class="go-left">
+          <a accesskey="c" href="index.html">
+            <img id="LongDescNotReq1" src="images/toc.gif" border="0"
+              alt="Contents" /></a>
+          <a accesskey="p" href="introduction.html">
+            <img id="LongDescNotReq2" src="images/prev.gif" border="0"
+              alt="Previous" /></a>
+          <a accesskey="n" href="projects.html">
+            <img id="LongDescNotReq3" src="images/next.gif" border="0"
+              alt="Next" /></a>
+          <a accesskey="i" href="indexa.html">
+            <img id="LongDescNotReq4" src="images/index.gif" border="0"
+              alt="Index" /></a>
+        </td>
+        <td class="go-right">
+          <span class="copyright">J2ME Wireless Toolkit User's Guide <br /> J2ME Wireless Toolkit 2.2</span>
+        </td>
+      </tr>
+    </table>
+
+    <p>&#160;</p>
+    <p class="copyright">
+      <a href="copyright.html">Copyright</a> &#169; 2004 Sun Microsystems, Inc. 
+      All rights reserved.
+      Use is subject to the <a href="../../BinaryLicense.html">license terms</a>.
+    </p>
+  </body>
+</html>

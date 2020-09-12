@@ -1,0 +1,8 @@
+[PropertyInfo]
+displayable,org.nico.midlets.games.SudokuDisplay,false,false, , ,false,<default>
+instance,org.nico.midlets.games.Sudoku,false,false, , ,false,<default>
+[IconNames]
+
+
+
+

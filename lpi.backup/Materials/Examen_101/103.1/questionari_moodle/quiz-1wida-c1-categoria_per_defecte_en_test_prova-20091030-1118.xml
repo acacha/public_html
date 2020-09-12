@@ -1,0 +1,1686 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+
+
+<!-- question: 0  -->
+  <question type="category">
+    <category>
+        <text>$module$/Categoria per defecte en Test Prova</text>
+
+    </category>
+  </question>
+
+
+
+<!-- question: 1842  -->
+  <question type="multichoice">
+    <name><text>Definicions de programari lliure</text>
+</name>
+    <questiontext format="html">
+<text>Si tenim com a referència les quatre llibertats del programari lliure, quina de les següents condicions no és vàlida per a un programa lliure:</text>
+    </questiontext>
+    <image></image>
+    <generalfeedback>
+<text></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>.1</penalty>
+    <hidden>0</hidden>
+    <shuffleanswers>1</shuffleanswers>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <correctfeedback>      <text></text>
+</correctfeedback>
+    <partiallycorrectfeedback>      <text></text>
+</partiallycorrectfeedback>
+    <incorrectfeedback>      <text></text>
+</incorrectfeedback>
+    <answernumbering>none</answernumbering>
+      <answer fraction="5">
+        <text>
+Permeto l'accés al codi font encara que es faci (a partir d'aquest) un nou programa per vendre'l.
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="5">
+        <text>
+Permeto l'accés al codi font. 
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="5">
+        <text>
+Permeto distribuir còpies del meu programa.
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="100">
+        <text>
+Permeto executar el meu programa sempre i quan l'execució no generi guanys econòmics.
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="5">
+        <text>
+Permeto que una modificació posterior del meu programa sigui modificada.
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="0">
+        <text>
+No selecciono cap resposta
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+</question>
+
+
+
+<!-- question: 1827  -->
+  <question type="multichoice">
+    <name><text>Format sintaxi genèric de les ordres del bash</text>
+</name>
+    <questiontext format="html">
+<text>Quin és el format correcte per a una ordre del bash?</text>
+    </questiontext>
+    <image></image>
+    <generalfeedback>
+<text></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>.1</penalty>
+    <hidden>0</hidden>
+    <shuffleanswers>1</shuffleanswers>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <correctfeedback>      <text></text>
+</correctfeedback>
+    <partiallycorrectfeedback>      <text></text>
+</partiallycorrectfeedback>
+    <incorrectfeedback>      <text></text>
+</incorrectfeedback>
+    <answernumbering>none</answernumbering>
+      <answer fraction="5">
+        <text>
+Opció argument ordre
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="5">
+        <text>
+Ordre argument opció
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="100">
+        <text>
+Ordre opció argument 
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="5">
+        <text>
+Ordre opció argument opció argument ...
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="5">
+        <text>
+Ordre  -opció +argument
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="0">
+        <text>
+No selecciono cap resposta
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+</question>
+
+
+
+<!-- question: 1823  -->
+  <question type="multichoice">
+    <name><text>L'ordre cd</text>
+</name>
+    <questiontext format="html">
+<text>Que fa exactament l'ordre sense arguments cd ?</text>
+    </questiontext>
+    <image></image>
+    <generalfeedback>
+<text></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>.1</penalty>
+    <hidden>0</hidden>
+    <shuffleanswers>1</shuffleanswers>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <correctfeedback>      <text></text>
+</correctfeedback>
+    <partiallycorrectfeedback>      <text></text>
+</partiallycorrectfeedback>
+    <incorrectfeedback>      <text></text>
+</incorrectfeedback>
+    <answernumbering>none</answernumbering>
+      <answer fraction="100">
+        <text>
+Canviar al directori home de l'usuari.
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="5">
+        <text>
+Canviar al directori pare que penja de l'actual directori.
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="5">
+        <text>
+Canvia al directori arrel /.
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="5">
+        <text>
+Produeix un error de sintaxi per la manca d'arguments.
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="5">
+        <text>
+Res del que es proposa a les altres opcions.
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="0">
+        <text>
+No selecciono cap resposta
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+</question>
+
+
+
+<!-- question: 1861  -->
+  <question type="multichoice">
+    <name><text>L'ordre exec</text>
+</name>
+    <questiontext format="html">
+<text><![CDATA[Suposem que tot just ens hem autentificat a una sessió en una consola virtual. I executem l'ordre:<br /><span style="font-family: times new roman,times,serif; font-weight: bold;">exec ls</span><br /><br />El que passa després és que:<br />]]></text>
+    </questiontext>
+    <image></image>
+    <generalfeedback>
+<text></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>.1</penalty>
+    <hidden>0</hidden>
+    <shuffleanswers>1</shuffleanswers>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <correctfeedback>      <text></text>
+</correctfeedback>
+    <partiallycorrectfeedback>      <text></text>
+</partiallycorrectfeedback>
+    <incorrectfeedback>      <text></text>
+</incorrectfeedback>
+    <answernumbering>none</answernumbering>
+      <answer fraction="5">
+        <text>
+Es mostren certs fitxers i el bash espera una nova ordre.
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="100">
+        <text>
+Es mostren certs fitxers i sortim de la sessió a la que estàvem autentificats.
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="5">
+        <text>
+Eliminem l'ordre ls
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="5">
+        <text>
+Ens surt un error per què no tenim permissos per executar l'ordre.
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="5">
+        <text>
+Totes les respostes són correctes
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="0">
+        <text>
+No selecciono cap resposta
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+</question>
+
+
+
+<!-- question: 1829  -->
+  <question type="multichoice">
+    <name><text>L'ordre ls</text>
+</name>
+    <questiontext format="html">
+<text>Si volem llistar tots els fitxers que tenim al directori actual i als seus subdirectoris (ocults també), així com un format llarg quina ordre utilitzarem?</text>
+    </questiontext>
+    <image></image>
+    <generalfeedback>
+<text></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>.1</penalty>
+    <hidden>0</hidden>
+    <shuffleanswers>1</shuffleanswers>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <correctfeedback>      <text></text>
+</correctfeedback>
+    <partiallycorrectfeedback>      <text></text>
+</partiallycorrectfeedback>
+    <incorrectfeedback>      <text></text>
+</incorrectfeedback>
+    <answernumbering>none</answernumbering>
+      <answer fraction="5">
+        <text>
+ls -Raf
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="5">
+        <text>
+ls -raf
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="100">
+        <text>
+ls -laR  
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="5">
+        <text>
+ls -Rfl
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="5">
+        <text>
+ls -ral
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="0">
+        <text>
+No selecciono cap resposta
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+</question>
+
+
+
+<!-- question: 1836  -->
+  <question type="multichoice">
+    <name><text><![CDATA[Operadors && i ||]]></text>
+</name>
+    <questiontext format="html">
+<text>Quina de les següents seqüències farà que la segona ordre s'executi tant si la primera falla com si no?</text>
+    </questiontext>
+    <image></image>
+    <generalfeedback>
+<text></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>.1</penalty>
+    <hidden>0</hidden>
+    <shuffleanswers>1</shuffleanswers>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <correctfeedback>      <text></text>
+</correctfeedback>
+    <partiallycorrectfeedback>      <text></text>
+</partiallycorrectfeedback>
+    <incorrectfeedback>      <text></text>
+</incorrectfeedback>
+    <answernumbering>none</answernumbering>
+      <answer fraction="5">
+        <text>
+command1 || command2
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="5">
+        <text>
+<![CDATA[command1 && command2]]>
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="100">
+        <text>
+command1 ; command2 
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="5">
+        <text>
+command1 $$ command2
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="5">
+        <text>
+<![CDATA[command1 & command2]]>
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="0">
+        <text>
+No selecciono cap resposta
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+</question>
+
+
+
+<!-- question: 1825  -->
+  <question type="multichoice">
+    <name><text>Ordres escrites en més d'una línia</text>
+</name>
+    <questiontext format="html">
+<text>Quin caràcter es pot col·locar al final de línia per indicar que l'ordre continua a la següent línia:</text>
+    </questiontext>
+    <image></image>
+    <generalfeedback>
+<text></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>.1</penalty>
+    <hidden>0</hidden>
+    <shuffleanswers>1</shuffleanswers>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <correctfeedback>      <text></text>
+</correctfeedback>
+    <partiallycorrectfeedback>      <text></text>
+</partiallycorrectfeedback>
+    <incorrectfeedback>      <text></text>
+</incorrectfeedback>
+    <answernumbering>none</answernumbering>
+      <answer fraction="5">
+        <text>
+/ 
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="100">
+        <text>
+\
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="5">
+        <text>
+;
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="5">
+        <text>
+|
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="5">
+        <text>
+<![CDATA[&]]>
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="0">
+        <text>
+No selecciono cap resposta
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+</question>
+
+
+
+<!-- question: 1831  -->
+  <question type="multichoice">
+    <name><text>Seqüència d'ordres (echo,exit i subshells)</text>
+</name>
+    <questiontext format="html">
+<text><![CDATA[Quina serà la sortida de la següent ordre:<br /><br /><span style="font-family: times new roman,times,serif; font-weight: bold;"></span><span style="font-family: times new roman,times,serif; font-weight: bold;">(exit 2)|| echo -n &quot;doncs,&quot;; (exit 2) &amp;&amp; echo -n &quot; hola&quot; ; (echo &quot; res&quot;)<br /></span>]]></text>
+    </questiontext>
+    <image></image>
+    <generalfeedback>
+<text></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>.1</penalty>
+    <hidden>0</hidden>
+    <shuffleanswers>1</shuffleanswers>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <correctfeedback>      <text></text>
+</correctfeedback>
+    <partiallycorrectfeedback>      <text></text>
+</partiallycorrectfeedback>
+    <incorrectfeedback>      <text></text>
+</incorrectfeedback>
+    <answernumbering>none</answernumbering>
+      <answer fraction="5">
+        <text>
+doncs, hola
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="5">
+        <text>
+ hola res
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="100">
+        <text>
+doncs, res
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="5">
+        <text>
+doncs, hola res
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="5">
+        <text>
+ res
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="0">
+        <text>
+No selecciono cap resposta
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+</question>
+
+
+
+<!-- question: 1826  -->
+  <question type="multichoice">
+    <name><text>Tancament correcte de cometes a les ordres</text>
+</name>
+    <questiontext format="html">
+<text><![CDATA[Quin és el resultat de la següent ordre:<br /><br /><span style="font-family: times new roman,times,serif; font-weight: bold;">cat 'echo &quot;$GUINDOUS&quot;</span><br /><br />]]></text>
+    </questiontext>
+    <image></image>
+    <generalfeedback>
+<text></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>.1</penalty>
+    <hidden>0</hidden>
+    <shuffleanswers>1</shuffleanswers>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <correctfeedback>      <text></text>
+</correctfeedback>
+    <partiallycorrectfeedback>      <text></text>
+</partiallycorrectfeedback>
+    <incorrectfeedback>      <text></text>
+</incorrectfeedback>
+    <answernumbering>none</answernumbering>
+      <answer fraction="5">
+        <text>
+El valor que contingui la variable GUINDOUS
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="5">
+        <text>
+Es fa un cat del valor de la variable GUINDOUS
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="5">
+        <text>
+Es fa un echo del valor de la variable GUINDOUS
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="5">
+        <text>
+Es fa un echo del literal $GUINDOUS
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="100">
+        <text>
+No funciona per que hi ha un error de sintaxi.      
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="0">
+        <text>
+No selecciono cap resposta
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+</question>
+
+
+
+<!-- question: 1832  -->
+  <question type="multichoice">
+    <name><text>Variables d'Entorn</text>
+</name>
+    <questiontext format="html">
+<text><![CDATA[Quina de les següents ordres tindrà el mateix resultat que executar<br /><span style="font-family: times new roman,times,serif; font-weight: bold;">echo $TERM</span>]]></text>
+    </questiontext>
+    <image></image>
+    <generalfeedback>
+<text><![CDATA[<span style="font-family: times new roman,times,serif; font-weight: bold;"><br /></span>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>.1</penalty>
+    <hidden>0</hidden>
+    <shuffleanswers>1</shuffleanswers>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <correctfeedback>      <text></text>
+</correctfeedback>
+    <partiallycorrectfeedback>      <text></text>
+</partiallycorrectfeedback>
+    <incorrectfeedback>      <text></text>
+</incorrectfeedback>
+    <answernumbering>none</answernumbering>
+      <answer fraction="5">
+        <text>
+echo '${TERM}'
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="100">
+        <text>
+<![CDATA[echo "$TERM"]]>
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="5">
+        <text>
+echo {$TERM}
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="5">
+        <text>
+echo '$TERM'
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="5">
+        <text>
+echo `$TERM`
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="0">
+        <text>
+No selecciono cap resposta
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+</question>
+
+
+
+<!-- question: 1834  -->
+  <question type="multichoice">
+    <name><text>echo i els caràcters d'escape</text>
+</name>
+    <questiontext format="html">
+<text><![CDATA[Que mostrarà la següent instrucció<br /><span style="font-family: times new roman,times,serif; font-weight: bold;">echo &quot;hola\rm&quot;</span>]]></text>
+    </questiontext>
+    <image></image>
+    <generalfeedback>
+<text></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>.1</penalty>
+    <hidden>0</hidden>
+    <shuffleanswers>1</shuffleanswers>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <correctfeedback>      <text></text>
+</correctfeedback>
+    <partiallycorrectfeedback>      <text></text>
+</partiallycorrectfeedback>
+    <incorrectfeedback>      <text></text>
+</incorrectfeedback>
+    <answernumbering>none</answernumbering>
+      <answer fraction="0">
+        <text>
+mola
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="100">
+        <text>
+hola\rm 
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="5">
+        <text>
+holam
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="5">
+        <text>
+adiós
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="5">
+        <text>
+hola (salt de línia) m
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="0">
+        <text>
+No selecciono cap resposta
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+</question>
+
+
+
+<!-- question: 1821  -->
+  <question type="multichoice">
+    <name><text>errorlevel</text>
+</name>
+    <questiontext format="html">
+<text><![CDATA[Quina ordre ens mostrarà la sortida de l'error level de l'ordre anterior?<br />]]></text>
+    </questiontext>
+    <image></image>
+    <generalfeedback>
+<text></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>.1</penalty>
+    <hidden>0</hidden>
+    <shuffleanswers>1</shuffleanswers>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <correctfeedback>      <text></text>
+</correctfeedback>
+    <partiallycorrectfeedback>      <text></text>
+</partiallycorrectfeedback>
+    <incorrectfeedback>      <text></text>
+</incorrectfeedback>
+    <answernumbering>none</answernumbering>
+      <answer fraction="100">
+        <text>
+echo $?
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="5">
+        <text>
+echo $1
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="5">
+        <text>
+echo $EXIT
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="5">
+        <text>
+echo $ERRORLVL
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="5">
+        <text>
+exitstatus
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="0">
+        <text>
+No selecciono cap resposta
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+</question>
+
+
+
+<!-- question: 1824  -->
+  <question type="multichoice">
+    <name><text>errorlevel (exit o errada)</text>
+</name>
+    <questiontext format="html">
+<text>Desprès d'executar una ordre que produeix sortida a la pantalla, obtenim un error level o codi de sortida igual a 0. Escull quina de les següents opcions descriu millor el que ha passat.</text>
+    </questiontext>
+    <image></image>
+    <generalfeedback>
+<text></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>.1</penalty>
+    <hidden>0</hidden>
+    <shuffleanswers>1</shuffleanswers>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <correctfeedback>      <text></text>
+</correctfeedback>
+    <partiallycorrectfeedback>      <text></text>
+</partiallycorrectfeedback>
+    <incorrectfeedback>      <text></text>
+</incorrectfeedback>
+    <answernumbering>none</answernumbering>
+      <answer fraction="100">
+        <text>
+El programa s'ha executat correctament.
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="5">
+        <text>
+El programa ha trobat un error.
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="5">
+        <text>
+El programa requeria un argument d'entrada.
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="5">
+        <text>
+El programa ha retornat l'entrada estàndard.
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="5">
+        <text>
+El programa termina amb error de sintaxi.
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="0">
+        <text>
+No selecciono cap resposta
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+</question>
+
+
+
+<!-- question: 1833  -->
+  <question type="multichoice">
+    <name><text>historic history</text>
+</name>
+    <questiontext format="html">
+<text>Vols repetir l'última ordre que vas executar, com ho faries?</text>
+    </questiontext>
+    <image></image>
+    <generalfeedback>
+<text></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>.1</penalty>
+    <hidden>0</hidden>
+    <shuffleanswers>1</shuffleanswers>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <correctfeedback>      <text></text>
+</correctfeedback>
+    <partiallycorrectfeedback>      <text></text>
+</partiallycorrectfeedback>
+    <incorrectfeedback>      <text></text>
+</incorrectfeedback>
+    <answernumbering>none</answernumbering>
+      <answer fraction="5">
+        <text>
+#
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="100">
+        <text>
+!!
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="5">
+        <text>
+#l
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="5">
+        <text>
+##
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="5">
+        <text>
+!1
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="0">
+        <text>
+No selecciono cap resposta
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+</question>
+
+
+
+<!-- question: 1837  -->
+  <question type="multichoice">
+    <name><text>historic history (II)</text>
+</name>
+    <questiontext format="html">
+<text><![CDATA[Vols veure una llista de les darreres ordres executades, quina de les següents opcions ho aconseguirà?<br />]]></text>
+    </questiontext>
+    <image></image>
+    <generalfeedback>
+<text></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>.1</penalty>
+    <hidden>0</hidden>
+    <shuffleanswers>1</shuffleanswers>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <correctfeedback>      <text></text>
+</correctfeedback>
+    <partiallycorrectfeedback>      <text></text>
+</partiallycorrectfeedback>
+    <incorrectfeedback>      <text></text>
+</incorrectfeedback>
+    <answernumbering>none</answernumbering>
+      <answer fraction="5">
+        <text>
+hist
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="5">
+        <text>
+histfile
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="5">
+        <text>
+showbuffer
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="100">
+        <text>
+history
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="5">
+        <text>
+!all
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="0">
+        <text>
+No selecciono cap resposta
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+</question>
+
+
+
+<!-- question: 1828  -->
+  <question type="multichoice">
+    <name><text>man</text>
+</name>
+    <questiontext format="html">
+<text>Per trobar totes les ajudes possibles de les diferents seccions del man per a echo farem:</text>
+    </questiontext>
+    <image></image>
+    <generalfeedback>
+<text></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>.1</penalty>
+    <hidden>0</hidden>
+    <shuffleanswers>1</shuffleanswers>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <correctfeedback>      <text></text>
+</correctfeedback>
+    <partiallycorrectfeedback>      <text></text>
+</partiallycorrectfeedback>
+    <incorrectfeedback>      <text></text>
+</incorrectfeedback>
+    <answernumbering>none</answernumbering>
+      <answer fraction="5">
+        <text>
+man -1 echo (donat que la secció 1 és la d'ajuda per a ordres d'usuari)
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="5">
+        <text>
+man 1-9 echo (donat que hi ha 9 seccions)
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="5">
+        <text>
+man -all echo
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="100">
+        <text>
+man -a echo   
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="5">
+        <text>
+man -alo echo -p echo
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="0">
+        <text>
+No selecciono cap resposta
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+</question>
+
+
+
+<!-- question: 1822  -->
+  <question type="multichoice">
+    <name><text>ordres internes externes</text>
+</name>
+    <questiontext format="html">
+<text><![CDATA[Al bash es dona la següent situació:<br /><br /><span style="font-family: times new roman,times,serif; font-weight: bold;">[guillemPortes@LaVallDelSilici jocs]$ echo $PATH </span><br style="font-family: times new roman,times,serif; font-weight: bold;" /><span style="font-family: times new roman,times,serif; font-weight: bold;"> /usr/bin:/usr/local/bin:usr/sbin:opt/kde/bin </span><br style="font-family: times new roman,times,serif; font-weight: bold;" /><span style="font-family: times new roman,times,serif; font-weight: bold;"> [guillemPortes@LaVallDelSilici jocs]$ pwd </span><br style="font-family: times new roman,times,serif; font-weight: bold;" /><span style="font-family: times new roman,times,serif; font-weight: bold;"> /home/guillemPortes/jocs </span><br style="font-family: times new roman,times,serif; font-weight: bold;" /><span style="font-family: times new roman,times,serif; font-weight: bold;"> [guillemPortes@LaVallDelSilici jocs]$ ls </span><br style="font-family: times new roman,times,serif; font-weight: bold;" /><span style="font-family: times new roman,times,serif; font-weight: bold;"> joc1 joc2 joc3 </span><br style="font-family: times new roman,times,serif; font-weight: bold;" /><span style="font-family: times new roman,times,serif; font-weight: bold;"> [guillemPortes@LaVallDelSilici jocs]$ joc1 </span><br style="font-family: times new roman,times,serif; font-weight: bold;" /><span style="font-family: times new roman,times,serif; font-weight: bold;"> -bash: joc1: command not found </span><br /><br /> Que hem oblidat fer?<br /><br /><br /><br />]]></text>
+    </questiontext>
+    <image></image>
+    <generalfeedback>
+<text></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>.1</penalty>
+    <hidden>0</hidden>
+    <shuffleanswers>1</shuffleanswers>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <correctfeedback>      <text></text>
+</correctfeedback>
+    <partiallycorrectfeedback>      <text></text>
+</partiallycorrectfeedback>
+    <incorrectfeedback>      <text></text>
+</incorrectfeedback>
+    <answernumbering>none</answernumbering>
+      <answer fraction="100">
+        <text>
+Escriure ./joc1 en comptes de joc1 
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="5">
+        <text>
+Canviar al directori /home/guillemPortes
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="5">
+        <text>
+Fer unset de la variable PATH
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="5">
+        <text>
+El problema es que no té  permisos d'execució.
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="5">
+        <text>
+help güindous –novirusdream –nobluescreen –noreboot
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="0">
+        <text>
+No selecciono cap resposta
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+</question>
+
+
+
+<!-- question: 1835  -->
+  <question type="multichoice">
+    <name><text>whereis, type, which...</text>
+</name>
+    <questiontext format="html">
+<text>Vols trobar la trajectòria completa d'una certa ordre que es troba al path. Com ho faries?</text>
+    </questiontext>
+    <image></image>
+    <generalfeedback>
+<text></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>.1</penalty>
+    <hidden>0</hidden>
+    <shuffleanswers>1</shuffleanswers>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <correctfeedback>      <text></text>
+</correctfeedback>
+    <partiallycorrectfeedback>      <text></text>
+</partiallycorrectfeedback>
+    <incorrectfeedback>      <text></text>
+</incorrectfeedback>
+    <answernumbering>none</answernumbering>
+      <answer fraction="5">
+        <text>
+Utilitzant l'ordre where
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="5">
+        <text>
+Utilitzant l'ordre apropos
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="100">
+        <text>
+Utilitzant l'ordre which  
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="5">
+        <text>
+Utilitzant l'ordre path
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="5">
+        <text>
+Utilitzant l'ordre typefile
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="0">
+        <text>
+No selecciono cap resposta
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+</question>
+
+
+
+<!-- question: 1841  -->
+  <question type="multichoice">
+    <name><text>whereis, type, which... (II)</text>
+</name>
+    <questiontext format="html">
+<text>Quina ordre trobarà el programa “pwd” (per exemple) , les seves pàgines del man i fitxers font, en cas d'existir, però no tots els fitxers que tenen la paraula “pwd” al nom de l'ordre o al path?</text>
+    </questiontext>
+    <image></image>
+    <generalfeedback>
+<text></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>.1</penalty>
+    <hidden>0</hidden>
+    <shuffleanswers>1</shuffleanswers>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <correctfeedback>      <text></text>
+</correctfeedback>
+    <partiallycorrectfeedback>      <text></text>
+</partiallycorrectfeedback>
+    <incorrectfeedback>      <text></text>
+</incorrectfeedback>
+    <answernumbering>none</answernumbering>
+      <answer fraction="100">
+        <text>
+whereis
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="5">
+        <text>
+find
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="5">
+        <text>
+locate
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="5">
+        <text>
+apropos
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="5">
+        <text>
+whatis
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+      <answer fraction="0">
+        <text>
+No selecciono cap resposta
+        </text>
+      <feedback>
+          <text>
+
+          </text>
+      </feedback>
+    </answer>
+</question>
+
+
+</quiz>

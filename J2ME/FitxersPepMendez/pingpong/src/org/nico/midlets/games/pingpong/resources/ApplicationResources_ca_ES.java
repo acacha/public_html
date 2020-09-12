@@ -1,0 +1,57 @@
+package org.nico.midlets.games.pingpong.resources;
+
+import org.nico.midlets.resources.ListResourceBundle;
+
+/**
+ * <p>Title: </p>
+ * <p>Description: </p>
+ * <p>Comments: </p>
+ * <p>Date: </p>
+ * @author Pep Mendez
+ * @version 1.0
+ */
+
+
+public class ApplicationResources_ca_ES extends ListResourceBundle {
+
+  private Object[][] recursos = {
+      {"pantalla.principal.titulo", "Ping Pong"},
+      {"pantalla.creditos.titulo", "Crèdits"},
+      {"pantalla.configuracion.titulo", "Configuració"},
+      {"pantalla.reglas.titulo", "Regles del joc"},
+      {"pantalla.reglas.subtitulo", "blablabla"},
+      {"nivel.dificultad.1", "\tBàsic"},
+      {"nivel.dificultad.2", "\tIntermig"},
+      {"nivel.dificultad.3", "\tAvançat"},
+      {"pantalla.principal.menu.salir", "Sortir"},
+      {"pantalla.principal.menu.jugar", "Jogar"},
+      {"pantalla.principal.menu.pausa", "Pausa"},
+      {"pantalla.principal.menu.configuracion", "Configuració"},
+      {"pantalla.principal.menu.creditos", "Crèdits"},
+      {"pantalla.principal.menu.instrucciones", "Instruccions"},
+      {"pantalla.principal.etiqueta.jugador.1", "PDA"},
+      {"pantalla.principal.etiqueta.jugador.2", "Humà"},
+      {"pantalla.principal.etiqueta.final.juego", "Final de joc"},
+      {"pantalla.configuracion.menu.aceptar", "Acceptar"},
+      {"pantalla.configuracion.menu.cancelar", "Cancel·lar"},
+      {"pantalla.configuracion.etiqueta.selector.nivel", "Selector de nivell"},
+      {"pantalla.configuracion.etiqueta.nivel.seleccionado", "Nivell de joc seleccionat: "},
+      {"pantalla.configuracion.etiqueta.selector.pelotas", "Selector de número de pilotes"},
+      {"pantalla.configuracion.etiqueta.choice.reduccion.progresiva", "Reduir raquetes progresivament"},
+      {"pantalla.configuracion.etiqueta.choice.reduccion.seleccionada", "Reducció progressiva: "},
+      {"pantalla.configuracion.etiqueta.choice.reduccion.0", "Activada"},
+      {"pantalla.configuracion.etiqueta.choice.reduccion.1", "Desactivada"},
+      {"pantalla.configuracion.etiqueta.pelotas.seleccionadas", "Número de pilotes seleccionat: "},
+      {"tiempo.transcurrido", "Temps de joc: 00:00:00"},
+      {"etiqueta.tiempo.transcurrido", "Temps de joc: "},
+      {"url.fichero.creditos", "/org/nico/midlets/games/pingpong/credits/creditos_ca_ES.xml"},
+  };
+
+  /**
+   * getContents
+   * @return Object[][]
+   */
+  public Object[][] getContents() {
+    return recursos;
+  }
+}

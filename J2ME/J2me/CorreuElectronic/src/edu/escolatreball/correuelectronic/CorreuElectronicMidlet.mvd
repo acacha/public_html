@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MVDData version="1.2">
+    <DesignDocument designVersion="MIDP-2" uidCounter="72">
+        <DesignComponent id="$MobileDevice" typeid="MIDP:$MobileDevice" uid="0"/>
+        <DesignComponent id="$StartPoint" typeid="MIDP:$StartPoint" uid="1">
+            <Property name="targetDisplayable" value="splashScreenLogoEscolaTreball"/>
+            <Property name="targetForwardDisplayable"/>
+        </DesignComponent>
+        <DesignComponent id="FrmDadesCorreu" typeid="MIDP:javax.microedition.lcdui.Form" uid="2">
+            <ContainerProperty name="commands">
+                <ContainerPropertyItem value="$CommandAction1"/>
+                <ContainerPropertyItem value="$CommandAction2"/>
+            </ContainerProperty>
+            <ContainerProperty name="items">
+                <ContainerPropertyItem value="helloStringItem"/>
+                <ContainerPropertyItem value="txtFieldDestinatari"/>
+                <ContainerPropertyItem value="txtFieldTema1"/>
+                <ContainerPropertyItem value="imageItem1"/>
+                <ContainerPropertyItem value="spacer1"/>
+            </ContainerProperty>
+        </DesignComponent>
+        <DesignComponent id="helloStringItem" typeid="MIDP:javax.microedition.lcdui.StringItem" uid="4">
+            <Property name="label" value="STRING:Escolliu la persona a la que voleu enviar el missatge i el tema del missatge:"/>
+            <Property name="text" value="STRING:"/>
+            <ContainerProperty name="commands"/>
+        </DesignComponent>
+        <DesignComponent id="exitCommand" typeid="MIDP:javax.microedition.lcdui.Command" uid="5">
+            <Property name="label" value="STRING:Sortir"/>
+            <Property name="priority" value="1"/>
+            <Property name="type" value="EXIT"/>
+        </DesignComponent>
+        <DesignComponent id="splashScreenLogoEscolaTreball" typeid="MIDP-2:org.netbeans.microedition.lcdui.SplashScreen" uid="6">
+            <Property name="text" value="STRING:Correu Electr\u00F2nic"/>
+            <Property name="image" value="logoEscolaTreballPantallaInici"/>
+            <Property name="nextDisplayableAction" value="$InfoScreenAction1"/>
+            <Property name="title" value="STRING:Correu Electr\u00F2nic"/>
+            <Property name="ticker" value="TickerSplashScreen"/>
+            <ContainerProperty name="commands"/>
+        </DesignComponent>
+        <DesignComponent id="$InfoScreenAction1" typeid="MIDP:$InfoScreenAction" uid="7">
+            <Property name="actionType" value="1"/>
+            <Property name="targetDisplayable" value="LstMenu"/>
+            <Property name="targetForwardDisplayable"/>
+            <Property name="actionSource"/>
+            <Property name="actionOrigin" value="splashScreenLogoEscolaTreball"/>
+        </DesignComponent>
+        <DesignComponent id="LstMenu" typeid="MIDP:javax.microedition.lcdui.List" uid="9">
+            <Property name="choiceType" value="IMPLICIT"/>
+            <Property name="selectCommandAction" value="$SelectCommandAction1"/>
+            <Property name="indexBasedSwitch" value="true"/>
+            <ContainerProperty name="commands">
+                <ContainerPropertyItem value="$CommandAction4"/>
+            </ContainerProperty>
+            <ContainerProperty name="elements">
+                <ContainerPropertyItem value="Midp2ListElementDC1"/>
+                <ContainerPropertyItem value="Midp2ListElementDC2"/>
+                <ContainerPropertyItem value="Midp2ListElementDC3"/>
+            </ContainerProperty>
+        </DesignComponent>
+        <DesignComponent id="$SelectCommandAction1" typeid="MIDP:SelectCommandAction" uid="10">
+            <Property name="targetDisplayable"/>
+            <Property name="targetForwardDisplayable"/>
+            <Property name="actionOrigin" value="LstMenu"/>
+        </DesignComponent>
+        <DesignComponent id="Midp2ListElementDC1" typeid="MIDP:GROUP-org.netbeans.modules.mvd.model.midp2.Midp2ListElementDC" uid="11">
+            <Property name="string" value="STRING:Enviar missatge"/>
+            <Property name="image"/>
+            <Property name="selected" value="false"/>
+            <Property name="commandAction" value="$SelectCaseCommandAction1"/>
+        </DesignComponent>
+        <DesignComponent id="$SelectCaseCommandAction1" typeid="MIDP:SelectCaseCommandAction" uid="12">
+            <Property name="targetDisplayable" value="FrmDadesCorreu"/>
+            <Property name="targetForwardDisplayable" value="LstMenu"/>
+            <Property name="actionHolder" value="Midp2ListElementDC1"/>
+        </DesignComponent>
+        <DesignComponent id="Midp2ListElementDC2" typeid="MIDP:GROUP-org.netbeans.modules.mvd.model.midp2.Midp2ListElementDC" uid="13">
+            <Property name="string" value="STRING:Llegir missatges"/>
+            <Property name="image"/>
+            <Property name="selected" value="false"/>
+            <Property name="commandAction" value="$SelectCaseCommandAction2"/>
+        </DesignComponent>
+        <DesignComponent id="$SelectCaseCommandAction2" typeid="MIDP:SelectCaseCommandAction" uid="14">
+            <Property name="targetDisplayable" value="LstMissatges"/>
+            <Property name="targetForwardDisplayable"/>
+            <Property name="actionHolder" value="Midp2ListElementDC2"/>
+        </DesignComponent>
+        <DesignComponent id="Midp2ListElementDC3" typeid="MIDP:GROUP-org.netbeans.modules.mvd.model.midp2.Midp2ListElementDC" uid="15">
+            <Property name="string" value="STRING:Configurar"/>
+            <Property name="image"/>
+            <Property name="selected" value="false"/>
+            <Property name="commandAction" value="$SelectCaseCommandAction3"/>
+        </DesignComponent>
+        <DesignComponent id="$SelectCaseCommandAction3" typeid="MIDP:SelectCaseCommandAction" uid="16">
+            <Property name="targetDisplayable" value="alertOpcioNoImplementada"/>
+            <Property name="targetForwardDisplayable" value="LstMenu"/>
+            <Property name="actionHolder" value="Midp2ListElementDC3"/>
+        </DesignComponent>
+        <DesignComponent id="alertOpcioNoImplementada" typeid="MIDP:javax.microedition.lcdui.Alert" uid="17">
+            <Property name="title" value="STRING:Avis"/>
+            <ContainerProperty name="commands">
+                <ContainerPropertyItem value="$CommandAction11"/>
+            </ContainerProperty>
+            <Property name="string" value="STRING:Perdoneu les mol\u00E8sties per\u00F2 aquesta opci\u00F3 encara no esta implementada..."/>
+            <Property name="timeout" value="10000"/>
+            <Property name="type" value="INFO"/>
+            <Property name="image"/>
+        </DesignComponent>
+        <DesignComponent id="imageItem1" typeid="MIDP:javax.microedition.lcdui.ImageItem" uid="22">
+            <Property name="label" value="STRING: "/>
+            <Property name="altText"/>
+            <ContainerProperty name="commands"/>
+        </DesignComponent>
+        <DesignComponent id="txtFieldDestinatari" typeid="MIDP:javax.microedition.lcdui.TextField" uid="23">
+            <Property name="label" value="STRING:destinatari:"/>
+            <Property name="maxSize" value="120"/>
+            <Property name="constraints" value="1"/>
+            <ContainerProperty name="commands"/>
+        </DesignComponent>
+        <DesignComponent id="txtFieldTema1" typeid="MIDP:javax.microedition.lcdui.TextField" uid="24">
+            <Property name="label" value="STRING:tema:"/>
+            <Property name="maxSize" value="120"/>
+            <ContainerProperty name="commands"/>
+        </DesignComponent>
+        <DesignComponent id="spacer1" typeid="MIDP-2:javax.microedition.lcdui.Spacer" uid="25">
+            <Property name="minWidth" value="1000"/>
+            <Property name="minHeight" value="1"/>
+        </DesignComponent>
+        <DesignComponent id="cancelCommand1" typeid="MIDP:javax.microedition.lcdui.Command" uid="27">
+            <Property name="label" value="STRING:Cancel\u00B7lar"/>
+            <Property name="priority" value="1"/>
+            <Property name="type" value="CANCEL"/>
+        </DesignComponent>
+        <DesignComponent id="$CommandAction1" typeid="MIDP:CommandAction" uid="29">
+            <Property name="targetDisplayable" value="LstMenu"/>
+            <Property name="targetForwardDisplayable"/>
+            <Property name="actionSource" value="cancelCommand1"/>
+            <Property name="actionOrigin" value="FrmDadesCorreu"/>
+        </DesignComponent>
+        <DesignComponent id="CmdEscriureText" typeid="MIDP:javax.microedition.lcdui.Command" uid="30">
+            <Property name="label" value="STRING:Escriure"/>
+            <Property name="longLabel" value="STRING:Escriure Missatge"/>
+            <Property name="priority" value="1"/>
+            <Property name="type" value="SCREEN"/>
+        </DesignComponent>
+        <DesignComponent id="$CommandAction2" typeid="MIDP:CommandAction" uid="31">
+            <Property name="targetDisplayable" value="txtBoxMissatge"/>
+            <Property name="targetForwardDisplayable"/>
+            <Property name="actionSource" value="CmdEscriureText"/>
+            <Property name="actionOrigin" value="FrmDadesCorreu"/>
+        </DesignComponent>
+        <DesignComponent id="txtBoxMissatge" typeid="MIDP:javax.microedition.lcdui.TextBox" uid="32">
+            <Property name="title" value="STRING:Missatge Correu Electr\u00F2nic:"/>
+            <Property name="string" value="STRING:"/>
+            <Property name="maxSize" value="120"/>
+            <ContainerProperty name="commands">
+                <ContainerPropertyItem value="$CommandAction3"/>
+                <ContainerPropertyItem value="$CommandAction5"/>
+            </ContainerProperty>
+        </DesignComponent>
+        <DesignComponent id="EnviarMissatge" typeid="MIDP:javax.microedition.lcdui.Command" uid="33">
+            <Property name="label" value="STRING:Enviar"/>
+            <Property name="longLabel" value="STRING:Enviar Missatge"/>
+            <Property name="priority" value="1"/>
+            <Property name="type" value="OK"/>
+        </DesignComponent>
+        <DesignComponent id="$CommandAction3" typeid="MIDP:CommandAction" uid="34">
+            <Property name="targetDisplayable" value="waitScreenEnviantMissatge"/>
+            <Property name="targetForwardDisplayable"/>
+            <Property name="actionSource" value="EnviarMissatge"/>
+            <Property name="actionOrigin" value="txtBoxMissatge"/>
+        </DesignComponent>
+        <DesignComponent id="waitScreenEnviantMissatge" typeid="MIDP-2:org.netbeans.microedition.lcdui.WaitScreen" uid="35">
+            <Property name="failureAction" value="$InfoScreenAction3"/>
+            <Property name="task" value="Esperar"/>
+            <Property name="text" value="STRING:Enviant missatge ..."/>
+            <Property name="nextDisplayableAction" value="$InfoScreenAction2"/>
+            <Property name="title" value="STRING:Enviant missatge"/>
+            <ContainerProperty name="commands"/>
+        </DesignComponent>
+        <DesignComponent id="$InfoScreenAction2" typeid="MIDP:$InfoScreenAction" uid="36">
+            <Property name="actionType" value="1"/>
+            <Property name="targetDisplayable" value="alertOkEnviar"/>
+            <Property name="targetForwardDisplayable" value="LstMenu"/>
+            <Property name="actionSource"/>
+            <Property name="actionOrigin" value="waitScreenEnviantMissatge"/>
+        </DesignComponent>
+        <DesignComponent id="$InfoScreenAction3" typeid="MIDP:$InfoScreenAction" uid="37">
+            <Property name="actionType" value="2"/>
+            <Property name="targetDisplayable" value="alertErrorEnviar"/>
+            <Property name="targetForwardDisplayable" value="txtBoxMissatge"/>
+            <Property name="actionSource"/>
+            <Property name="actionOrigin" value="waitScreenEnviantMissatge"/>
+        </DesignComponent>
+        <DesignComponent id="alertErrorEnviar" typeid="MIDP:javax.microedition.lcdui.Alert" uid="38">
+            <ContainerProperty name="commands"/>
+            <Property name="string" value="STRING:No s\'ha pogut enviar el missatge! Torni-ho a intentar m\u00E9s tard"/>
+            <Property name="timeout" value="-2"/>
+            <Property name="type" value="INFO"/>
+            <Property name="image"/>
+        </DesignComponent>
+        <DesignComponent id="alertOkEnviar" typeid="MIDP:javax.microedition.lcdui.Alert" uid="39">
+            <ContainerProperty name="commands"/>
+            <Property name="string" value="STRING:Missatge Enviat Correctament!"/>
+            <Property name="timeout" value="-2"/>
+            <Property name="type" value="INFO"/>
+            <Property name="image"/>
+        </DesignComponent>
+        <DesignComponent id="Esperar" typeid="MIDP-2:org.netbeans.microedition.util.SimpleCancellableTask" uid="41">
+            <Property name="runnableMethodBody" value="synchronized (this) {\ntry {\n    wait(5000);\n} catch (InterruptedException ex) {\n    ex.printStackTrace();\n}\n}"/>
+        </DesignComponent>
+        <DesignComponent id="exitCommand1" typeid="MIDP:javax.microedition.lcdui.Command" uid="43">
+            <Property name="label" value="STRING:Exit"/>
+            <Property name="priority" value="1"/>
+            <Property name="type" value="EXIT"/>
+        </DesignComponent>
+        <DesignComponent id="okCommand1" typeid="MIDP:javax.microedition.lcdui.Command" uid="44">
+            <Property name="label" value="STRING:Ok"/>
+            <Property name="priority" value="1"/>
+            <Property name="type" value="OK"/>
+        </DesignComponent>
+        <DesignComponent id="$CommandAction4" typeid="MIDP:CommandAction" uid="45">
+            <Property name="targetDisplayable" value="$MobileDevice"/>
+            <Property name="targetForwardDisplayable"/>
+            <Property name="actionSource" value="exitCommand"/>
+            <Property name="actionOrigin" value="LstMenu"/>
+        </DesignComponent>
+        <DesignComponent id="$CommandAction5" typeid="MIDP:CommandAction" uid="47">
+            <Property name="targetDisplayable" value="LstMenu"/>
+            <Property name="targetForwardDisplayable"/>
+            <Property name="actionSource" value="cancelCommand1"/>
+            <Property name="actionOrigin" value="txtBoxMissatge"/>
+        </DesignComponent>
+        <DesignComponent id="LstMissatges" typeid="MIDP:javax.microedition.lcdui.List" uid="48">
+            <Property name="title" value="STRING:Missatges"/>
+            <Property name="choiceType" value="IMPLICIT"/>
+            <Property name="selectCommandAction" value="$SelectCommandAction2"/>
+            <Property name="indexBasedSwitch" value="true"/>
+            <ContainerProperty name="commands">
+                <ContainerPropertyItem value="$CommandAction8"/>
+            </ContainerProperty>
+            <ContainerProperty name="elements">
+                <ContainerPropertyItem value="Midp2ListElementDC4"/>
+                <ContainerPropertyItem value="Midp2ListElementDC5"/>
+                <ContainerPropertyItem value="Midp2ListElementDC6"/>
+            </ContainerProperty>
+        </DesignComponent>
+        <DesignComponent id="$SelectCommandAction2" typeid="MIDP:SelectCommandAction" uid="49">
+            <Property name="targetDisplayable"/>
+            <Property name="targetForwardDisplayable"/>
+            <Property name="actionOrigin" value="LstMissatges"/>
+        </DesignComponent>
+        <DesignComponent id="Midp2ListElementDC4" typeid="MIDP:GROUP-org.netbeans.modules.mvd.model.midp2.Midp2ListElementDC" uid="50">
+            <Property name="string" value="STRING:Missatge1"/>
+            <Property name="image"/>
+            <Property name="selected" value="false"/>
+            <Property name="commandAction" value="$SelectCaseCommandAction4"/>
+        </DesignComponent>
+        <DesignComponent id="$SelectCaseCommandAction4" typeid="MIDP:SelectCaseCommandAction" uid="51">
+            <Property name="targetDisplayable" value="frmMissatge"/>
+            <Property name="targetForwardDisplayable"/>
+            <Property name="actionHolder" value="Midp2ListElementDC4"/>
+        </DesignComponent>
+        <DesignComponent id="Midp2ListElementDC5" typeid="MIDP:GROUP-org.netbeans.modules.mvd.model.midp2.Midp2ListElementDC" uid="52">
+            <Property name="string" value="STRING:Missatge2"/>
+            <Property name="image"/>
+            <Property name="selected" value="false"/>
+            <Property name="commandAction" value="$SelectCaseCommandAction5"/>
+        </DesignComponent>
+        <DesignComponent id="$SelectCaseCommandAction5" typeid="MIDP:SelectCaseCommandAction" uid="53">
+            <Property name="targetDisplayable" value="frmMissatge"/>
+            <Property name="targetForwardDisplayable"/>
+            <Property name="actionHolder" value="Midp2ListElementDC5"/>
+        </DesignComponent>
+        <DesignComponent id="Midp2ListElementDC6" typeid="MIDP:GROUP-org.netbeans.modules.mvd.model.midp2.Midp2ListElementDC" uid="54">
+            <Property name="string" value="STRING:Missatge3"/>
+            <Property name="image"/>
+            <Property name="selected" value="false"/>
+            <Property name="commandAction" value="$SelectCaseCommandAction6"/>
+        </DesignComponent>
+        <DesignComponent id="$SelectCaseCommandAction6" typeid="MIDP:SelectCaseCommandAction" uid="55">
+            <Property name="targetDisplayable" value="frmMissatge"/>
+            <Property name="targetForwardDisplayable"/>
+            <Property name="actionHolder" value="Midp2ListElementDC6"/>
+        </DesignComponent>
+        <DesignComponent id="frmMissatge" typeid="MIDP:javax.microedition.lcdui.Form" uid="56">
+            <Property name="title" value="STRING:Missatge"/>
+            <ContainerProperty name="commands">
+                <ContainerPropertyItem value="$CommandAction6"/>
+                <ContainerPropertyItem value="$CommandAction7"/>
+            </ContainerProperty>
+            <ContainerProperty name="items">
+                <ContainerPropertyItem value="txtFieldDe"/>
+                <ContainerPropertyItem value="txtFieldTema"/>
+                <ContainerPropertyItem value="spacer2"/>
+                <ContainerPropertyItem value="dateField1"/>
+            </ContainerProperty>
+        </DesignComponent>
+        <DesignComponent id="txtFieldDe" typeid="MIDP:javax.microedition.lcdui.TextField" uid="57">
+            <Property name="label" value="STRING:de:"/>
+            <Property name="string" value="STRING:pepito@gmail.com"/>
+            <Property name="maxSize" value="120"/>
+            <Property name="constraints" value="1"/>
+            <ContainerProperty name="commands"/>
+        </DesignComponent>
+        <DesignComponent id="txtFieldTema" typeid="MIDP:javax.microedition.lcdui.TextField" uid="58">
+            <Property name="label" value="STRING:tema:"/>
+            <Property name="string" value="STRING:Hey coneixes gmail?"/>
+            <Property name="maxSize" value="120"/>
+            <ContainerProperty name="commands"/>
+        </DesignComponent>
+        <DesignComponent id="spacer2" typeid="MIDP-2:javax.microedition.lcdui.Spacer" uid="59">
+            <Property name="minWidth" value="1000"/>
+            <Property name="minHeight" value="1"/>
+        </DesignComponent>
+        <DesignComponent id="dateField1" typeid="MIDP:javax.microedition.lcdui.DateField" uid="60">
+            <Property name="label" value="STRING:Data:"/>
+            <Property name="inputMode" value="DATE_TIME"/>
+            <ContainerProperty name="commands"/>
+        </DesignComponent>
+        <DesignComponent id="CmdLlegirMissatge" typeid="MIDP:javax.microedition.lcdui.Command" uid="61">
+            <Property name="label" value="STRING:Llegir"/>
+            <Property name="priority" value="1"/>
+            <Property name="type" value="SCREEN"/>
+        </DesignComponent>
+        <DesignComponent id="$CommandAction6" typeid="MIDP:CommandAction" uid="62">
+            <Property name="targetDisplayable" value="LstMissatges"/>
+            <Property name="targetForwardDisplayable"/>
+            <Property name="actionSource" value="cancelCommand1"/>
+            <Property name="actionOrigin" value="frmMissatge"/>
+        </DesignComponent>
+        <DesignComponent id="$CommandAction7" typeid="MIDP:CommandAction" uid="63">
+            <Property name="targetDisplayable" value="txtBoxLlegirMissatge"/>
+            <Property name="targetForwardDisplayable"/>
+            <Property name="actionSource" value="CmdLlegirMissatge"/>
+            <Property name="actionOrigin" value="frmMissatge"/>
+        </DesignComponent>
+        <DesignComponent id="txtBoxLlegirMissatge" typeid="MIDP:javax.microedition.lcdui.TextBox" uid="64">
+            <Property name="title" value="STRING:Missatge correu Electr\u00F2nic:"/>
+            <Property name="string" value="STRING:Escolta avui he descobert gmail! \u00C9s una passada......."/>
+            <Property name="maxSize" value="120"/>
+            <ContainerProperty name="commands">
+                <ContainerPropertyItem value="$CommandAction9"/>
+                <ContainerPropertyItem value="$CommandAction10"/>
+            </ContainerProperty>
+        </DesignComponent>
+        <DesignComponent id="$CommandAction9" typeid="MIDP:CommandAction" uid="66">
+            <Property name="targetDisplayable" value="LstMissatges"/>
+            <Property name="targetForwardDisplayable"/>
+            <Property name="actionSource" value="okCommand1"/>
+            <Property name="actionOrigin" value="txtBoxLlegirMissatge"/>
+        </DesignComponent>
+        <DesignComponent id="$CommandAction8" typeid="MIDP:CommandAction" uid="67">
+            <Property name="targetDisplayable" value="LstMenu"/>
+            <Property name="targetForwardDisplayable"/>
+            <Property name="actionSource" value="cancelCommand1"/>
+            <Property name="actionOrigin" value="LstMissatges"/>
+        </DesignComponent>
+        <DesignComponent id="$CommandAction10" typeid="MIDP:CommandAction" uid="68">
+            <Property name="targetDisplayable" value="frmMissatge"/>
+            <Property name="targetForwardDisplayable"/>
+            <Property name="actionSource" value="cancelCommand1"/>
+            <Property name="actionOrigin" value="txtBoxLlegirMissatge"/>
+        </DesignComponent>
+        <DesignComponent id="$CommandAction11" typeid="MIDP:CommandAction" uid="69">
+            <Property name="targetDisplayable" value="LstMenu"/>
+            <Property name="targetForwardDisplayable"/>
+            <Property name="actionSource" value="okCommand1"/>
+            <Property name="actionOrigin" value="alertOpcioNoImplementada"/>
+        </DesignComponent>
+        <DesignComponent id="logoEscolaTreballPantallaInici" typeid="MIDP:javax.microedition.lcdui.Image" uid="70">
+            <Property name="imageResourcePath" value="/edu/escolatreball/correuelectronic/logoEscolaDeTreballMobil.gif"/>
+        </DesignComponent>
+        <DesignComponent id="TickerSplashScreen" typeid="MIDP:javax.microedition.lcdui.Ticker" uid="71">
+            <Property name="string" value="STRING:Exercici J2ME!"/>
+        </DesignComponent>
+    </DesignDocument>
+    <FlowDocument version="1.1">
+        <Node id="$MobileDevice" location="160,456" order=",$StartPoint,,,,,,,,,$ExitPoint,,,,,"/>
+        <Node id="FrmDadesCorreu" location="1016,248" order="$CommandAction1,$CommandAction2,,,,,,,,,$Default,,,,,"/>
+        <Node id="LstMenu" location="744,456" order="$SelectCaseCommandAction1,$SelectCaseCommandAction2,$SelectCaseCommandAction3,$CommandAction4,,,,,,,$Default,,,,,"/>
+        <Node id="waitScreenEnviantMissatge" location="1544,384" order="$InfoScreenAction2$ActionFlowPort$1,$InfoScreenAction3$ActionFlowPort$2,,,,,,,,,$Default,,,,,"/>
+        <Node id="LstMissatges" location="1016,456" order="$SelectCaseCommandAction4,$SelectCaseCommandAction5,$SelectCaseCommandAction6,$CommandAction8,,,,,,,$Default,,,,,"/>
+        <Node id="frmMissatge" location="1256,536" order="$CommandAction6,$CommandAction7,,,,,,,,,$Default,,,,,"/>
+        <Node id="txtBoxLlegirMissatge" location="1544,536" order="$CommandAction10,$CommandAction9,,,,,,,,,$Default,,,,,"/>
+        <Node id="txtBoxMissatge" location="1256,384" order="$CommandAction3,$CommandAction5,,,,,,,,,$Default,,,,,"/>
+        <Node id="alertErrorEnviar" location="1808,352" order=",,,,$InfoScreenAction3$Output,$InfoScreenAction3$Input,,,,,$Default,,,,,"/>
+        <Node id="alertOkEnviar" location="1808,568" order=",,,,$InfoScreenAction2$Output,$InfoScreenAction2$Input,,,,,$Default,,,,,"/>
+        <Node id="alertOpcioNoImplementada" location="1016,672" order="$CommandAction11,,,,$SelectCaseCommandAction3$Output,$SelectCaseCommandAction3$Input,,,,,$Default,,,,,"/>
+        <Node id="splashScreenLogoEscolaTreball" location="480,456" order="$InfoScreenAction1$ActionFlowPort$1,,,,,,,,,,$Default,,,,,"/>
+        <Link id="$StartPoint$ActionLink" path="200,432,440,432"/>
+        <Link id="$InfoScreenAction1$ActionLink" path="520,448,662,448,662,432,704,432"/>
+        <Link id="$SelectCaseCommandAction2$ActionLink" path="784,432,976,432"/>
+        <Link id="$SelectCaseCommandAction3$ActionLink" path="784,416,906,416,906,496,1024,496,1024,600"/>
+        <Link id="$CommandAction2$ActionLink" path="1056,224,1128,224,1128,360,1216,360"/>
+        <Link id="$CommandAction3$ActionLink" path="1296,376,1378,376,1378,360,1504,360"/>
+        <Link id="$InfoScreenAction2$ActionLink" path="1584,376,1680,376,1680,409,1816,409,1816,496"/>
+        <Link id="$InfoScreenAction3$ActionLink" path="1584,360,1703,360,1703,216,1816,216,1816,280"/>
+        <Link id="$CommandAction4$ActionLink" path="784,400,885,400,885,381,47,381,47,432,120,432"/>
+        <Link id="$CommandAction5$ActionLink" path="1296,360,1372,360,1372,305,662,305,662,432,704,432"/>
+        <Link id="$SelectCaseCommandAction4$ActionLink" path="1056,448,1131,448,1131,512,1216,512"/>
+        <Link id="$SelectCaseCommandAction5$ActionLink" path="1056,432,1131,432,1131,512,1216,512"/>
+        <Link id="$SelectCaseCommandAction6$ActionLink" path="1056,416,1131,416,1131,512,1216,512"/>
+        <Link id="$CommandAction6$ActionLink" path="1296,528,1385,528,1385,294,929,294,929,432,976,432"/>
+        <Link id="$CommandAction7$ActionLink" path="1296,512,1504,512"/>
+        <Link id="$CommandAction9$ActionLink" path="1584,512,1691,512,1691,294,929,294,929,432,976,432"/>
+        <Link id="$CommandAction8$ActionLink" path="1056,400,1156,400,1156,370,662,370,662,432,704,432"/>
+        <Link id="$CommandAction10$ActionLink" path="1584,528,1694,528,1694,571,1165,571,1165,512,1216,512"/>
+        <Link id="$CommandAction11$ActionLink" path="1056,664,1141,664,1141,487,662,487,662,432,704,432"/>
+        <Link id="$SelectCaseCommandAction3$ForwardLink" path="1040,600,1040,513,662,513,662,432,704,432"/>
+        <Link id="$InfoScreenAction2$ForwardLink" path="1832,496,1832,438,689,432,704,432"/>
+        <Link id="$InfoScreenAction3$ForwardLink" path="1832,280,1832,204,1154,204,1154,360,1216,360"/>
+        <Link id="$SelectCaseCommandAction1$ActionLink" path="784,448,895,448,895,224,976,224"/>
+        <Link id="$CommandAction1$ActionLink" path="1056,240,1136,240,1136,282,662,282,662,432,704,432"/>
+    </FlowDocument>
+    <ScreenDesigner version="1.0">
+        <CustomScreenSize height="320" width="240"/>
+    </ScreenDesigner>
+</MVDData>

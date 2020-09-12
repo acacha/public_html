@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.6.1058" />
+    <meta name="TEMPLATEBASE" content="book-w-index" />
+    <meta name="LASTUPDATED" content="10/27/04 10:15:26" />
+    <title>Working With Mobile 3D Graphics</title>
+    <link rel="StyleSheet" href="document.css" type="text/css" />
+    <link rel="StyleSheet" href="catalog.css" type="text/css" />
+    <link rel="Table of Contents" href="index.html" />
+    <link rel="Previous" href="mmapi.html" />
+    <link rel="Next" href="pdap.html" />
+    <link rel="Index" href="indexa.html" />
+  </head>
+
+  <body>
+
+    <table class="full-width" id="SummaryNotReq1"
+        cellspacing="0" cellpadding="0" border="0">
+	  <!-- formatting table -->
+      <tr><td class="sun-darkblue">&#160;</td></tr>
+      <tr><td class="sun-lightblue">&#160;</td></tr>
+    </table>
+    
+    <table class="full-width" id="SummaryNotReq2"
+        cellspacing="0" cellpadding="0" border="0">
+	  <!-- formatting table -->
+      <tr>
+        <td class="go-left">
+          <p class="nav-link">
+            <a accesskey="h" href="../../index.html">Documentation Home</a>
+            &gt;
+            <a accesskey="c" href="index.html"><i>User's Guide</i></a>
+            &gt;
+            Working With Mobile 3D Graphics
+          </p>
+        </td>
+        <td class="go-right">
+        <a accesskey="c" href="index.html">
+          <img id="LongDescNotReq1" src="images/toc.gif" border="0"
+            alt="Contents" /></a>
+	<a accesskey="p" href="mmapi.html">
+	  <img id="LongDescNotReq2" src="images/prev.gif" border="0"
+            alt="Previous" /></a>
+        <a accesskey="n" href="pdap.html">
+	  <img id="LongDescNotReq3" src="images/next.gif" border="0"
+            alt="Next" /></a>
+        <a accesskey="i" href="indexa.html">
+	  <img id="LongDescNotReq4" src="images/index.gif" border="0"
+            alt="Index" /></a>
+        </td>
+      </tr>
+    </table>
+
+<a name="wp25938"> </a><h2 class="pChapNum">
+Chapter &#160; 9
+</h2>
+<a name="wp24705"> </a><h2 class="pTitle">
+Working With Mobile 3D Graphics
+</h2>
+<hr />
+<a name="wp24706"> </a><p class="pBody">
+This chapter provides a brief overview of working with 3D graphics content.
+</p>
+<a name="wp24707"> </a><h2 class="pHeading1">
+9.1	JSR 184 Overview
+</h2>
+<a name="wp24708"> </a><p class="pBody">
+JSR 184 is a specification that defines the Mobile 3D Graphics (M3G) API for J2ME. This API provides 3D functionality in a compact package that&#8217;s appropriate for CLDC/MIDP devices. The API provides two methods for displaying 3D graphics content. The <em class="cEmphasis">immediate mode</em> API makes it possible for applications to directly create and manipulate 3D elements. Layered on top of this is a <em class="cEmphasis">scene graph</em> API, also called <em class="cEmphasis">retained mode</em>, that makes it possible to load and display entire 3D scenes that have been designed ahead of time. Applications are free to use whichever approach is most appropriate or to use a combination of the retained mode and immediate mode APIs. The JSR 184 specification also defines a file format (<code class="cCode">.m3g</code>) for scene graphs.
+</p>
+<a name="wp24709"> </a><p class="pBody">
+For more information, consult the JSR 184 specification:
+</p>
+<a name="wp24711"> </a><p class="pIndented1">
+<a  href="http://jcp.org/en/jsr/detail?id=184">http://jcp.org/en/jsr/detail?id=184</a>
+</p>
+<a name="wp24712"> </a><p class="pBody">
+JSR 184 provides a standard API for CLDC/MIDP devices, enabling a new generation of 3D applications. The immediate mode API, in turn, is compatible with OpenGL ES, a standard lightweight API for 3D graphics. See <a  href="http://khronos.org/">http://khronos.org/</a> for more information on OpenGL ES.
+</p>
+<a name="wp24714"> </a><h2 class="pHeading1">
+9.2	Immediate Mode
+</h2>
+<a name="wp24715"> </a><p class="pBody">
+Immediate mode is appropriate for applications that generate 3D graphics content algorithmically, like scientific visualizations or statistical graphs. The application creates 3D objects and manipulates them directly.
+</p>
+<a name="wp24716"> </a><p class="pBody">
+For an example of immediate mode, see the <code class="cCode">Life3D</code> MIDlet in the <code class="cCode">Demo3D</code> example application.
+</p>
+<a name="wp24717"> </a><h2 class="pHeading1">
+9.3	Retained Mode
+</h2>
+<a name="wp24718"> </a><p class="pBody">
+Most applications, particularly games, will use the retained mode or scene graph API. In this approach, a graphic designer or artist uses 3D modeling software to create a scene graph. The scene graph is saved in the JSR 184 file format. The scene graph file is bundled with the application. At runtime, the application uses the scene graph API to load and display the file.
+</p>
+<a name="wp24719"> </a><p class="pBody">
+Applications can manipulate parts of a loaded scene graph to animate characters or create other effects. The basic strategy is to do as much work as possible in the modeling software. At runtime, the application can grab and manipulate parts of the scene graph, which can also include paths for animation or other effects.
+</p>
+<a name="wp24720"> </a><p class="pBody">
+For an example of retained mode, see the <code class="cCode">retainedmode</code> MIDlet in the <code class="cCode">Demo3D</code> example application.
+</p>
+<a name="wp24721"> </a><h2 class="pHeading1">
+9.4	Trading Quality for Speed
+</h2>
+<a name="wp24722"> </a><p class="pBody">
+One of the challenges of MIDP development is the constrained environment of typical devices. Compared to desktop computers, MIDP devices have slow processors and little memory. These challenges extend into the arena of 3D graphics. To accomodate a wide variety of implementations, the JSR 184 specification provides various mechanisms to make the display of a 3D scene as efficient as possible.
+</p>
+<a name="wp24723"> </a><p class="pBody">
+One approach is <em class="cEmphasis">scoping</em>, a technique where you tell the 3D graphics implementation when objects are not going to interact with each other. For example, if you defined a scene graph for a house, you could use scoping to specify that the light in the basement doesn&#8217;t affect the appearance of the bedroom on the second floor. Scoping makes the implementation&#8217;s job easier by reducing the number of calculations required to show a scene.
+</p>
+<a name="wp24724"> </a><p class="pBody">
+In general, however, the best way to improve the rendering speed of 3D scenes is to make some compromises in quality. The Mobile 3D Graphics API includes <em class="cEmphasis">rendering hints</em> so that applications can suggest how the implementation can compromise quality to improve rendering speed.
+</p>
+<a name="wp24725"> </a><h2 class="pHeading1">
+9.5	Creating Mobile 3D Graphics Content
+</h2>
+<a name="wp24726"> </a><p class="pBody">
+Most mobile 3D applications will use scene graphs in resource files to describe objects, scenes, and characters. Usually it is not programmers but graphic designers or artists who create the scene graphs, using standard 3D modeling tools.
+</p>
+<a name="wp24727"> </a><p class="pBody">
+Several vendors offer tools for authoring content and converting files to the JSR 184 format. Superscape (<a  href="http://superscape.com/">http://superscape.com/</a>) is one such vendor.
+</p>
+<a name="wp24729"> </a><p class="pBody">
+Because it is relatively difficult to create and manipulate 3D graphics content in an application using the immediate mode API, most applications rely as much as possible on a scene graph file. By putting as much as possible into the scene graph file at design time, the application&#8217;s job at runtime will be considerably simplified.
+</p>
+<a name="wp24296"> </a><p class="pBody">
+
+</p>
+
+    <p>&#160;</p>
+    <hr class="pHr" />
+
+    <table class="full-width" id="SummaryNotReq3">
+	  <!-- formatting table -->
+      <tr>
+        <td class="go-left">
+          <a accesskey="c" href="index.html">
+            <img id="LongDescNotReq1" src="images/toc.gif" border="0"
+              alt="Contents" /></a>
+          <a accesskey="p" href="mmapi.html">
+            <img id="LongDescNotReq2" src="images/prev.gif" border="0"
+              alt="Previous" /></a>
+          <a accesskey="n" href="pdap.html">
+            <img id="LongDescNotReq3" src="images/next.gif" border="0"
+              alt="Next" /></a>
+          <a accesskey="i" href="indexa.html">
+            <img id="LongDescNotReq4" src="images/index.gif" border="0"
+              alt="Index" /></a>
+        </td>
+        <td class="go-right">
+          <span class="copyright">J2ME Wireless Toolkit User's Guide <br /> J2ME Wireless Toolkit 2.2</span>
+        </td>
+      </tr>
+    </table>
+
+    <p>&#160;</p>
+    <p class="copyright">
+      <a href="copyright.html">Copyright</a> &#169; 2004 Sun Microsystems, Inc. 
+      All rights reserved.
+      Use is subject to the <a href="../../BinaryLicense.html">license terms</a>.
+    </p>
+  </body>
+</html>

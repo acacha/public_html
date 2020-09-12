@@ -1,0 +1,101 @@
+package org.nico.midlets.games.pingpong.view;
+
+import javax.microedition.lcdui.Canvas;
+import org.nico.midlets.games.pingpong.interfaces.IPingPongConstants;
+import java.util.Timer;
+import javax.microedition.lcdui.Display;
+import java.io.IOException;
+import javax.microedition.lcdui.Image;
+import javax.microedition.lcdui.Displayable;
+import javax.microedition.lcdui.Graphics;
+import java.util.TimerTask;
+
+/**
+ * <p>Title: </p>
+ * <p>Description: </p>
+ * <p>Comments: </p>
+ * <p>Date: </p>
+ * @author Pep Mendez
+ * @version 1.0
+ */
+public class PingPongSplash
+    extends Canvas implements IPingPongConstants {
+  private Display display;
+  private Displayable next;
+  private Timer timer = new Timer();
+
+  /**
+   * Constructor
+   * @param display Display del Midlet
+   * @param next Displayable pantalla inicial
+   */
+  public PingPongSplash(Display display, Displayable next) {
+    this.display = display;
+    this.next = next;
+    display.setCurrent(this);
+  }
+
+  /**
+   * Aborta la intro
+   */
+  private void stopIntro() {
+    timer.cancel();
+    display.setCurrent(next);
+  }
+
+  /**
+   * Evento tecla pulsada
+   * @param keyCode int
+   */
+  protected void keyPressed(int keyCode) {
+    stopIntro();
+  }
+
+  /**
+   * Evento puntero pulsado
+   * @param x int
+   * @param y int
+   */
+  protected void pointerPressed(int x, int y) {
+    stopIntro();
+  }
+
+  /**
+   * Pinta la pantalla
+   * @param g Graphics
+   */
+  protected void paint(Graphics g) {
+    try {
+      Image image = Image.createImage(SPLASH_IMAGE_URL);
+      int dispWidth = getWidth();
+      int dispHeight = getHeight();
+      int x = (dispWidth - image.getWidth()) / 2;
+      int y = (dispHeight - image.getHeight()) / 2;
+      g.setColor(COLOR_WHITE);
+      g.fillRect(0, 0, dispWidth, dispHeight);
+      g.drawImage(image, x, y, Graphics.TOP | Graphics.LEFT);
+    }
+    catch (IOException ex) {
+    }
+  }
+
+  /**
+   * The showNotify() method is called prior to the Canvas
+   * actually being made visible on the display.
+   */
+  protected void showNotify() {
+    timer.schedule(new TimerTask() {
+      public void run() {
+        stopIntro();
+      }
+    }, DELAY_SPLASH);
+  }
+
+  /**
+   * The hideNotify() method is called after the Canvas
+   * has been removed from the display.
+   */
+  protected void hideNotify() {
+  }
+
+}

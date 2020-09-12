@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.6.1058" />
+    <meta name="TEMPLATEBASE" content="book-w-index" />
+    <meta name="LASTUPDATED" content="10/27/04 10:15:44" />
+    <title>Internationalization</title>
+    <link rel="StyleSheet" href="document.css" type="text/css" />
+    <link rel="StyleSheet" href="catalog.css" type="text/css" />
+    <link rel="Table of Contents" href="index.html" />
+    <link rel="Previous" href="commandline.html" />
+    <link rel="Next" href="indexa.html" />
+    <link rel="Index" href="indexa.html" />
+  </head>
+
+  <body>
+
+    <table class="full-width" id="SummaryNotReq1"
+        cellspacing="0" cellpadding="0" border="0">
+	  <!-- formatting table -->
+      <tr><td class="sun-darkblue">&#160;</td></tr>
+      <tr><td class="sun-lightblue">&#160;</td></tr>
+    </table>
+    
+    <table class="full-width" id="SummaryNotReq2"
+        cellspacing="0" cellpadding="0" border="0">
+	  <!-- formatting table -->
+      <tr>
+        <td class="go-left">
+          <p class="nav-link">
+            <a accesskey="h" href="../../index.html">Documentation Home</a>
+            &gt;
+            <a accesskey="c" href="index.html"><i>User's Guide</i></a>
+            &gt;
+            Internationalization
+          </p>
+        </td>
+        <td class="go-right">
+        <a accesskey="c" href="index.html">
+          <img id="LongDescNotReq1" src="images/toc.gif" border="0"
+            alt="Contents" /></a>
+	<a accesskey="p" href="commandline.html">
+	  <img id="LongDescNotReq2" src="images/prev.gif" border="0"
+            alt="Previous" /></a>
+        <a accesskey="n" href="indexa.html">
+	  <img id="LongDescNotReq3" src="images/next.gif" border="0"
+            alt="Next" /></a>
+        <a accesskey="i" href="indexa.html">
+	  <img id="LongDescNotReq4" src="images/index.gif" border="0"
+            alt="Index" /></a>
+        </td>
+      </tr>
+    </table>
+
+<a name="wp25872"> </a><h2 class="pAppxNum">
+Appendix &#160; C
+</h2>
+<a name="wp6947"> </a><h2 class="pTitle">
+Internationalization
+</h2>
+<hr />
+<a name="wp22338"> </a><p class="pBody">
+This appendix describes setting the language displayed in the J2ME Wireless Toolkit and the localization setting of the emulation environment.
+</p>
+<a name="wp22834"> </a><h2 class="pHeading1">
+C.1	Locale Setting
+</h2>
+<a name="wp22835"> </a><p class="pBody">
+A locale is a geographic or political region or community that shares the same language, customs, or cultural conventions. In software, a locale is represented by a collection of files, data, and code, which contains the information necessary to adapt software to a specific location. 
+</p>
+<a name="wp22836"> </a><p class="pBody">
+Some software uses a locale to tailor information for users, such as:
+</p>
+<ul class="pBullet1"><a name="wp22837"> </a><div class="pBullet1"><li>Messages displayed to the user</li></div>
+<a name="wp22838"> </a><div class="pBullet1Last"><li>Fonts used or other writing-specific information</li></div>
+</ul>
+<a name="wp22839"> </a><p class="pBody">
+By default, all KToolbar strings, that is, the entire User Interface (UI), are displayed in the language of the supported platform&#8217;s locale.
+</p>
+<a name="wp23654"> </a><p class="pBody">
+For example, Japanese characters can be displayed in KToolbar running on a Japanese Windows machine, provided that the correct localized J2ME Wireless Toolkit has been downloaded and installed.
+</p>
+<a name="wp22919"> </a><p class="pBody">
+You can set the <code class="cCode">wtk.locale</code> property to have the KToolbar displayed in a specified locale&#8217;s language. For example, you can have the toolkit running on a Japanese machine but still have the KToolbar display shown in English by setting the locale property to <code class="cCode">en-US</code>, and making sure that the proper supplement has been downloaded and installed over the J2ME Wireless Toolkit. The <code class="cCode">wtk.locale</code> property should be placed in the <em class="cEmphasis">{toolkit}</em><code class="cCode">\wtklib\</code><em class="cEmphasis">{platform}</em><code class="cCode">\ktools.properties</code> file, where <em class="cEmphasis">{platform}</em> is the name of the underlying platform (<code class="cCode">Windows</code> or <code class="cCode">Linux</code>, for example). 
+</p>
+<a name="wp22327"> </a><h2 class="pHeading1">
+C.2	Emulated Locale
+</h2>
+<a name="wp22561"> </a><p class="pBody">
+The <code class="cCode">microedition.locale</code> property is the MIDP system property that defines the current locale of the device, which is <code class="cCode">null</code> by default. For the J2ME Wireless Toolkit emulator, this value is automatically set to the default locale for the J2SE environment you are running. For example:
+</p>
+<ul class="pBullet1"><a name="wp22562"> </a><div class="pBullet1"><li>If you are running in an English system in the US, the <code class="cCode">microedition.locale</code> is set to <code class="cCode">en-US</code>.</li></div>
+<a name="wp22563"> </a><div class="pBullet1Last"><li>If you are running in a French system, the <code class="cCode">microedition.locale</code> is set to  <code class="cCode">fr-FR</code>. </li></div>
+</ul>
+<a name="wp22564"> </a><p class="pBody">
+For information on <code class="cCode">microedition.locale</code>, consult the MIDP specification.
+</p>
+<a name="wp22790"> </a><p class="pBody">
+You can override the default value by adding the <code class="cCode">microedition.locale </code>property to the file <em class="cEmphasis">{toolkit}</em><code class="cCode">\wtklib\</code><em class="cEmphasis">{platform}</em><code class="cCode">\ktools.properties</code> file and define the property as desired, as shown in the following examples:
+</p>
+<div class="pPreformatted"><pre class="pPreformatted">
+microedition.locale=en-US<a name="wp22791"> </a>
+microedition.locale=null<a name="wp22997"> </a>
+</pre></div>
+<a name="wp22895"> </a><p class="pBody">
+For details on setting a default locale, see the <em class="cEmphasis">J2ME Wireless Toolkit Basic Customization Guide.</em>
+</p>
+<a name="wp22792"> </a><h2 class="pHeading1">
+C.3	Character Encodings
+</h2>
+<a name="wp22357"> </a><p class="pBody">
+The CLDC system property, <code class="cCode">microedition.encoding,</code> defines the default character encoding name of the MIDP environment. In the J2ME Wireless Toolkit emulator, this property is set according to the underlying window system you are using. The property&#8217;s value is set to the default encoding for the J2SE environment running on the same window system. For example, in an English window system, the encoding setting is
+</p>
+<div class="pPreformatted"><pre class="pPreformatted">
+microedition.encoding=ISO8859_1<a name="wp22767"> </a>
+</pre></div>
+<a name="wp22731"> </a><p class="pBody">
+You can override the default value by adding the <code class="cCode">microedition.encoding </code>property to the <em class="cEmphasis">{toolkit}</em><code class="cCode">\wtklib\</code><em class="cEmphasis">{platform}</em><code class="cCode">\ktools.properties</code> file. For example, if you want to use UTF-8 as the default setting on Windows, you can set the property in the <em class="cEmphasis">{toolkit}</em><code class="cCode">\wtklib\Windows\ktools.properties</code> file as follows:
+</p>
+<div class="pPreformatted"><pre class="pPreformatted">
+microedition.encoding=UTF-8<a name="wp22777"> </a>
+</pre></div>
+<a name="wp22775"> </a><p class="pBody">
+For more information on character encoding, see the CLDC specification.
+</p>
+<hr class="pHr"/><div class="note">
+<a name="wp22734"> </a>
+<b>Note &#8211;</b>  All the J2SE encoders are available in the emulated environment. See the <em class="cEmphasis">J2ME Wireless Toolkit Basic Customization Guide</em> for information on how to limit the list of available encoders for a specific device.
+<hr class="pHr"/></div>
+<a name="wp23008"> </a><h3 class="pHeading2">
+C.3.1	Java Compiler Encoding Setting
+</h3>
+<a name="wp23050"> </a><p class="pBody">
+The <code class="cCode">javac.encoding</code> property determines the encoding used by the javac compiler to compile your source files. The property&#8217;s value is set to the default encoding for the J2SE environment running on the same window system. 
+</p>
+<a name="wp26104"> </a><p class="pBody">
+You can override the default value by adding the <code class="cCode">javac.encoding</code> property to the <em class="cEmphasis">{toolkit}</em><code class="cCode">\wtklib\</code><em class="cEmphasis">{platform}</em><code class="cCode">\ktools.properties</code> file, where {platform} is the name of the underlying platform, like <code class="cCode">Windows</code> or <code class="cCode">Linux</code>. For example, if you are running in an English system but find you need to compile a Japanese resource bundle, you can specify a Japanese character set, such as:
+</p>
+<div class="pPreformatted"><pre class="pPreformatted">
+javac.encoding=EUCJIS<a name="wp23053"> </a>
+</pre></div>
+<a name="wp23031"> </a><h2 class="pHeading1">
+C.4	Font Support in the Default Emulator
+</h2>
+<a name="wp22805"> </a><p class="pBody">
+The default fonts that are used in the emulated environment are set according to the underlying window system locale. By default, the MIDP environment fonts are mapped to the default J2SE environment Java fonts. These fonts usually support all the characters that are required by the current window&#8217;s locale.
+</p>
+<a name="wp21992"> </a><p class="pBody">
+You can override these fonts to support other characters that are not supported by the default fonts. See the <em class="cEmphasis">J2ME Wireless Toolkit Basic Customization Guide</em> for information on how to configure them.
+</p>
+
+    <p>&#160;</p>
+    <hr class="pHr" />
+
+    <table class="full-width" id="SummaryNotReq3">
+	  <!-- formatting table -->
+      <tr>
+        <td class="go-left">
+          <a accesskey="c" href="index.html">
+            <img id="LongDescNotReq1" src="images/toc.gif" border="0"
+              alt="Contents" /></a>
+          <a accesskey="p" href="commandline.html">
+            <img id="LongDescNotReq2" src="images/prev.gif" border="0"
+              alt="Previous" /></a>
+          <a accesskey="n" href="indexa.html">
+            <img id="LongDescNotReq3" src="images/next.gif" border="0"
+              alt="Next" /></a>
+          <a accesskey="i" href="indexa.html">
+            <img id="LongDescNotReq4" src="images/index.gif" border="0"
+              alt="Index" /></a>
+        </td>
+        <td class="go-right">
+          <span class="copyright">J2ME Wireless Toolkit User's Guide <br /> J2ME Wireless Toolkit 2.2</span>
+        </td>
+      </tr>
+    </table>
+
+    <p>&#160;</p>
+    <p class="copyright">
+      <a href="copyright.html">Copyright</a> &#169; 2004 Sun Microsystems, Inc. 
+      All rights reserved.
+      Use is subject to the <a href="../../BinaryLicense.html">license terms</a>.
+    </p>
+  </body>
+</html>

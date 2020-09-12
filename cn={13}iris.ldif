@@ -1,0 +1,85 @@
+dn: cn={3}iris
+objectClass: olcSchemaConfig
+cn: {3}iris
+olcAttributeTypes: {0}( 1.3.6.1.4.1.7547.4.3.2.1 NAME ( 'idnc' 'irisDnComp' ) 
+ EQUALITY caseIgnoreIA5Match SUBSTR caseIgnoreIA5SubstringsMatch SYNTAX 1.3.6.
+ 1.4.1.1466.115.121.1.26 SINGLE-VALUE )
+olcAttributeTypes: {1}( 1.3.6.1.4.1.7547.4.3.2.2 NAME 'sn1' EQUALITY caseIgnor
+ eMatch SUBSTR caseIgnoreSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{
+ 1024} )
+olcAttributeTypes: {2}( 1.3.6.1.4.1.7547.4.3.2.3 NAME 'sn2' EQUALITY caseIgnor
+ eMatch SUBSTR caseIgnoreSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{
+ 1024} )
+olcAttributeTypes: {3}( 1.3.6.1.4.1.7547.4.3.2.4 NAME 'digitalCertificate' DES
+ C 'RFC2256: X.509 certificate, use ;binary' EQUALITY certificateExactMatch SY
+ NTAX 1.3.6.1.4.1.1466.115.121.1.8 )
+olcAttributeTypes: {4}( 1.3.6.1.4.1.7547.4.3.2.5 NAME 'irisPersonalTitle' DESC
+  'RFC1274: personal title' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstrin
+ gsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{256} )
+olcAttributeTypes: {5}( 1.3.6.1.4.1.7547.4.3.2.6 NAME 'irisPersonalUniqueID' D
+ ESC 'Unique identifier for an object' EQUALITY caseIgnoreMatch SUBSTR caseIgn
+ oreSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{256} SINGLE-VALUE )
+olcAttributeTypes: {6}( 1.3.6.1.4.1.7547.4.3.2.7 NAME 'irisUserEntitlement' DE
+ SC 'Used to store a set of rights to resources' EQUALITY caseIgnoreMatch SUBS
+ TR caseIgnoreSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {7}( 1.3.6.1.4.1.7547.4.3.2.8 NAME 'irisMailHost' DESC 'ful
+ ly-qualified hostname of the MTA that is the final SMTP destination of messag
+ es to this recipient' EQUALITY caseIgnoreIA5Match SYNTAX 1.3.6.1.4.1.1466.115
+ .121.1.26{256} SINGLE-VALUE )
+olcAttributeTypes: {8}( 1.3.6.1.4.1.7547.4.3.2.9 NAME 'irisMailRoutingAddress'
+  DESC 'RFC822 address to use when routing messages to the SMTP MTA of this re
+ cipient' EQUALITY caseIgnoreIA5Match SUBSTR caseIgnoreIA5SubstringsMatch SYNT
+ AX 1.3.6.1.4.1.1466.115.121.1.26{256} SINGLE-VALUE )
+olcAttributeTypes: {9}( 1.3.6.1.4.1.7547.4.3.2.10 NAME 'irisMailbox' DESC 'Fin
+ al destination for mail (for Courier-imap setup)' EQUALITY caseIgnoreIA5Match
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26{256} SINGLE-VALUE )
+olcAttributeTypes: {10}( 1.3.6.1.4.1.7547.4.3.2.11 NAME 'irisUserPrivateAttrib
+ ute' DESC 'Set of denied access attributes' EQUALITY caseIgnoreIA5Match SUBST
+ R caseIgnoreSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.26{256} )
+olcAttributeTypes: {11}( 1.3.6.1.4.1.7547.4.3.2.12 NAME 'irisMailMainAddress' 
+ DESC 'preferred RFC822 email address of this recipient' EQUALITY caseIgnoreIA
+ 5Match SUBSTR caseIgnoreIA5SubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.
+ 26{256} SINGLE-VALUE )
+olcAttributeTypes: {12}( 1.3.6.1.4.1.7547.4.3.2.13 NAME 'irisMailAlternateAddr
+ ess' DESC 'alternate RFC822 email address of this recipient' EQUALITY caseIgn
+ oreIA5Match SUBSTR caseIgnoreIA5SubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.1
+ 21.1.26{256} )
+olcAttributeTypes: {13}( 1.3.6.1.4.1.7547.4.3.2.14 NAME 'irisUserStatus' DESC 
+ 'Used to store a set of user status' EQUALITY caseIgnoreMatch SUBSTR caseIgno
+ reSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {14}( 1.3.6.1.4.1.7547.4.3.2.15 NAME 'irisUserPresenceID' D
+ ESC 'Used to store a set of values related to the network presence' EQUALITY 
+ caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.
+ 121.1.15 )
+olcAttributeTypes: {15}( 1.3.6.1.4.1.7547.4.3.2.16 NAME 'irisClassifCode' DESC
+  'Used to store a set of values related to the object classification' EQUALIT
+ Y caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.11
+ 5.121.1.15 )
+olcObjectClasses: {0}( 1.3.6.1.4.1.7547.4.3.1.1 NAME 'irisObject' DESC 'Generi
+ c object within the IRIS community' SUP top AUXILIARY MAY ( idnc $ irisClassi
+ fCode ) )
+olcObjectClasses: {1}( 1.3.6.1.4.1.7547.4.3.1.2 NAME 'irisPerson' DESC 'Person
+ s inside the IRIS community' SUP top AUXILIARY MAY ( sn1 $ sn2 $ irisPersonal
+ Title $ irisPersonalUniqueID $ irisUserEntitlement $ irisUserPrivateAttribute
+  $ irisUserStatus $ irisMailHost $ irisMailRoutingAddress $ irisMailbox $ iri
+ sMailMainAddress $ irisMailAlternateAddress $ irisUserPresenceID $ irisClassi
+ fCode ) )
+olcObjectClasses: {2}( 1.3.6.1.4.1.7547.4.3.1.3 NAME 'irisInetEntity' DESC 'Ob
+ ject holding an electronic identity' SUP top AUXILIARY MAY ( cn $ description
+  $ mail $ digitalCertificate $ ipHostNumber $ irisUserEntitlement $ irisUserP
+ rivateAttribute $ irisUserStatus $ irisMailHost $ irisMailRoutingAddress $ ir
+ isMailbox $ irisMailMainAddress $ irisMailAlternateAddress $ irisUserPresence
+ ID $ irisClassifCode ) )
+olcObjectClasses: {3}( 1.3.6.1.4.1.7547.4.3.1.4 NAME 'irisInetEntityStr' DESC 
+ 'Object holding an electronic identity' SUP top STRUCTURAL MAY ( cn $ descrip
+ tion $ mail $ digitalCertificate $ ipHostNumber $ irisUserEntitlement $ irisU
+ serPrivateAttribute $ irisUserStatus $ irisMailHost $ irisMailRoutingAddress 
+ $ irisMailbox $ irisMailMainAddress $ irisMailAlternateAddress $ irisUserPres
+ enceID $ irisClassifCode ) )
+structuralObjectClass: olcSchemaConfig
+entryUUID: e54dedce-05d6-102f-9420-cd182b402e4a
+creatorsName: cn=config
+createTimestamp: 20100606164710Z
+entryCSN: 20100606164710.860820Z#000000#000#000000
+modifiersName: cn=config
+modifyTimestamp: 20100606164710Z

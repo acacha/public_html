@@ -1,0 +1,12 @@
+package org.nico.midlets.games.pingpong.model;
+
+/**
+ * <p>Title: </p>
+ * <p>Description: </p>
+ * <p>Comments: </p>
+ * <p>Date: </p>
+ * @author Pep Mendez
+ * @version 1.0
+ */
+public class PingPongConfig {
+}

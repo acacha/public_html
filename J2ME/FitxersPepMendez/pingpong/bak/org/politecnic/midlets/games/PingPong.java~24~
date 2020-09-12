@@ -1,0 +1,104 @@
+package org.politecnic.midlets.games;
+
+import javax.microedition.lcdui.Display;
+import javax.microedition.midlet.MIDlet;
+import javax.microedition.media.Player;
+import javax.microedition.media.Manager;
+import javax.microedition.media.protocol.DataSource;
+import java.io.InputStream;
+import javax.microedition.media.control.ToneControl;
+
+/**
+ * <p>Title: Ping Pong Game </p>
+ * <p>Description: Ping pong interactivo para dispositivos moviles</p>
+ * <p>Comments: CLDL 1.1 MIDP 2.0</p>
+ * <p>Media Supported Protocols: device, http, file and capture</p>
+ * <p>Supported Content Type: audio/x-tone-seq, audio/x-wav, audio/midi, audio/sp_midi, image/gif, video/mpeg and video/vnd.sun.rgb565
+ * <p>Date: 12/03/06 </p>
+ * @author Pep Mendez
+ * @version 1.0
+ */
+public class PingPong extends MIDlet {
+  private static PingPong instance;
+  private PingPongTable displayable = new PingPongTable();
+  public PingPong() {
+    instance = this;
+  }
+
+  public void startApp() {
+    Display.getDisplay(this).setCurrent(displayable);
+    new Thread() {
+      public void run() {
+        try {
+          final String url = "/org/politecnic/midlets/games/pingponggame.wav";
+          InputStream is = this.getClass().getResourceAsStream(url);
+          Player p = Manager.createPlayer(is, "audio/x-wav");
+          p.start();
+        }
+        catch (Exception ex) {
+          ex.printStackTrace();
+        }
+      }
+    }.start();
+    new Thread() {
+      public void run() {
+        byte[] melodia = {
+            ToneControl.VERSION,1,
+            ToneControl.TEMPO,22,
+            ToneControl.BLOCK_START,0,
+            60, 8,62, 4,64, 4,65, 4,67, 4,69, 4,71,4,
+            72, 4,74, 4,76, 4,77, 4,79, 4,81, 4,83, 4,84, 4,
+            83, 4,81, 4,80, 4,81, 4,86, 4,84, 4,83, 4,81, 4,
+            81, 4,79, 4,78, 4,79, 4,60, 4,79, 4,88, 4,79, 4,
+            57, 4,77, 4,88, 4,77, 4,59, 4,77, 4,86, 4,77, 4,
+            56, 4,76, 4,86, 4,76, 4,57, 4,76, 4,84, 4,76, 4,
+            53, 4,74, 4,84, 4,74, 4,55, 4,74, 4,83, 4,74, 4,
+            84,16,ToneControl.SILENCE,16,
+            ToneControl.BLOCK_END,0,
+            ToneControl.BLOCK_START,1,
+            79, 4,84, 4,88, 4,86, 4,84, 4,83, 4,81, 4,79, 4,
+            77, 4,76, 4,74, 4,72, 4,71, 4,69, 4,67, 4,65, 4,
+            64, 8,76, 8,77, 8,78, 8,
+            79,12,76, 4,74, 8,ToneControl.SILENCE, 8,
+            ToneControl.BLOCK_END,1,
+            ToneControl.SET_VOLUME,100,ToneControl.PLAY_BLOCK,0,
+            ToneControl.SET_VOLUME, 50,ToneControl.PLAY_BLOCK,0,
+            ToneControl.SET_VOLUME,100,ToneControl.PLAY_BLOCK,1,
+            ToneControl.SET_VOLUME, 50,ToneControl.PLAY_BLOCK,1,
+            ToneControl.SET_VOLUME,100,ToneControl.PLAY_BLOCK,0,
+        };
+        try {
+          Player player = Manager.createPlayer(Manager.TONE_DEVICE_LOCATOR);
+          // inicializacion y acaparacion de recursos
+          player.realize();
+          // obtenemos control para reproducir secuencias
+          ToneControl control = (ToneControl)player.getControl("ToneControl");
+          // asignamos la melodia a reproducir
+          control.setSequence(melodia);
+          // suena la melodia
+          player.start();
+        }
+        catch (Exception ex) {
+          ex.printStackTrace();
+        }
+      }
+    }.start();
+  }
+
+  public void pauseApp() {
+  }
+
+  public void destroyApp(boolean unconditional) {
+  }
+
+  public static void quitApp() {
+    instance.destroyApp(true);
+    instance.notifyDestroyed();
+    instance = null;
+  }
+
+  public static PingPong getInstance() {
+    return instance;
+  }
+
+}

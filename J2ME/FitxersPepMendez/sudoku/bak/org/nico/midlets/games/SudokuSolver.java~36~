@@ -1,0 +1,454 @@
+package org.nico.midlets.games;
+
+import java.util.Random;
+import java.util.Vector;
+import java.util.*;
+
+/**
+ * <p>Title: Sudoku</p>
+ * <p>Description: Juego japones</p>
+ * <p>Comments: Version recursiva</p>
+ * <p>Date: 06/07/06</p>
+ * <p>Last update: 07/08/06</p>
+ * @author Pep Mendez
+ */
+public class SudokuSolver implements ISudokuConstants {
+
+  public static boolean isSolveableByForceByRows(int x, int y, int[][] cells) {
+    /*
+         x == 9 y y == 9, ya hemos rellenado la matriz
+     */
+    if (y == ROWS) {
+      y ^= y; // xor with itself sets to 0
+      if (++x == COLS) {
+        return true;
+      }
+    }
+    /*
+         si hay un valor fijado, pasa a la siguiente x
+     */
+    if (cells[x][y] != EMPTY) { // skip filled cells
+      return isSolveableByForceByRows(x, y + 1, cells);
+    }
+    /*
+         prueba todos los valores posibles en cada celda hasta que uno encaja
+     y si llega a una incongruencia vuelve atrás
+     */
+    for (int val = 1; val <= MAX_VAL; ++val) {
+      if (isLegal(x, y, val, cells)) {
+        cells[x][y] = val;
+        if (isSolveableByForceByRows(x, y + 1, cells)) {
+          return true;
+        }
+      }
+    }
+    cells[x][y] = EMPTY; // reset on backtrack
+    return false;
+  }
+
+  public static boolean isSolveableByForceByRowsReverse(int x, int y, int[][] cells) {
+    /*
+         x == 9 y y == 9, ya hemos rellenado la matriz
+     */
+    if (y == 0) {
+      y = ROWS - 1; // start again
+      if (--x == 0) {
+        return true;
+      }
+    }
+    /*
+         si hay un valor fijado, pasa a la siguiente x
+     */
+    if (cells[x][y] != EMPTY) { // skip filled cells
+      return isSolveableByForceByRowsReverse(x, y - 1, cells);
+    }
+    /*
+         prueba todos los valores posibles en cada celda hasta que uno encaja
+     y si llega a una incongruencia vuelve atrás
+     */
+    for (int val = 1; val <= MAX_VAL; ++val) {
+      if (isLegal(x, y, val, cells)) {
+        cells[x][y] = val;
+        if (isSolveableByForceByRowsReverse(x, y - 1, cells)) {
+          return true;
+        }
+      }
+    }
+    cells[x][y] = EMPTY; // reset on backtrack
+    return false;
+  }
+
+  public static boolean isSolveableByForceByColumns(int x, int y, int[][] cells) {
+    /*
+         x == 9 y y == 9, ya hemos rellenado la matriz
+     */
+    if (x == COLS) {
+      x ^= x; // xor with itself sets to 0
+      if (++y == ROWS) {
+        return true;
+      }
+    }
+    /*
+         si hay un valor fijado, pasa a la siguiente x
+     */
+    if (cells[x][y] != EMPTY) { // skip filled cells
+      return isSolveableByForceByColumns(x + 1, y, cells);
+    }
+    /*
+         prueba todos los valores posibles en cada celda hasta que uno encaja
+     y si llega a una incongruencia vuelve atrás
+     */
+    for (int val = 1; val <= MAX_VAL; ++val) {
+      if (isLegal(x, y, val, cells)) {
+        cells[x][y] = val;
+        if (isSolveableByForceByColumns(x + 1, y, cells)) { // siguiente columna
+          return true;
+        }
+      }
+    }
+    cells[x][y] = EMPTY; // reset on backtrack
+    return false;
+  }
+
+  public static boolean isSolveableByForce(int x, int y, int[][] cells) {
+     return isSolveableByForceByRowsReverse(COLS - 1, ROWS - 1, cells);
+  }
+
+  /**
+   * Checks if a value already exists on the matrix
+   * @param i int (0-8)
+   * @param j int (0-8)
+   * @param val int (1-9)
+   * @param cells int[][]
+   * @return boolean
+   */
+  private static boolean isLegal(int i, int j, int val, int[][] cells) {
+    /* revisa las filas y columnas */
+    for (int k = 0; k < ROWS; ++k) {
+      if (val == cells[k][j] /* filas */ || val == cells[i][k] /* cols */) {
+        return false;
+      }
+    }
+    /* revisa cada submatriz de 3x3 */
+    int boxRowOffset = (i / 3) * 3;
+    int boxColOffset = (j / 3) * 3;
+    for (int k = 0; k < 3; ++k) { // box
+      for (int m = 0; m < 3; ++m) {
+        if (val == cells[boxRowOffset + k][boxColOffset + m]) {
+          return false;
+        }
+      }
+    }
+
+    return true; // no violations, so it's legal
+  }
+
+  /**
+   * Checks game consistency according to soduko's rules
+   * @param cells int[][]
+   * @return boolean
+   */
+  public static boolean isConsistent(int[][] cells) {
+    /* revisa las filas */
+    for (int i = 0; i < ROWS; i++) {
+      for (int j = 0; j < COLS; j++) {
+        int val = cells[i][j];
+        if (val != EMPTY) {
+          for (int k = 0; k < ROWS; k++) {
+            if (val == cells[k][j] && k != i) {
+              return false;
+            }
+          }
+        }
+      }
+    }
+    /* revisa las cols */
+    for (int i = 0; i < ROWS; i++) {
+      for (int j = 0; j < COLS; j++) {
+        int val = cells[i][j];
+        if (val != EMPTY) {
+          for (int k = 0; k < COLS; k++) {
+            if (val == cells[i][k] && k != j) {
+              return false;
+            }
+          }
+        }
+      }
+    }
+    /* revisa cada submatriz de 3x3 */
+    for (int i = 0; i < ROWS; i++) {
+      for (int j = 0; j < COLS; j++) {
+        int val = cells[i][j];
+        if (val != EMPTY) {
+          int boxRowOffset = (i / 3) * 3; // 0,3,6
+          int boxColOffset = (j / 3) * 3; // 0,3,6
+          for (int k = 0; k < 3; ++k) { // box
+            for (int m = 0; m < 3; ++m) {
+              int fila = boxRowOffset + k;
+              int col = boxColOffset + m;
+              if (val == cells[fila][col] && i != boxRowOffset + k &&
+                  j != boxColOffset + m) {
+                return false;
+              }
+            }
+          }
+        }
+      }
+    }
+    return true;
+  }
+
+  /**
+   * Antes de mirar si es legal, mira que la casilla este vacia
+   * @param i int
+   * @param j int
+   * @param val int
+   * @param cells int[][]
+   * @return boolean
+   */
+  static boolean isLegalWithEmptyCheck(int i, int j, int val, int[][] cells) {
+    /* esta ya ocupado el sitio? */
+    if (cells[i][j] != EMPTY) {
+      return false;
+    }
+    /* revisa las filas y columnas */
+    for (int k = 0; k < ROWS; ++k) {
+      if (val == cells[k][j] /* filas */ || val == cells[i][k] /* cols */) {
+        return false;
+      }
+    }
+    /* revisa cada submatriz de 3x3 */
+    int boxRowOffset = (i / 3) * 3;
+    int boxColOffset = (j / 3) * 3;
+    for (int k = 0; k < 3; ++k) { // box
+      for (int m = 0; m < 3; ++m) {
+        if (val == cells[boxRowOffset + k][boxColOffset + m]) {
+          return false;
+        }
+      }
+    }
+
+    return true; // no violations, so it's legal
+  }
+
+  /**
+   * pasa un array de cadenas a un problema sudoku
+   * 036 177 222 234 288 348 357 385 419 421 458 463 496 518 524 547 552 591  649 673 687 735 786 843 868 871
+   * @param args String[]
+   * @return int[][]
+   */
+  public static int[][] parseProblem(String[] args) {
+
+    int[][] problem = new int[ROWS][COLS]; // default 0 vals
+    /*
+      los argumentos son de la fomra xyv,
+     x es la fila (0-8),
+     y la columna (0-8),
+     v el valor (1-9)
+     */
+
+    for (int n = 0; n < args.length; ++n) {
+      int i = Integer.parseInt(args[n].substring(0, 1));
+      int j = Integer.parseInt(args[n].substring(1, 2));
+      int val = Integer.parseInt(args[n].substring(2, 3));
+      problem[i][j] = val;
+    }
+    return problem;
+  }
+
+  /**
+   * Intenta colocar RANDOM_NUMBERS numeros en el tablero
+   * de forma que tenga solucion
+   * @param level int
+   * @param seed int
+   * @return SudokuGen
+   */
+  public static SudokuGen newGame(int level, int seed) {
+//    final int RANDOM_NUMBERS = 10; // un numero bajo para que no se enrede !!!
+    SudokuGen sudokuGen = null;
+    int[][] problem = null;
+    int[][] sol = null;
+    boolean[][] gen = null;
+    Random r = new Random();
+    do {
+      problem = new int[ROWS][COLS];
+      sol = new int[ROWS][COLS];
+      gen = new boolean[][] {
+          {
+          true, true, true, true, true, true, true, true, true}, {
+          true, true, true, true, true, true, true, true, true}, {
+          true, true, true, true, true, true, true, true, true}, {
+          true, true, true, true, true, true, true, true, true}, {
+          true, true, true, true, true, true, true, true, true}, {
+          true, true, true, true, true, true, true, true, true}, {
+          true, true, true, true, true, true, true, true, true}, {
+          true, true, true, true, true, true, true, true, true}, {
+          true, true, true, true, true, true, true, true, true}
+      };
+      // para seed submatrices, la 1, 5, 9 sin interacciones entre ellas
+      for (int k = 0; k < seed; k++) {
+        // las lleno con nueve numeros
+        for (int n = 0; n < 9; ) {
+          int i = r.nextInt(3); // 0-3
+          int j = r.nextInt(3); // 0-3
+          i += (k * 3);
+          j += (k * 3);
+          int val = r.nextInt(MAX_VAL) + 1; // 1-9
+          if (isLegalWithEmptyCheck(i, j, val, sol)) {
+            sol[i][j] = val;
+            ++n;
+          }
+        }
+      }
+    }
+    // después de puestos comprueba que tenga solución
+    // no todos los sudokus tienen solucion
+    while (!isSolveableByForce(0, 0, sol));
+    // copia la solucion en problema
+    for (int i = 0; i < ROWS; i++) {
+      System.arraycopy(sol[i], 0, problem[i], 0, sol[i].length);
+    }
+    // cantidad de numeros a quitar
+    // 5, ant+4, ant+5, ant+6...
+    final int[] nums = {
+        5, 9, 14, 20, 27, 35, 44, 54, 65, 77};
+    // elimino unas cuantas casillas del problema
+    // y las añado al vector de pistas
+    // para fuutras consultas
+    Vector hints = new Vector(nums[level - 1]);
+    for (int k = 0; k < nums[level - 1]; ) {
+      int i = r.nextInt(ROWS);
+      int j = r.nextInt(COLS);
+      if (problem[i][j] != EMPTY) {
+        // el orden es col, fila
+        hints.addElement(new SudokuHint(j + 1, i + 1, problem[i][j]));
+        problem[i][j] = EMPTY;
+        gen[i][j] = false;
+        ++k;
+      }
+    }
+    sudokuGen = new SudokuGen(problem, sol, gen, hints);
+    return sudokuGen;
+  }
+
+  private static Vector shuffle(Vector v) {
+    v.trimToSize();
+    Vector ret = new Vector(v.size());
+    // shuffle
+    Random rnd = new Random();
+    int size = v.size();
+    // aux contiene Integers [0..size - 1] en orden aleatorio sin repeticion
+    Vector aux = new Vector(size);
+    for (int i = 0; i < size; ) {
+      int n = rnd.nextInt(size);
+      Integer obj = new Integer(n);
+      if (!aux.contains(obj)) {
+        aux.addElement(obj);
+        i++;
+      }
+    }
+    // ret contiene los elementos de v mezclados
+    for (int i = 0; i < size; i++) {
+      int pos = ((Integer)aux.elementAt(i)).intValue();
+      ret.addElement((SudokuHint)v.elementAt(pos));
+    }
+    return ret;
+  }
+
+  /**
+   * Genera un nuevo juego a partir de la partida actual
+   * Se llama desde plantear
+   * @param problem int[][]
+   * @return SudokuGen
+   */
+  public static SudokuGen newGame(int[][] problem) {
+    SudokuGen sudokuGen = null;
+    int[][] sol = new int[ROWS][COLS];
+    boolean[][] gen = new boolean[][] {
+        {
+        true, true, true, true, true, true, true, true, true}, {
+        true, true, true, true, true, true, true, true, true}, {
+        true, true, true, true, true, true, true, true, true}, {
+        true, true, true, true, true, true, true, true, true}, {
+        true, true, true, true, true, true, true, true, true}, {
+        true, true, true, true, true, true, true, true, true}, {
+        true, true, true, true, true, true, true, true, true}, {
+        true, true, true, true, true, true, true, true, true}, {
+        true, true, true, true, true, true, true, true, true}
+    };
+
+    // copio problema en sol
+    for (int i = 0; i < ROWS; i++) {
+      System.arraycopy(problem[i], 0, sol[i], 0, problem[i].length);
+    }
+    // resuelvo problema
+    if (!isSolveableByForce(0, 0, sol)) {
+      return null;
+    }
+    // relleno el vector de pistas
+    Vector hints = new Vector(CELLS);
+    for (int i = 0; i < ROWS; i++) {
+      for (int j = 0; j < COLS; j++) {
+        if (problem[i][j] == EMPTY) {
+          // el orden es col, fila
+          hints.addElement(new SudokuHint(j + 1, i + 1, sol[i][j]));
+          // false indica que no ha sido generada en el problema, debe ser resuelta
+          gen[i][j] = false;
+        }
+      }
+    }
+    // barajo el vector de pistas para que no salgan en orden col, fila
+    hints = shuffle(hints);
+    sudokuGen = new SudokuGen(problem, sol, gen, hints);
+    return sudokuGen;
+  }
+
+  public static boolean isEmptyBoard(int[][] cells) {
+    boolean empty = true;
+
+    for (int i = 0; i < ROWS; i++) {
+      for (int j = 0; j < COLS; j++) {
+        if (cells[i][j] != EMPTY) {
+          empty = false;
+          break;
+        }
+      }
+    }
+    return empty;
+  }
+
+  public static boolean isFullBoard(int[][] cells) {
+    boolean full = true;
+
+    for (int i = 0; i < ROWS; i++) {
+      for (int j = 0; j < COLS; j++) {
+        if (cells[i][j] == EMPTY) {
+          full = false;
+          break;
+        }
+      }
+    }
+    return full;
+  }
+
+  /**
+   * cells es la solucion generada y matrix la propuesta
+   * @param cells int[][]
+   * @param matrix int[][]
+   * @return Vector
+   */
+  public static Vector revisar(int[][] cells, int[][] matrix) {
+    Vector ret = new Vector();
+
+    for (int i = 0; i < ROWS; i++) {
+      for (int j = 0; j < COLS; j++) {
+        if (matrix[i][j] != EMPTY) {
+          if (cells[i][j] != matrix[i][j]) {
+            ret.addElement(new SudokuHint(j+1, i+1, cells[i][j]));
+          }
+        }
+      }
+    }
+    return ret;
+  }
+}

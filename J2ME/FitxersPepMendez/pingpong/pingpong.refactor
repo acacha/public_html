@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refactor PUBLIC "-//Borland Software Corporation//Refactor 1.0//EN" "http://www.borland.com/devsupport/jbuilder/dtds/refactor_1_0.dtd">
+
+<refactor>
+  <rename-class id="6AP0ZRYVUFTETS6F4TLFK8Z" creation-time="Wed Oct 18 16:07:03.423 BST 2006">
+    <old-class-name>org.politecnic.midlets.games.PingPongTable</old-class-name>
+    <new-class-name>org.nico.midlets.games.pingpong.view.PingPongTable</new-class-name>
+  </rename-class>
+  <rename-class id="5AP0ZRYVUFTETS6F4TLFK8Z" creation-time="Wed Oct 18 16:08:18.071 BST 2006">
+    <old-class-name>org.politecnic.midlets.games.PingPong</old-class-name>
+    <new-class-name>org.nico.midlets.games.pingpong.controller.PingPong</new-class-name>
+  </rename-class>
+  <rename-class id="4AP0ZRYVUFTETS6F4TLFK8Z" creation-time="Wed Oct 18 16:11:29.245 BST 2006">
+    <old-class-name>org.politecnic.midlets.games.MyEventHandler</old-class-name>
+    <new-class-name>org.nico.midlets.games.pingpong.controller.MyEventHandler</new-class-name>
+  </rename-class>
+  <rename-class id="G8P0ZRYVUFTETS6F4TLFK8Z" creation-time="Wed Oct 18 18:48:48.478 BST 2006">
+    <old-class-name>org.nico.midlets.games.pingpong.view.PingPongTable</old-class-name>
+    <new-class-name>org.nico.midlets.games.pingpong.view.PingPongDisplay</new-class-name>
+  </rename-class>
+</refactor>
+

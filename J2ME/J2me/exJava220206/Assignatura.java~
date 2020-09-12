@@ -1,0 +1,21 @@
+public class Asignatura {
+	private String id;
+	private double nota;
+	
+	public Asignatura(String id) {
+		this.id = id;
+	}
+	
+	public String getId() {
+		return id;
+	}
+	public double getNota() {
+		return nota;
+	}
+	public void setNota(double nota) {
+		this.nota = nota;
+	}
+	public String toString() {
+		return "Asignatura: " + id  + ", " + "Nota: " + nota;
+	}
+}

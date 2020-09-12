@@ -1,0 +1,1250 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.6.1058" />
+    <meta name="TEMPLATEBASE" content="book-w-index" />
+    <meta name="LASTUPDATED" content="10/27/04 10:15:30" />
+    <title>Application Demonstrations</title>
+    <link rel="StyleSheet" href="document.css" type="text/css" />
+    <link rel="StyleSheet" href="catalog.css" type="text/css" />
+    <link rel="Table of Contents" href="index.html" />
+    <link rel="Previous" href="webservices.html" />
+    <link rel="Next" href="commandline.html" />
+    <link rel="Index" href="indexa.html" />
+  </head>
+
+  <body>
+
+    <table class="full-width" id="SummaryNotReq1"
+        cellspacing="0" cellpadding="0" border="0">
+	  <!-- formatting table -->
+      <tr><td class="sun-darkblue">&#160;</td></tr>
+      <tr><td class="sun-lightblue">&#160;</td></tr>
+    </table>
+    
+    <table class="full-width" id="SummaryNotReq2"
+        cellspacing="0" cellpadding="0" border="0">
+	  <!-- formatting table -->
+      <tr>
+        <td class="go-left">
+          <p class="nav-link">
+            <a accesskey="h" href="../../index.html">Documentation Home</a>
+            &gt;
+            <a accesskey="c" href="index.html"><i>User's Guide</i></a>
+            &gt;
+            Application Demonstrations
+          </p>
+        </td>
+        <td class="go-right">
+        <a accesskey="c" href="index.html">
+          <img id="LongDescNotReq1" src="images/toc.gif" border="0"
+            alt="Contents" /></a>
+	<a accesskey="p" href="webservices.html">
+	  <img id="LongDescNotReq2" src="images/prev.gif" border="0"
+            alt="Previous" /></a>
+        <a accesskey="n" href="commandline.html">
+	  <img id="LongDescNotReq3" src="images/next.gif" border="0"
+            alt="Next" /></a>
+        <a accesskey="i" href="indexa.html">
+	  <img id="LongDescNotReq4" src="images/index.gif" border="0"
+            alt="Index" /></a>
+        </td>
+      </tr>
+    </table>
+
+<a name="wp44531"> </a><h2 class="pAppxNum">
+Appendix &#160; A
+</h2>
+<a name="wp35208"> </a><h2 class="pTitle">
+Application Demonstrations
+</h2>
+<hr />
+<a name="wp23245"> </a><p class="pBody">
+This appendix describes the application demonstrations that are bundled with the J2ME Wireless Toolkit.
+</p>
+<a name="wp32236"> </a><h2 class="pHeading1">
+A.1	Overview
+</h2>
+<a name="wp32249"> </a><p class="pBody">
+The J2ME Wireless Toolkit includes demonstration applications that highlight some of the technologies and APIs that are supported by the emulator.
+</p>
+<a name="wp32251"> </a><p class="pBody">
+The following table lists all the demonstration applications that are included in this release. The demonstrations that are new or enhanced in this release are marked with <span class="cRed">new</span>.
+</p>
+<a name="wp32253"> </a><p class="pBody">
+The goal of these demonstrations is to give you a glimpse of the API features of the emulator and the enhancements throughout the toolkit.
+</p>
+<a name="wp32374"> </a><p class="pBody">
+Most demonstration applications are simple to run. The next section contains instructions for running most demonstrations. Demonstrations that have additional documentation are linked in the table below.
+</p>
+<a name="wp36618"> </a><p class="pBody">
+The source code for every demonstration application is available in the <em class="cEmphasis">{toolkit}</em><code class="cCode">\apps</code> directory. Subdirectories contain projects, and each project has a <code class="cCode">src</code> directory that contains Java source code. For example, if the toolkit is installed in <code class="cCode">\WTK22</code>, the source code for the SMS sender MIDlet (<code class="cCode">example.sms.SMSSend</code>) in <code class="cCode">WMADemo</code> is contained in <code class="cCode">\WTK22\apps\WMADemo\src\example\sms\SMSSend.java</code>.</p><div align="left">
+<table border="0" cellpadding="7" summary="Application demonstrations" id="wp46765">
+  <caption><a name="wp46765"> </a><div class="pTableCaption">
+TABLE&#160;8&#160;&#160;&#8211;&#160;&#160;Application demonstrations
+</div>
+</caption>
+<thead>
+<tr >    <th  class="sun-verylightblue" scope="col"><a name="wp46775"> </a><div class="pTableHead">
+&#160;
+</div>
+
+</th>
+    <th  class="sun-verylightblue" scope="col"><a name="wp46777"> </a><div class="pTableHead">
+Demonstration
+</div>
+
+</th>
+    <th  class="sun-verylightblue" scope="col"><a name="wp46779"> </a><div class="pTableHead">
+APIs
+</div>
+
+</th>
+    <th  class="sun-verylightblue" scope="col"><a name="wp46781"> </a><div class="pTableHead">
+Description
+</div>
+
+</th>
+    <th  class="sun-verylightblue" scope="col"><a name="wp46783"> </a><div class="pTableHead">
+Special Instructions
+</div>
+
+</th>
+</tr>
+</thead>
+  <tr>    <td><a name="wp46809"> </a><div class="pTableText">
+&#160;
+</div>
+</td>
+    <td><a name="wp46811"> </a><div class="pTableText">
+Audiodemo
+</div>
+</td>
+    <td><a name="wp46813"> </a><div class="pTableText">
+MMAPI 1.1
+</div>
+</td>
+    <td><a name="wp46815"> </a><div class="pTableText">
+Demonstrates audio capabilities, including mixing and playing audio with an animation
+</div>
+</td>
+    <td><a name="wp46817"> </a><div class="pTableText">
+&#160;
+</div>
+<a name="wp46818"> </a><div class="pTableText">
+&#160;
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp46834"> </a><div class="pTableText">
+<span class="cRed">new</span>
+</div>
+</td>
+    <td><a name="wp46836"> </a><div class="pTableText">
+BluetoothDemo
+</div>
+</td>
+    <td><a name="wp46838"> </a><div class="pTableText">
+JSR 82 Bluetooth
+</div>
+</td>
+    <td><a name="wp46840"> </a><div class="pTableText">
+Demonstrates device discovery and data exchange using Bluetooth
+</div>
+</td>
+    <td><a name="wp46845"> </a><div class="pTableText">
+<a  href="demonstrations.html#wp44659"><span class="cZ_Xref">Section&#160;A.3</span></a>
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp46847"> </a><div class="pTableText">
+&#160;
+</div>
+</td>
+    <td><a name="wp46849"> </a><div class="pTableText">
+Demo3D
+</div>
+</td>
+    <td><a name="wp46851"> </a><div class="pTableText">
+JSR 184 Mobile 3D Graphics
+</div>
+</td>
+    <td><a name="wp46853"> </a><div class="pTableText">
+Contains MIDlets that demonstrate how to use 3D graphics, both immediate mode and retained mode
+</div>
+</td>
+    <td><a name="wp46858"> </a><div class="pTableText">
+<a  href="demonstrations.html#wp34651"><span class="cZ_Xref">Section&#160;A.4</span></a>
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp46860"> </a><div class="pTableText">
+&#160;
+</div>
+</td>
+    <td><a name="wp46862"> </a><div class="pTableText">
+Demos
+</div>
+</td>
+    <td><a name="wp46864"> </a><div class="pTableText">
+MIDP 2.0
+</div>
+</td>
+    <td><a name="wp46866"> </a><div class="pTableText">
+Includes various examples: animation, color, networking, finance, and others
+</div>
+</td>
+    <td><a name="wp46868"> </a><div class="pTableText">
+&#160;
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp46870"> </a><div class="pTableText">
+&#160;
+</div>
+</td>
+    <td><a name="wp46872"> </a><div class="pTableText">
+FPDemo
+</div>
+</td>
+    <td><a name="wp46874"> </a><div class="pTableText">
+CLDC 1.1
+</div>
+</td>
+    <td><a name="wp46876"> </a><div class="pTableText">
+Simple floating point calculator
+</div>
+</td>
+    <td><a name="wp46878"> </a><div class="pTableText">
+&#160;
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp46880"> </a><div class="pTableText">
+&#160;
+</div>
+</td>
+    <td><a name="wp46882"> </a><div class="pTableText">
+Games
+</div>
+</td>
+    <td><a name="wp46884"> </a><div class="pTableText">
+MIDP 2.0
+</div>
+</td>
+    <td><a name="wp46886"> </a><div class="pTableText">
+Includes <code class="cCode">TilePuzzle</code>, <code class="cCode">WormGame</code>, and <code class="cCode">PushPuzzle</code>
+</div>
+</td>
+    <td><a name="wp46888"> </a><div class="pTableText">
+&#160;
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp46890"> </a><div class="pTableText">
+&#160;
+</div>
+</td>
+    <td><a name="wp46892"> </a><div class="pTableText">
+JSR172Demo
+</div>
+</td>
+    <td><a name="wp46894"> </a><div class="pTableText">
+Web services
+</div>
+</td>
+    <td><a name="wp46896"> </a><div class="pTableText">
+Demonstrates how to use the JSR 172 API to connect to a web service from a MIDlet
+</div>
+</td>
+    <td><a name="wp46901"> </a><div class="pTableText">
+<a  href="demonstrations.html#wp44833"><span class="cZ_Xref">Section&#160;A.5</span></a>
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp46903"> </a><div class="pTableText">
+<span class="cRed">new</span>
+</div>
+</td>
+    <td><a name="wp46905"> </a><div class="pTableText">
+mmademo
+</div>
+</td>
+    <td><a name="wp46907"> </a><div class="pTableText">
+MMAPI 1.1
+</div>
+</td>
+    <td><a name="wp46909"> </a><div class="pTableText">
+Demonstrates MMAPI features, including tone sequences, MIDI playback, sampled audio playback, and video
+</div>
+</td>
+    <td><a name="wp46914"> </a><div class="pTableText">
+<a  href="demonstrations.html#wp33489"><span class="cZ_Xref">Section&#160;A.6</span></a>
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp46916"> </a><div class="pTableText">
+&#160;
+</div>
+</td>
+    <td><a name="wp46918"> </a><div class="pTableText">
+NetworkDemo
+</div>
+</td>
+    <td><a name="wp46920"> </a><div class="pTableText">
+MIDP 2.0
+</div>
+</td>
+    <td><a name="wp46922"> </a><div class="pTableText">
+Shows how to use datagrams and serial connections
+</div>
+</td>
+    <td><a name="wp46924"> </a><div class="pTableText">
+&#160;
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp46926"> </a><div class="pTableText">
+<span class="cRed">new</span>
+</div>
+</td>
+    <td><a name="wp46928"> </a><div class="pTableText">
+ObexDemo
+</div>
+</td>
+    <td><a name="wp46930"> </a><div class="pTableText">
+JSR 82 OBEX
+</div>
+</td>
+    <td><a name="wp46932"> </a><div class="pTableText">
+Demonstrates transferring data using OBEX over IrDA
+</div>
+</td>
+    <td><a name="wp46937"> </a><div class="pTableText">
+<a  href="demonstrations.html#wp34164"><span class="cZ_Xref">Section&#160;A.7</span></a>
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp46939"> </a><div class="pTableText">
+<span class="cRed">new</span>
+</div>
+</td>
+    <td><a name="wp46941"> </a><div class="pTableText">
+PDAPDemo
+</div>
+</td>
+    <td><a name="wp46943"> </a><div class="pTableText">
+JSR 75 PIM and FileConnection
+</div>
+</td>
+    <td><a name="wp46945"> </a><div class="pTableText">
+Shows how to manipulate contacts, calendar items, and to-do items. Demonstrates accessing local files.
+</div>
+</td>
+    <td><a name="wp46950"> </a><div class="pTableText">
+<a  href="demonstrations.html#wp33522"><span class="cZ_Xref">Section&#160;A.8</span></a>
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp46952"> </a><div class="pTableText">
+&#160;
+</div>
+</td>
+    <td><a name="wp46954"> </a><div class="pTableText">
+Photoalbum
+</div>
+</td>
+    <td><a name="wp46956"> </a><div class="pTableText">
+MIDP 2.0
+</div>
+</td>
+    <td><a name="wp46958"> </a><div class="pTableText">
+Demonstrates a variety of image formats
+</div>
+</td>
+    <td><a name="wp46960"> </a><div class="pTableText">
+&#160;
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp46975"> </a><div class="pTableText">
+&#160;
+</div>
+</td>
+    <td><a name="wp46977"> </a><div class="pTableText">
+UIDemo
+</div>
+</td>
+    <td><a name="wp46979"> </a><div class="pTableText">
+MIDP 2.0
+</div>
+</td>
+    <td><a name="wp46981"> </a><div class="pTableText">
+Showcases the breadth of MIDP 2.0&#39;s user interface capabilities
+</div>
+</td>
+    <td><a name="wp46983"> </a><div class="pTableText">
+&#160;
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp46985"> </a><div class="pTableText">
+<span class="cRed">new</span>
+</div>
+</td>
+    <td><a name="wp46987"> </a><div class="pTableText">
+WMADemo
+</div>
+</td>
+    <td><a name="wp46989"> </a><div class="pTableText">
+WMA 2.0
+</div>
+</td>
+    <td><a name="wp46991"> </a><div class="pTableText">
+Shows how to send and receive SMS, and CBS, and MMS messages
+</div>
+</td>
+    <td><a name="wp46996"> </a><div class="pTableText">
+<a  href="demonstrations.html#wp33008"><span class="cZ_Xref">Section&#160;A.9</span></a>
+</div>
+</td>
+</tr>
+<tr><td colspan="15"><hr class="pTableHr" /></td></tr>
+</table>
+</div>
+<p class="pBody">
+
+</p>
+<a name="wp36804"> </a><h2 class="pHeading1">
+A.2	General Instructions
+</h2>
+<a name="wp36805"> </a><p class="pBody">
+It&#39;s usually very simple to run one of the demonstration applications. This section describes the general procedure. More detailed instructions for specific demonstrations are referenced in the table above.
+</p>
+<a name="wp32808"> </a><p class="pBody">
+The first step is to run KToolbar. To do this, go to the Windows Start menu and choose <b class="cBold">Start &gt; Programs &gt; J2ME Wireless Toolkit 2.2 &gt; KToolbar</b>. The KToolbar window pops up:
+</p>
+<a name="wp32837"> </a><div class="pFigureCaption">
+FIGURE&#160;40&#160;&#160;&#8211;&#160;&#160;KToolbar
+<br /><br />
+</div><a name="wp44598"> </a><p class="pBody">
+<img src="images/ktoolbar22.gif" alt="KToolbar" border="0" hspace="0" vspace="0"/>
+</p>
+<a name="wp32887"> </a><p class="pBody">
+Click on the <b class="cBold">Open Project...</b> button to open a demonstration application. You&#39;ll see a list of all the available applications.
+</p>
+<a name="wp32888"> </a><div class="pFigureCaption">
+FIGURE&#160;41&#160;&#160;&#8211;&#160;&#160;Opening a demonstration application project
+<br /><br />
+</div><a name="wp44632"> </a><p class="pBody">
+<img src="images/openproject23.gif" alt="Opening a demonstration application project" border="0" hspace="0" vspace="0"/>
+</p>
+<a name="wp32889"> </a><p class="pBody">
+Select one and click on the <b class="cBold">Open Project</b> button in the dialog.
+</p>
+<a name="wp32925"> </a><p class="pBody">
+Once the application is opened, all you need to do is press the <b class="cBold">Run</b> button. The device emulator will pop up running the example application. Choose a specific demonstration to run from the menu and press the soft button for <b class="cBold">Launch</b>.
+</p>
+<a name="wp32890"> </a><p class="pBody">
+Some demonstrations require other setup and instructions. Check the full list to see if there are specific instructions for a demonstration.
+</p>
+<a name="wp44659"> </a><h2 class="pHeading1">
+A.3	BluetoothDemo
+</h2>
+<a name="wp44660"> </a><p class="pBody">
+This application contains a MIDlet that demonstrate the use of JSR 82&#8217;s Bluetooth API.
+</p>
+<a name="wp44662"> </a><p class="pBody">
+<code class="cCode">Bluetooth Demo</code> shows how images can be transferred between devices using Bluetooth. You will need to run two instances of the emulator to see how this demonstration works.
+</p>
+<a name="wp44663"> </a><p class="pBody">
+In the first emulator, choose <code class="cCode">Bluetooth Demo</code>, then <b class="cBold">Server</b>. The emulator will ask you if you want to allow a Bluetooth connection. Choose <b class="cBold">Yes</b>. The server starts up and displays a list of images. At the beginning, none of the images are being made available on the Bluetooth network. To make images available, select them and choose <b class="cBold">Publish image</b> from the menu. Images with a green icon are published, while those with a purple icon are not.
+</p>
+<a name="wp44664"> </a><div class="pFigureCaption">
+FIGURE&#160;42&#160;&#160;&#8211;&#160;&#160;Running the Bluetooth Demo server
+<br /><br />
+</div><a name="wp44673"> </a><p class="pBody">
+<img src="images/BluetoothDemo-server.gif" alt="Running the Bluetooth Demo server" border="0" hspace="0" vspace="0"/>
+</p>
+<a name="wp44674"> </a><p class="pBody">
+On the second emulator, choose <code class="cCode">Bluetooth Demo</code>, then <b class="cBold">Client</b>. The MIDlet tells you it&#8217;s ready to search for images. Choose <b class="cBold">Find</b>. The MIDlet will find the other emulator and get a list of images from it. Select one from the list and choose <b class="cBold">Load</b>. The emulator asks if you want to allow the connection. Choose <b class="cBold">Yes</b>.
+</p>
+<a name="wp44675"> </a><p class="pBody">
+In the first emulator, the server, a prompt appears, asking if you want to authorize the connection from the client. Choose <b class="cBold">Yes</b>. The image is transferred via simulated Bluetooth and shown on the client emulator.
+</p>
+<a name="wp44676"> </a><div class="pFigureCaption">
+FIGURE&#160;43&#160;&#160;&#8211;&#160;&#160;An image transferred via simulated Bluetooth
+<br /><br />
+</div><a name="wp44685"> </a><p class="pBody">
+<img src="images/BluetoothDemo-client4.gif" alt="An image transferred via simulated Bluetooth" border="0" hspace="0" vspace="0"/>
+</p>
+<a name="wp44686"> </a><p class="pBody">
+You can avoid the permission prompts by running the demonstration in the <code class="cCode">trusted</code> protection domain.
+</p>
+<a name="wp34651"> </a><h2 class="pHeading1">
+A.4	Demo3D
+</h2>
+<a name="wp34641"> </a><p class="pBody">
+This application contains three MIDlets that show off the emulator&#39;s support of JSR 184, the Mobile 3D Graphics API.
+</p>
+<a name="wp33067"> </a><h3 class="pHeading2">
+A.4.1	Life3D
+</h3>
+<a name="wp33069"> </a><p class="pBody">
+<code class="cCode">Life3D</code> implements the popular Game of Life in three dimensions. Live cells are represented by cubes. Each cell has 26 possible neighbors (including diagonals). For each step of the animation, cells with fewer than 4 neighbors die of loneliness, while cells with more than 5 neighbors die of overcrowding. An empty cell with exactly 4 neighbors will become a new live cell.
+</p>
+<a name="wp33071"> </a><p class="pBody">
+The view of the playing board rotates slowly so you can view the board from all angles.
+</p>
+<a name="wp33323"> </a><div class="pFigureCaption">
+FIGURE&#160;44&#160;&#160;&#8211;&#160;&#160;The Game of Life in three dimensions
+<br /><br />
+</div><a name="wp33108"> </a><p class="pBody">
+<img src="images/Demo3D-Life3D.gif" alt="The Game of Life in three dimensions" border="0" hspace="0" vspace="0"/>
+</p>
+<a name="wp33073"> </a><p class="pBody">
+The keypad buttons provide control over the game.</p><div align="left">
+<table border="0" cellpadding="7" summary="Controls for Life3D" id="wp33115">
+  <caption><a name="wp33115"> </a><div class="pTableCaption">
+TABLE&#160;9&#160;&#160;&#8211;&#160;&#160;Controls for Life3D
+</div>
+</caption>
+<thead>
+<tr >    <th  class="sun-verylightblue" scope="col"><a name="wp33119"> </a><div class="pTableHead">
+Button
+</div>
+
+</th>
+    <th  class="sun-verylightblue" scope="col"><a name="wp33121"> </a><div class="pTableHead">
+Description
+</div>
+
+</th>
+</tr>
+</thead>
+  <tr>    <td><a name="wp33123"> </a><div class="pTableText">
+0
+</div>
+</td>
+    <td><a name="wp33125"> </a><div class="pTableText">
+Pause the animation
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp33127"> </a><div class="pTableText">
+1
+</div>
+</td>
+    <td><a name="wp33129"> </a><div class="pTableText">
+Resume the animation at its default speed
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp33131"> </a><div class="pTableText">
+2
+</div>
+</td>
+    <td><a name="wp33133"> </a><div class="pTableText">
+Speed up the animation
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp33135"> </a><div class="pTableText">
+3
+</div>
+</td>
+    <td><a name="wp33137"> </a><div class="pTableText">
+Slow down the animation
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp33168"> </a><div class="pTableText">
+4
+</div>
+</td>
+    <td><a name="wp33170"> </a><div class="pTableText">
+Choose the previous preset configuration from a list that includes gems like P4 Glider, Skew beehive plus, and P4 Rotor.
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp33182"> </a><div class="pTableText">
+5
+</div>
+</td>
+    <td><a name="wp33184"> </a><div class="pTableText">
+Choose the next preset configuration from the list.
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp33195"> </a><div class="pTableText">
+*
+</div>
+</td>
+    <td><a name="wp33197"> </a><div class="pTableText">
+	Generate a random configuration and animate until it stabilizes or dies. If it dies, generate a new random configuration.
+</div>
+</td>
+</tr>
+<tr><td colspan="15"><hr class="pTableHr" /></td></tr>
+</table>
+</div>
+<p class="pBody">
+
+</p>
+<a name="wp33083"> </a><p class="pBody">
+This source code for this example is particularly well-documented. Take a look at <em class="cEmphasis">{toolkit}</em><code class="cCode">\apps\Demo3D\src\com\superscape\m3g\wtksamples\life3d\Life3D.java</code>.
+</p>
+<a name="wp33084"> </a><h3 class="pHeading2">
+A.4.2	PogoRoo
+</h3>
+<a name="wp33086"> </a><p class="pBody">
+<code class="cCode">PogoRoo</code> shows you the rear end of a kangaroo bouncing up and down on a pogo stick.
+</p>
+<a name="wp33227"> </a><div class="pFigureCaption">
+FIGURE&#160;45&#160;&#160;&#8211;&#160;&#160;A bouncing kangaroo
+<br /><br />
+</div><a name="wp33231"> </a><p class="pBody">
+<img src="images/Demo3D-PogoRoo4.gif" alt="A bouncing kangaroo" border="0" hspace="0" vspace="0"/>
+</p>
+<a name="wp33088"> </a><p class="pBody">
+You can get the kangaroo to bounce around the landscape by using the arrow keys. Push up to go forward, down to go backward, and left and right to change direction. You might need to hold down the keys to see an effect.
+</p>
+<a name="wp33089"> </a><h3 class="pHeading2">
+A.4.3	retainedmode
+</h3>
+<a name="wp33091"> </a><p class="pBody">
+The <code class="cCode">retainedmode</code> MIDlet plays back a scene file that shows a tireless skateboarder in an endless loop.
+</p>
+<a name="wp33251"> </a><div class="pFigureCaption">
+FIGURE&#160;46&#160;&#160;&#8211;&#160;&#160;A tireless skateboarder
+<br /><br />
+</div><a name="wp33255"> </a><p class="pBody">
+<img src="images/Demo3D-retainedmode5.gif" alt="A tireless skateboarder" border="0" hspace="0" vspace="0"/>
+</p>
+<a name="wp44833"> </a><h2 class="pHeading1">
+A.5	JSR172Demo
+</h2>
+<a name="wp44834"> </a><p class="pBody">
+<code class="cCode">JSR172Demo</code> shows how to access a web service from a MIDlet. The web service is already running on an Internet server. You should be able to simply build and run the example.
+</p>
+<a name="wp44835"> </a><p class="pBody">
+If you are behind a firewall, you&#8217;ll need to configure the emulator&#8217;s proxy server settings. Choose <b class="cBold">Edit &gt; Preferences...</b> from the KToolbar menu, then select the <b class="cBold">Network Preferences</b> tab. Fill in the proxy server addresses and ports.
+</p>
+<a name="wp44836"> </a><p class="pBody">
+<code class="cCode">JSR172Demo</code> contains a single MIDlet, <code class="cCode">Server Script</code>. Launch it and follow the prompts. You can browse through simulated news headlines, all of which are retrieved from the web service.
+</p>
+<a name="wp44837"> </a><p class="pBody">
+To see what&#8217;s going on behind the scenes, use the network monitor.
+</p>
+<a name="wp33489"> </a><h2 class="pHeading1">
+A.6	mmademo
+</h2>
+<a name="wp33549"> </a><p class="pBody">
+The <code class="cCode">mmademo</code> application contains four MIDlets that showcase the multimedia capabilities of the J2ME Wireless Toolkit. This section describes the MIDlets and includes additional information about using multimedia from your applications.
+</p>
+<a name="wp33550"> </a><h3 class="pHeading2">
+A.6.1	Simple Tones
+</h3>
+<a name="wp33552"> </a><p class="pBody">
+The Simple Tones example demonstrates how to use interactive synthetic tones. The first menu entries play tones with different pitch and duration using <code class="cCode">Manager.playTone()</code>. Choosing the third menu item will play a chord on the interactive MIDI device (locator <code class="cCode">&quot;device://midi&quot;</code>). The <code class="cCode">shortMidiEvent()</code> method of <code class="cCode">MIDIControl</code> is used to trigger the notes of the chord.
+</p>
+<a name="wp33553"> </a><h3 class="pHeading2">
+A.6.2	Simple Player
+</h3>
+<a name="wp33555"> </a><p class="pBody">
+The Simple Player application demonstrates the range of audio and video capabilities of the emulator. It includes example files in a variety of formats and can play files from the emulator&#39;s persistent storage or from HTTP URLs.
+</p>
+<a name="wp33557"> </a><p class="pBody">
+The player portion uses a generic <code class="cCode">javax.microedition.media.Player</code> interface. The player displays duration, media time, and controls for running the media file. If metadata is available in a file, the player enables you to view the information, such as author and title. In the case of MIDI files, if karaoke text is present in the file, it displays on the screen during play. Graphical user interface controls can be viewed on the display screen if applicable. You can access these controls by selecting one of the media samples in Simple Player, then pressing the <b class="cBold">Menu</b> button to view and select the desired command.
+</p>
+<a name="wp33649"> </a><p class="pBody">
+The demo includes the following media samples:
+</p>
+<ul class="pBullet1"><a name="wp33650"> </a><div class="pBullet1"><li><code class="cCode">Bong</code> plays a short WAV file. You can adjust certain playback features, as described later in this document. The display shows the duration of the sound in minutes:seconds:tenths of a second, for example 00:17:5. This audio sample is a resource file in the MIDlet suite JAR file.</li></div>
+<a name="wp33562"> </a><div class="pBullet1Plus"><li><code class="cCode">MIDI Scale</code> plays an example musical scale. The display shows the title of the selected music file, the duration of the song, the elapsed time during playback, and the current tempo in beats per minute (bpm). This MIDI file is stored in the MIDlet suite JAR file.</li></div>
+<a name="wp33563"> </a><div class="pBullet1Plus"><li><code class="cCode">Simple Ring Tone</code> plays a short sequence of Beethoven&#39;s Fifth Symphony. The display shows the title of the selected music file, the duration of the song, the elapsed time in seconds and tenths of a second during playback, and the current tempo in beats per minute (bpm). This ringtone file (<code class="cCode">.jts</code> format) is stored in the MIDlet suite JAR file.</li></div>
+<a name="wp33564"> </a><div class="pBullet1Plus"><li><code class="cCode">WAV Music</code> plays a brief audio file. The display shows the title of the audio file, the duration of the audio the elapsed time during playback, and the playback rate in percent. This WAV file is retrieved from an HTTP server.</li></div>
+<a name="wp33565"> </a><div class="pBullet1Plus"><li><code class="cCode">MIDI Scale</code> plays a MIDI file that is retrieved from an HTTP server.</li></div>
+<a name="wp33566"> </a><div class="pBullet1Plus"><li>The <code class="cCode">Animated GIF</code> example shows an animated GIF that counts from 1 to 5. The file is stored in the MIDlet suite JAR.</li></div>
+<a name="wp33569"> </a><div class="pBullet1Plus"><li><code class="cCode">Audio Capture</code> from a default device lets you capture audio from the microphone or connected device. The sound is captured and played back on the speaker. To avoid feedback, use a headset.</li></div>
+<a name="wp33570"> </a><div class="pBullet1Plus"><li><code class="cCode">Video Capture Simulation</code> simulates viewing input video such as might be possible on a device equipped with a camera.</li></div>
+<a name="wp33571"> </a><div class="pBullet1Last"><li><code class="cCode">[enter URL]</code> allows you to play back media files from arbitrary HTTP servers. Type a valid URL at the insertion point and click OK to play a file. If you want to open an HTTP directory from which to select media, be sure to add a slash to the end of the URL.</li></div>
+</ul>
+<a name="wp33573"> </a><p class="pBody">
+In addition, Simple Player parses ring tones in Ringing Tones text transfer language (RTTTL). See <a  href="http://www.convertyourtone.com/rtttl.html">http://www.convertyourtone.com/rtttl.html</a> for information on RTTTL.
+</p>
+<a name="wp34071"> </a><p class="pBody">
+A key feature of Simple Player is a common set of commands that control media playback. The commands are available from the Simple Player menu, and some have associated keypad buttons. The following table describes these commands.</p><div align="left">
+<table border="0" cellpadding="7" summary="Simple Player commands" id="wp34074">
+  <caption><a name="wp34074"> </a><div class="pTableCaption">
+TABLE&#160;10&#160;&#160;&#8211;&#160;&#160;Simple Player commands
+</div>
+</caption>
+<thead>
+<tr >    <th  class="sun-verylightblue" scope="col"><a name="wp34080"> </a><div class="pTableHead">
+Command
+</div>
+
+</th>
+    <th  class="sun-verylightblue" scope="col"><a name="wp34082"> </a><div class="pTableHead">
+Key
+</div>
+
+</th>
+    <th  class="sun-verylightblue" scope="col"><a name="wp34084"> </a><div class="pTableHead">
+Description
+</div>
+
+</th>
+</tr>
+</thead>
+  <tr>    <td><a name="wp34086"> </a><div class="pTableText">
+Mute/Unmute
+</div>
+</td>
+    <td><a name="wp34088"> </a><div class="pTableText">
+0
+</div>
+</td>
+    <td><a name="wp34090"> </a><div class="pTableText">
+Turns off sound but the file continues to play. This command toggles to Unmute.
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp34092"> </a><div class="pTableText">
+Volume
+</div>
+</td>
+    <td><a name="wp34094"> </a><div class="pTableText">
+* and #
+</div>
+</td>
+    <td><a name="wp34096"> </a><div class="pTableText">
+Increases or decreases loudness.
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp34098"> </a><div class="pTableText">
+META Data
+</div>
+</td>
+    <td><a name="wp34100"> </a><div class="pTableText">
+&#160;
+</div>
+</td>
+    <td><a name="wp34102"> </a><div class="pTableText">
+	Displays information provided by the media file such as copyright information, title, and track list.
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp34104"> </a><div class="pTableText">
+Stop in 5 seconds
+</div>
+</td>
+    <td><a name="wp34106"> </a><div class="pTableText">
+&#160;
+</div>
+</td>
+    <td><a name="wp34108"> </a><div class="pTableText">
+Pauses the audio play in five seconds when set during playback.
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp34110"> </a><div class="pTableText">
+Rate
+</div>
+</td>
+    <td><a name="wp34112"> </a><div class="pTableText">
+4 and 6
+</div>
+</td>
+    <td><a name="wp34114"> </a><div class="pTableText">
+Alters the rate of speed of playback.
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp34116"> </a><div class="pTableText">
+Tempo
+</div>
+</td>
+    <td><a name="wp34118"> </a><div class="pTableText">
+&#160;
+</div>
+</td>
+    <td><a name="wp34120"> </a><div class="pTableText">
+Increases or decreases the tempo of the tone sequence or MIDI file.
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp34122"> </a><div class="pTableText">
+Pitch
+</div>
+</td>
+    <td><a name="wp34124"> </a><div class="pTableText">
+Up and down
+</div>
+</td>
+    <td><a name="wp34126"> </a><div class="pTableText">
+Lowers or raises the notes in a MIDI file.
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp34128"> </a><div class="pTableText">
+Start/Stop Recording
+</div>
+</td>
+    <td><a name="wp34130"> </a><div class="pTableText">
+&#160;
+</div>
+</td>
+    <td><a name="wp34132"> </a><div class="pTableText">
+Records the audio playback. A file is created containing the recorded audio in the directory in which the emulator is running. If you do not specify a filename, a file called recording.wav is created. This command toggles to Stop Recording.
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp34134"> </a><div class="pTableText">
+Step Frame
+</div>
+</td>
+    <td><a name="wp34136"> </a><div class="pTableText">
+7 and 9
+</div>
+</td>
+    <td><a name="wp34138"> </a><div class="pTableText">
+Jumps forward or backward one frame at a time in a video file.
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp34140"> </a><div class="pTableText">
+Play/Stop
+</div>
+</td>
+    <td><a name="wp34142"> </a><div class="pTableText">
+2 and Select
+</div>
+</td>
+    <td><a name="wp34144"> </a><div class="pTableText">
+Starts or stops the media.
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp34146"> </a><div class="pTableText">
+Loop Mode
+</div>
+</td>
+    <td><a name="wp34148"> </a><div class="pTableText">
+&#160;
+</div>
+</td>
+    <td><a name="wp34150"> </a><div class="pTableText">
+Plays back the audio file immediately after completion of play. Running Loopmode once plays the audio file once. Pressing a second time plays the file three times. Pressing a third time plays the file repeatedly. Pressing a fourth time returns to single play.
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp34152"> </a><div class="pTableText">
+Skip
+</div>
+</td>
+    <td><a name="wp34154"> </a><div class="pTableText">
+1 and 3
+</div>
+</td>
+    <td><a name="wp34156"> </a><div class="pTableText">
+	Skips forward or backward five percent of the duration of the media file. The sound track syncs to the video.
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp34158"> </a><div class="pTableText">
+Rewind
+</div>
+</td>
+    <td><a name="wp34160"> </a><div class="pTableText">
+&#160;
+</div>
+</td>
+    <td><a name="wp34162"> </a><div class="pTableText">
+Returns to the start time of the audio playback.
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp34199"> </a><div class="pTableText">
+Stop and Rewind
+</div>
+</td>
+    <td><a name="wp34201"> </a><div class="pTableText">
+5
+</div>
+</td>
+    <td><a name="wp34203"> </a><div class="pTableText">
+Stops plaback and rewinds to the start time.
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp34208"> </a><div class="pTableText">
+Quick Help
+</div>
+</td>
+    <td><a name="wp34210"> </a><div class="pTableText">
+&#160;
+</div>
+</td>
+    <td><a name="wp34212"> </a><div class="pTableText">
+Displays a list of commands and keypad buttons.
+</div>
+</td>
+</tr>
+<tr><td colspan="15"><hr class="pTableHr" /></td></tr>
+</table>
+</div>
+<p class="pBody">
+
+</p>
+<a name="wp34170"> </a><p class="pBody">
+The commands may or may not be available depending on the media type that Simple Player is playing. In addition, some commands can be invoked using the keypad buttons. The following table describes the availability of commands, their keypad equivalents, and the relevant class from MMAPI.
+</p>
+<a name="wp34168"> </a><p class="pBody">
+Note that a short list of commands and the corresponding keypad buttons is available in the Simple Player application itself. Just choose the <b class="cBold">Quick Help</b> command from the menu.
+</p>
+<a name="wp41669"> </a><h3 class="pHeading2">
+A.6.3	PausingAudioTest
+</h3>
+<a name="wp41676"> </a><p class="pBody">
+This MIDlet exists to demonstrate how the J2ME Wireless Toolkit will warn you if a paused MIDlet has not stopped its running <code class="cCode">Player</code>s. After you launch the MIDlet, choose the <b class="cBold">Play</b> command to start playing some audio. The screen displays a status, which is either &#8220;Well-behaved&#8221; or &#8220;Not Well-Behaved.&#8221;
+</p>
+<a name="wp41680"> </a><p class="pBody">
+Pause the MIDlet by choosing <b class="cBold">MIDlet &gt; Pause</b> from the emulator window&#8217;s menu. As expected, the MIDlet is paused and no message is displayed on the KToolbar console. Restart the MIDlet by choosing <b class="cBold">MIDlet &gt; Resume</b> from the emulator window&#8217;s menu.
+</p>
+<a name="wp41688"> </a><p class="pBody">
+Now choose the <b class="cBold">Misbehave</b> command. Pause the MIDlet again. In the KToolbar console, you will receive a short lecture about how well-behaved MIDlets release resources when they are paused.
+</p>
+<a name="wp34215"> </a><h3 class="pHeading2">
+A.6.4	Video
+</h3>
+<a name="wp34217"> </a><p class="pBody">
+The Video application illustrates how the emulator is capable of playing animated GIF files and capturing video. On a real device with a camera, video capture can be used to show the user what the camera sees.
+</p>
+<a name="wp34219"> </a><p class="pBody">
+Animated GIFs and video capture can be implemented using either a <code class="cCode">Form</code> <code class="cCode">Item</code> or a <code class="cCode">Canvas</code>. The Video demonstration includes all the possibilities:
+</p>
+<ul class="pBullet1"><a name="wp34221"> </a><div class="pBullet1"><li><code class="cCode">Animated GIF - Form [jar]</code> shows an animated GIF as a <code class="cCode">Form</code> <code class="cCode">Item</code>. The form also includes some information about the playback, including the current time. Choose the <b class="cBold">Snapshot</b> command to take a snapshot of the running animation. The snapshot will be placed in the form following the animated GIF.</li></div>
+<a name="wp34222"> </a><div class="pBullet1Plus"><li><code class="cCode">Animated GIF - Canvas [jar]</code> shows an animated GIF in a <code class="cCode">Canvas</code>. A simple indicator shows the progress through the animation. Choose <b class="cBold">Snapshot</b> to get a still image of the current appearance. The snapshot is shown briefly, then the display goes back to the animation.</li></div>
+<a name="wp34223"> </a><div class="pBullet1Plus"><li><code class="cCode">Video Capture - Form</code> simulates capturing video from a camera or other source and showing it as an <code class="cCode">Item</code> in a <code class="cCode">Form</code>. Choose the <b class="cBold">Snapshot</b> command to take a snapshot of the captured video. The snapshot will be placed in the form following the video capture.</li></div>
+<a name="wp34224"> </a><div class="pBullet1Last"><li><code class="cCode">Video Capture - Canvas</code> simulates capturing video from a camera or other source and showing it in a <code class="cCode">Canvas</code>. Choose <b class="cBold">Snapshot</b> to get a still image of the current appearance. The snapshot is shown briefly, then the display goes back to the video capture.</li></div>
+</ul>
+<a name="wp34326"> </a><h3 class="pHeading2">
+A.6.5	Attributes for mmademo
+</h3>
+<a name="wp34328"> </a><p class="pBody">
+The mmademo applications have the following attributes that you can modify in the <b class="cBold">User Defined</b> tab of the project settings dialog box:</p><div align="left">
+<table border="0" cellpadding="7" summary="Descriptions of MMAPI-specific MIDlet attributes" id="wp34346">
+  <caption><a name="wp34346"> </a><div class="pTableCaption">
+TABLE&#160;11&#160;&#160;&#8211;&#160;&#160;Descriptions of MMAPI-specific MIDlet attributes
+</div>
+</caption>
+<thead>
+<tr >    <th  class="sun-verylightblue" scope="col"><a name="wp34350"> </a><div class="pTableHead">
+Attribute
+</div>
+
+</th>
+    <th  class="sun-verylightblue" scope="col"><a name="wp34352"> </a><div class="pTableHead">
+Description
+</div>
+
+</th>
+</tr>
+</thead>
+  <tr>    <td><a name="wp34354"> </a><div class="pTableText">
+<code class="cCode">PlayerTitle-&lt;</code><em class="cEmphasis">n</em><code class="cCode">&gt;</code>
+</div>
+</td>
+    <td><a name="wp34356"> </a><div class="pTableText">
+Name of the <em class="cEmphasis">n</em>th media title to be played back by the Simple Player MIDlet.
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp34358"> </a><div class="pTableText">
+<code class="cCode">PlayerURL-&lt;</code><em class="cEmphasis">n</em><code class="cCode">&gt;</code>
+</div>
+</td>
+    <td><a name="wp34360"> </a><div class="pTableText">
+Location of the <em class="cEmphasis">n</em>th media title, <code class="cCode">PlayerTitle-&lt;</code><em class="cEmphasis">n</em><code class="cCode">&gt;</code>, to be played back by the Simple Player MIDlet.
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp34362"> </a><div class="pTableText">
+<code class="cCode">VideoTest-&lt;</code><em class="cEmphasis">n</em><code class="cCode">&gt;</code>
+</div>
+</td>
+    <td><a name="wp34364"> </a><div class="pTableText">
+The name of the <em class="cEmphasis">n</em>th media title to be played back by the <code class="cCode">Video</code> application.
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp34366"> </a><div class="pTableText">
+<code class="cCode">VideoTest-URL&lt;</code><em class="cEmphasis">n</em><code class="cCode">&gt;</code>
+</div>
+</td>
+    <td><a name="wp34368"> </a><div class="pTableText">
+Location of the <em class="cEmphasis">n</em>th media title, <code class="cCode">VideoTest-&lt;</code><em class="cEmphasis">n</em><code class="cCode">&gt;</code>, to be played back by the <code class="cCode">Video</code> application.
+</div>
+</td>
+</tr>
+<tr><td colspan="15"><hr class="pTableHr" /></td></tr>
+</table>
+</div>
+<p class="pBody">
+
+</p>
+<a name="wp34164"> </a><h2 class="pHeading1">
+A.7	ObexDemo
+</h2>
+<a name="wp34165"> </a><p class="pBody">
+This application shows how to transfer image files between emulator instances using the OBEX API. This demonstration shows the use of OBEX over a simulated infrared connection.
+</p>
+<a name="wp34797"> </a><p class="pBody">
+Run two instances of the emulator. One listens for incoming connections, while the other attempts to send an image. In the first emulator, choose <b class="cBold">Obex Demo</b>, then <b class="cBold">Receive Image</b>. The emulator will ask for permission to listen. Choose <b class="cBold">Yes</b>. The emulator will display a screen that indicates it&#8217;s waiting for incoming connections.
+</p>
+<a name="wp34802"> </a><div class="pFigureCaption">
+FIGURE&#160;47&#160;&#160;&#8211;&#160;&#160;Waiting for an OBEX connection
+<br /><br />
+</div><a name="wp34806"> </a><p class="pBody">
+<img src="images/ObexDemo-waiting8.gif" alt="Waiting for an OBEX connection" border="0" hspace="0" vspace="0"/>
+</p>
+<a name="wp34818"> </a><p class="pBody">
+In the second emulator, launch <b class="cBold">Obex Demo</b>, then choose <b class="cBold">Send Image</b>. You&#8217;ll see a list of images. Select one and choose <b class="cBold">Send</b>. The emulator will ask for permission to make the outgoing connection. Choose <b class="cBold">Yes</b>.
+</p>
+<a name="wp34819"> </a><p class="pBody">
+Back in the first (listening) emulator, you&#8217;ll see a prompt asking whether you want to accept the incoming connection.
+</p>
+<a name="wp34821"> </a><div class="pFigureCaption">
+FIGURE&#160;48&#160;&#160;&#8211;&#160;&#160;Prompting to accept a connection
+<br /><br />
+</div><a name="wp34825"> </a><p class="pBody">
+<img src="images/ObexDemo-permission9.gif" alt="Prompting to accept a connection" border="0" hspace="0" vspace="0"/>
+</p>
+<a name="wp34830"> </a><p class="pBody">
+Choose <b class="cBold">Yes</b>. The image you selected is transferred over the simulated infrared link and displayed on the first emulator.
+</p>
+<a name="wp34831"> </a><div class="pFigureCaption">
+FIGURE&#160;49&#160;&#160;&#8211;&#160;&#160;A successfully transferred image
+<br /><br />
+</div><a name="wp34835"> </a><p class="pBody">
+<img src="images/ObexDemo-image10.gif" alt="A successfully transferred image" border="0" hspace="0" vspace="0"/>
+</p>
+<a name="wp33522"> </a><h2 class="pHeading1">
+A.8	PDAPDemo
+</h2>
+<a name="wp33526"> </a><p class="pBody">
+<code class="cCode">PDAPDemo</code> shows how to use the PIM and <code class="cCode">FileConnection</code> APIs that are part of the JSR 75 specification.
+</p>
+<a name="wp34577"> </a><h3 class="pHeading2">
+A.8.1	Browsing Files
+</h3>
+<a name="wp40272"> </a><p class="pBody">
+To run the file browser, you&#8217;ll need to give the MIDlet appopriate security authorization. The easiest way to do this is to choose <b class="cBold">Edit &gt; Preferences...</b> from the KToolbar menu. Click on the <b class="cBold">Security</b> tab. Change the <b class="cBold">Security domain</b> to <b class="cBold">trusted</b> and press <b class="cBold">OK</b>.
+</p>
+<a name="wp34871"> </a><p class="pBody">
+Now open and run the <code class="cCode">PDAPDemo</code> project. Launch the <code class="cCode">FileBrowser</code> MIDlet. You will see a directory listing. You can browse through the available directories and files. By default there is one directory, <code class="cCode">root1</code>.
+</p>
+<a name="wp34580"> </a><div class="pFigureCaption">
+FIGURE&#160;50&#160;&#160;&#8211;&#160;&#160;Browsing files
+<br /><br />
+</div><a name="wp34883"> </a><p class="pBody">
+<img src="images/PDAPDemo-root111.gif" alt="Browsing files" border="0" hspace="0" vspace="0"/>
+</p>
+<a name="wp34581"> </a><p class="pBody">
+Select a directory and press the select button to enter it. The <code class="cCode">root1</code> directory contains a single file, <code class="cCode">Readme</code>.
+</p>
+<a name="wp34894"> </a><div class="pFigureCaption">
+FIGURE&#160;51&#160;&#160;&#8211;&#160;&#160;Contents of the root1 directory
+<br /><br />
+</div><a name="wp34898"> </a><p class="pBody">
+<img src="images/PDAPDemo-Readme12.gif" alt="Contents of the root1 directory" border="0" hspace="0" vspace="0"/>
+</p>
+<a name="wp34583"> </a><p class="pBody">
+Using the commands in the demonstration, you can view the file or see its properties. Try selecting the file and choosing <b class="cBold">Properties</b> or <b class="cBold">View</b> from the menu.
+</p>
+<a name="wp34915"> </a><div class="pFigureCaption">
+FIGURE&#160;52&#160;&#160;&#8211;&#160;&#160;Viewing file properties and contents
+<br /><br />
+</div><a name="wp34919"> </a><p class="pBody">
+<img src="images/demonstrations13.gif" alt="Viewing file properties and contents" border="0" hspace="0" vspace="0"/>
+</p>
+<a name="wp34586"> </a><p class="pBody">
+	The actual files are located in <em class="cEmphasis">{toolkit}</em><code class="cCode">\appdb\DefaultColorPhone\filesystem</code>, assuming you are using the <code class="cCode">DefaultColorPhone</code> emulator skin. You can add files and root directories as you wish and they will be visible to the JSR 75 File API. See <a  href="pdap.html#wp21060"><span class="cZ_Xref">Chapter&#160;10</span></a> for more information.
+</p>
+<a name="wp34949"> </a><h3 class="pHeading2">
+A.8.2	The PIM API
+</h3>
+<a name="wp34950"> </a><p class="pBody">
+The <code class="cCode">JSR75 PIM APIs</code> example demonstrates how to access personal information, like contact lists, calendars, and to-do lists. After you launch the example, choose a type of list from the main menu.
+</p>
+<a name="wp34591"> </a><p class="pBody">
+In this example application, each type of list works the same way and each list type contains a single list. For example, if you choose Contact Lists, there is a single contact list called Contacts. Event Lists contains a single list called Events, and To-Do Lists conatains a single list called To do.
+</p>
+<a name="wp34592"> </a><div class="pFigureCaption">
+FIGURE&#160;53&#160;&#160;&#8211;&#160;&#160;Choosing a list type
+<br /><br />
+</div><a name="wp34966"> </a><p class="pBody">
+<img src="images/PDAPDemo-listtype14.gif" alt="Choosing a list type" border="0" hspace="0" vspace="0"/>
+</p>
+<a name="wp34593"> </a><p class="pBody">
+Once you&#39;ve selected a list type and chosen the specific list, you&#39;ll see all the items in the list. If this is the first time you&#39;ve run the example, the list is probably empty.
+</p>
+<a name="wp34594"> </a><div class="pFigureCaption">
+FIGURE&#160;54&#160;&#160;&#8211;&#160;&#160;An empty contact list
+<br /><br />
+</div><a name="wp34978"> </a><p class="pBody">
+<img src="images/PDAPDemo-empty15.gif" alt="An empty conact list" border="0" hspace="0" vspace="0"/>
+</p>
+<a name="wp34595"> </a><p class="pBody">
+To add an item, choose <b class="cBold">New</b> from the menu. The application prompts you for a <b class="cBold">Formatted Name</b> for the item. You can add more data fields to this item using <b class="cBold">Add Field</b> in the menu. You&#39;ll see a list of field names. Pick one, then enter the value for the new field.
+</p>
+<a name="wp34598"> </a><div class="pFigureCaption">
+FIGURE&#160;55&#160;&#160;&#8211;&#160;&#160;Adding contact fields
+<br /><br />
+</div><a name="wp34999"> </a><p class="pBody">
+<img src="images/PDAPDemo-newcontact16.gif" alt="Adding contact fields" border="0" hspace="0" vspace="0"/>
+</p>
+<a name="wp34599"> </a><p class="pBody">
+To actually save the list item, choose <b class="cBold">Commit</b> from the menu.
+</p>
+<a name="wp34600"> </a><div class="pFigureCaption">
+FIGURE&#160;56&#160;&#160;&#8211;&#160;&#160;Saving an item
+<br /><br />
+</div><a name="wp35020"> </a><p class="pBody">
+<img src="images/PDAPDemo-commit17.gif" alt="Saving an item" border="0" hspace="0" vspace="0"/>
+</p>
+<a name="wp34601"> </a><p class="pBody">
+You can return to the list by choosing the <b class="cBold">Back</b> command. You&#39;ll see the item you just created in the list.
+</p>
+<a name="wp34603"> </a><p class="pBody">
+The items that you create are stored in standard vCard or vCalendar format in the <em class="cEmphasis">{toolkit}</em><code class="cCode">\appdb\</code><em class="cEmphasis">{skin}</em><code class="cCode">\pim</code> directory. See <a  href="pdap.html#wp21060"><span class="cZ_Xref">Chapter&#160;10</span></a> for more information.
+</p>
+<a name="wp34606"> </a><p class="pBody">
+The PIM API allows for exporting contact, calender, and to-do items in a standard format. The exact format depends on the list type. When you are viewing an item in any list, the menu contains a command for viewing the exported item.
+</p>
+<a name="wp34575"> </a><p class="pBody">
+For example, when you are viewing a contact list item, the menu contains <b class="cBold">Show vCard</b>. When you choose this command, the exported item is shown on the screen. Calendar items and to-do items both get exported as vCalendar.
+</p>
+<a name="wp33008"> </a><h2 class="pHeading1">
+A.9	WMADemo
+</h2>
+<a name="wp35061"> </a><p class="pBody">
+This application shows how to send and receive SMS, CBS, and MMS messages. The J2ME Wireless Toolkit offers a flexible emulation environment to support messaging. Messages can be exchanged between emulator instances and can be generated or received using the WMA console utility.
+</p>
+<a name="wp35078"> </a><p class="pBody">
+Because this example makes use of the push registry, you can&#39;t see all of its features just by using the <b class="cBold">Run</b> button. You need to use the <b class="cBold">Run via OTA</b> feature to install the application into the emulator in a process that mirrors how applications are installed on real devices. If you don&#8217;t know how to do this, read about it in <a  href="developing.html#wp20925"><span class="cZ_Xref">Chapter&#160;2, </span>&#8220;Developing MIDlet Suites</a>.&#8221;
+</p>
+<a name="wp35094"> </a><p class="pBody">
+To see the magic of the push registry, use the WMA console to send the emulator a message. Launch the console by choosing <b class="cBold">File &gt; Utilities...</b> from the KToolbar menu. Click on the <b class="cBold">Open Console</b> button in the WMA box to launch the WMA console.
+</p>
+<a name="wp35096"> </a><p class="pBody">
+Click on the <b class="cBold">Send SMS...</b> button in the WMA console window. Choose the number that corresponds to the emulator, probably +5550000. If you&#39;re not sure what number the emulator is using, look in its title bar. Choose the number in the SMS message window, then fill in a port number of 50000. Then type in your text message and click on <b class="cBold">Send</b>.
+</p>
+<a name="wp35123"> </a><div class="pFigureCaption">
+FIGURE&#160;57&#160;&#160;&#8211;&#160;&#160;Sending a text message
+<br /><br />
+</div><a name="wp35126"> </a><p class="pBody">
+<img src="images/WMADemo-send18.gif" alt="Sending a text message" border="0" hspace="0" vspace="0"/>
+</p>
+<a name="wp35098"> </a><p class="pBody">
+The emulator will spring to life. First it politely asks if it can launch the <code class="cCode">WMADemo</code> application.
+</p>
+<a name="wp35143"> </a><div class="pFigureCaption">
+FIGURE&#160;58&#160;&#160;&#8211;&#160;&#160;The push registry springs to life
+<br /><br />
+</div><a name="wp35147"> </a><p class="pBody">
+<img src="images/WMADemo-push19.gif" alt="The push registry springs to life" border="0" hspace="0" vspace="0"/>
+</p>
+<a name="wp35076"> </a><p class="pBody">
+Choose Yes. The <code class="cCode">SMSReceive</code> MIDlet is launched and immediately displays the incoming SMS message.
+</p>
+<a name="wp35170"> </a><div class="pFigureCaption">
+FIGURE&#160;59&#160;&#160;&#8211;&#160;&#160;An incoming text message
+<br /><br />
+</div><a name="wp35174"> </a><p class="pBody">
+<img src="images/WMADemo-smsdone20.gif" alt="An incoming text message" border="0" hspace="0" vspace="0"/>
+</p>
+<a name="wp33019"> </a><p class="pBody">
+You can also use the WMA console to send and receive CBS and MMS messages. See <a  href="wma.html#wp41136"><span class="cZ_Xref">Chapter&#160;7, </span>&#8220;Using the Wireless Messaging API</a>,&#8221; for more information.
+</p>
+<a name="wp35194"> </a><p class="pBody">
+If you are attempting to send text messages to <code class="cCode">WMADemo</code> using the WMA console, make sure to specify the port number as 50000. Use port 50001 for CBS messages. For MMS messages, use <code class="cCode">example.mms.MMSDemo</code> as the application ID.
+</p>
+<a name="wp44949"> </a><p class="pBody">
+For example, to send an MMS message from the WMA console to the emulator, make sure that <code class="cCode">WMADemo</code> has been installed using <b class="cBold">Run via OTA</b> as described above. Leave the emulator running.
+</p>
+<a name="wp44950"> </a><p class="pBody">
+In the WMA console, click on <b class="cBold">Send MMS...</b> to pop up the MMS composition window. Fill in a message subject, the application ID <code class="cCode">example.mms.MMSDemo</code>, and the telephone number of the running emulator.
+</p>
+<a name="wp44951"> </a><div class="pFigureCaption">
+FIGURE&#160;60&#160;&#160;&#8211;&#160;&#160;Addressing an MMS message
+<br /><br />
+</div><a name="wp44960"> </a><p class="pBody">
+<img src="images/WMADemo-mmsaddress6.gif" alt="Addressing an MMS message" border="0" hspace="0" vspace="0"/>
+</p>
+<a name="wp44961"> </a><p class="pBody">
+Next, click on the <b class="cBold">Parts</b> tab. The WMA console allows you to select files from your hard disk that you wish to send as parts of the MMS message. Click <b class="cBold">Add</b> to add a file to the message. Use the file browser to find the file you want to send and click <b class="cBold">OK</b>.
+</p>
+<a name="wp44962"> </a><div class="pFigureCaption">
+FIGURE&#160;61&#160;&#160;&#8211;&#160;&#160;Adding parts to an MMS message
+<br /><br />
+</div><a name="wp44971"> </a><p class="pBody">
+<img src="images/WMADemo-mmsparts7.gif" alt="Adding parts to an MMS message" border="0" hspace="0" vspace="0"/>
+</p>
+<a name="wp44972"> </a><p class="pBody">
+Click on <b class="cBold">Send</b> to send the message.
+</p>
+<a name="wp44973"> </a><p class="pBody">
+The emulator asks if it can launch <code class="cCode">WMADemo</code>. Click on <b class="cBold">Yes</b>. The image and its information are displayed.
+</p>
+<a name="wp44974"> </a><div class="pFigureCaption">
+FIGURE&#160;62&#160;&#160;&#8211;&#160;&#160;WMADemo receives the image
+<br /><br />
+</div><a name="wp44983"> </a><p class="pBody">
+<img src="images/WMADemo-mmsreceive9.gif" alt="WMADemo receives the image" border="0" hspace="0" vspace="0"/>
+</p>
+<a name="wp35459"> </a><p class="pBody">
+
+</p>
+
+    <p>&#160;</p>
+    <hr class="pHr" />
+
+    <table class="full-width" id="SummaryNotReq3">
+	  <!-- formatting table -->
+      <tr>
+        <td class="go-left">
+          <a accesskey="c" href="index.html">
+            <img id="LongDescNotReq1" src="images/toc.gif" border="0"
+              alt="Contents" /></a>
+          <a accesskey="p" href="webservices.html">
+            <img id="LongDescNotReq2" src="images/prev.gif" border="0"
+              alt="Previous" /></a>
+          <a accesskey="n" href="commandline.html">
+            <img id="LongDescNotReq3" src="images/next.gif" border="0"
+              alt="Next" /></a>
+          <a accesskey="i" href="indexa.html">
+            <img id="LongDescNotReq4" src="images/index.gif" border="0"
+              alt="Index" /></a>
+        </td>
+        <td class="go-right">
+          <span class="copyright">J2ME Wireless Toolkit User's Guide <br /> J2ME Wireless Toolkit 2.2</span>
+        </td>
+      </tr>
+    </table>
+
+    <p>&#160;</p>
+    <p class="copyright">
+      <a href="copyright.html">Copyright</a> &#169; 2004 Sun Microsystems, Inc. 
+      All rights reserved.
+      Use is subject to the <a href="../../BinaryLicense.html">license terms</a>.
+    </p>
+  </body>
+</html>

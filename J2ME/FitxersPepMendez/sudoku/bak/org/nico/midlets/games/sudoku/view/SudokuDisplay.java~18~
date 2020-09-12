@@ -1,0 +1,870 @@
+package org.nico.midlets.games.sudoku.view;
+
+import java.io.IOException;
+import java.util.*;
+import javax.microedition.lcdui.*;
+import javax.microedition.lcdui.game.GameCanvas;
+import javax.microedition.rms.*;
+
+import org.nico.midlets.db.RecordManager;
+import org.nico.midlets.games.sudoku.controller.*;
+import org.nico.midlets.games.sudoku.interfaces.ISudokuConstants;
+import org.nico.midlets.games.sudoku.model.SudokuConfig;
+import org.nico.midlets.games.sudoku.model.SudokuHint;
+import org.nico.midlets.multimedia.PlayThread;
+import org.nico.midlets.resources.ResourceBundle;
+import org.nico.midlets.utils.Tools;
+
+/**
+ * <p>Title: Sudoku</p>
+ * <p>Description: Juego japones</p>
+ * <p>Comments: Version recursiva</p>
+ * <p>Date: 06/07/06</p>
+ * <p>Last update: 13/08/06</p>
+ * @author Pep Mendez
+ */
+public class SudokuDisplay extends GameCanvas implements CommandListener,
+    ISudokuConstants {
+  private final int ancho = getWidth();
+  private final int alto = getHeight();
+  private String titulo_creditos2 = "";
+  private int[][] cells = new int[9][9];
+  private Command salir = null;
+  private Command resolver = null;
+  private Command reset = null;
+  private Command nuevo = null;
+  private Command plantear = null;
+  private Command configuracion = null;
+  private Command creditos = null;
+  private Command revisar = null;
+  private Command pista = null;
+  private Command reglas = null;
+  private Alert aCreditos = null;
+  private Alert aGanador = null;
+  private Alert aReglas = null;
+  private boolean pointer_pressed = false;
+  private String statusMessage = "";
+  private SudokuGen sudokuGen = null;
+  private SudokuConfig config = null;
+  private Stack activeThreads = new Stack();
+  private RecordStore rsConfig = null;
+  private RecordStore rsLastGame = null;
+  private long startGame = 0;
+  private long endGame = 0;
+  private int pistasGeneradas = 0;
+  private int status = LAZY;
+  private int celda_x = -1;
+  private int celda_y = -1;
+  private Vector inconsistencias = null;
+  private String locale = null;
+  private ResourceBundle bundle = null;
+
+  public SudokuDisplay(boolean suppressEvents) {
+    super(suppressEvents);
+    try {
+      jbInit();
+      restoreOldConfig();
+      restoreLastGame();
+    }
+    catch (Exception e) {
+      e.printStackTrace();
+    }
+  }
+
+  private void jbInit() throws Exception {
+    // Set up this Displayable to listen to command events
+    setCommandListener(this);
+    configureLocale();
+    configureMenu();
+    configureAlertScreens();
+  }
+
+  private void removeAllButtons() {
+//    removeCommand(salir);
+    removeCommand(resolver);
+    removeCommand(reset);
+    removeCommand(nuevo);
+    removeCommand(plantear);
+    removeCommand(configuracion);
+    removeCommand(creditos);
+    removeCommand(revisar);
+    removeCommand(reglas);
+    removeCommand(pista);
+  }
+
+  private void setButtonsStartGame() {
+    addCommand(salir);
+//    addCommand(resolver);
+    addCommand(reset);
+    addCommand(nuevo);
+    addCommand(plantear);
+    addCommand(configuracion);
+    addCommand(creditos);
+//    addCommand(revisar);
+    addCommand(reglas);
+//    addCommand(pista);
+  }
+
+  /**
+   * Ya generado un nuevo juego activa los botones que toca
+   */
+  private void setButtonsOnNew() {
+    removeAllButtons();
+    addCommand(resolver);
+//    addCommand(revisar);
+    addCommand(reset);
+    addCommand(pista);
+    status = LAZY; // para que se atiendan los eventos de pantalla
+  }
+
+  private void setButtonsOnSolve() {
+//    removeAllButtons();
+    addCommand(nuevo);
+    addCommand(configuracion);
+    addCommand(reset);
+  }
+
+  private void setButtonsOnReset() {
+    removeAllButtons();
+//    addCommand(salir);
+//    addCommand(resolver);
+//    addCommand(reset);
+    addCommand(nuevo);
+    addCommand(plantear);
+    addCommand(configuracion);
+//    addCommand(creditos);
+//    addCommand(revisar);
+//    addCommand(reglas);
+//    addCommand(pista);
+
+  }
+
+  private void configureMenu() {
+    String s = (String) bundle.getObject("menu.salir");
+    salir = new Command(s, Command.EXIT, 1);
+    s = (String) bundle.getObject("menu.resolver");
+    resolver = new Command(s, Command.OK, 1);
+    s = (String) bundle.getObject("menu.reset");
+    reset = new Command(s, Command.CANCEL, 1);
+    s = (String) bundle.getObject("menu.nuevo");
+    nuevo = new Command(s, Command.ITEM, 1);
+    s = (String) bundle.getObject("menu.plantear");
+    plantear = new Command(s, Command.ITEM, 1);
+    s = (String) bundle.getObject("menu.reglas");
+    reglas = new Command(s, Command.ITEM, 2);
+    s = (String) bundle.getObject("menu.configuracion");
+    configuracion = new Command(s, Command.SCREEN, 1);
+    s = (String) bundle.getObject("menu.creditos");
+    creditos = new Command(s, Command.HELP, 1);
+    s = (String) bundle.getObject("menu.revisar");
+    revisar = new Command(s, Command.BACK, 1);
+    s = (String) bundle.getObject("menu.pista");
+    pista = new Command(s, Command.STOP, 1);
+    setButtonsStartGame();
+  }
+
+  private void configureLocale() throws Exception {
+
+    // do locale stuff
+    locale = System.getProperty("microedition.locale");
+    bundle = ResourceBundle.getBundle(RESOURCES_BASE_URL, locale);
+  }
+
+  private void configureAlertScreens() throws IOException {
+    String s = (String) bundle.getObject("alert.creditos");
+    aCreditos = new Alert(s);
+    s = (String) bundle.getObject("titulo.ganador");
+    aGanador = new Alert(s);
+    s = (String) bundle.getObject("titulo.reglas");
+    aReglas = new Alert(s);
+
+    // Alert creditos
+    String titulo = (String) bundle.getObject("titulo.creditos");
+    aCreditos.setTitle(titulo);
+    String path = (String) bundle.getObject("url.creditos.xml.file");
+    titulo_creditos2 = Tools.restoreCredits(this.getClass().getResourceAsStream(
+        path), "UTF-8");
+    aCreditos.setString(titulo_creditos2);
+    aCreditos.setType(AlertType.INFO);
+    aCreditos.setTimeout(Alert.FOREVER);
+    aCreditos.setImage(Image.createImage(imagen_creditos));
+    // Alert ganador
+//    aGanador.setTicker(new Ticker(""));
+    titulo = (String) bundle.getObject("titulo.ganador");
+    String subtitulo = (String) bundle.getObject("subtitulo.ganador");
+    aGanador.setTitle(titulo);
+    aGanador.setString(subtitulo);
+    aGanador.setTimeout(ganador_retardo);
+    aGanador.setType(AlertType.INFO);
+    aGanador.setImage(Image.createImage(imagen_ganador));
+    // Alert reglas
+    titulo = (String) bundle.getObject("titulo.reglas");
+    subtitulo = (String) bundle.getObject("subtitulo.reglas");
+    aReglas.setTitle(titulo);
+    aReglas.setString(subtitulo);
+    aReglas.setTimeout(ganador_retardo);
+    aReglas.setType(AlertType.INFO);
+    aReglas.setImage(Image.createImage(imagen_reglas));
+
+  }
+
+  private void restoreOldConfig() throws InvalidRecordIDException,
+      RecordStoreNotOpenException, RecordStoreException {
+    rsConfig = RecordStore.openRecordStore(RSConfig, true);
+    // si no hay configuracion guardada
+    if (rsConfig.getNumRecords() == 0) {
+      // bundle no se guarda depende de la selccion del usuario en cada momento
+      config = new SudokuConfig(NIVEL_INICIAL, true, SIMBOLOS_INICIALES, null);
+      RecordManager.writeRecord(rsConfig, NIVEL_INICIAL);
+      RecordManager.writeRecord(rsConfig, 1); // ayuda activada
+      RecordManager.writeRecord(rsConfig, SIMBOLOS_INICIALES); // 0 numeros, 1 letras
+    }
+    // recuperamos la configuracion
+    else {
+      int level = RecordManager.readRecordAsInt(rsConfig, 1);
+      boolean ayuda = RecordManager.readRecordAsBoolean(rsConfig, 2);
+      int presentacion = RecordManager.readRecordAsInt(rsConfig, 3);
+      config = new SudokuConfig(level, ayuda, presentacion, null);
+    }
+    // el numero de pistas es variable en funcion del nivel
+//    MAX_PISTAS = config.getLevel() * PISTAS_POR_NIVEL;
+    rsConfig.closeRecordStore();
+  }
+
+  private void restoreLastGame() throws InvalidRecordIDException,
+      RecordStoreNotOpenException, RecordStoreException {
+    rsLastGame = RecordStore.openRecordStore(RSLastGame, true);
+    // recuperar la ultima partida
+    if (rsLastGame.getNumRecords() > 0) {
+      String s = RecordManager.readRecordAsString(rsLastGame, 1);
+      Vector v = new Vector();
+      int i = 0;
+      while (i < s.length()) {
+        v.addElement(s.substring(i, s.indexOf(" ", i)));
+        i = s.indexOf(" ", i);
+        i++;
+      }
+      String[] args = new String[v.size()];
+      i = 0;
+      for (Enumeration enumeration = v.elements(); enumeration.hasMoreElements(); ) {
+        String item = (String) enumeration.nextElement();
+        args[i] = item;
+        i++;
+      }
+      cells = SudokuSolver.parseProblem(args);
+    }
+    rsLastGame.closeRecordStore();
+  }
+
+  /**
+   * Sale del juego pero antes guarda configuracion y juego actual
+   * @throws RecordStoreException
+   */
+  private void salir() throws RecordStoreException {
+    // guardo el nivel
+    rsConfig = RecordStore.openRecordStore(RSConfig, true);
+    int level = config.getLevel();
+    RecordManager.writeRecordAtPosition(rsConfig, 1, level);
+    // guardo ayuda on/off
+    boolean ayuda = config.isAyudaOnLine();
+    RecordManager.writeRecordAtPosition(rsConfig, 2, ayuda);
+    // guardo tipo de representacion
+    int presentation = config.getPresentation();
+    RecordManager.writeRecordAtPosition(rsConfig, 3, presentation);
+    rsConfig.closeRecordStore();
+    // guardo la partida
+    StringBuffer sf = new StringBuffer();
+    for (int i = 0; i < ROWS; i++) {
+      for (int j = 0; j < COLS; j++) {
+        sf.append(i).append(j).append(cells[i][j]).append(" ");
+      }
+    }
+    rsLastGame = RecordStore.openRecordStore(RSLastGame, true);
+    if (rsLastGame.getNumRecords() > 0) {
+      RecordManager.writeRecordAtPosition(rsLastGame, 1, sf);
+    }
+    else { // primera vez, no hay registros
+      RecordManager.writeRecord(rsLastGame, sf);
+    }
+    rsLastGame.closeRecordStore();
+  }
+
+  /**
+   * resuelve el juego actual
+   */
+  private void resolver() {
+    // improbable
+    if (SudokuSolver.isEmptyBoard(cells)) {
+      Tools.tonoError(500, 100);
+      statusMessage = (String) bundle.getObject("info.tablero.vacio");
+      repaint();
+      return;
+    }
+    removeAllButtons();
+    status = GAME_SOLVED;
+    // check numbers
+    // hay un juego generado se resuelve a partir de los numero generados
+    // no se tienen en cuenta las entrada del usuario consistentes o no
+//    if (sudokuGen != null) { // solo aparece el boton resolver despues de generar una partida
+    // la solucion del usuario es correcta?
+    boolean correcta = sudokuGen.checkIt(cells);
+    // correcta o el usuario ha encontrado una solucion alternativa
+    // algunos sudokus tienen varias soluciones !!!
+    if (correcta ||
+        (SudokuSolver.isFullBoard(cells) && SudokuSolver.isConsistent(cells))) {
+      endGame = System.currentTimeMillis();
+      String t = Tools.longToTime(endGame - startGame);
+      statusMessage = (String) bundle.getObject("alert.felicidades") + t;
+      aGanador.setTicker(new Ticker(statusMessage));
+      ganador();
+    }
+    // la solucion del usruario no es la propuesta
+    else {
+      int[][] sol = sudokuGen.getSol();
+      for (int k = 0; k < ROWS; k++) {
+        System.arraycopy(sol[k], 0, cells[k], 0, sol[k].length);
+      }
+      statusMessage = (String) bundle.getObject("info.intentalo.de.nuevo");
+    }
+    setButtonsOnSolve();
+    repaint();
+  }
+
+  /**
+   * Revisa el juego actual
+   */
+  private void revisar() {
+    // si son iguales
+    inconsistencias = SudokuSolver.revisar(sudokuGen.getSol(), cells);
+    if (inconsistencias.isEmpty()) {
+      statusMessage = (String) bundle.getObject("info.correcto");
+    }
+    else {
+      statusMessage = (String) bundle.getObject("info.incorrecto");
+    }
+    repaint();
+  }
+
+  /**
+   * Muestra la pantalla de felicitaciones y una msuiquilla
+   */
+  private void ganador() {
+    Display.getDisplay(Sudoku.getInstance()).setCurrent(aGanador);
+//    killPending();
+    new Thread(new PlayThread(SUCCESS_WAV_URL + config.getLevel() + ".wav")).
+        start();
+  }
+
+  /**
+   * La maquina propone un nuevo juego
+   * @throws InterruptedException
+   */
+  private void nuevo() throws InterruptedException {
+    status = THINKING;
+    removeAllButtons();
+//    MAX_PISTAS = config.getLevel() * PISTAS_POR_NIVEL;
+    pistasGeneradas = 0;
+    cells = new int[ROWS][COLS];
+    statusMessage = (String) bundle.getObject("info.pensando");
+    repaint();
+    killPending();
+    final long ini = System.currentTimeMillis();
+    new Thread() {
+      public void run() {
+        activeThreads.push(this);
+        // nunca devuelve null
+        sudokuGen = SudokuSolver.newGame(config.getLevel());
+        cells = sudokuGen.getProblem();
+        long fin = System.currentTimeMillis();
+        long interval = fin - ini;
+        String msg = (String) bundle.getObject("info.juego.generado");
+        statusMessage = Tools.duracion(msg, interval);
+        repaint();
+        activeThreads.pop();
+        startGame = System.currentTimeMillis();
+        setButtonsOnNew();
+      }
+    }.start();
+  }
+
+  /**
+   * La maquina propone un nuevo juego en funcion de lo que hay en el tablero
+   */
+  private void plantear() {
+    status = THINKING;
+    if (SudokuSolver.isEmptyBoard(cells)) {
+      Tools.tonoError(500, 100);
+      statusMessage = (String) bundle.getObject("info.tablero.vacio");
+      repaint();
+      status = LAZY;
+      return;
+    }
+    if (SudokuSolver.isFullBoard(cells)) {
+      Tools.tonoError(500, 100);
+      statusMessage = (String) bundle.getObject("info.tablero.lleno");
+      repaint();
+      status = LAZY;
+      return;
+    }
+    if (!SudokuSolver.isConsistent(cells)) {
+      Tools.tonoError(500, 100);
+      statusMessage = (String) bundle.getObject("info.juego.inconsistente");
+      repaint();
+      status = LAZY;
+      return;
+    }
+    killPending();
+    final long ini = System.currentTimeMillis();
+    new Thread() {
+      public void run() {
+        activeThreads.push(this);
+        sudokuGen = SudokuSolver.newGame(cells);
+        // puede devolver null
+        if (sudokuGen == null) {
+          Tools.tonoError(500, 100);
+          statusMessage = (String) bundle.getObject("info.juego.sin.solucion");
+          status = LAZY;
+        }
+        else {
+          cells = sudokuGen.getProblem();
+          // tantas pistas como celdas libres
+//          MAX_PISTAS = sudokuGen.getEmptyCells();
+          pistasGeneradas = 0;
+          long fin = System.currentTimeMillis();
+          long interval = fin - ini;
+          String msg = (String) bundle.getObject("info.juego.generado");
+          statusMessage = Tools.duracion(msg, interval);
+          startGame = System.currentTimeMillis();
+          setButtonsOnNew();
+        }
+        repaint();
+        activeThreads.pop();
+      }
+    }.start();
+
+  }
+
+  private void reglas() {
+    Display.getDisplay(Sudoku.getInstance()).setCurrent(aReglas);
+  }
+
+  /**
+   * Creditos es decir yo
+   */
+  private void creditos() {
+    Display.getDisplay(Sudoku.getInstance()).setCurrent(aCreditos);
+  }
+
+  /**
+   * Sugiere pistas hints
+   */
+  private void pista() {
+    // si son iguales
+    boolean pistaEncontrada = false;
+    String f = (String) bundle.getObject("etiqueta.fila");
+    String c = (String) bundle.getObject("etiqueta.columna");
+    String u = (String) bundle.getObject("etiqueta.numero");
+    if (config.getPresentation() == 1) { // letra
+      u = (String) bundle.getObject("etiqueta.letra");
+    }
+    while (!pistaEncontrada && sudokuGen.isPistaDisponible() &&
+           pistasGeneradas < MAX_PISTAS) {
+      SudokuHint hint = sudokuGen.siguientePista();
+      int fila = hint.getFila();
+      int col = hint.getColumna();
+      int val = hint.getValor();
+      String sval = String.valueOf(val);
+      if (config.getPresentation() == 1) { // letra
+        val--;
+        char ch = 'A';
+        ch += val;
+        sval = String.valueOf(ch);
+      }
+      if (cells[col - 1][fila - 1] != val) {
+        cells[col - 1][fila - 1] = val;
+        statusMessage = f + fila + ", " + c + col + u + sval;
+        pistaEncontrada = true;
+        pistasGeneradas++;
+        celda_y = fila;
+        celda_x = col;
+      }
+      if (!pistaEncontrada) {
+        statusMessage = (String) bundle.getObject("info.pistas.disponibles");
+        celda_x = celda_y = -1;
+      }
+    }
+    if (pistasGeneradas >= MAX_PISTAS || !sudokuGen.isPistaDisponible()) {
+      removeCommand(pista);
+    }
+    repaint();
+  }
+
+  /**
+   * Atiende la seleccion del menu del usuario
+   * @param command Command
+   * @param displayable Displayable
+   */
+  public void commandAction(Command command, Displayable displayable) {
+    // salir
+    if (command.getCommandType() == Command.EXIT) {
+      try {
+        salir();
+      }
+      catch (RecordStoreException ex) {
+      }
+      // stop the MIDlet
+      Sudoku.quitApp();
+    }
+    // configuration !!!
+    else if (command.getCommandType() == Command.SCREEN) {
+      config.setBundle(bundle);
+      Display.getDisplay(Sudoku.getInstance()).setCurrent(new SudokuFormConfig(
+          config));
+
+    }
+    // resolver
+    else if (command.getCommandType() == Command.OK) {
+      resolver();
+    }
+    // reset
+    else if (command.getCommandType() == Command.CANCEL) {
+      setButtonsOnReset();
+      cells = new int[ROWS][COLS];
+      sudokuGen = null;
+      statusMessage = "";
+      status = LAZY;
+      repaint();
+    }
+    // plantear o nuevo juego, ya se han acabado los tipos de botones
+    else if (command.getCommandType() == Command.ITEM) {
+      String label = command.getLabel();
+      String nuevo = (String) bundle.getObject("menu.nuevo");
+      String plantear = (String) bundle.getObject("menu.plantear");
+      String reglas = (String) bundle.getObject("menu.reglas");
+      if (label.equalsIgnoreCase(nuevo)) {
+        try {
+          nuevo();
+        }
+        catch (Exception ex) {}
+      }
+      else if (label.equalsIgnoreCase(plantear)) {
+        plantear();
+      }
+      else if (label.equalsIgnoreCase(reglas)) {
+        reglas();
+      }
+    }
+    // creditos
+    else if (command.getCommandType() == Command.HELP) {
+      creditos();
+    }
+    // revisar
+    else if (command.getCommandType() == Command.BACK) {
+      revisar();
+    }
+    // pista
+    else if (command.getCommandType() == Command.STOP) {
+      pista();
+    }
+  }
+
+  /**
+   * En teoria mata hilos pendientes...
+   */
+  private synchronized void killPending() {
+    // matamos los hilos colgaos
+    while (!activeThreads.empty()) {
+       ( (Thread) activeThreads.pop()).interrupt();
+    }
+  }
+
+  /**
+   * Pinta el fondo
+   * @param g Graphics
+   */
+  private void pintaFondo(Graphics g) {
+    g.translate(0, 0);
+    g.setColor(COLOR_GREY);
+    g.fillRect(0, 0, ancho, alto);
+  }
+
+  /**
+   * Pinta el tablero
+   * @param g Graphics
+   */
+  private void pintaTablero(Graphics g) {
+    pintaFondo(g);
+    // pintamos el tablero
+    g.setColor(COLOR_BLACK);
+    g.translate(margen_lat, margen_sup);
+    g.setColor(COLOR_BLACK);
+    g.fillRect(0, 0, ancho - 1, ancho - 1);
+    // subcuadros
+    g.setColor(COLOR_DARK_GREY);
+    int ladoTercios = ancho / 3;
+    g.fillRect(ladoTercios, 0, ladoTercios - 1, ladoTercios - 1);
+    g.fillRect(0, ladoTercios, ladoTercios - 1, ladoTercios - 1);
+    g.fillRect(2 * ladoTercios, ladoTercios, ladoTercios - 1, ladoTercios - 1);
+    g.fillRect(ladoTercios, 2 * ladoTercios, ladoTercios - 1, ladoTercios - 1);
+    // marco externo
+    g.setColor(COLOR_WHITE);
+    g.drawRect(0, 0, ancho - 1, ancho - 1);
+    // lineas separadoras de subcuadros verticales
+    g.drawLine(ladoTercios - 1, 0, ladoTercios - 1, ancho - 1);
+    g.drawLine(ladoTercios * 2 - 1, 0, ladoTercios * 2 - 1, ancho - 1);
+    // lineas separadoras de subcuadros horizonatales
+    g.drawLine(0, ladoTercios - 1, ancho - 1, ladoTercios - 1);
+    g.drawLine(0, ladoTercios * 2 - 1, ancho - 1, ladoTercios * 2 - 1);
+    // pintamos las lineas finas
+    g.setStrokeStyle(g.DOTTED);
+    int ladoNovenos = ladoTercios / 3;
+    int offset = 0;
+    for (int i = 0; i < 3; i++) {
+      offset = ladoTercios * i;
+      for (int j = 1; j < 3; j++) {
+        // vertical
+        g.drawLine(offset + ladoNovenos * j, 0, offset + ladoNovenos * j,
+                   ancho - 1);
+        // horizontal
+        g.drawLine(0, offset + ladoNovenos * j, ancho - 1,
+                   offset + ladoNovenos * j);
+      }
+    }
+    // pinto los nummeros de la matriz
+    g.setFont(Font.getFont(Font.FACE_SYSTEM, Font.STYLE_PLAIN, Font.SIZE_LARGE));
+    Font f = Font.getDefaultFont();
+    for (int i = 0; i < ROWS; i++) {
+      for (int j = 0; j < COLS; j++) {
+        if (cells[i][j] != EMPTY) {
+          g.setColor(COLOR_WHITE);
+          if (sudokuGen != null) {
+            // los generados los pongo en verde
+            if (sudokuGen.getGen()[i][j]) {
+              g.setColor(COLOR_GREEN);
+            }
+          }
+          String s = null;
+          // numeros
+          if (config.getPresentation() == 0) {
+            s = String.valueOf(cells[i][j]);
+          }
+          // letras
+          else {
+            int n = cells[i][j];
+            char c = 'A';
+            --n;
+            c += n;
+            s = String.valueOf(c);
+            if (n == 8) {
+              s = " " + s;
+            }
+          }
+          int offset_x = f.stringWidth(s);
+          int offset_y = f.getHeight() / 3;
+          int pos_x = i / 3 * ladoTercios + i % 3 * ladoNovenos + offset_x;
+          int pos_y = j / 3 * ladoTercios + j % 3 * ladoNovenos + offset_y;
+          g.drawString(s, pos_x, pos_y, 0);
+        }
+      }
+    }
+  }
+
+  /**
+   * Enmarca la pista en azul y las inconsistencia en rojo
+   * @param g Graphics
+   */
+  private void enmarcaCelda(Graphics g) {
+    if (celda_x != -1 && celda_y != -1) {
+      celda_x--;
+      celda_y--;
+      int lado_tercios = ancho / 3;
+      int lado_novenos = ancho / 9;
+      int offset_x = celda_x / 3 * lado_tercios;
+      offset_x += (celda_x % 3 * lado_novenos);
+      int offset_y = celda_y / 3 * lado_tercios;
+      offset_y += (celda_y % 3 * lado_novenos);
+      g.setColor(COLOR_BLUE);
+      g.setStrokeStyle(Graphics.SOLID);
+      g.drawRect(offset_x, offset_y, lado_novenos, lado_novenos);
+      g.drawRect(offset_x + 1, offset_y + 1, lado_novenos - 2, lado_novenos - 2);
+//      g.drawRect(offset_x + 2, offset_y + 2, lado_novenos - 4, lado_novenos - 4);
+    }
+    celda_x = celda_y = -1;
+    if (inconsistencias != null) {
+      for (Enumeration e = inconsistencias.elements(); e.hasMoreElements(); ) {
+        SudokuHint hint = (SudokuHint) e.nextElement();
+        int fila = hint.getFila();
+        int col = hint.getColumna();
+        fila--;
+        col--;
+        int lado_tercios = ancho / 3;
+        int lado_novenos = ancho / 9;
+        int offset_x = col / 3 * lado_tercios;
+        offset_x += (col % 3 * lado_novenos);
+        int offset_y = fila / 3 * lado_tercios;
+        offset_y += (fila % 3 * lado_novenos);
+        g.setColor(COLOR_RED);
+        g.setStrokeStyle(Graphics.SOLID);
+        g.drawRect(offset_x, offset_y, lado_novenos, lado_novenos);
+        g.drawRect(offset_x + 1, offset_y + 1, lado_novenos - 2,
+                   lado_novenos - 2);
+      }
+      inconsistencias = null;
+    }
+  }
+
+  public void paint(Graphics g) {
+    pintaTablero(g);
+    enmarcaCelda(g);
+    if (config.isAyudaOnLine()) {
+      g.setColor(COLOR_BLACK);
+      Font font = Font.getFont(Font.FACE_SYSTEM, Font.STYLE_PLAIN,
+                               Font.SIZE_MEDIUM);
+      g.setFont(font);
+      g.drawString(statusMessage, 10, ancho + font.getHeight(), g.BASELINE);
+    }
+//    flushGraphics(0, 0, ancho-1, alto -1); // mostrar el buffer extra de una vez, sin tembleques
+//    LayerManager manager = new LayerManager();
+//    manager.append(sprite);
+//    manager.setViewWindow(0, 0, 200, 200);
+//    for (int i=0; i< 10; i++) {
+//      manager.paint(g, 0, 0);
+//      sprite.nextFrame();
+//      try {
+//        Thread.sleep(250);
+//      }
+//      catch (InterruptedException ex) {
+//      }
+//    }
+  }
+
+  /**
+   * Procesa los eventos del puntero
+   * @param x int
+   * @param y int
+   */
+  private void processPointer(final int x, final int y) {
+    // paso las coordenadas x, y a coordenadas en la matriz
+    final int ladoNovenos = ancho / 9;
+
+    // mientras se mantiene el puntero pulsado incremento la celda
+    new Thread() {
+      public void run() {
+        while (pointer_pressed) {
+          if (x >= margen_lat && x <= ancho + margen_lat && y >= margen_sup &&
+              y <= ancho + margen_sup) {
+            int fila = (x - margen_lat) / ladoNovenos;
+            int col = (y - margen_sup) / ladoNovenos;
+            // no hay un juego generado
+            if (sudokuGen == null) {
+              if (++cells[fila][col] > MAX_VAL) {
+                cells[fila][col] = EMPTY;
+              }
+            }
+            // he generado un juego
+            else {
+              // no considero las casillas generadas
+              if (!sudokuGen.getGen()[fila][col]) {
+                if (++cells[fila][col] > MAX_VAL) {
+                  cells[fila][col] = EMPTY;
+                }
+              }
+            }
+          }
+          if (!SudokuSolver.isConsistent(cells)) {
+            statusMessage = (String) bundle.getObject(
+                "info.juego.inconsistente");
+          }
+          else {
+            statusMessage = "";
+          }
+
+          repaint();
+          try {
+            Thread.sleep(POINTER_DELAY);
+          }
+          catch (Exception ex) {
+          }
+        }
+      }
+    }.start();
+
+  }
+
+  protected void pointerPressed(int x, int y) {
+    if (status == LAZY) {
+      pointer_pressed = true;
+      processPointer(x, y);
+    }
+  }
+
+  protected void pointerDragged(int x, int y) {
+  }
+
+  protected void pointerReleased(int x, int y) {
+    if (status == LAZY) {
+      pointer_pressed = false;
+    }
+  }
+  /*************** GESTION DEL TECLADO ***********************/
+  /**
+   * Gestor de eventos de GameCanvas
+   */
+  /*
+     private void checkKeys() {
+    int keyState = getKeyStates();
+     if ((keyState & LEFT_PRESSED) != 0) {
+     }
+     else if ((keyState & RIGHT_PRESSED) != 0) {
+     }
+     }
+   */
+  /**
+   * Sistema tradicional
+   * @param tecla int
+   */
+  /*
+     private void processKey(int tecla) {
+    switch (tecla) {
+      case UP:
+        break;
+      case DOWN:
+        break;
+      case RIGHT:
+        break;
+      case LEFT:
+        break;
+      case FIRE:
+        break;
+    }
+    repaint();
+     }
+   */
+  /**
+   * Gestor de eventos tradicional
+   * @param keyCode int
+   */
+  /*
+     protected void keyPressed(int keyCode) {
+    processKey(getGameAction(keyCode));
+     }
+   */
+  /**
+   * Gestor de eventos tradicional
+   * @param keyCode int
+   */
+  /*
+     protected void keyRepeated(int keyCode) {
+    processKey(getGameAction(keyCode));
+     }
+   */
+  /**
+   * Gestor de eventos tradicional
+   * @param keyCode int
+   */
+  /*
+     protected void keyReleased(int keyCode) {
+    processKey(getGameAction(keyCode));
+     }
+   */
+}

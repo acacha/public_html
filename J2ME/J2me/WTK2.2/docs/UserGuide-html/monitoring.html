@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.6.1058" />
+    <meta name="TEMPLATEBASE" content="book-w-index" />
+    <meta name="LASTUPDATED" content="10/27/04 10:15:19" />
+    <title>Monitoring Applications</title>
+    <link rel="StyleSheet" href="document.css" type="text/css" />
+    <link rel="StyleSheet" href="catalog.css" type="text/css" />
+    <link rel="Table of Contents" href="index.html" />
+    <link rel="Previous" href="emulator.html" />
+    <link rel="Next" href="security.html" />
+    <link rel="Index" href="indexa.html" />
+  </head>
+
+  <body>
+
+    <table class="full-width" id="SummaryNotReq1"
+        cellspacing="0" cellpadding="0" border="0">
+	  <!-- formatting table -->
+      <tr><td class="sun-darkblue">&#160;</td></tr>
+      <tr><td class="sun-lightblue">&#160;</td></tr>
+    </table>
+    
+    <table class="full-width" id="SummaryNotReq2"
+        cellspacing="0" cellpadding="0" border="0">
+	  <!-- formatting table -->
+      <tr>
+        <td class="go-left">
+          <p class="nav-link">
+            <a accesskey="h" href="../../index.html">Documentation Home</a>
+            &gt;
+            <a accesskey="c" href="index.html"><i>User's Guide</i></a>
+            &gt;
+            Monitoring Applications
+          </p>
+        </td>
+        <td class="go-right">
+        <a accesskey="c" href="index.html">
+          <img id="LongDescNotReq1" src="images/toc.gif" border="0"
+            alt="Contents" /></a>
+	<a accesskey="p" href="emulator.html">
+	  <img id="LongDescNotReq2" src="images/prev.gif" border="0"
+            alt="Previous" /></a>
+        <a accesskey="n" href="security.html">
+	  <img id="LongDescNotReq3" src="images/next.gif" border="0"
+            alt="Next" /></a>
+        <a accesskey="i" href="indexa.html">
+	  <img id="LongDescNotReq4" src="images/index.gif" border="0"
+            alt="Index" /></a>
+        </td>
+      </tr>
+    </table>
+
+<a name="wp1011404"> </a><h2 class="pChapNum">
+Chapter &#160; 5
+</h2>
+<a name="wp997169"> </a><h2 class="pTitle">
+Monitoring Applications
+</h2>
+<hr />
+<a name="wp997190"> </a><p class="pBody">
+The J2ME Wireless Toolkit provides several tools to monitor the behavior of your applications. These tools are helpful in debugging and optimizing your code.
+</p>
+<ul class="pBullet1"><a name="wp997439"> </a><div class="pBullet1"><li>The <em class="cEmphasis">profiler</em> lists the frequency of use and execution time for every method in your application.</li></div>
+<a name="wp997440"> </a><div class="pBullet1Plus"><li>The <em class="cEmphasis">memory monitor</em> shows the usage of memory while your application runs.</li></div>
+<a name="wp1004275"> </a><div class="pBullet1Plus"><li>The <em class="cEmphasis">network monitor</em> shows network data transmitted and received by your application. It supports many network protocols including HTTP, HTTPS, SMS, and CBS.</li></div>
+<a name="wp1004283"> </a><div class="pBullet1Last"><li><em class="cEmphasis">Tracing</em> outputs low-level information to the KToolbar console.</li></div>
+</ul>
+<hr class="pHr"/><div class="note">
+<a name="wp1009376"> </a>
+<b>Note &#8211;</b>  Monitoring features might slow down the execution of your application.
+<hr class="pHr"/></div>
+<a name="wp1009379"> </a><h2 class="pHeading1">
+5.1	Using the Profiler
+</h2>
+<a name="wp1009380"> </a><p class="pBody">
+The profiler keeps track of every method in your application. For a particular run, it figures out how much time was spent in each method and how many times each method was called. After you finish running your application and shut down the emulator, the profiler pops up, allowing you to browse through the method call information.
+</p>
+<a name="wp1004324"> </a><p class="pBody">
+To turn on the profiler, choose <b class="cBold">Edit &gt; Preferences...</b> from the KToolbar menu. Click on the <b class="cBold">Monitor</b> tab. If you are interested in seeing profiling information for all the system implementation methods, check <b class="cBold">Show System Classes</b>. Otherwise, the profiler shows only system methods that contain calls to your application methods.
+</p>
+<a name="wp1004379"> </a><div class="pFigureCaption">
+FIGURE&#160;20&#160;&#160;&#8211;&#160;&#160;Turning on the profiler
+<br /><br />
+</div><a name="wp1011417"> </a><p class="pBody">
+<img src="images/preferences-monitor.gif" alt="Turning on the profiler" border="0" hspace="0" vspace="0"/>
+</p>
+<a name="wp1004336"> </a><p class="pBody">
+Now run your application by clicking on the <b class="cBold">Run</b> button. Interact with your application as you normally would. When you&#8217;re finished, shut down the emulator. The profiler pops up with information about all the method calls in your application.
+</p>
+<a name="wp1004337"> </a><div class="pFigureCaption">
+FIGURE&#160;21&#160;&#160;&#8211;&#160;&#160;The method profiler
+<br /><br />
+</div><a name="wp1011451"> </a><p class="pBody">
+<img src="images/profiler2.gif" alt="The method profiler" border="0" hspace="0" vspace="0"/>
+</p>
+<a name="wp1004325"> </a><p class="pBody">
+The profiler displays two types of information:
+</p>
+<ul class="pBullet1"><a name="wp997499"> </a><div class="pBullet1"><li>Method relationships are shown in a hierarchical list, the <b class="cBold">Call Graph</b>.</li></div>
+<a name="wp997502"> </a><div class="pBullet1Last"><li>The right side of the profiler shows the execution time and number of calls for each method and its descendants.</li></div>
+</ul>
+<hr class="pHr"/><div class="note">
+<a name="wp1003278"> </a>
+<b>Note &#8211;</b>  The profiling values obtained from the emulator do not reflect actual values on a real device.
+<hr class="pHr"/></div>
+<a name="wp1003291"> </a><h3 class="pHeading2">
+5.1.1	The Call Graph
+</h3>
+<a name="wp1004412"> </a><p class="pBody">
+The call graph shows a hierarchy of method calls. Methods that call other methods are shown as folders. Double-click on a method to open it and see the methods it calls. Methods that do not call any other method are shown as gray circles.
+</p>
+<a name="wp1004440"> </a><p class="pBody">
+You can search for a particular class or method name. Click on <b class="cBold">Find...</b> and fill in a name. The search is performed from the current selection in the call graph to the end. If you want to search the entire call graph, check <b class="cBold">Wrap</b> before you click on the <b class="cBold">Find</b> button.
+</p>
+<a name="wp1004475"> </a><p class="pBody">
+As you click on different nodes in the call graph, the right side of the profiler shows details about the methods for that node.
+</p>
+<a name="wp1004417"> </a><h3 class="pHeading2">
+5.1.2	Execution Time and Number of Calls
+</h3>
+<a name="wp1004421"> </a><p class="pBody">
+The right side of the profiler window displays detailed information about methods. You can see the method name, the number of times it was called, and the amount of time that the emualtor spent in the method. The execution time is described in four distinct ways:
+</p>
+<ul class="pBullet1"><a name="wp1004451"> </a><div class="pBullet1"><li><b class="cBold">Cycles</b> shows the amount of processor time spent in the method itself.</li></div>
+<a name="wp1004455"> </a><div class="pBullet1Plus"><li><b class="cBold">%Cycles</b> is the percentage of the total execution time that is spent in the method itself.</li></div>
+<a name="wp1004458"> </a><div class="pBullet1Plus"><li><b class="cBold">Cycles with Children</b> is the amount of time spent in the method <em class="cEmphasis">and</em> its called methods.</li></div>
+<a name="wp1004459"> </a><div class="pBullet1Last"><li><b class="cBold">%Cycles with Children</b> shows the time spent in the method and its called methods as compared to the total execution time.</li></div>
+</ul>
+<a name="wp1004469"> </a><p class="pBody">
+Click on any column to sort by that column. Click a second time to switch the sort between ascending and descending.
+</p>
+<a name="wp1004499"> </a><p class="pBody">
+The right pane shows the methods contained in the currently selected node in the call graph. If you want to see every method, click on the <b class="cBold">&lt;root&gt;</b> node in the call graph.
+</p>
+<a name="wp1004422"> </a><h3 class="pHeading2">
+5.1.3	Saving and Loading Profiler Information
+</h3>
+<a name="wp1004416"> </a><p class="pBody">
+To save your profiler session, click on the <b class="cBold">Save</b> button in the profiler window. Choose a file name.
+</p>
+<a name="wp1004480"> </a><p class="pBody">
+To load a profiler session, choose <b class="cBold">File &gt; Utilities...</b> from the KToolbar menu. Click on <b class="cBold">Open Session</b> in the <b class="cBold">Profiler</b> box. When you select a file, the profiler window appears with all the session information.
+</p>
+<a name="wp997698"> </a><h2 class="pHeading1">
+5.2	Using the Memory Monitor
+</h2>
+<a name="wp1004504"> </a><p class="pBody">
+Memory is scarce on many MIDP devices. The J2ME Wireless Toolkit includes a memory monitor that makes it easy to examine the memory usage of your application. You can see the total memory used by your application and a detailed listing of the memory usage per object.
+</p>
+<a name="wp1004505"> </a><p class="pBody">
+To turn on the memory monitor, choose <b class="cBold">Edit &gt; Preferences...</b> from the KToolbar menu. Click on the <b class="cBold">Monitor</b> tab. Check <b class="cBold">Enable Memory Monitor</b>.
+</p>
+<a name="wp1004520"> </a><p class="pBody">
+Next time you run the emulator, the memory monitor window pops up, displaying a graph of your application&#8217;s memory usage over time. The memory monitor slows down your application startup because every object created is recorded.
+</p>
+<a name="wp1004524"> </a><div class="pFigureCaption">
+FIGURE&#160;22&#160;&#160;&#8211;&#160;&#160;The memory monitor graph
+<br /><br />
+</div><a name="wp1011485"> </a><p class="pBody">
+<img src="images/memorymonitor3.gif" alt="The memory monitor graph" border="0" hspace="0" vspace="0"/>
+</p>
+<a name="wp1007634"> </a><p class="pBody">
+The memory monitor graph shows the following information:
+</p>
+<ul class="pBullet1"><a name="wp1004558"> </a><div class="pBullet1"><li><b class="cBold">Current</b>. The current amount of memory used by the application.</li></div>
+<a name="wp1004559"> </a><div class="pBullet1Plus"><li><b class="cBold">Maximum</b>. The maximum amount of memory used since program execution began, shown in the graph by a broken red line.</li></div>
+<a name="wp1004560"> </a><div class="pBullet1Plus"><li><b class="cBold">Objects</b>. The number of objects in the heap.</li></div>
+<a name="wp1004561"> </a><div class="pBullet1Plus"><li><b class="cBold">Used</b>. The amount of memory used.</li></div>
+<a name="wp1004562"> </a><div class="pBullet1Plus"><li><b class="cBold">Free</b>. The amount of unused memory available.</li></div>
+<a name="wp1004563"> </a><div class="pBullet1Last"><li><b class="cBold">Total</b>. The total amount of memory available at startup.</li></div>
+</ul>
+<a name="wp1004533"> </a><p class="pBody">
+Remember, you can modify the heap size using the <b class="cBold">Storage</b> tab of the KToolbar preferences. See <a  href="projects.html#wp50462"><span class="cZ_Xref">Chapter&#160;3, </span>&#8220;Working With Projects</a>,&#8221; for details.
+</p>
+<a name="wp1003210"> </a><p class="pBody">
+To request the system to perform a garbage collection, click on <b class="cBold">Run GC</b>.
+</p>
+<hr class="pHr"/><div class="note">
+<a name="wp1003211"> </a>
+<b>Note &#8211;</b>  The memory usage you observe with the emulator is not going to be exactly the same as memory usage on a real device. Remember, the emulator does not represent a real device. It is just one possible implementation of its supported APIs.
+<hr class="pHr"/></div>
+<a name="wp1004638"> </a><p class="pBody">
+To see details about the objects in your application, click on the <b class="cBold">Objects</b> tab in the memory monitor window.
+</p>
+<a name="wp1004726"> </a><div class="pFigureCaption">
+FIGURE&#160;23&#160;&#160;&#8211;&#160;&#160;The memory monitor objects display
+<br /><br />
+</div><a name="wp1011519"> </a><p class="pBody">
+<img src="images/memorymonitor-objects4.gif" alt="The memory monitor objects display" border="0" hspace="0" vspace="0"/>
+</p>
+<a name="wp1004725"> </a><p class="pBody">
+You&#8217;ll see a table with the following columns:
+</p>
+<ul class="pBullet1"><a name="wp999712"> </a><div class="pBullet1"><li><b class="cBold">Name</b>. The class name of the objects.</li></div>
+<a name="wp999713"> </a><div class="pBullet1Plus"><li><b class="cBold">Live</b>. The number of instances. Some of these might be eligible for garbage collection.</li></div>
+<a name="wp999714"> </a><div class="pBullet1Plus"><li><b class="cBold">Total</b>. The total number of objects that have been allocated since the application began.</li></div>
+<a name="wp999715"> </a><div class="pBullet1Plus"><li><b class="cBold">Total Size</b>. The total amount of memory used by the objects.</li></div>
+<a name="wp999716"> </a><div class="pBullet1Last"><li><b class="cBold">Average Size</b>. The average object size, calculated by dividing the live instances into the total size.</li></div>
+</ul>
+<a name="wp1004708"> </a><p class="pBody">
+Click on any column header to sort on that column.
+</p>
+<a name="wp1004712"> </a><p class="pBody">
+You can search for a specific class name by choosing <b class="cBold">View &gt; Find... </b>from the memory monitor window menu.
+</p>
+<a name="wp999009"> </a><h3 class="pHeading2">
+5.2.1	Saving and Loading Memory Monitor Information
+</h3>
+<a name="wp1004751"> </a><p class="pBody">
+To save your memory monitor session, click on the <b class="cBold">Save</b> button. Choose a file name.
+</p>
+<a name="wp1004752"> </a><p class="pBody">
+To load a memory monitor session, choose <b class="cBold">File &gt; Utilities...</b> from the KToolbar menu. Click on <b class="cBold">Open Session</b> in the <b class="cBold">Memory Monitor</b> box. When you select a file, the memory monitor window appears with all the session information.
+</p>
+<a name="wp999208"> </a><h2 class="pHeading1">
+5.3	Using the Network Monitor
+</h2>
+<a name="wp1004776"> </a><p class="pBody">
+MIDP applications, at a minimum, are capable of HTTP network connections, but many other types of network connections are also possible. The network monitor provides a convenient way to see the information your application is sending and receiving on the network. This is helpful if you are debugging network interactions or looking for ways to optimize network traffic.
+</p>
+<a name="wp1004782"> </a><p class="pBody">
+To turn on the network monitor, choose <b class="cBold">Edit &gt; Preferences...</b> from the KToolbar menu. Click on the <b class="cBold">Monitor</b> tab. Check <b class="cBold">Enable Network Monitoring</b>.
+</p>
+<a name="wp1004778"> </a><p class="pBody">
+Next time you run the emulator, the network monitor window pops up.
+</p>
+<a name="wp1004779"> </a><div class="pFigureCaption">
+FIGURE&#160;24&#160;&#160;&#8211;&#160;&#160;The network monitor
+<br /><br />
+</div><a name="wp1011553"> </a><p class="pBody">
+<img src="images/networkmonitor5.gif" alt="The network monitor" border="0" hspace="0" vspace="0"/>
+</p>
+<a name="wp1004809"> </a><p class="pBody">
+When your application makes any type of network connection, information about the connection is captured and displayed. The figure shows two HTTP requests and responses.
+</p>
+<a name="wp1004816"> </a><p class="pBody">
+The display on the left side shows a hierarchy of messages and message pieces. Click on a message or a portion of a message to see details in the right side of the network monitor.
+</p>
+<a name="wp1004831"> </a><p class="pBody">
+Message bodies are shown as raw hexadecimal values and the equivalent text.
+</p>
+<hr class="pHr"/><div class="note">
+<a name="wp1004846"> </a>
+<b>Note &#8211;</b>  You can examine messages that are still in the process of being sent. Incomplete messages are indicated by bold highlighting in the message tree.
+<hr class="pHr"/></div>
+<a name="wp1004848"> </a><h3 class="pHeading2">
+5.3.1	Filtering Messages
+</h3>
+<a name="wp1004850"> </a><p class="pBody">
+Filters are useful for examining some subset of the total network traffic. Filter settings are specific to the network protocol used.
+</p>
+<a name="wp1004857"> </a><p class="pBody">
+Press the <b class="cBold">Filter Settings</b> button to use the filter. Change the filter settings to suit your needs.</p><div align="left">
+<table border="0" cellpadding="7" summary="Network monitor filter settings" id="wp1004863">
+  <caption><a name="wp1004863"> </a><div class="pTableCaption">
+TABLE&#160;5&#160;&#160;&#8211;&#160;&#160;Network monitor filter settings
+</div>
+</caption>
+<thead>
+<tr >    <th  class="sun-verylightblue" scope="col"><a name="wp1004867"> </a><div class="pTableHead">
+Network Protocol
+</div>
+
+</th>
+    <th  class="sun-verylightblue" scope="col"><a name="wp1004869"> </a><div class="pTableHead">
+Filter Settings
+</div>
+
+</th>
+</tr>
+</thead>
+  <tr>    <td><a name="wp1004871"> </a><div class="pTableText">
+HTTP/HTTPS
+</div>
+</td>
+    <td><a name="wp1004901"> </a><div class="pTableText">
+Enter text to match the various parts of HTTP messages: URL, status line, headers, or body. For example, entering &#8220;slashdot&#8221; in the <b class="cBold">URL</b> field would filter to show only messages whose URL contained &#8220;slashdot&#8221;.
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp1004875"> </a><div class="pTableText">
+SMS/CBS
+</div>
+</td>
+    <td><a name="wp1004877"> </a><div class="pTableText">
+You can specify a protocol, message type, and direction to match. Furthermore, you can enter text to match in the sender, receiver, and message content.
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp1007672"> </a><div class="pTableText">
+MMS
+</div>
+</td>
+    <td><a name="wp1007674"> </a><div class="pTableText">
+Enter text to match the direction, sender, receiver, and copied (cc) and blind copied (bcc) receivers. In addition, you can filter on the subject, content ID, content location, MIME type, and encoding.
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp1007676"> </a><div class="pTableText">
+OBEX/SPP/L2CAP
+</div>
+</td>
+    <td><a name="wp1007678"> </a><div class="pTableText">
+You can filter using the URL or header content.
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp1004879"> </a><div class="pTableText">
+Socket/SSL/Datagram/Comm
+</div>
+</td>
+    <td><a name="wp1004881"> </a><div class="pTableText">
+Enter text to match in either the connection string (URL) or content.
+</div>
+</td>
+</tr>
+<tr><td colspan="15"><hr class="pTableHr" /></td></tr>
+</table>
+</div>
+<p class="pBody">
+
+</p>
+<a name="wp1002675"> </a><p class="pBody">
+When you are done entering filter settings, press <b class="cBold">OK</b> to return to the network monitor. The <b class="cBold">Filter</b> checkbox is checked, indicating that a filter is in use. To disable the filter and see all messages, uncheck the checkbox.
+</p>
+<a name="wp1004924"> </a><h3 class="pHeading2">
+5.3.2	Sorting Messages
+</h3>
+<a name="wp1002688"> </a><p class="pBody">
+To arrange the message tree in a particular order, click on the <b class="cBold">Sort By</b> combo box and choose a criteria.
+</p>
+<ul class="pBullet1"><a name="wp1002690"> </a><div class="pBullet1"><li><b class="cBold">Time</b>. Messages are sorted in chronological order of time sent or received.</li></div>
+<a name="wp1002691"> </a><div class="pBullet1Plus"><li><b class="cBold">URL</b>. Messages are sorted by URL address. Multiple messages with the same address are sorted by time.</li></div>
+<a name="wp1002692"> </a><div class="pBullet1Last"><li><b class="cBold">Connection</b>. Messages are sorted by communication connection. Messages using the same connection are sorted by time. This sort type enables you to see messages grouped by requests and their associated responses. </li></div>
+</ul>
+<a name="wp1002693"> </a><p class="pBody">
+Sorting parameters are dependent on the message protocol you choose. For instance, sorting by time is not relevant for socket messages.
+</p>
+<a name="wp1004947"> </a><h3 class="pHeading2">
+5.3.3	Saving and Loading Network Monitor Information
+</h3>
+<a name="wp1004948"> </a><p class="pBody">
+To save your network monitor session, choose <b class="cBold">File &gt; Save</b> or <b class="cBold">File &gt; Save As...</b> from the network monitor window menu. Choose a file name.
+</p>
+<a name="wp1004949"> </a><p class="pBody">
+To load a network monitor session, choose <b class="cBold">File &gt; Utilities...</b> from the KToolbar menu. Click on <b class="cBold">Open Session</b> in the <b class="cBold">Network Monitor</b> box. When you select a file, the network monitor window appears with all the session information.
+</p>
+<a name="wp1002718"> </a><h3 class="pHeading2">
+5.3.4	Clearing the Message Tree
+</h3>
+<a name="wp1002720"> </a><p class="pBody">
+To remove all messages from the network monitor, choose <b class="cBold">Edit &gt; Clear</b> from the network monitor menu.
+</p>
+
+    <p>&#160;</p>
+    <hr class="pHr" />
+
+    <table class="full-width" id="SummaryNotReq3">
+	  <!-- formatting table -->
+      <tr>
+        <td class="go-left">
+          <a accesskey="c" href="index.html">
+            <img id="LongDescNotReq1" src="images/toc.gif" border="0"
+              alt="Contents" /></a>
+          <a accesskey="p" href="emulator.html">
+            <img id="LongDescNotReq2" src="images/prev.gif" border="0"
+              alt="Previous" /></a>
+          <a accesskey="n" href="security.html">
+            <img id="LongDescNotReq3" src="images/next.gif" border="0"
+              alt="Next" /></a>
+          <a accesskey="i" href="indexa.html">
+            <img id="LongDescNotReq4" src="images/index.gif" border="0"
+              alt="Index" /></a>
+        </td>
+        <td class="go-right">
+          <span class="copyright">J2ME Wireless Toolkit User's Guide <br /> J2ME Wireless Toolkit 2.2</span>
+        </td>
+      </tr>
+    </table>
+
+    <p>&#160;</p>
+    <p class="copyright">
+      <a href="copyright.html">Copyright</a> &#169; 2004 Sun Microsystems, Inc. 
+      All rights reserved.
+      Use is subject to the <a href="../../BinaryLicense.html">license terms</a>.
+    </p>
+  </body>
+</html>

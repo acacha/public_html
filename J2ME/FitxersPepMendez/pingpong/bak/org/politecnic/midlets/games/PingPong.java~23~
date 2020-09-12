@@ -1,0 +1,61 @@
+package org.politecnic.midlets.games;
+
+import javax.microedition.lcdui.Display;
+import javax.microedition.midlet.MIDlet;
+import javax.microedition.media.Player;
+import javax.microedition.media.Manager;
+import javax.microedition.media.protocol.DataSource;
+import java.io.InputStream;
+import javax.microedition.media.control.ToneControl;
+
+/**
+ * <p>Title: Ping Pong Game </p>
+ * <p>Description: Ping pong interactivo para dispositivos moviles</p>
+ * <p>Comments: CLDL 1.1 MIDP 2.0</p>
+ * <p>Media Supported Protocols: device, http, file and capture</p>
+ * <p>Supported Content Type: audio/x-tone-seq, audio/x-wav, audio/midi, audio/sp_midi, image/gif, video/mpeg and video/vnd.sun.rgb565
+ * <p>Date: 12/03/06 </p>
+ * @author Pep Mendez
+ * @version 1.0
+ */
+public class PingPong extends MIDlet {
+  private static PingPong instance;
+  private PingPongTable displayable = new PingPongTable();
+  public PingPong() {
+    instance = this;
+  }
+
+  public void startApp() {
+    Display.getDisplay(this).setCurrent(displayable);
+    new Thread() {
+      public void run() {
+        try {
+          final String url = "/org/politecnic/midlets/games/pingponggame.wav";
+          InputStream is = this.getClass().getResourceAsStream(url);
+          Player p = Manager.createPlayer(is, "audio/x-wav");
+          p.start();
+        }
+        catch (Exception ex) {
+          ex.printStackTrace();
+        }
+      }
+    }.start();
+  }
+
+  public void pauseApp() {
+  }
+
+  public void destroyApp(boolean unconditional) {
+  }
+
+  public static void quitApp() {
+    instance.destroyApp(true);
+    instance.notifyDestroyed();
+    instance = null;
+  }
+
+  public static PingPong getInstance() {
+    return instance;
+  }
+
+}

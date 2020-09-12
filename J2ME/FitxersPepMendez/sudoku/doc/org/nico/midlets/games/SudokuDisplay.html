@@ -1,0 +1,185 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><!--JBuilder QuickDoc-->
+<HEAD>
+<TITLE>Class org.nico.midlets.games.SudokuDisplay</TITLE><META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+</HEAD>
+<BODY>
+
+<H2>
+<FONT SIZE="-1">org.nico.midlets.games</FONT>
+<BR>Class SudokuDisplay</H2>
+<DL>
+<DT>public class <B>SudokuDisplay</B><DT>extends javax.microedition.lcdui.game.GameCanvas<DT>implements javax.microedition.lcdui.CommandListener, org.nico.midlets.games.ISudokuConstants
+</DL>
+<DL><DD><p>Title: Sudoku</p> <p>Description: Juego japones</p> <p>Comments: Version recursiva</p> <p>Date: 06/07/06</p> <p>Last update: 13/08/06</p><DL><DD></DD></DL></DD>
+</DL>
+<DL><DT><B>Author:</B><DD>Pep Mendez</DD>
+</DL>
+<TABLE BORDER="1" CELLPADDING="3" CELLSPACING="0" WIDTH="100%">
+<TR BGCOLOR="#CCCCFF"><TD COLSPAN=1><FONT SIZE="+2">
+<B>Method Detail</B>
+</FONT></TD></TR></TABLE>
+
+<A NAME="salir()"></A>
+
+<H3>salir</H3>
+<PRE>
+private void <B>salir</B>()</PRE>
+<DL><DD>Sale del juego pero antes guarda configuracion y juego actual<DL><DD></DD></DL></DD>
+</DL>
+<DL><DT><B>Throws:</B><DD><CODE>RecordStoreException</CODE> - </DD>
+</DL>
+<HR>
+
+<A NAME="resolver()"></A>
+
+<H3>resolver</H3>
+<PRE>
+private void <B>resolver</B>()</PRE>
+<DL><DD>resuelve el juego actual<DL><DD></DD></DL></DD>
+</DL>
+<DL></DL>
+<HR>
+
+<A NAME="revisar()"></A>
+
+<H3>revisar</H3>
+<PRE>
+private void <B>revisar</B>()</PRE>
+<DL><DD>Revisa el juego actual<DL><DD></DD></DL></DD>
+</DL>
+<DL></DL>
+<HR>
+
+<A NAME="ganador()"></A>
+
+<H3>ganador</H3>
+<PRE>
+private void <B>ganador</B>()</PRE>
+<DL><DD>Muestra la pantalla de felicitaciones y una msuiquilla<DL><DD></DD></DL></DD>
+</DL>
+<DL></DL>
+<HR>
+
+<A NAME="nuevoGenerado()"></A>
+
+<H3>nuevoGenerado</H3>
+<PRE>
+private void <B>nuevoGenerado</B>()</PRE>
+<DL><DD>Ya generado un nuevo juego activa los botones que toca<DL><DD></DD></DL></DD>
+</DL>
+<DL></DL>
+<HR>
+
+<A NAME="nuevo()"></A>
+
+<H3>nuevo</H3>
+<PRE>
+private void <B>nuevo</B>()</PRE>
+<DL><DD>La maquina propone un nuevo juego<DL><DD></DD></DL></DD>
+</DL>
+<DL><DT><B>Throws:</B><DD><CODE>InterruptedException</CODE> - </DD>
+</DL>
+<HR>
+
+<A NAME="plantear()"></A>
+
+<H3>plantear</H3>
+<PRE>
+private void <B>plantear</B>()</PRE>
+<DL><DD>La maquina propone un nuevo juego en funcion de lo que hay en el tablero<DL><DD></DD></DL></DD>
+</DL>
+<DL></DL>
+<HR>
+
+<A NAME="creditos()"></A>
+
+<H3>creditos</H3>
+<PRE>
+private void <B>creditos</B>()</PRE>
+<DL><DD>Creditos es decir yo<DL><DD></DD></DL></DD>
+</DL>
+<DL></DL>
+<HR>
+
+<A NAME="pista()"></A>
+
+<H3>pista</H3>
+<PRE>
+private void <B>pista</B>()</PRE>
+<DL><DD>Sugiere pistas hints<DL><DD></DD></DL></DD>
+</DL>
+<DL></DL>
+<HR>
+
+<A NAME="commandAction(javax.microedition.lcdui.Command, javax.microedition.lcdui.Displayable)"></A>
+
+<H3>commandAction</H3>
+<PRE>
+public void <B>commandAction</B>(javax.microedition.lcdui.Command&nbsp;command,
+                          javax.microedition.lcdui.Displayable&nbsp;displayable)</PRE>
+<DL><DD>Atiende la seleccion del menu del usuario<DL><DD></DD></DL></DD>
+</DL>
+<DL><DT><B>Parameters:</B><DD><CODE>command</CODE> - Command</DD>
+<DD><CODE>displayable</CODE> - Displayable</DD>
+</DL>
+<HR>
+
+<A NAME="killPending()"></A>
+
+<H3>killPending</H3>
+<PRE>
+private synchronized void <B>killPending</B>()</PRE>
+<DL><DD>En teoria mata hilos pendientes...<DL><DD></DD></DL></DD>
+</DL>
+<DL></DL>
+<HR>
+
+<A NAME="pintaFondo(javax.microedition.lcdui.Graphics)"></A>
+
+<H3>pintaFondo</H3>
+<PRE>
+private void <B>pintaFondo</B>(javax.microedition.lcdui.Graphics&nbsp;g)</PRE>
+<DL><DD>Pinta el fondo<DL><DD></DD></DL></DD>
+</DL>
+<DL><DT><B>Parameters:</B><DD><CODE>g</CODE> - Graphics</DD>
+</DL>
+<HR>
+
+<A NAME="pintaTablero(javax.microedition.lcdui.Graphics)"></A>
+
+<H3>pintaTablero</H3>
+<PRE>
+private void <B>pintaTablero</B>(javax.microedition.lcdui.Graphics&nbsp;g)</PRE>
+<DL><DD>Pinta el tablero<DL><DD></DD></DL></DD>
+</DL>
+<DL><DT><B>Parameters:</B><DD><CODE>g</CODE> - Graphics</DD>
+</DL>
+<HR>
+
+<A NAME="enmarcaCelda(javax.microedition.lcdui.Graphics)"></A>
+
+<H3>enmarcaCelda</H3>
+<PRE>
+private void <B>enmarcaCelda</B>(javax.microedition.lcdui.Graphics&nbsp;g)</PRE>
+<DL><DD>Enmarca la pista en azul y las inconsistencia en rojo<DL><DD></DD></DL></DD>
+</DL>
+<DL><DT><B>Parameters:</B><DD><CODE>g</CODE> - Graphics</DD>
+</DL>
+<HR>
+
+<A NAME="processPointer(int, int)"></A>
+
+<H3>processPointer</H3>
+<PRE>
+private void <B>processPointer</B>(int&nbsp;x,
+                            int&nbsp;y)</PRE>
+<DL><DD>Procesa los eventos del puntero<DL><DD></DD></DL></DD>
+</DL>
+<DL><DT><B>Parameters:</B><DD><CODE>x</CODE> - int</DD>
+<DD><CODE>y</CODE> - int</DD>
+</DL>
+<HR>
+
+</BODY>
+</HTML>

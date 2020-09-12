@@ -1,0 +1,498 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>Release Notes - J2ME Wireless Toolkit</title>
+  <link rel="stylesheet" href="docs/document.css" type="text/css">
+</head>
+
+<body>
+
+<a name="_top"></a>                  
+
+<table width=100% cellspacing=0 cellpadding=0 border=0
+    summary="This table is for formatting purposes only.">
+  <tr> 
+    <td class=sun-darkblue>&nbsp;</td>
+  </tr>
+  <tr> 
+    <td class=sun-darkblue> 
+      <h1>Release Notes</h1>
+      <h2>
+      J2ME Wireless Toolkit
+      <br>
+      2.2
+      </h2>
+      <h4>October 2004</h4>
+    </td>
+  </tr>
+  <tr>
+    <td class="sun-lightblue">&nbsp;</td>
+  </tr>                                
+</table>
+
+<table id="SummaryNotReq1" class="full-width"
+    cellspacing="0" cellpadding="0" border="0">
+  <!-- formatting table -->
+  <tr>
+    <td class="go-left">
+      <p class="nav-link">
+        <a href="index.html">Documentation Home</a>
+        &gt;
+        Release Notes
+      </p>
+    </td>
+  </tr>
+</table>
+
+<h2>Table of Contents</h2>
+
+<dl>
+  <dt><a href="#overview">1. Overview</a></dt>
+  <dt><a href="#systemrequirements">2. System Requirements</a></dt>
+  <dt><a href="#installation">3. Installation Instructions</a></dt>
+  <dt><a href="#differences">4. Differences Between Linux and Microsoft
+      Windows Versions of the J2ME Wireless Toolkit</a></dt>
+  <dt><a href="#running">5. Running the Toolkit</a></dt>
+  <dt><a href="#ide">6. Running the Toolkit in an IDE</a></dt>
+  <!--<dt><a href="#compatibility">6. Compatibility</a></dt>-->
+  <dt><a href="#knownbugs">7. Known Bugs</a></dt>
+  <dt><a href="#questions">8. Frequently Asked Questions</a></dt>
+</dl>
+
+<a name="overview"></a><a name="_maincontent"></a>                                     
+<h2>1. Overview</h2>
+                                                    
+<p>
+The
+J2ME Wireless Toolkit is a set of tools for creating MIDP applications.
+It consists of three main components:
+</p>
+
+<ul>
+  <li>
+    <i>KToolbar</i> automates many of the tasks involved in creating
+    MIDP applications.
+  </li>
+  <li>
+    The <i>emulator</i> is a simulated mobile phone. It is useful for
+    testing MIDP applications.
+  </li>
+  <li>
+    A collection of <i>utilities</i> provides other useful functionality,
+    including a text messaging console and cryptographic utilities.
+  </li>
+</ul>
+
+<p>
+The J2ME Wireless Toolkit implements impressive capabilities which are
+exposed through standard APIs. The APIs are defined through the
+<a href="http://jcp.org/">Java Community Process (JCP)</a>:
+</p>
+
+<ul>
+  <li>
+    <a href="http://jcp.org/en/jsr/detail?id=139">
+      Connected Limited Device Configuration (CLDC) 1.1 (JSR 139)
+    </a>
+  </li>
+  <li>
+    <a href="http://jcp.org/en/jsr/detail?id=118">
+      Mobile Information Device Profile (MIDP) 2.0 (JSR 118)
+    </a>
+  </li>
+  <li>
+    <a href="http://jcp.org/en/jsr/detail?id=185">
+      Java Technology for the Wireless Industry (JTWI) 1.0 (JSR 185)
+    </a>
+  </li>
+  <li>
+    <a href="http://jcp.org/en/jsr/detail?id=205">
+      Wireless Messaging API (WMA) 2.0 (JSR 205)
+    </a>
+  </li>
+  <li>
+    <a href="http://jcp.org/en/jsr/detail?id=135">
+      Mobile Media API (MMAPI) 1.1 (JSR 135)
+    </a>
+  </li>
+  <li>
+    <a href="http://jcp.org/en/jsr/detail?id=75">
+      PDA Optional Packages for the J2ME Platform (JSR 75)
+    </a>
+  </li>
+  <li>
+    <a href="http://jcp.org/en/jsr/detail?id=82">
+      Java APIs for Bluetooth (JSR 82)
+    </a>
+  </li>
+  <li>
+    <a href="http://jcp.org/en/jsr/detail?id=172">
+      J2ME Web Services Specification (JSR 172)
+    </a>
+  </li>
+  <li>
+    <a href="http://jcp.org/en/jsr/detail?id=184">
+      Mobile 3D Graphics API for J2ME (JSR 184)
+    </a>
+  </li>
+</ul>
+
+<p>
+For more information on using the J2ME Wireless Toolkit to develop applications, see
+the <a href="docs/UserGuide-html/index.html"><i>User's Guide</i></a>.
+</p>
+
+<p>
+Please send your comments to
+<img src="docs/images/email.gif" align="top" id="LongDescNotReq"
+alt="Feedback email address" border="0">. 
+</p>
+
+<p class="nav-link">[<a href="#_top">Top</a>]</p>
+
+<a name="systemrequirements"></a>                    
+<h2>2. System Requirements</h2>
+                                                                    
+<p> 
+This section describes the system requirements for running the
+J2ME Wireless Toolkit.
+</p>
+                                                                    
+<h3>2.1 Required Software</h3>
+
+<ul> 
+  <li>
+    One of the following operating environments:
+    <ul>
+      <li>Microsoft Windows XP</li>
+      <li>Linux (unsupported)</li>
+    </ul>
+  </li>
+
+  <li>
+    Java<small><sup>TM</sup></small> 2 SDK, Standard Edition (J2SE
+    SDK), version 1.4.2 - if you plan to do actual
+    development, or Java<small><sup>TM</sup></small> 2, Standard Edition
+    Runtime Environment (JRE), version 1.4.2 - if you only
+    plan to run the demonstration applications.
+                                                       
+    <p> 
+    To download the SDK or JRE you want, go to
+      <a href="http://java.sun.com/j2se/downloads.html">
+        http://java.sun.com/j2se/downloads.html
+      </a>
+    </p>
+  </li>
+</ul>
+
+<p>
+<b>NOTE:</b> The Linux version of the toolkit is unsupported and has
+undergone only limited testing on the Red Hat 9.0 distribution.
+<br>
+<br>
+We plan to release new Linux versions of the toolkit, however, we cannot
+commit to doing so with the same frequency as, nor simultaneously with,
+new Microsoft Windows versions. In addition, we cannot commit to making
+fully supported Linux versions of the toolkit.
+</p>
+  
+<h3>2.2 Required Hardware</h3>
+
+<p>
+Minimum hardware requirements are:
+</p>
+
+<ul>
+  <li>50 MB hard disk space</li>
+  <li>128 MB system RAM</li>
+  <li>800 MHz Pentium III CPU</li>
+</ul>
+
+<p class="nav-link">[<a href="#_top">Top</a>]</p>
+
+<a name="installation"></a>                                     
+<h2>3. Installation Instructions</h2>
+
+<h3>3.1 Windows</h3>
+
+<p>
+Run the installer,
+<code>j2me_wireless_toolkit-2_2-bin-win.exe</code>.
+Follow the instructions provided by the installer.
+</p>
+
+<h3>3.2 Linux</h3>
+
+<p>
+To install the toolkit, run the self-extracting installer,
+<code>j2me_wireless_toolkit-2_2-bin-linuxi386.bin</code>.
+</p>
+
+<p>
+To complete installation of the Wireless Toolkit, you must have the
+J2SE SDK version 1.4.2 installed. If you only want to use the Wireless
+Toolkit with the J2SE Runtime Environment (JRE),
+version 1.4.2, you must have the ZIP utility installed.
+</p>
+
+<p>
+If you want to install the toolkit into a directory that
+requires root access, become the root user before running the installer.
+</p>
+
+<p class="nav-link">[<a href="#_top">Top</a>]</p>
+
+<a name="differences"></a>                                     
+<h2>4. Differences Between Linux and Microsoft Windows Versions of the
+    J2ME Wireless Toolkit</h2>
+
+<p>
+The Linux version of the J2ME Wireless Toolkit differs
+from the Microsoft Windows version in the following respects:
+</p>
+
+<ul>
+  <li>
+    It does not create a filename association for JAD files
+    (<code>.jad</code>) in the window manager or web browser.
+    <br>&nbsp;
+  </li>
+
+  <li>
+    The names of some filenames and directories are different:
+    <br><br>
+
+    <table>
+      <tr>
+        <th class="sun-verylightblue" scope="col">Microsoft Windows File or
+            Directory</th>
+        <th class="sun-verylightblue" scope="col">Linux Equivalent</th>
+      </tr>
+    
+      <tr>
+        <td><code>bin\ktoolbar.exe</code></td>
+        <td><code>bin/ktoolbar</code></td>
+      </tr>
+      
+      <tr>
+        <td><code>bin\emulator.exe</code></td>
+        <td><code>bin/emulator</code></td>
+      </tr>
+      
+      <tr>
+        <td><code>bin\prefs.exe</code></td>
+        <td><code>bin/prefs</code></td>
+      </tr>
+      
+      <tr>
+        <td><code>bin\DefaultDevice.exe</code></td>
+        <td><code>bin/defaultdevice</code></td>
+      </tr>
+      
+      <tr>
+        <td><code>wtklib\Windows\</code></td>
+        <td><code>wtklib/Linux/</code></td>
+      </tr>
+    </table>
+    <br>&nbsp;
+  </li>
+</ul>
+
+<p>
+The Linux version of the wireless toolkit comes with the
+same documentation as the Microsoft Windows version. Almost all of the
+documentation for the Microsoft Windows version can be applied to the
+Linux version, except that all backslashes ('<code>\</code>') in paths
+should be treated as forward slashes ('<code>/</code>').
+</p>
+
+<p>
+Although all screen shots in the documentation were taken on
+Microsoft Windows, the items portrayed in the screen shots look nearly
+identical, if not exactly the same, on the Linux version
+of the toolkit.
+</p>
+
+<p class="nav-link">[<a href="#_top">Top</a>]</p>
+
+<a name="running"></a>                                     
+<h2>5. Running the Toolkit</h2>
+
+<h3>5.1 Windows</h3>
+
+<p>
+The installer creates a new program group, <b>J2ME Wireless Toolkit
+2.2</b>. This group contains the
+following aliases:
+</p>
+
+<ul>
+  <li>
+    <b>Default Device Selection</b> can be used to select the default
+    emulator skin.
+  </li>
+  <li>
+    <b>Documentation</b> is a link to the documentation home.
+  </li>
+  <li>
+    <b>KToolbar</b> is the main entry point for the toolkit. Most other
+    functions in the toolkit are accessible from KToolbar.
+  </li>
+  <li>
+    <b>OTA Provisioning</b> is useful for testing the installing of
+    applications.
+  </li>
+  <li>
+    <b>Preferences</b> provides a way to directly launch the emulator
+    preferences.
+  </li>
+  <li>
+    <b>Run MIDP Application</b> is a shortcut for running a packaged
+    application without having to run KToolbar.
+  </li>
+  <li>
+    <b>Utilities</b> launches the toolkit's utilities window.
+  </li>
+</ul>
+
+<h3>5.2 Linux</h3>
+
+<p>
+You can run the J2ME Wireless Toolkit from the command line using
+commands from the directory <i>j2mewtk.dir</i><code>/bin</code>,
+where <i>j2mewtk.dir</i> is the toolkit's installation directory.
+</p>
+
+<table>
+  <tr>
+    <th class=sun-verylightblue scope="col">Command</th>
+    <th class=sun-verylightblue scope="col">Action</th>
+  </tr>
+  
+  <tr>
+    <td><code>ktoolbar</code></td>
+    <td>Starts the KToolbar.</td>
+  </tr>
+  
+  <tr>
+    <td><code>defaultdevice</code></td>
+    <td>Enables you to specify the default emulation device.</td>
+  </tr>
+  
+  <tr>
+    <td><code>prefs</code></td>
+    <td>Enables you to set the toolkit preferences.</td>
+  </tr>
+  
+  <tr>
+    <td><code>utils</code></td>
+    <td>Enables you to access the toolkit's utilities.</td>
+  </tr>
+  
+  <tr>
+    <td><code>emulator</code></td>
+    <td>Enables you to run the emulator from the command line.</td>
+  </tr>
+</table>
+
+<p class="nav-link">[<a href="#_top">Top</a>]</p>
+
+<a name="ide"></a>                                     
+<h2>6. Running the Toolkit in an IDE</h2>
+
+<p>
+This release of the J2ME Wireless Toolkit
+can be integrated with
+Java integrated development environments (IDEs), such
+as
+<a href="http://wwws.sun.com/software/products/jsmobility/">Sun
+Java Studio Mobility</a>. For
+information on how to use the J2ME Wireless Toolkit within an IDE, refer
+to the documentation for the specific IDE. 
+</p>
+
+<p class="nav-link">[<a href="#_top">Top</a>]</p>
+
+<!--
+<a name="compatibility"></a>                                     
+<h2>6. Compatibility</h2>
+
+<p>
+The J2ME Wireless Toolkit is compatible with
+Java Technology for the Wireless Industry
+Technology Compatibility Kit (TCK) 1.0 (MIDP 2.0, CLDC 1.0, CLDC 1.1,
+MMAPI 1.1, and WMA 1.1) and has been tested
+under the compatibility test suites for these specifications. It is
+compliant with the JSR 184 TCK. [fixme: 75, 82, 172, 205]
+</p>
+
+<p class="nav-link">[<a href="#_top">Top</a>]</p>
+-->
+
+<a name="knownbugs"></a>                                     
+<h2>7. Known Bugs</h2>
+
+<p>
+This is not an exhaustive list of known bugs. It includes those bugs
+that developers are most likely to encounter in using the toolkit.
+</p>
+
+<table>
+  <tr>
+
+    <th class=sun-verylightblue scope="col">Bug ID</th>
+    <th class=sun-verylightblue scope="col">Description</th>
+  </tr>
+
+  <tr>
+    <td>5060533</td>
+    <td>Recieved MMS text parts are not displayed in the WMA console.</td>
+  </tr>
+
+  <tr>
+    <td>5010166</td>
+
+    <td>Back faces of triangles in <code>TriangleStripArray</code> are
+    incorrectly shaded in some instances.</td>
+  </tr>
+
+  <tr>
+    <td>5073838</td>
+    <td>
+      The method <code>RemoteDevice.encrypt(false)</code> returns
+      <code>true</code> even though encrypt
+      is in force mode in the <b>Preferences</b> window.
+  </tr>
+
+  <tr><td colspan=2><hr class=pTableHr/></td></tr>
+</table>
+
+<p class="nav-link">[<a href="#_top">Top</a>]</p>
+
+<a name="questions"></a>                                     
+<h2>8. Frequently Asked Questions</h2>
+                                                    
+<p>
+For answers to common questions, see the <a href="faq.html">FAQ</a>.
+</p>
+
+<p>
+For feedback on this release, send email to
+<img src="docs/images/email.gif" align="top" id="LongDescNotReq"
+alt="Feedback email address" border="0">. 
+</p>
+
+<p class="nav-link">[<a href="#_top">Top</a>]</p>
+
+<hr class="pHr">      
+
+<p class="copyright">
+<a href="copyright.html">Copyright &#169; 2004</a> Sun Microsystems, Inc.
+All rights reserved.
+Use is subject to the <a href="BinaryLicense.html">license terms</a>.
+</p>
+
+</body>
+</html>
+

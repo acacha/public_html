@@ -1,0 +1,9 @@
+MIDlet-1: AlarmClock, , org.spruce.midp.alarmclock.AlarmClock
+MIDlet-Info-URL: http://www.spruce.jp/freemidlets
+MIDlet-Jar-Size: 18019
+MIDlet-Jar-URL: AlarmClock.jar
+MIDlet-Name: Alarm Clock
+MIDlet-Vendor: Spruce Technologies
+MIDlet-Version: 1.6
+iDEN-Data-Space-Requirement: 13
+iDEN-Program-Space-Requirement: 45

@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.6.1058" />
+    <meta name="TEMPLATEBASE" content="book-w-index" />
+    <meta name="LASTUPDATED" content="10/27/04 10:15:23" />
+    <title>Using the Wireless Messaging API</title>
+    <link rel="StyleSheet" href="document.css" type="text/css" />
+    <link rel="StyleSheet" href="catalog.css" type="text/css" />
+    <link rel="Table of Contents" href="index.html" />
+    <link rel="Previous" href="security.html" />
+    <link rel="Next" href="mmapi.html" />
+    <link rel="Index" href="indexa.html" />
+  </head>
+
+  <body>
+
+    <table class="full-width" id="SummaryNotReq1"
+        cellspacing="0" cellpadding="0" border="0">
+	  <!-- formatting table -->
+      <tr><td class="sun-darkblue">&#160;</td></tr>
+      <tr><td class="sun-lightblue">&#160;</td></tr>
+    </table>
+    
+    <table class="full-width" id="SummaryNotReq2"
+        cellspacing="0" cellpadding="0" border="0">
+	  <!-- formatting table -->
+      <tr>
+        <td class="go-left">
+          <p class="nav-link">
+            <a accesskey="h" href="../../index.html">Documentation Home</a>
+            &gt;
+            <a accesskey="c" href="index.html"><i>User's Guide</i></a>
+            &gt;
+            Using the Wireless Messaging API
+          </p>
+        </td>
+        <td class="go-right">
+        <a accesskey="c" href="index.html">
+          <img id="LongDescNotReq1" src="images/toc.gif" border="0"
+            alt="Contents" /></a>
+	<a accesskey="p" href="security.html">
+	  <img id="LongDescNotReq2" src="images/prev.gif" border="0"
+            alt="Previous" /></a>
+        <a accesskey="n" href="mmapi.html">
+	  <img id="LongDescNotReq3" src="images/next.gif" border="0"
+            alt="Next" /></a>
+        <a accesskey="i" href="indexa.html">
+	  <img id="LongDescNotReq4" src="images/index.gif" border="0"
+            alt="Index" /></a>
+        </td>
+      </tr>
+    </table>
+
+<a name="wp1005844"> </a><h2 class="pChapNum">
+Chapter &#160; 7
+</h2>
+<a name="wp41136"> </a><h2 class="pTitle">
+Using the Wireless Messaging API
+</h2>
+<hr />
+<a name="wp998462"> </a><p class="pBody">
+The J2ME Wireless Toolkit supports the Wireless Messaging API (WMA) with a sophisticated simulation environment. WMA 1.1 (JSR 120) enables MIDlets to send and receive Short Message Service (SMS) or Cell Broadcast Service (CBS) messages. WMA 2.0 (JSR 205) includes support for MMS messages as well.
+</p>
+<a name="wp44524"> </a><p class="pBody">
+This chapter describes the tools you can use to develop WMA applications. It begins by showing how to configure the emulator&#8217;s support of WMA. Next, you&#8217;ll learn about the WMA console, a handy utility for testing WMA applications. The chapter concludes with a brief description of the network monitor&#8217;s WMA support.
+</p>
+<a name="wp998513"> </a><h2 class="pHeading1">
+7.1	Setting Emulator Phone Numbers
+</h2>
+<a name="wp998519"> </a><p class="pBody">
+Each running instance of the emulator has a simulated phone number that is shown in the title bar of the emulator window. The phone numbers are important because they are used as addresses for WMA messages. By default, the first emulator instance has a phone number of +555000. Subsequent instances of the emulator will have unique numbers in ascending order: +5550001, +5550002, +5550003, etc.
+</p>
+<a name="wp998527"> </a><p class="pBody">
+You can affect the assigned phone numbers by choosing <b class="cBold">Edit &gt; Preferences...</b> from the KToolbar menu and clicking on the <b class="cBold">WMA</b> tab.
+</p>
+<a name="wp998532"> </a><div class="pFigureCaption">
+FIGURE&#160;29&#160;&#160;&#8211;&#160;&#160;Setting WMA preferences
+<br /><br />
+</div><a name="wp1005857"> </a><p class="pBody">
+<img src="images/preferences-wma.gif" alt="Setting WMA preferences" border="0" hspace="0" vspace="0"/>
+</p>
+<a name="wp998541"> </a><p class="pBody">
+The <b class="cBold">Phone Number of Next Emulator</b> field is just what it sounds like. If you fill in a number for this field, the next emulator instance will have that number.
+</p>
+<a name="wp998545"> </a><p class="pBody">
+If the <b class="cBold">Phone Number of Next Emulator</b> is already in use, or if the field is blank, then the <b class="cBold">First Assigned Phone Number</b> is used for the next emulator instance. Subsequent instances count up.
+</p>
+<a name="wp998685"> </a><p class="pBody">
+For example, suppose you fill in +6269333 for the <b class="cBold">Phone Number of Next Emulator</b> and +5550000 for the <b class="cBold">First Assigned Phone Number</b>. If you launch four emulator instances, their numbers will be +6269333, +5550000, +5550001, and +5550002.
+</p>
+<a name="wp998686"> </a><h2 class="pHeading1">
+7.2	Simulating an Unreliable Network
+</h2>
+<a name="wp998572"> </a><p class="pBody">
+Long messages are sent by splitting them up, sending the fragments separately, and reassembling the fragments on the receiving end. You can simulate some of the hazards of the wireless network in the J2ME Wireless Toolkit. As before, choose <b class="cBold">Edit &gt; Preferences...</b> from the KToolbar menu and click on the <b class="cBold">WMA</b> tab.
+</p>
+<a name="wp998582"> </a><p class="pBody">
+If you&#8217;d like the toolkit to lose some message fragments, adjust the <b class="cBold">Random Message Fragment Loss</b> slider to the desired percentage. If you would like to simulate a delay between the time message fragments are sent and received, enter the delay in milliseconds in the <b class="cBold">Message Fragment Delivery Delay</b> field.
+</p>
+<a name="wp998485"> </a><h2 class="pHeading1">
+7.3	Sending Messages With the WMA Console
+</h2>
+<a name="wp998592"> </a><p class="pBody">
+The WMA console is a handy utility that allows you to send and receive messages. You can, for example, use the WMA console to send SMS messages to a MIDlet running on the emulator.
+</p>
+<a name="wp998624"> </a><p class="pBody">
+To launch the WMA console, choose <b class="cBold">File &gt; Utilities...</b> from the KToolbar menu. Click on <b class="cBold">Open Console</b> in the <b class="cBold">WMA</b> box.
+</p>
+<a name="wp998637"> </a><div class="pFigureCaption">
+FIGURE&#160;30&#160;&#160;&#8211;&#160;&#160;The WMA console
+<br /><br />
+</div><a name="wp1005891"> </a><p class="pBody">
+<img src="images/wmaconsole2.gif" alt="The WMA console" border="0" hspace="0" vspace="0"/>
+</p>
+<a name="wp998646"> </a><h3 class="pHeading2">
+7.3.1	Sending a Text SMS Message
+</h3>
+<a name="wp998650"> </a><p class="pBody">
+To send a text SMS message, click on <b class="cBold">Send SMS...</b> The send window pops up.
+</p>
+<a name="wp998653"> </a><div class="pFigureCaption">
+FIGURE&#160;31&#160;&#160;&#8211;&#160;&#160;Sending a text message
+<br /><br />
+</div><a name="wp1005925"> </a><p class="pBody">
+<img src="images/wmaconsole-sendtext3.gif" alt="Sending a text message" border="0" hspace="0" vspace="0"/>
+</p>
+<a name="wp998651"> </a><p class="pBody">
+The window automatically lists the phone numbers of all running emulator instances. Select a destination (Control-click to select multiple destinations) and enter a port number if you wish. Type your message and click <b class="cBold">Send</b>.
+</p>
+<a name="wp998668"> </a><h3 class="pHeading2">
+7.3.2	Sending a Binary SMS Message
+</h3>
+<a name="wp998672"> </a><p class="pBody">
+You can use the WMA console to send the contents of a file as a binary message. Click on <b class="cBold">Send SMS...</b> to bring up the send window. Click on the <b class="cBold">Binary SMS</b> tab.
+</p>
+<a name="wp998691"> </a><div class="pFigureCaption">
+FIGURE&#160;32&#160;&#160;&#8211;&#160;&#160;Sending a binary message
+<br /><br />
+</div><a name="wp1005959"> </a><p class="pBody">
+<img src="images/wmaconsole-sendbinary4.gif" alt="Sending a binary message" border="0" hspace="0" vspace="0"/>
+</p>
+<a name="wp998724"> </a><p class="pBody">
+Selecting recipients is the same as for sending text SMS messages. You can type in the path of a file directly, or click on <b class="cBold">Browse...</b> to open up a file chooser.
+</p>
+<a name="wp998712"> </a><h3 class="pHeading2">
+7.3.3	Sending Text or Binary CBS Messages
+</h3>
+<a name="wp998721"> </a><p class="pBody">
+Sending CBS messages is similar to sending SMS messages except that you don&#8217;t need to choose recipients. To send a text or binary CBS message, click on <b class="cBold">Send CBS...</b> in the WMA console. The send window pops up.
+</p>
+<a name="wp998727"> </a><div class="pFigureCaption">
+FIGURE&#160;33&#160;&#160;&#8211;&#160;&#160;Sending CBS messages
+<br /><br />
+</div><a name="wp1005993"> </a><p class="pBody">
+<img src="images/wmaconsole-sendcbs5.gif" alt="Sending CBS messages" border="0" hspace="0" vspace="0"/>
+</p>
+<a name="wp1003258"> </a><h3 class="pHeading2">
+7.3.4	Sending MMS Messages
+</h3>
+<a name="wp1003259"> </a><p class="pBody">
+MMS messages consist of one or more files, usually images or sounds. MMS message can be sent to multiple recipients. To send an MMS message from the WMA console, click on the <b class="cBold">Send MMS...</b> button.
+</p>
+<a name="wp1003260"> </a><p class="pBody">
+The window for composing MMS messages has two tabs, one for recipients and one for content. Begin by filling in a subject and recipient. If you wish to add more recipients, click on the <b class="cBold">Add</b> button. For example, to send a message to a running emulator whose number is +5550001, you would fill in the <b class="cBold">To</b> line as <code class="cCode">mms://+5550001</code>. To remove a recipient, first select its line, then click on <b class="cBold">Remove</b>.
+</p>
+<a name="wp1003261"> </a><div class="pFigureCaption">
+FIGURE&#160;34&#160;&#160;&#8211;&#160;&#160;Adding recipients for an MMS message
+<br /><br />
+</div><a name="wp1006027"> </a><p class="pBody">
+<img src="images/wmaconsole-sendmms6.gif" alt="Adding recipients for an MMS message" border="0" hspace="0" vspace="0"/>
+</p>
+<a name="wp1003271"> </a><p class="pBody">
+To add media files to the message, click on the <b class="cBold">Parts</b> tab. Click on <b class="cBold">Add</b> to add a part to the message. To remove a part, select it and press <b class="cBold">Remove</b>.
+</p>
+<a name="wp1003272"> </a><div class="pFigureCaption">
+FIGURE&#160;35&#160;&#160;&#8211;&#160;&#160;Adding parts to an MMS message
+<br /><br />
+</div><a name="wp1006061"> </a><p class="pBody">
+<img src="images/wmaconsole-sendmms27.gif" alt="Adding parts to an MMS message" border="0" hspace="0" vspace="0"/>
+</p>
+<a name="wp998746"> </a><h2 class="pHeading1">
+7.4	Receiving Messages in the WMA Console
+</h2>
+<a name="wp1001063"> </a><p class="pBody">
+The WMA console can also receive messages. If you look at the WMA console window, you&#8217;ll see it has its own phone number in the title bar. You can send messages to the WMA console from your applications running on the emulator.
+</p>
+<a name="wp1001064"> </a><p class="pBody">
+Received messages are shown in the WMA console&#8217;s text area.
+</p>
+<a name="wp1001065"> </a><h2 class="pHeading1">
+7.5	Using the Network Monitor with WMA
+</h2>
+<a name="wp998491"> </a><p class="pBody">
+The network monitor was fully described in <a  href="monitoring.html#wp997169"><span class="cZ_Xref">Chapter&#160;5, </span>&#8220;Monitoring Applications</a>.&#8221; You can use the network monitor to track WMA messages that are sent to or from the emulator.
+</p>
+<a name="wp998776"> </a><p class="pBody">
+Click on the <b class="cBold">SMS/CBS</b> or <b class="cBold">MMS</b> tabs to see WMA messages. Information about the messages and their fragments is shown in the left pane of the network monitor. Click on a message or message fragment to see its details in the right pane.
+</p>
+<a name="wp998777"> </a><div class="pFigureCaption">
+FIGURE&#160;36&#160;&#160;&#8211;&#160;&#160;Using the network monitor to view a WMA message
+<br /><br />
+</div><a name="wp1006095"> </a><p class="pBody">
+<img src="images/networkmonitor-sms8.gif" alt="Using the network monitor to view a WMA message" border="0" hspace="0" vspace="0"/>
+</p>
+<a name="wp998492"> </a><p class="pBody">
+
+</p>
+
+    <p>&#160;</p>
+    <hr class="pHr" />
+
+    <table class="full-width" id="SummaryNotReq3">
+	  <!-- formatting table -->
+      <tr>
+        <td class="go-left">
+          <a accesskey="c" href="index.html">
+            <img id="LongDescNotReq1" src="images/toc.gif" border="0"
+              alt="Contents" /></a>
+          <a accesskey="p" href="security.html">
+            <img id="LongDescNotReq2" src="images/prev.gif" border="0"
+              alt="Previous" /></a>
+          <a accesskey="n" href="mmapi.html">
+            <img id="LongDescNotReq3" src="images/next.gif" border="0"
+              alt="Next" /></a>
+          <a accesskey="i" href="indexa.html">
+            <img id="LongDescNotReq4" src="images/index.gif" border="0"
+              alt="Index" /></a>
+        </td>
+        <td class="go-right">
+          <span class="copyright">J2ME Wireless Toolkit User's Guide <br /> J2ME Wireless Toolkit 2.2</span>
+        </td>
+      </tr>
+    </table>
+
+    <p>&#160;</p>
+    <p class="copyright">
+      <a href="copyright.html">Copyright</a> &#169; 2004 Sun Microsystems, Inc. 
+      All rights reserved.
+      Use is subject to the <a href="../../BinaryLicense.html">license terms</a>.
+    </p>
+  </body>
+</html>

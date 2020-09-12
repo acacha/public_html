@@ -1,0 +1,17 @@
+dn: olcDatabase={-1}frontend
+objectClass: olcDatabaseConfig
+objectClass: olcFrontendConfig
+olcDatabase: {-1}frontend
+olcAddContentAcl: FALSE
+olcLastMod: TRUE
+olcMaxDerefDepth: 0
+olcReadOnly: FALSE
+olcSchemaDN: cn=Subschema
+olcMonitoring: FALSE
+structuralObjectClass: olcDatabaseConfig
+entryUUID: f80e44e4-371f-102e-8065-0b27604ddad8
+creatorsName: cn=config
+createTimestamp: 20090916151844Z
+entryCSN: 20090916151844.868659Z#000000#000#000000
+modifiersName: cn=config
+modifyTimestamp: 20090916151844Z

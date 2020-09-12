@@ -1,0 +1,7 @@
+Instrucciones de instalación
+
+1. Copiar sudoku.jar y sudoku.jad en My Documents/My Midlets
+2. Ejecutar Start/Midlet Manager
+3. Ejecutar Menu/Install
+4. Responder Yes a las preguntas que haga
+5. A jugar...

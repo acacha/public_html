@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<creditos>
+<autor>
+  <nombre>Pep Méndez</nombre>
+  <cv>SUN Java Programmer, Developer &amp; Web Component Developer Certified</cv>
+  <email>pep.mendez@hotmail.com</email>
+</autor>
+<aplicacion>
+  <titulo>Ping Pong Game v. 3.3.0.1</titulo>
+  <fecha>12/05/2006</fecha>
+  <comentarios>Juego de destreza</comentarios>
+  <dedicatoria>Dedicado a mis padres</dedicatoria>
+</aplicacion>
+</creditos>

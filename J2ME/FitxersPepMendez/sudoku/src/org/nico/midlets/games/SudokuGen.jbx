@@ -1,0 +1,10 @@
+[PropertyInfo]
+gen,boolean[][],false,false,gen,gen,true,<default>
+hints,java.util.Vector,false,false, , ,false,<default>
+problem,int[][],false,false,problem,problem,true,<default>
+sol,int[][],false,false,sol,sol,true,<default>
+[IconNames]
+
+
+
+

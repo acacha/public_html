@@ -1,0 +1,7 @@
+# taula de particions de /dev/loop0
+unit: sectors
+
+/dev/loop0p1 : start=       63, size=   963837, Id=83
+/dev/loop0p2 : start=   963900, size=  1076355, Id=83
+/dev/loop0p3 : start=        0, size=        0, Id= 0
+/dev/loop0p4 : start=        0, size=        0, Id= 0

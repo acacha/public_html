@@ -1,0 +1,213 @@
+// question: 0  name: switch category to $module$/Categoria per defecte en Test Prova 
+$CATEGORY: $module$/Categoria per defecte en Test Prova
+
+
+// question: 1842  name: Definicions de programari lliure 
+::Definicions de programari lliure::[html]Si tenim com a referència les quatre llibertats del programari lliure, quina de les següents condicions no és vàlida per a un programa lliure\:{
+	~%5%Permeto l'accés al codi font encara que es faci (a partir d'aquest) un nou programa per vendre'l.
+	~%5%Permeto l'accés al codi font. 
+	~%5%Permeto distribuir còpies del meu programa.
+	=Permeto executar el meu programa sempre i quan l'execució no generi guanys econòmics.
+	~%5%Permeto que una modificació posterior del meu programa sigui modificada.
+	~No selecciono cap resposta
+}
+
+
+// question: 1827  name: Format sintaxi genèric de les ordres del bash 
+::Format sintaxi genèric de les ordres del bash::[html]Quin és el format correcte per a una ordre del bash?{
+	~%5%Opció argument ordre
+	~%5%Ordre argument opció
+	=Ordre opció argument 
+	~%5%Ordre opció argument opció argument ...
+	~%5%Ordre  -opció +argument
+	~No selecciono cap resposta
+}
+
+
+// question: 1823  name: L'ordre cd 
+::L'ordre cd::[html]Que fa exactament l'ordre sense arguments cd ?{
+	=Canviar al directori home de l'usuari.
+	~%5%Canviar al directori pare que penja de l'actual directori.
+	~%5%Canvia al directori arrel /.
+	~%5%Produeix un error de sintaxi per la manca d'arguments.
+	~%5%Res del que es proposa a les altres opcions.
+	~No selecciono cap resposta
+}
+
+
+// question: 1861  name: L'ordre exec 
+::L'ordre exec::[html]Suposem que tot just ens hem autentificat a una sessió en una consola virtual. I executem l'ordre\:<br /><span style\="font-family\: times new roman,times,serif; font-weight\: bold;">exec ls</span><br /><br />El que passa després és que\:<br />{
+	~%5%Es mostren certs fitxers i el bash espera una nova ordre.
+	=Es mostren certs fitxers i sortim de la sessió a la que estàvem autentificats.
+	~%5%Eliminem l'ordre ls
+	~%5%Ens surt un error per què no tenim permissos per executar l'ordre.
+	~%5%Totes les respostes són correctes
+	~No selecciono cap resposta
+}
+
+
+// question: 1829  name: L'ordre ls 
+::L'ordre ls::[html]Si volem llistar tots els fitxers que tenim al directori actual i als seus subdirectoris (ocults també), així com un format llarg quina ordre utilitzarem?{
+	~%5%ls -Raf
+	~%5%ls -raf
+	=ls -laR  
+	~%5%ls -Rfl
+	~%5%ls -ral
+	~No selecciono cap resposta
+}
+
+
+// question: 1836  name: Operadors && i || 
+::Operadors && i ||::[html]Quina de les següents seqüències farà que la segona ordre s'executi tant si la primera falla com si no?{
+	~%5%command1 || command2
+	~%5%command1 && command2
+	=command1 ; command2 
+	~%5%command1 $$ command2
+	~%5%command1 & command2
+	~No selecciono cap resposta
+}
+
+
+// question: 1825  name: Ordres escrites en més d'una línia 
+::Ordres escrites en més d'una línia::[html]Quin caràcter es pot col·locar al final de línia per indicar que l'ordre continua a la següent línia\:{
+	~%5%/ 
+	=\
+	~%5%;
+	~%5%|
+	~%5%&
+	~No selecciono cap resposta
+}
+
+
+// question: 1831  name: Seqüència d'ordres (echo,exit i subshells) 
+::Seqüència d'ordres (echo,exit i subshells)::[html]Quina serà la sortida de la següent ordre\:<br /><br /><span style\="font-family\: times new roman,times,serif; font-weight\: bold;"></span><span style\="font-family\: times new roman,times,serif; font-weight\: bold;">(exit 2)|| echo -n &quot;doncs,&quot;; (exit 2) &amp;&amp; echo -n &quot; hola&quot; ; (echo &quot; res&quot;)<br /></span>{
+	~%5%doncs, hola
+	~%5% hola res
+	=doncs, res
+	~%5%doncs, hola res
+	~%5% res
+	~No selecciono cap resposta
+}
+
+
+// question: 1826  name: Tancament correcte de cometes a les ordres 
+::Tancament correcte de cometes a les ordres::[html]Quin és el resultat de la següent ordre\:<br /><br /><span style\="font-family\: times new roman,times,serif; font-weight\: bold;">cat 'echo &quot;$GUINDOUS&quot;</span><br /><br />{
+	~%5%El valor que contingui la variable GUINDOUS
+	~%5%Es fa un cat del valor de la variable GUINDOUS
+	~%5%Es fa un echo del valor de la variable GUINDOUS
+	~%5%Es fa un echo del literal $GUINDOUS
+	=No funciona per que hi ha un error de sintaxi.      
+	~No selecciono cap resposta
+}
+
+
+// question: 1832  name: Variables d'Entorn 
+::Variables d'Entorn::[html]Quina de les següents ordres tindrà el mateix resultat que executar<br /><span style\="font-family\: times new roman,times,serif; font-weight\: bold;">echo $TERM</span>{
+	~%5%echo '$\{TERM\}'
+	=echo "$TERM"
+	~%5%echo \{$TERM\}
+	~%5%echo '$TERM'
+	~%5%echo `$TERM`
+	~No selecciono cap resposta
+}
+
+
+// question: 1834  name: echo i els caràcters d'escape 
+::echo i els caràcters d'escape::[html]Que mostrarà la següent instrucció<br /><span style\="font-family\: times new roman,times,serif; font-weight\: bold;">echo &quot;hola\rm&quot;</span>{
+	~mola
+	=hola\rm 
+	~%5%holam
+	~%5%adiós
+	~%5%hola (salt de línia) m
+	~No selecciono cap resposta
+}
+
+
+// question: 1821  name: errorlevel 
+::errorlevel::[html]Quina ordre ens mostrarà la sortida de l'error level de l'ordre anterior?<br />{
+	=echo $?
+	~%5%echo $1
+	~%5%echo $EXIT
+	~%5%echo $ERRORLVL
+	~%5%exitstatus
+	~No selecciono cap resposta
+}
+
+
+// question: 1824  name: errorlevel (exit o errada) 
+::errorlevel (exit o errada)::[html]Desprès d'executar una ordre que produeix sortida a la pantalla, obtenim un error level o codi de sortida igual a 0. Escull quina de les següents opcions descriu millor el que ha passat.{
+	=El programa s'ha executat correctament.
+	~%5%El programa ha trobat un error.
+	~%5%El programa requeria un argument d'entrada.
+	~%5%El programa ha retornat l'entrada estàndard.
+	~%5%El programa termina amb error de sintaxi.
+	~No selecciono cap resposta
+}
+
+
+// question: 1833  name: historic history 
+::historic history::[html]Vols repetir l'última ordre que vas executar, com ho faries?{
+	~%5%\#
+	=!!
+	~%5%\#l
+	~%5%\#\#
+	~%5%!1
+	~No selecciono cap resposta
+}
+
+
+// question: 1837  name: historic history (II) 
+::historic history (II)::[html]Vols veure una llista de les darreres ordres executades, quina de les següents opcions ho aconseguirà?<br />{
+	~%5%hist
+	~%5%histfile
+	~%5%showbuffer
+	=history
+	~%5%!all
+	~No selecciono cap resposta
+}
+
+
+// question: 1828  name: man 
+::man::[html]Per trobar totes les ajudes possibles de les diferents seccions del man per a echo farem\:{
+	~%5%man -1 echo (donat que la secció 1 és la d'ajuda per a ordres d'usuari)
+	~%5%man 1-9 echo (donat que hi ha 9 seccions)
+	~%5%man -all echo
+	=man -a echo   
+	~%5%man -alo echo -p echo
+	~No selecciono cap resposta
+}
+
+
+// question: 1822  name: ordres internes externes 
+::ordres internes externes::[html]Al bash es dona la següent situació\:<br /><br /><span style\="font-family\: times new roman,times,serif; font-weight\: bold;">[guillemPortes@LaVallDelSilici jocs]$ echo $PATH </span><br style\="font-family\: times new roman,times,serif; font-weight\: bold;" /><span style\="font-family\: times new roman,times,serif; font-weight\: bold;"> /usr/bin\:/usr/local/bin\:usr/sbin\:opt/kde/bin </span><br style\="font-family\: times new roman,times,serif; font-weight\: bold;" /><span style\="font-family\: times new roman,times,serif; font-weight\: bold;"> [guillemPortes@LaVallDelSilici jocs]$ pwd </span><br style\="font-family\: times new roman,times,serif; font-weight\: bold;" /><span style\="font-family\: times new roman,times,serif; font-weight\: bold;"> /home/guillemPortes/jocs </span><br style\="font-family\: times new roman,times,serif; font-weight\: bold;" /><span style\="font-family\: times new roman,times,serif; font-weight\: bold;"> [guillemPortes@LaVallDelSilici jocs]$ ls </span><br style\="font-family\: times new roman,times,serif; font-weight\: bold;" /><span style\="font-family\: times new roman,times,serif; font-weight\: bold;"> joc1 joc2 joc3 </span><br style\="font-family\: times new roman,times,serif; font-weight\: bold;" /><span style\="font-family\: times new roman,times,serif; font-weight\: bold;"> [guillemPortes@LaVallDelSilici jocs]$ joc1 </span><br style\="font-family\: times new roman,times,serif; font-weight\: bold;" /><span style\="font-family\: times new roman,times,serif; font-weight\: bold;"> -bash\: joc1\: command not found </span><br /><br /> Que hem oblidat fer?<br /><br /><br /><br />{
+	=Escriure ./joc1 en comptes de joc1 
+	~%5%Canviar al directori /home/guillemPortes
+	~%5%Fer unset de la variable PATH
+	~%5%El problema es que no té  permisos d'execució.
+	~%5%help güindous –novirusdream –nobluescreen –noreboot
+	~No selecciono cap resposta
+}
+
+
+// question: 1835  name: whereis, type, which... 
+::whereis, type, which...::[html]Vols trobar la trajectòria completa d'una certa ordre que es troba al path. Com ho faries?{
+	~%5%Utilitzant l'ordre where
+	~%5%Utilitzant l'ordre apropos
+	=Utilitzant l'ordre which  
+	~%5%Utilitzant l'ordre path
+	~%5%Utilitzant l'ordre typefile
+	~No selecciono cap resposta
+}
+
+
+// question: 1841  name: whereis, type, which... (II) 
+::whereis, type, which... (II)::[html]Quina ordre trobarà el programa “pwd” (per exemple) , les seves pàgines del man i fitxers font, en cas d'existir, però no tots els fitxers que tenen la paraula “pwd” al nom de l'ordre o al path?{
+	=whereis
+	~%5%find
+	~%5%locate
+	~%5%apropos
+	~%5%whatis
+	~No selecciono cap resposta
+}
+
+

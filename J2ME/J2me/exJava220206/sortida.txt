@@ -1,0 +1,30 @@
+Mostrem les notes de les assignatures de cada alumne i la seva mitja
+
+a12345:
+Assignatura: Xarxes, Nota: 2.1245020227129796
+Assignatura: Programacio, Nota: 8.916422205943901
+mitjana: 5.52046211432844
+
+b12345:
+Assignatura: Bases de Dades, Nota: 1.7286979626734544
+Assignatura: Programacio, Nota: 0.03691484282239865
+Assignatura: Sistemes Operatius, Nota: 4.111324708961965
+Assignatura: Fol, Nota: 4.034321544675956
+mitjana: 2.4778147647834436
+
+c12345:
+Assignatura: Bases de Dades, Nota: 8.497670089623115
+Assignatura: Sistemes Operatius, Nota: 6.582119682244215
+Assignatura: Fol, Nota: 8.424213180924925
+mitjana: 7.834667650930752
+
+Intentem afegir una assignatura que l'alumne ja cursa
+
+Aquesta Assignatura ja existeix
+Mostrem un altre cop les assignatures del alumne
+
+b12345:
+Assignatura: Bases de Dades, Nota: 1.7286979626734544
+Assignatura: Programacio, Nota: 0.03691484282239865
+Assignatura: Sistemes Operatius, Nota: 4.111324708961965
+Assignatura: Fol, Nota: 4.034321544675956

@@ -1,0 +1,106 @@
+package org.nico.midlets.games;
+
+import java.io.IOException;
+import java.io.InputStream;
+import javax.microedition.lcdui.Display;
+import javax.microedition.media.*;
+import javax.microedition.media.control.ToneControl;
+import javax.microedition.midlet.MIDlet;
+import org.nico.midlets.multimedia.*;
+
+/**
+ * <p>Title: Sudoku</p>
+ * <p>Description: Juego japones</p>
+ * <p>Comments: Version recursiva</p>
+ * <p>Date: 06/07/06</p>
+ * <p>Last update: 06/07/06</p>
+ * @author Pep Mendez
+ */
+public class Sudoku extends MIDlet implements ISudokuConstants {
+  private static Sudoku instance;
+  private Display display = null;
+  private SudokuDisplay displayable = new SudokuDisplay();
+
+  public Sudoku() {
+    instance = this;
+  }
+
+  public void startApp() {
+    if (display == null) {
+      display = Display.getDisplay(this);
+      new SudokuSplash(display, displayable);
+    }
+//    Display.getDisplay(this).setCurrent(displayable);
+    /*
+     Supported common media
+     Wave audio files: audio/x-wav
+     AU audio files: audio/basic
+     MP3 audio files: audio/mpeg
+     MIDI files: audio/midi
+     Tone sequences: audio/x-tone-seq
+     */
+    new Thread(new PlayThread(SUDOKU_GAME_URL)).start();
+    if (VERSION_FINAL) {
+      byte[] melodia = {
+          ToneControl.VERSION, 1, ToneControl.TEMPO, 22,
+          ToneControl.BLOCK_START, 0, 60, 8, 62, 4, 64, 4, 65, 4, 67, 4, 69, 4,
+          71, 4, 72, 4, 74, 4, 76, 4, 77, 4, 79, 4, 81, 4, 83, 4, 84, 4, 83, 4,
+          81, 4, 80, 4, 81, 4, 86, 4, 84, 4, 83, 4, 81, 4, 81, 4, 79, 4, 78, 4,
+          79, 4, 60, 4, 79, 4, 88, 4, 79, 4, 57, 4, 77, 4, 88, 4, 77, 4, 59, 4,
+          77, 4, 86, 4, 77, 4, 56, 4, 76, 4, 86, 4, 76, 4, 57, 4, 76, 4, 84, 4,
+          76, 4, 53, 4, 74, 4, 84, 4, 74, 4, 55, 4, 74, 4, 83, 4, 74, 4, 84, 16,
+          ToneControl.SILENCE, 16, ToneControl.BLOCK_END, 0,
+          ToneControl.BLOCK_START, 1, 79, 4, 84, 4, 88, 4, 86, 4, 84, 4, 83, 4,
+          81, 4, 79, 4, 77, 4, 76, 4, 74, 4, 72, 4, 71, 4, 69, 4, 67, 4, 65, 4,
+          64, 8, 76, 8, 77, 8, 78, 8, 79, 12, 76, 4, 74, 8, ToneControl.SILENCE,
+          8, ToneControl.BLOCK_END, 1, ToneControl.SET_VOLUME, 100,
+          ToneControl.PLAY_BLOCK, 0, ToneControl.SET_VOLUME, 50,
+          ToneControl.PLAY_BLOCK, 0, ToneControl.SET_VOLUME, 100,
+          ToneControl.PLAY_BLOCK, 1, ToneControl.SET_VOLUME, 50,
+          ToneControl.PLAY_BLOCK, 1, ToneControl.SET_VOLUME, 100,
+          ToneControl.PLAY_BLOCK, 0,
+      };
+      new Thread(new PlayMelodyThread(melodia)).start();
+    }
+    else {
+      // toca melodia, del libro j2me java 2 micro edition reducida
+      byte[] melodia = {
+          ToneControl.VERSION, 1, ToneControl.TEMPO, 22,
+          ToneControl.BLOCK_START, 0, 60, 8, 62, 4, 64, 4, 65, 4, 67, 4, 69, 4,
+          71, 4, 72, 4, 74, 4, 76, 4, 77, 4, 79, 4, 81, 4, 83, 4, 84, 4, 83, 4,
+          81, 4, 80, 4, 81, 4, 86, 4, 84, 4, 83, 4, 81, 4, 81, 4, 79, 4, 78, 4,
+          79, 4, 60, 4, 79, 4, 88, 4, 79, 4, 57, 4, 77, 4, 88, 4, 77, 4, 59, 4,
+          77, 4, 86, 4, 77, 4, 56, 4, 76, 4, 86, 4, 76, 4, 57, 4, 76, 4, 84, 4,
+          76, 4, 53, 4, 74, 4, 84, 4, 74, 4, 55, 4, 74, 4, 83, 4, 74, 4, 84, 16,
+          ToneControl.SILENCE, 16, ToneControl.BLOCK_END, 0,
+          ToneControl.BLOCK_START, 1, 79, 4, 84, 4, 88, 4, 86, 4, 84, 4, 83, 4,
+          81, 4, 79, 4, 77, 4, 76, 4, 74, 4, 72, 4, 71, 4, 69, 4, 67, 4, 65, 4,
+          64, 8, 76, 8, 77, 8, 78, 8, 79, 12, 76, 4, 74, 8, ToneControl.SILENCE,
+          8, ToneControl.BLOCK_END, 1, ToneControl.SET_VOLUME, 50,
+          ToneControl.PLAY_BLOCK, 1,
+      };
+      new Thread(new PlayMelodyThread(melodia)).start();
+    }
+  }
+
+  public void pauseApp() {
+  }
+
+  public void destroyApp(boolean unconditional) {
+  }
+
+  public static void quitApp() {
+    instance.destroyApp(true);
+    instance.notifyDestroyed();
+    instance = null;
+  }
+
+  public static Sudoku getInstance() {
+    return instance;
+  }
+
+  public SudokuDisplay getDisplayable() {
+    return displayable;
+  }
+
+}

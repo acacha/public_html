@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.6.1058" />
+    <meta name="TEMPLATEBASE" content="book-w-index" />
+    <meta name="LASTUPDATED" content="10/27/04 10:15:25" />
+    <title>Using the Mobile Media API</title>
+    <link rel="StyleSheet" href="document.css" type="text/css" />
+    <link rel="StyleSheet" href="catalog.css" type="text/css" />
+    <link rel="Table of Contents" href="index.html" />
+    <link rel="Previous" href="wma.html" />
+    <link rel="Next" href="mobile3d.html" />
+    <link rel="Index" href="indexa.html" />
+  </head>
+
+  <body>
+
+    <table class="full-width" id="SummaryNotReq1"
+        cellspacing="0" cellpadding="0" border="0">
+	  <!-- formatting table -->
+      <tr><td class="sun-darkblue">&#160;</td></tr>
+      <tr><td class="sun-lightblue">&#160;</td></tr>
+    </table>
+    
+    <table class="full-width" id="SummaryNotReq2"
+        cellspacing="0" cellpadding="0" border="0">
+	  <!-- formatting table -->
+      <tr>
+        <td class="go-left">
+          <p class="nav-link">
+            <a accesskey="h" href="../../index.html">Documentation Home</a>
+            &gt;
+            <a accesskey="c" href="index.html"><i>User's Guide</i></a>
+            &gt;
+            Using the Mobile Media API
+          </p>
+        </td>
+        <td class="go-right">
+        <a accesskey="c" href="index.html">
+          <img id="LongDescNotReq1" src="images/toc.gif" border="0"
+            alt="Contents" /></a>
+	<a accesskey="p" href="wma.html">
+	  <img id="LongDescNotReq2" src="images/prev.gif" border="0"
+            alt="Previous" /></a>
+        <a accesskey="n" href="mobile3d.html">
+	  <img id="LongDescNotReq3" src="images/next.gif" border="0"
+            alt="Next" /></a>
+        <a accesskey="i" href="indexa.html">
+	  <img id="LongDescNotReq4" src="images/index.gif" border="0"
+            alt="Index" /></a>
+        </td>
+      </tr>
+    </table>
+
+<a name="wp25865"> </a><h2 class="pChapNum">
+Chapter &#160; 8
+</h2>
+<a name="wp21060"> </a><h2 class="pTitle">
+Using the Mobile Media API
+</h2>
+<hr />
+<a name="wp22557"> </a><p class="pBody">
+The Mobile Media API (MMAPI) provides a standard API for rendering and capturing time-based media, like audio or video. The API was designed to be flexible with respect to the media formats, protocols, and features supported by various devices.
+</p>
+<a name="wp22571"> </a><h2 class="pHeading1">
+8.1	Supported Formats and Protocols
+</h2>
+<a name="wp22603"> </a><p class="pBody">
+The emulator&#8217;s MMAPI implementation supports the following media types:</p><div align="left">
+<table border="0" cellpadding="7" summary="Supported MMAPI media formats" id="wp23000">
+  <caption><a name="wp23000"> </a><div class="pTableCaption">
+TABLE&#160;6&#160;&#160;&#8211;&#160;&#160;Supported MMAPI media formats
+</div>
+</caption>
+<thead>
+<tr >    <th  class="sun-verylightblue" scope="col"><a name="wp23004"> </a><div class="pTableHead">
+MIME Type
+</div>
+
+</th>
+    <th  class="sun-verylightblue" scope="col"><a name="wp23006"> </a><div class="pTableHead">
+Description
+</div>
+
+</th>
+</tr>
+</thead>
+  <tr>    <td><a name="wp23048"> </a><div class="pTableText">
+audio/midi
+</div>
+</td>
+    <td><a name="wp23050"> </a><div class="pTableText">
+MIDI files
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp23052"> </a><div class="pTableText">
+audio/sp-midi
+</div>
+</td>
+    <td><a name="wp23054"> </a><div class="pTableText">
+Scalable Polyphony MIDI
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp23008"> </a><div class="pTableText">
+audio/x-tone-seq
+</div>
+</td>
+    <td><a name="wp23010"> </a><div class="pTableText">
+MIDP 2.0 tone sequence
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp23012"> </a><div class="pTableText">
+audio/x-wav
+</div>
+</td>
+    <td><a name="wp23014"> </a><div class="pTableText">
+WAV PCM sampled audio
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp23032"> </a><div class="pTableText">
+image/gif
+</div>
+</td>
+    <td><a name="wp23034"> </a><div class="pTableText">
+GIF 89a (animated GIF)
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp24582"> </a><div class="pTableText">
+video/mpeg
+</div>
+</td>
+    <td><a name="wp24584"> </a><div class="pTableText">
+MPEG video
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp24281"> </a><div class="pTableText">
+video/vnd.sun.rgb565
+</div>
+</td>
+    <td><a name="wp24283"> </a><div class="pTableText">
+Video capture
+</div>
+</td>
+</tr>
+<tr><td colspan="15"><hr class="pTableHr" /></td></tr>
+</table>
+</div>
+<p class="pBody">
+
+</p>
+<a name="wp24616"> </a><h2 class="pHeading1">
+8.2	Using MediaControlSkin
+</h2>
+<a name="wp24627"> </a><p class="pBody">
+The J2ME Wireless Toolkit comes with an emulator skin, <code class="cCode">MediaControlSkin</code>, that is focused on multimedia playback and control. The skin includes buttons with symbols representing play, stop, volume up and volume down, and other commands. To see the usefulness of <code class="cCode">MediaControlSkin</code>, try it out with the <code class="cCode">mmademo</code> demonstration application.
+</p>
+<a name="wp24287"> </a><h2 class="pHeading1">
+8.3	Media Capture
+</h2>
+<a name="wp24291"> </a><p class="pBody">
+The J2ME Wireless Toolkit emulator supports audio and video capture. Audio capture is supported by using the capture capabilities of the system upon which the emulator runs.
+</p>
+<a name="wp24295"> </a><p class="pBody">
+Video capture is supported by simulating a camera input.
+</p>
+<a name="wp24296"> </a><p class="pBody">
+See the <code class="cCode">mmademo</code> example application for details and source code that demonstrates how to capture audio and video.
+</p>
+<a name="wp25368"> </a><h2 class="pHeading1">
+8.4	Well-Behaved MIDlets
+</h2>
+<a name="wp25372"> </a><p class="pBody">
+MIDlets have a life cycle that is defined in the MIDP specification. MIDlets can be paused by events such as incoming phone calls. A well-behaved MIDlet releases important device resources when it is paused and reallocates or restarts those resources when the MIDlet is resumed. In the MMAPI arena, any <code class="cCode">Player</code>s that are rendering content should be stopped when a MIDlet is paused.
+</p>
+<a name="wp25375"> </a><p class="pBody">
+The J2ME Wireless Toolkit will print a message to the console if you pause a MIDlet and it does not stop its running <code class="cCode">Player</code>s. You can test this feature yourself using the <code class="cCode">PausingVideoTest</code> MIDlet in the <code class="cCode">mmademo</code> demonstration application. See <a  href="demonstrations.html#wp35208"><span class="cZ_Xref">Appendix&#160;</span></a> for details.
+</p>
+<a name="wp25393"> </a><p class="pBody">
+The warning message is printed once only for each running emulator.
+</p>
+
+    <p>&#160;</p>
+    <hr class="pHr" />
+
+    <table class="full-width" id="SummaryNotReq3">
+	  <!-- formatting table -->
+      <tr>
+        <td class="go-left">
+          <a accesskey="c" href="index.html">
+            <img id="LongDescNotReq1" src="images/toc.gif" border="0"
+              alt="Contents" /></a>
+          <a accesskey="p" href="wma.html">
+            <img id="LongDescNotReq2" src="images/prev.gif" border="0"
+              alt="Previous" /></a>
+          <a accesskey="n" href="mobile3d.html">
+            <img id="LongDescNotReq3" src="images/next.gif" border="0"
+              alt="Next" /></a>
+          <a accesskey="i" href="indexa.html">
+            <img id="LongDescNotReq4" src="images/index.gif" border="0"
+              alt="Index" /></a>
+        </td>
+        <td class="go-right">
+          <span class="copyright">J2ME Wireless Toolkit User's Guide <br /> J2ME Wireless Toolkit 2.2</span>
+        </td>
+      </tr>
+    </table>
+
+    <p>&#160;</p>
+    <p class="copyright">
+      <a href="copyright.html">Copyright</a> &#169; 2004 Sun Microsystems, Inc. 
+      All rights reserved.
+      Use is subject to the <a href="../../BinaryLicense.html">license terms</a>.
+    </p>
+  </body>
+</html>

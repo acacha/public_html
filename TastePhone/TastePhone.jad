@@ -1,0 +1,8 @@
+MIDlet-1: TastePhone, TastePhone.png, TastePhone
+MIDlet-Data-Size: 4096
+MIDlet-Jar-Size: 27125
+MIDlet-Jar-URL: TastePhone.jar
+MIDlet-Name: TastePhone
+MIDlet-Permissions-Opt: javax.microedition.io.Connector.http
+MIDlet-Vendor: Thibaut REGNIER, Club-Java.com
+MIDlet-Version: 0.6.0

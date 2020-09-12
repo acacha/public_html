@@ -1,0 +1,40 @@
+package org.nico.midlets.games;
+
+/**
+ * <p>Title: Sudoku</p>
+ * <p>Description: Juego japones</p>
+ * <p>Comments: From the book J2ME Manual de usuario y tutorial</p>
+ * <p>Date: 11/08/06</p>
+ * <p>Last upate: 11/08/06</p>
+ * @author Pep Mendez
+ */
+public abstract class ListResourceBundle extends ResourceBundle {
+
+  public ListResourceBundle() {
+    super();
+  }
+
+  public abstract Object[][] getContents();
+
+  /**
+   * handleGetObject
+   *
+   * @param clave String
+   * @return Object
+   */
+  protected Object getObject(String clave) {
+    Object obj = null;
+
+    if (clave == null) {
+      return null;
+    }
+    Object[][] recursos = getContents();
+    for (int i = 0; i < recursos.length; i++) {
+      if (clave.equals(recursos[i][0])) {
+        obj = recursos[i][1];
+      }
+    }
+
+    return obj;
+  }
+}

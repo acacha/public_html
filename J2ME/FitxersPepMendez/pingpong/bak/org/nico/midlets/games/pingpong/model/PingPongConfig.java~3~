@@ -1,0 +1,40 @@
+package org.nico.midlets.games.pingpong.model;
+
+import org.nico.midlets.resources.ResourceBundle;
+
+/**
+ * <p>Title: </p>
+ * <p>Description: </p>
+ * <p>Comments: </p>
+ * <p>Date: </p>
+ * @author Pep Mendez
+ * @version 1.0
+ */
+public class PingPongConfig {
+  private int nivel;
+  private int numeroPelotas;
+  private ResourceBundle boundle;
+  public int getNivel() {
+    return nivel;
+  }
+
+  public int getNumeroPelotas() {
+    return numeroPelotas;
+  }
+
+  public ResourceBundle getBoundle() {
+    return boundle;
+  }
+
+  public void setNivel(int nivel) {
+    this.nivel = nivel;
+  }
+
+  public void setNumeroPelotas(int numeroPelotas) {
+    this.numeroPelotas = numeroPelotas;
+  }
+
+  public void setBoundle(ResourceBundle boundle) {
+    this.boundle = boundle;
+  }
+}

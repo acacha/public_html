@@ -1,0 +1,10 @@
+[PropertyInfo]
+bundle,org.nico.midlets.resources.ResourceBundle,false,false,bundle,bundle,true,<default>
+nivel,int,false,false,nivel,nivel,true,<default>
+numeroPelotas,int,false,false,numeroPelotas,numeroPelotas,true,<default>
+reduccionProgresiva,boolean,false,false,reduccionProgresiva,reduccionProgresiva,true,<default>
+[IconNames]
+
+
+
+

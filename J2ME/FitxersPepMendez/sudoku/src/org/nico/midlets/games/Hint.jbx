@@ -1,0 +1,9 @@
+[PropertyInfo]
+fila,int,false,false,fila,fila,true,<default>
+columna,int,false,false,columna,columna,true,<default>
+valor,int,false,false,valor,valor,true,<default>
+[IconNames]
+
+
+
+

@@ -1,0 +1,9 @@
+[PropertyInfo]
+display,javax.microedition.lcdui.Display,false,false, , ,false,<default>
+displayable,org.nico.midlets.games.pingpong.view.PingPongDisplay,false,false, , ,false,<default>
+instance,org.nico.midlets.games.pingpong.controller.PingPong,false,false, , ,false,<default>
+[IconNames]
+
+
+
+

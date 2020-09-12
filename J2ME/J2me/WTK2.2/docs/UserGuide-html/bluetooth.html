@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.6.1058" />
+    <meta name="TEMPLATEBASE" content="book-w-index" />
+    <meta name="LASTUPDATED" content="10/27/04 10:15:28" />
+    <title>Using the Bluetooth and OBEX APIs</title>
+    <link rel="StyleSheet" href="document.css" type="text/css" />
+    <link rel="StyleSheet" href="catalog.css" type="text/css" />
+    <link rel="Table of Contents" href="index.html" />
+    <link rel="Previous" href="pdap.html" />
+    <link rel="Next" href="webservices.html" />
+    <link rel="Index" href="indexa.html" />
+  </head>
+
+  <body>
+
+    <table class="full-width" id="SummaryNotReq1"
+        cellspacing="0" cellpadding="0" border="0">
+	  <!-- formatting table -->
+      <tr><td class="sun-darkblue">&#160;</td></tr>
+      <tr><td class="sun-lightblue">&#160;</td></tr>
+    </table>
+    
+    <table class="full-width" id="SummaryNotReq2"
+        cellspacing="0" cellpadding="0" border="0">
+	  <!-- formatting table -->
+      <tr>
+        <td class="go-left">
+          <p class="nav-link">
+            <a accesskey="h" href="../../index.html">Documentation Home</a>
+            &gt;
+            <a accesskey="c" href="index.html"><i>User's Guide</i></a>
+            &gt;
+            Using the Bluetooth and OBEX APIs
+          </p>
+        </td>
+        <td class="go-right">
+        <a accesskey="c" href="index.html">
+          <img id="LongDescNotReq1" src="images/toc.gif" border="0"
+            alt="Contents" /></a>
+	<a accesskey="p" href="pdap.html">
+	  <img id="LongDescNotReq2" src="images/prev.gif" border="0"
+            alt="Previous" /></a>
+        <a accesskey="n" href="webservices.html">
+	  <img id="LongDescNotReq3" src="images/next.gif" border="0"
+            alt="Next" /></a>
+        <a accesskey="i" href="indexa.html">
+	  <img id="LongDescNotReq4" src="images/index.gif" border="0"
+            alt="Index" /></a>
+        </td>
+      </tr>
+    </table>
+
+<a name="wp29714"> </a><h2 class="pChapNum">
+Chapter &#160; 11
+</h2>
+<a name="wp24808"> </a><h2 class="pTitle">
+Using the Bluetooth and OBEX APIs
+</h2>
+<hr />
+<a name="wp29742"> </a><p class="pBody">
+The J2ME Wireless Toolkit emulator supports JSR 82, the Java APIs for Bluetooth. JSR 82 includes two independent APIs:
+</p>
+<ul class="pBullet1"><a name="wp29743"> </a><div class="pBullet1"><li>The Bluetooth API provides an interface to Bluetooth wireless networking, including device discovery and data exchange.</li></div>
+<a name="wp29744"> </a><div class="pBullet1Last"><li>The OBEX API allows applications to use the Object Exchange (OBEX) protocol over Bluetooth or other communication channels.</li></div>
+</ul>
+<a name="wp24822"> </a><p class="pBody">
+This chapter describes how the J2ME Wireless Toolkit implements the Bluetooth and OBEX APIs.
+</p>
+<a name="wp29759"> </a><h2 class="pHeading1">
+11.1	Bluetooth Simulation Environment
+</h2>
+<a name="wp29763"> </a><p class="pBody">
+The J2ME Wireless Toolkit emulator allows you to develop and test application that use Bluetooth without having actual Bluetooth hardware. The toolkit simulates a Bluetooth environment for running emulators. Multiple emulator instances can discover each other and exchange data using the Bluetooth API.
+</p>
+<a name="wp29766"> </a><p class="pBody">
+For an example, see the documentation of <code class="cCode">BluetoothDemo</code> in <a  href="demonstrations.html#wp35208"><span class="cZ_Xref">Appendix&#160;A,  </span>&#8220;Application Demonstrations</a>.&#8221;
+</p>
+<a name="wp24917"> </a><h2 class="pHeading1">
+11.2	OBEX Over Infrared
+</h2>
+<a name="wp24921"> </a><p class="pBody">
+The J2ME Wireless Toolkit implements OBEX transfer over simulated Bluetooth and infrared connections. The simulated infrared connection follows the IrDA standard (see <a  href="http://www.irda.org/">http://www.irda.org/</a>). Simulated infrared transfers can take place between multiple running emulators.
+</p>
+<a name="wp24863"> </a><h2 class="pHeading1">
+11.3	Setting OBEX and Bluetooth Preferences
+</h2>
+<a name="wp24933"> </a><p class="pBody">
+The J2ME Wireless Toolkit allows you to configure the Bluetooth and OBEX simulation environment. Choose <b class="cBold">Edit &gt; Preferences...</b> from the KToolbar menu to see the following window.
+</p>
+<a name="wp24938"> </a><div class="pFigureCaption">
+FIGURE&#160;38&#160;&#160;&#8211;&#160;&#160;Bluetooth and OBEX preferences
+<br /><br />
+</div><a name="wp29800"> </a><p class="pBody">
+<img src="images/preferences-bluetooth.gif" alt="Bluetooth and OBEX preferences" border="0" hspace="0" vspace="0"/>
+</p>
+<a name="wp29805"> </a><h3 class="pHeading2">
+11.3.1	OBEX Preferences
+</h3>
+<a name="wp24959"> </a><p class="pBody">
+Devices using IrDA in the real world discover other devices by &#8220;listening&#8221;. You can configure how long the J2ME Wireless Toolkit emulator waits to discover another device using the <b class="cBold">Discovery timeout</b> field in the <b class="cBold">IrDA OBEX</b> section of the preferences window. Enter a value in milliseconds.
+</p>
+<a name="wp25110"> </a><p class="pBody">
+At the API level, the discovery timeout value determines how long a call to <code class="cCode">Connector.open(&quot;irdaobex://discover...&quot;)</code> will block before it returns or throws an exception.
+</p>
+<a name="wp25127"> </a><p class="pBody">
+The maximum packet length affects how much data is sent in each packet between emulators. Shorter packet values will result in more packets and more packet overhead.
+</p>
+<a name="wp29831"> </a><h3 class="pHeading2">
+11.3.2	Bluetooth Discovery Timeout
+</h3>
+<a name="wp29832"> </a><p class="pBody">
+In the <b class="cBold">Bluetooth</b> section of the preferences window, the <b class="cBold">Device discovery timeout</b> is the amount of time, in milliseconds, the emulator will wait while attempting to locate other devices in the simulated Bluetooth environment.
+</p>
+<a name="wp29833"> </a><h3 class="pHeading2">
+11.3.3	Bluetooth System Properties
+</h3>
+<a name="wp29834"> </a><p class="pBody">
+The <b class="cBold">System Properties</b> tab in the <b class="cBold">Bluetooth</b> section of the preferences contains properties that can be retrieved in an application using the <code class="cCode">getProperty()</code> method in <code class="cCode">javax.bluetooth.LocalDevice</code>.
+</p>
+<a name="wp29835"> </a><p class="pBody">
+The Bluetooth properties are fully described in the JSR 82 specification.
+</p>
+<a name="wp29836"> </a><h3 class="pHeading2">
+11.3.4	Bluetooth BCC Properties
+</h3>
+<a name="wp29837"> </a><p class="pBody">
+The Bluetooth Control Center (BCC) controls Bluetooth settings. Some devices may provide a GUI to customize Bluetooth settings. In the J2ME Wireless Toolkit, the BCC is configured using the <b class="cBold">BCC Properties </b>tab of the Bluetooth preferences. The properties are as follows:</p><div align="left">
+<table border="0" cellpadding="7" summary="BCC properties" id="wp29844">
+  <caption><a name="wp29844"> </a><div class="pTableCaption">
+TABLE&#160;7&#160;&#160;&#8211;&#160;&#160;BCC properties
+</div>
+</caption>
+<thead>
+<tr >    <th  class="sun-verylightblue" scope="col"><a name="wp29848"> </a><div class="pTableHead">
+Property
+</div>
+
+</th>
+    <th  class="sun-verylightblue" scope="col"><a name="wp29850"> </a><div class="pTableHead">
+Description
+</div>
+
+</th>
+</tr>
+</thead>
+  <tr>    <td><a name="wp29852"> </a><div class="pTableText">
+Enable Bluetooth support
+</div>
+</td>
+    <td><a name="wp29854"> </a><div class="pTableText">
+If this property is disabled, then <code class="cCode">LocalDevice.getLocalDevice()</code> throws a <code class="cCode">BluetoothStateException</code> and no connections can be created. This is useful to test the behavior of your application on devices that support JSR 82 but may have the Bluetooth feature turned off.
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp29856"> </a><div class="pTableText">
+Device is discoverable
+</div>
+</td>
+    <td><a name="wp29858"> </a><div class="pTableText">
+This property indicates whether or not this emulator can be discovered by other emulators.
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp29860"> </a><div class="pTableText">
+Friendly name
+</div>
+</td>
+    <td><a name="wp29862"> </a><div class="pTableText">
+The friendly name is a human-readable name for the emulator in the simulated Bluetooth environment. If the name is left blank, the emulator will not support the &#8220;friendly name&#8221; feature.
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp29864"> </a><div class="pTableText">
+Encryption
+</div>
+</td>
+    <td><a name="wp29866"> </a><div class="pTableText">
+This property determines whether connection encryption is supported (<code class="cCode">on</code>) or not (<code class="cCode">off</code>). In addition, the <code class="cCode">force</code> settings means all connected must be encrypted. See the documentation for <code class="cCode">RemoteDevice</code>&#8217;s <code class="cCode">encrypt()</code> method for details.
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp29868"> </a><div class="pTableText">
+Authorization
+</div>
+</td>
+    <td><a name="wp29870"> </a><div class="pTableText">
+This is similar to the Encryption property. See <code class="cCode">RemoteDevice</code>&#8217;s <code class="cCode">authorize()</code> method.
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp29872"> </a><div class="pTableText">
+Authentication
+</div>
+</td>
+    <td><a name="wp29874"> </a><div class="pTableText">
+This is similar to Encryption and Authorization. See <code class="cCode">RemoteDevice</code>&#8217;s <code class="cCode">authenticate()</code> method.
+</div>
+</td>
+</tr>
+<tr><td colspan="15"><hr class="pTableHr" /></td></tr>
+</table>
+</div>
+<p class="pBody">
+
+</p>
+<a name="wp29209"> </a><p class="pBody">
+
+</p>
+
+    <p>&#160;</p>
+    <hr class="pHr" />
+
+    <table class="full-width" id="SummaryNotReq3">
+	  <!-- formatting table -->
+      <tr>
+        <td class="go-left">
+          <a accesskey="c" href="index.html">
+            <img id="LongDescNotReq1" src="images/toc.gif" border="0"
+              alt="Contents" /></a>
+          <a accesskey="p" href="pdap.html">
+            <img id="LongDescNotReq2" src="images/prev.gif" border="0"
+              alt="Previous" /></a>
+          <a accesskey="n" href="webservices.html">
+            <img id="LongDescNotReq3" src="images/next.gif" border="0"
+              alt="Next" /></a>
+          <a accesskey="i" href="indexa.html">
+            <img id="LongDescNotReq4" src="images/index.gif" border="0"
+              alt="Index" /></a>
+        </td>
+        <td class="go-right">
+          <span class="copyright">J2ME Wireless Toolkit User's Guide <br /> J2ME Wireless Toolkit 2.2</span>
+        </td>
+      </tr>
+    </table>
+
+    <p>&#160;</p>
+    <p class="copyright">
+      <a href="copyright.html">Copyright</a> &#169; 2004 Sun Microsystems, Inc. 
+      All rights reserved.
+      Use is subject to the <a href="../../BinaryLicense.html">license terms</a>.
+    </p>
+  </body>
+</html>

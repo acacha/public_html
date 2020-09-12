@@ -1,0 +1,147 @@
+package org.nico.midlets.games;
+
+import javax.microedition.lcdui.*;
+
+/**
+ * <p>Title: Sudoku</p>
+ * <p>Description: Juego japones</p>
+ * <p>Comments: Version recursiva</p>
+ * <p>Date: 06/07/06</p>
+ * <p>Last update: 07/08/06</p>
+ * @author Pep Mendez
+ */
+public class SudokuFormConfig extends Form implements CommandListener,
+    ItemStateListener, ISudokuConstants {
+  private Gauge gNiveles;
+  private StringItem siNivel;
+//  private ChoiceGroup niveles;
+  private ChoiceGroup ayudaOnLine;
+  private StringItem siAyudaOnLIne;
+  private Gauge gSeed;
+  private StringItem siSeed;
+//  private ImageItem sudoku;
+  private SudokuConfig config;
+  private Image[] iAyudaOnLine = new Image[2];
+
+  public SudokuFormConfig(SudokuConfig config) {
+
+    super( (String) config.getBundle().getObject(
+        "formulario.configuracion.titulo"));
+    setItemStateListener(this);
+    this.config = config;
+    try {
+      jbInit();
+    }
+    catch (Exception e) {
+      e.printStackTrace();
+    }
+  }
+
+  private void jbInit() throws Exception {
+    // Set up this Displayable to listen to command events
+    setCommandListener(this);
+    ResourceBundle bundle = config.getBundle();
+    // add the Exit command
+    String s = (String) bundle.getObject(
+        "formulario.configuracion.menu.aceptar");
+    addCommand(new Command(s, Command.EXIT, 1));
+    s = (String) bundle.getObject("formulario.configuracion.menu.cancelar");
+    addCommand(new Command(s, Command.CANCEL, 1));
+    String[] opcionesAyudaOnLine = {
+         (String) bundle.getObject("formulario.configuracion.ayuda.activada"),
+        (String) bundle.getObject("formulario.configuracion.ayuda.desactivada"),
+    };
+//    niveles = new ChoiceGroup("Niveles de juego", ChoiceGroup.EXCLUSIVE,
+//                              opcionesNiveles, null);
+    iAyudaOnLine[0] = Image.createImage(ON_IMAGE);
+    iAyudaOnLine[1] = Image.createImage(OFF_IMAGE);
+    s = (String) bundle.getObject("formulario.configuracion.ayuda.on.line");
+    ayudaOnLine = new ChoiceGroup(s, ChoiceGroup.EXCLUSIVE, opcionesAyudaOnLine,
+                                  iAyudaOnLine);
+    s = (String) bundle.getObject("formulario.configuracion.ayuda.interactiva");
+    siAyudaOnLIne = new StringItem(s, "");
+    s = (String) bundle.getObject("formulario.configuracion.selector.nivel");
+    gNiveles = new Gauge(s, true, NIVEL_MAXIMO, config.getLevel());
+    s = (String) bundle.getObject("formulario.configuracion.nivel.juego");
+    String msg = (String) bundle.getObject("nivel" + config.getLevel());
+    siNivel = new StringItem(s, msg, StringItem.PLAIN);
+    s = (String) bundle.getObject(
+        "formulario.configuracion.generador.aleatorio");
+    gSeed = new Gauge(s, true, SEED_MAXIMA, config.getSeed());
+    s = (String) bundle.getObject("formulario.configuracion.nivel.azar");
+    siSeed = new StringItem(s,
+                            "\t" + String.valueOf(config.getSeed()) +
+                            (String) bundle.getObject("seed" + config.getSeed()),
+                            StringItem.PLAIN);
+//    this.append(niveles);
+//    sudoku = new ImageItem(" ", Image.createImage("/org/nico/midlets/games/sudoku.png"), ImageItem.LAYOUT_CENTER, "");
+//    append(sudoku);
+    append(gNiveles);
+    append(siNivel);
+//    append(new Spacer(5, 5)); // No parece afectar
+    append(gSeed);
+    append(siSeed);
+    append(ayudaOnLine);
+    append(siAyudaOnLIne);
+    // image
+//    niveles.setSelectedIndex(config.getLevel() - 1, true);
+    boolean ayuda = config.isAyudaOnLine();
+    ayudaOnLine.setSelectedIndex(ayuda ? 0 : 1, true);
+    siAyudaOnLIne.setText(ayudaOnLineMsg[ayudaOnLine.getSelectedIndex()]);
+  }
+
+  public void commandAction(Command command, Displayable displayable) {
+    // aceptar
+    if (command.getCommandType() == Command.EXIT) {
+//      int l = niveles.getSelectedIndex() + 1;
+      int l = gNiveles.getValue();
+      int a = ayudaOnLine.getSelectedIndex();
+      int s = gSeed.getValue();
+      config.setLevel(l);
+      // opcion 0 Activada
+      config.setAyudaOnLine(a == 0 ? true : false);
+      config.setSeed(s);
+    }
+    // cancelar
+    else {
+      // no hacer nada
+    }
+    Display.getDisplay(Sudoku.getInstance()).setCurrent(Sudoku.getInstance().
+        getDisplayable());
+  }
+
+  /**
+   * itemStateChanged
+   *
+   * @param item Item
+   */
+  public void itemStateChanged(Item item) {
+    ResourceBundle bundle = config.getBundle();
+    if (item == ayudaOnLine) {
+      siAyudaOnLIne.setText(ayudaOnLineMsg[ayudaOnLine.getSelectedIndex()]);
+    }
+    if (item == gNiveles) {
+      int l = gNiveles.getValue();
+      if (l == 0) {
+        l = 1;
+        gNiveles.setValue(l);
+      }
+      siNivel.setText( (String) bundle.getObject("nivel" + l));
+      if (l < 6) {
+        ayudaOnLine.setSelectedIndex(0, true);
+      }
+//      else {
+//        ayudaOnLine.setSelectedIndex(1, true);
+//      }
+    }
+    else if (item == gSeed) {
+      int s = gSeed.getValue();
+      if (s == 0) {
+        s = 1;
+        gSeed.setValue(s);
+      }
+      siSeed.setText("\t" + String.valueOf(s) +
+                     (String) bundle.getObject("seed" + s));
+    }
+  }
+}

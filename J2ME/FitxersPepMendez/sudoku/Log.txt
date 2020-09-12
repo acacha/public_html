@@ -1,0 +1,703 @@
+# If this log is to be used for incremental obfuscation / patch generation, 
+# add any '.class', '.method', '.field' and '.attribute' restrictions here:
+
+
+#-DO-NOT-EDIT-BELOW-THIS-LINE------------------DO-NOT-EDIT-BELOW-THIS-LINE--
+#
+# RetroGuard Bytecode Obfuscator, v1.1.13, a product of Retrologic Systems - www.retrologic.com
+#
+# Logfile created on Fri Aug 11 15:09:55 CEST 2006
+#
+# Jar file to be obfuscated:           sudoku.jar
+# Target Jar file for obfuscated code: sudoku.jar
+# RetroGuard Script file used:         sudoku.rgs
+#
+#
+# WARNING - Methods are called which may unavoidably break in obfuscated version at runtime.
+#          Please review your source code to ensure that the dangerous methods are not intended
+#          to act on classes which are within the obfuscated Jar file.
+#      Your class org/nico/midlets/games/ResourceBundle calls the java/lang/Class method forName(Ljava/lang/String;)Ljava/lang/Class;
+#
+# Memory in use after class data structure built: 638496 bytes
+# Total memory available                        : 2031616 bytes
+#
+#
+# Obfuscated name overloading frequency:
+#  'a'   	used 103 times	(19%)
+#  'if'   	used 53 times	(10%)
+#  'do'   	used 38 times	(7%)
+#  'for'   	used 21 times	(3%)
+#  'int'   	used 18 times	(3%)
+#  'new'   	used 15 times	(2%)
+#  'try'   	used 15 times	(2%)
+#  'b'   	used 14 times	(2%)
+#  'c'   	used 14 times	(2%)
+#  'd'   	used 14 times	(2%)
+#  'byte'   	used 13 times	(2%)
+#  'char'   	used 12 times	(2%)
+#  'goto'   	used 12 times	(2%)
+#  'case'   	used 12 times	(2%)
+#  'else'   	used 12 times	(2%)
+#  'e'   	used 11 times	(2%)
+#  'long'   	used 9 times	(1%)
+#  'f'   	used 9 times	(1%)
+#  'null'   	used 9 times	(1%)
+#  'void'   	used 9 times	(1%)
+#  'g'   	used 7 times	(1%)
+#  'h'   	used 6 times	(1%)
+#  'i'   	used 6 times	(1%)
+#  Other names (each used in <1% of mappings) used a total of 94 times (29%)
+#
+#
+# Names reserved from obfuscation:
+#
+.class org/nico/midlets/games/Sudoku
+#
+#
+# Obfuscated name mappings (some of these may be unchanged due to polymorphism constraints):
+#
+.package_map org/kxml a
+.package_map org/kxml/wap a
+.class_map org/kxml/wap/Wbxml a
+.field_map org/kxml/wap/Wbxml/EXT_T_0 a
+.field_map org/kxml/wap/Wbxml/LITERAL_C if
+.field_map org/kxml/wap/Wbxml/LITERAL_A do
+.field_map org/kxml/wap/Wbxml/END for
+.field_map org/kxml/wap/Wbxml/LITERAL int
+.field_map org/kxml/wap/Wbxml/EXT_2 new
+.field_map org/kxml/wap/Wbxml/EXT_1 try
+.field_map org/kxml/wap/Wbxml/EXT_0 byte
+.field_map org/kxml/wap/Wbxml/ENTITY case
+.field_map org/kxml/wap/Wbxml/STR_T char
+.field_map org/kxml/wap/Wbxml/PI else
+.field_map org/kxml/wap/Wbxml/LITERAL_AC goto
+.field_map org/kxml/wap/Wbxml/SWITCH_PAGE long
+.field_map org/kxml/wap/Wbxml/OPAQUE null
+.field_map org/kxml/wap/Wbxml/STR_I void
+.field_map org/kxml/wap/Wbxml/EXT_I_2 b
+.field_map org/kxml/wap/Wbxml/EXT_I_1 c
+.field_map org/kxml/wap/Wbxml/EXT_I_0 d
+.field_map org/kxml/wap/Wbxml/EXT_T_2 e
+.field_map org/kxml/wap/Wbxml/EXT_T_1 f
+.class_map org/kxml/wap/WmlWriter b
+.class_map org/kxml/wap/WapExtensionEvent c
+.field_map org/kxml/wap/WapExtensionEvent/content else
+.field_map org/kxml/wap/WapExtensionEvent/id goto
+.method_map org/kxml/wap/WapExtensionEvent/getType ()I if
+.method_map org/kxml/wap/WapExtensionEvent/getContent ()Ljava/lang/Object; else
+.method_map org/kxml/wap/WapExtensionEvent/getId ()I goto
+.class_map org/kxml/wap/WmlParser d
+.class_map org/kxml/wap/Wml e
+.field_map org/kxml/wap/Wml/attrValueTable a
+.field_map org/kxml/wap/Wml/attrStartTable if
+.field_map org/kxml/wap/Wml/tagTable do
+.class_map org/kxml/wap/WbxmlWriter f
+.field_map org/kxml/wap/WbxmlWriter/tagTable try
+.field_map org/kxml/wap/WbxmlWriter/stringTable byte
+.field_map org/kxml/wap/WbxmlWriter/pending case
+.field_map org/kxml/wap/WbxmlWriter/attrValueTable char
+.field_map org/kxml/wap/WbxmlWriter/buf else
+.field_map org/kxml/wap/WbxmlWriter/attrStartTable goto
+.field_map org/kxml/wap/WbxmlWriter/out long
+.field_map org/kxml/wap/WbxmlWriter/attributes null
+.field_map org/kxml/wap/WbxmlWriter/stringTableBuf void
+.method_map org/kxml/wap/WbxmlWriter/startTag (Lorg/kxml/PrefixMap;Ljava/lang/String;)V a
+.method_map org/kxml/wap/WbxmlWriter/attribute (Ljava/lang/String;Ljava/lang/String;)V if
+.method_map org/kxml/wap/WbxmlWriter/close ()V close
+.method_map org/kxml/wap/WbxmlWriter/endTag ()V if
+.method_map org/kxml/wap/WbxmlWriter/writeLegacy (ILjava/lang/String;)V a
+.method_map org/kxml/wap/WbxmlWriter/checkPending (Z)V a
+.method_map org/kxml/wap/WbxmlWriter/setAttrStartTable (I[Ljava/lang/String;)V a
+.method_map org/kxml/wap/WbxmlWriter/write ([CII)V write
+.method_map org/kxml/wap/WbxmlWriter/writeInt (Ljava/io/OutputStream;I)V a
+.method_map org/kxml/wap/WbxmlWriter/setAttrValueTable (I[Ljava/lang/String;)V if
+.method_map org/kxml/wap/WbxmlWriter/setTagTable (I[Ljava/lang/String;)V do
+.method_map org/kxml/wap/WbxmlWriter/flush ()V flush
+.method_map org/kxml/wap/WbxmlWriter/writeStrT (Ljava/lang/String;)V do
+.method_map org/kxml/wap/WbxmlWriter/writeStrI (Ljava/io/OutputStream;Ljava/lang/String;)V a
+.class_map org/kxml/wap/WbxmlParser g
+.field_map org/kxml/wap/WbxmlParser/whitespace c
+.field_map org/kxml/wap/WbxmlParser/stringTable d
+.field_map org/kxml/wap/WbxmlParser/tagTable e
+.field_map org/kxml/wap/WbxmlParser/attrValueTable f
+.field_map org/kxml/wap/WbxmlParser/publicIdentifierId g
+.field_map org/kxml/wap/WbxmlParser/attrStartTable h
+.field_map org/kxml/wap/WbxmlParser/charSet i
+.field_map org/kxml/wap/WbxmlParser/next j
+.field_map org/kxml/wap/WbxmlParser/current k
+.field_map org/kxml/wap/WbxmlParser/version l
+.field_map org/kxml/wap/WbxmlParser/in m
+.method_map org/kxml/wap/WbxmlParser/readAttr ()Ljava/util/Vector; e
+.method_map org/kxml/wap/WbxmlParser/readInt ()I f
+.method_map org/kxml/wap/WbxmlParser/read ()Lorg/kxml/parser/ParseEvent; a
+.method_map org/kxml/wap/WbxmlParser/parseElement (I)Lorg/kxml/parser/StartTag; a
+.method_map org/kxml/wap/WbxmlParser/resolveId ([Ljava/lang/String;I)Ljava/lang/String; a
+.method_map org/kxml/wap/WbxmlParser/readStrI ()Ljava/lang/String; g
+.method_map org/kxml/wap/WbxmlParser/setAttrStartTable (I[Ljava/lang/String;)V a
+.method_map org/kxml/wap/WbxmlParser/readStrT ()Ljava/lang/String; h
+.method_map org/kxml/wap/WbxmlParser/readByte ()I i
+.method_map org/kxml/wap/WbxmlParser/setAttrValueTable (I[Ljava/lang/String;)V if
+.method_map org/kxml/wap/WbxmlParser/setTagTable (I[Ljava/lang/String;)V do
+.method_map org/kxml/wap/WbxmlParser/parseWapExtension (I)Lorg/kxml/parser/ParseEvent; if
+.method_map org/kxml/wap/WbxmlParser/peek ()Lorg/kxml/parser/ParseEvent; new
+.package_map org/kxml/kdom b
+.class_map org/kxml/kdom/Document a
+.field_map org/kxml/kdom/Document/rootIndex byte
+.method_map org/kxml/kdom/Document/removeChild (I)V int
+.method_map org/kxml/kdom/Document/addChild (IILjava/lang/Object;)V a
+.method_map org/kxml/kdom/Document/parse (Lorg/kxml/parser/AbstractXmlParser;)V a
+.method_map org/kxml/kdom/Document/getRootElement ()Lorg/kxml/kdom/Element; goto
+.method_map org/kxml/kdom/Document/getName ()Ljava/lang/String; if
+.class_map org/kxml/kdom/Element b
+.field_map org/kxml/kdom/Element/attributes do
+.field_map org/kxml/kdom/Element/name for
+.field_map org/kxml/kdom/Element/parent int
+.field_map org/kxml/kdom/Element/namespace new
+.field_map org/kxml/kdom/Element/prefixMap try
+.method_map org/kxml/kdom/Element/getAttributes ()Ljava/util/Vector; int
+.method_map org/kxml/kdom/Element/createElement (Ljava/lang/String;Ljava/lang/String;)Lorg/kxml/kdom/Element; a
+.method_map org/kxml/kdom/Element/getParentElement ()Lorg/kxml/kdom/Element; new
+.method_map org/kxml/kdom/Element/setPrefixMap (Lorg/kxml/PrefixMap;)V a
+.method_map org/kxml/kdom/Element/getPrefixMap ()Lorg/kxml/PrefixMap; try
+.method_map org/kxml/kdom/Element/getAttributeCount ()I byte
+.method_map org/kxml/kdom/Element/setNamespace (Ljava/lang/String;)V if
+.method_map org/kxml/kdom/Element/setParent (Lorg/kxml/kdom/Node;)V a
+.method_map org/kxml/kdom/Element/removeAttribute (I)V new
+.method_map org/kxml/kdom/Element/setAttributes (Ljava/util/Vector;)V a
+.method_map org/kxml/kdom/Element/setValue (Ljava/lang/String;Ljava/lang/String;)V do
+.method_map org/kxml/kdom/Element/parse (Lorg/kxml/parser/AbstractXmlParser;)V a
+.method_map org/kxml/kdom/Element/setName (Ljava/lang/String;)V do
+.method_map org/kxml/kdom/Element/getName ()Ljava/lang/String; if
+.method_map org/kxml/kdom/Element/getAttribute (Ljava/lang/String;)Lorg/kxml/Attribute; for
+.method_map org/kxml/kdom/Element/getAttribute (Ljava/lang/String;Ljava/lang/String;)Lorg/kxml/Attribute; for
+.method_map org/kxml/kdom/Element/getDocument ()Lorg/kxml/kdom/Document; case
+.method_map org/kxml/kdom/Element/setAttribute (Lorg/kxml/Attribute;)V a
+.method_map org/kxml/kdom/Element/write (Lorg/kxml/io/AbstractXmlWriter;)V a
+.method_map org/kxml/kdom/Element/getValueDefault (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String; int
+.method_map org/kxml/kdom/Element/clear ()V char
+.method_map org/kxml/kdom/Element/getValue (Ljava/lang/String;)Ljava/lang/String; int
+.method_map org/kxml/kdom/Element/init (Lorg/kxml/kdom/Node;Ljava/lang/String;Ljava/lang/String;Ljava/util/Vector;)Lorg/kxml/kdom/Element; a
+.method_map org/kxml/kdom/Element/getParent ()Lorg/kxml/kdom/Node; else
+.method_map org/kxml/kdom/Element/getAttribute (I)Lorg/kxml/Attribute; try
+.method_map org/kxml/kdom/Element/getNamespace ()Ljava/lang/String; for
+.class_map org/kxml/kdom/Node c
+.field_map org/kxml/kdom/Node/types a
+.field_map org/kxml/kdom/Node/children if
+.method_map org/kxml/kdom/Node/getElement (Ljava/lang/String;)Lorg/kxml/kdom/Element; a
+.method_map org/kxml/kdom/Node/getChild (I)Ljava/lang/Object; a
+.method_map org/kxml/kdom/Node/indexOf (Ljava/lang/String;I)I a
+.method_map org/kxml/kdom/Node/createElement (Ljava/lang/String;Ljava/lang/String;)Lorg/kxml/kdom/Element; a
+.method_map org/kxml/kdom/Node/addChild (IILjava/lang/Object;)V a
+.method_map org/kxml/kdom/Node/getElement (Ljava/lang/String;Ljava/lang/String;)Lorg/kxml/kdom/Element; if
+.method_map org/kxml/kdom/Node/getChildCount ()I a
+.method_map org/kxml/kdom/Node/addChild (ILjava/lang/Object;)V a
+.method_map org/kxml/kdom/Node/toString ()Ljava/lang/String; toString
+.method_map org/kxml/kdom/Node/getElement (I)Lorg/kxml/kdom/Element; if
+.method_map org/kxml/kdom/Node/parse (Lorg/kxml/parser/AbstractXmlParser;)V a
+.method_map org/kxml/kdom/Node/getName ()Ljava/lang/String; if
+.method_map org/kxml/kdom/Node/getText (I)Ljava/lang/String; do
+.method_map org/kxml/kdom/Node/getText ()Ljava/lang/String; do
+.method_map org/kxml/kdom/Node/write (Lorg/kxml/io/AbstractXmlWriter;)V a
+.method_map org/kxml/kdom/Node/writeChildren (Lorg/kxml/io/AbstractXmlWriter;)V if
+.method_map org/kxml/kdom/Node/getType (I)I for
+.method_map org/kxml/kdom/Node/removeChild (I)V int
+.method_map org/kxml/kdom/Node/indexOf (Ljava/lang/String;Ljava/lang/String;I)I a
+.method_map org/kxml/kdom/Node/getNamespace ()Ljava/lang/String; for
+.class_map org/kxml/kdom/TreeParser$Position a
+.field_map org/kxml/kdom/TreeParser$Position/this$0 this$0
+.field_map org/kxml/kdom/TreeParser$Position/index a
+.field_map org/kxml/kdom/TreeParser$Position/previous if
+.field_map org/kxml/kdom/TreeParser$Position/node do
+.field_map org/kxml/kdom/TreeParser$Position/start for
+.class_map org/kxml/kdom/TreeParser d
+.field_map org/kxml/kdom/TreeParser/next if
+.field_map org/kxml/kdom/TreeParser/current do
+.method_map org/kxml/kdom/TreeParser/peek ()Lorg/kxml/parser/ParseEvent; new
+.method_map org/kxml/kdom/TreeParser/read ()Lorg/kxml/parser/ParseEvent; a
+.package_map org/kxml/parser c
+.class_map org/kxml/parser/AbstractXmlParser a
+.field_map org/kxml/parser/AbstractXmlParser/processNamespaces a
+.method_map org/kxml/parser/AbstractXmlParser/peek (ILjava/lang/String;Ljava/lang/String;)Z a
+.method_map org/kxml/parser/AbstractXmlParser/read ()Lorg/kxml/parser/ParseEvent; a
+.method_map org/kxml/parser/AbstractXmlParser/skip ()V if
+.method_map org/kxml/parser/AbstractXmlParser/readText ()Ljava/lang/String; do
+.method_map org/kxml/parser/AbstractXmlParser/read (ILjava/lang/String;Ljava/lang/String;)Lorg/kxml/parser/ParseEvent; if
+.method_map org/kxml/parser/AbstractXmlParser/ignoreTree ()V for
+.method_map org/kxml/parser/AbstractXmlParser/getLineNumber ()I int
+.method_map org/kxml/parser/AbstractXmlParser/peek ()Lorg/kxml/parser/ParseEvent; new
+.method_map org/kxml/parser/AbstractXmlParser/setProcessNamespaces (Z)V a
+.method_map org/kxml/parser/AbstractXmlParser/readTree (Ljava/util/Vector;)V a
+.class_map org/kxml/parser/XmlParser$DefaultParserException a
+.field_map org/kxml/parser/XmlParser$DefaultParserException/this$0 this$0
+.class_map org/kxml/parser/XmlParser b
+.field_map org/kxml/parser/XmlParser/UNEXPECTED_EOF for
+.field_map org/kxml/parser/XmlParser/bufPos int
+.field_map org/kxml/parser/XmlParser/qNames new
+.field_map org/kxml/parser/XmlParser/buf try
+.field_map org/kxml/parser/XmlParser/column byte
+.field_map org/kxml/parser/XmlParser/next case
+.field_map org/kxml/parser/XmlParser/reader char
+.field_map org/kxml/parser/XmlParser/bufCount else
+.field_map org/kxml/parser/XmlParser/current goto
+.field_map org/kxml/parser/XmlParser/immediateClose long
+.field_map org/kxml/parser/XmlParser/relaxed null
+.field_map org/kxml/parser/XmlParser/eof void
+.field_map org/kxml/parser/XmlParser/line b
+.method_map org/kxml/parser/XmlParser/readChar ()I try
+.method_map org/kxml/parser/XmlParser/peek ()Lorg/kxml/parser/ParseEvent; new
+.method_map org/kxml/parser/XmlParser/readText (Ljava/lang/StringBuffer;C)I a
+.method_map org/kxml/parser/XmlParser/parseDoctype ()Lorg/kxml/parser/ParseEvent; byte
+.method_map org/kxml/parser/XmlParser/getLineNumber ()I int
+.method_map org/kxml/parser/XmlParser/readName ()Ljava/lang/String; case
+.method_map org/kxml/parser/XmlParser/parsePI ()Lorg/kxml/parser/ParseEvent; char
+.method_map org/kxml/parser/XmlParser/setRelaxed (Z)V if
+.method_map org/kxml/parser/XmlParser/parseEndTag ()Lorg/kxml/parser/ParseEvent; else
+.method_map org/kxml/parser/XmlParser/read ()Lorg/kxml/parser/ParseEvent; a
+.method_map org/kxml/parser/XmlParser/skipWhitespace ()V goto
+.method_map org/kxml/parser/XmlParser/readTo (CLjava/lang/StringBuffer;)Ljava/lang/StringBuffer; a
+.method_map org/kxml/parser/XmlParser/parseCData ()Lorg/kxml/parser/ParseEvent; long
+.method_map org/kxml/parser/XmlParser/peekChar ()I null
+.method_map org/kxml/parser/XmlParser/parseComment ()Lorg/kxml/parser/ParseEvent; void
+.method_map org/kxml/parser/XmlParser/resolveCharacterEntity (Ljava/lang/String;)Ljava/lang/String; a
+.method_map org/kxml/parser/XmlParser/parseStartTag ()Lorg/kxml/parser/StartTag; b
+.method_map org/kxml/parser/XmlParser/getColumnNumber ()I c
+.method_map org/kxml/parser/XmlParser/parseSpecial ()Lorg/kxml/parser/ParseEvent; d
+.class_map org/kxml/parser/StartTag c
+.field_map org/kxml/parser/StartTag/attributes byte
+.field_map org/kxml/parser/StartTag/prefixMap case
+.field_map org/kxml/parser/StartTag/degenerated char
+.method_map org/kxml/parser/StartTag/getPrefixMap ()Lorg/kxml/PrefixMap; case
+.method_map org/kxml/parser/StartTag/setPrefixMap (Lorg/kxml/PrefixMap;)V a
+.method_map org/kxml/parser/StartTag/getDegenerated ()Z char
+.method_map org/kxml/parser/StartTag/toString ()Ljava/lang/String; toString
+.method_map org/kxml/parser/StartTag/getAttributes ()Ljava/util/Vector; try
+.class_map org/kxml/parser/Tag d
+.field_map org/kxml/parser/Tag/name int
+.field_map org/kxml/parser/Tag/namespace new
+.field_map org/kxml/parser/Tag/parent try
+.method_map org/kxml/parser/Tag/getName ()Ljava/lang/String; int
+.method_map org/kxml/parser/Tag/toString ()Ljava/lang/String; toString
+.method_map org/kxml/parser/Tag/getParent ()Lorg/kxml/parser/StartTag; byte
+.method_map org/kxml/parser/Tag/getNamespace ()Ljava/lang/String; for
+.class_map org/kxml/parser/ParseEvent e
+.field_map org/kxml/parser/ParseEvent/lineNumber a
+.field_map org/kxml/parser/ParseEvent/WRONG_TYPE if
+.field_map org/kxml/parser/ParseEvent/type do
+.field_map org/kxml/parser/ParseEvent/text for
+.method_map org/kxml/parser/ParseEvent/getAttribute (Ljava/lang/String;Ljava/lang/String;)Lorg/kxml/Attribute; a
+.method_map org/kxml/parser/ParseEvent/getText ()Ljava/lang/String; a
+.method_map org/kxml/parser/ParseEvent/getValueDefault (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String; if
+.method_map org/kxml/parser/ParseEvent/getValue (Ljava/lang/String;)Ljava/lang/String; a
+.method_map org/kxml/parser/ParseEvent/getType ()I if
+.method_map org/kxml/parser/ParseEvent/setLineNumber (I)V a
+.method_map org/kxml/parser/ParseEvent/getAttributeCount ()I do
+.method_map org/kxml/parser/ParseEvent/getNamespace ()Ljava/lang/String; for
+.method_map org/kxml/parser/ParseEvent/getName ()Ljava/lang/String; int
+.method_map org/kxml/parser/ParseEvent/getLineNumber ()I new
+.method_map org/kxml/parser/ParseEvent/toString ()Ljava/lang/String; toString
+.method_map org/kxml/parser/ParseEvent/getAttribute (I)Lorg/kxml/Attribute; if
+.method_map org/kxml/parser/ParseEvent/getAttributes ()Ljava/util/Vector; try
+.method_map org/kxml/parser/ParseEvent/getAttribute (Ljava/lang/String;)Lorg/kxml/Attribute; if
+.package_map org/kxml/io d
+.class_map org/kxml/io/XmlWriter a
+.field_map org/kxml/io/XmlWriter/indent if
+.field_map org/kxml/io/XmlWriter/indentLevel do
+.field_map org/kxml/io/XmlWriter/noIndent for
+.field_map org/kxml/io/XmlWriter/writer int
+.field_map org/kxml/io/XmlWriter/pending new
+.method_map org/kxml/io/XmlWriter/startTag (Lorg/kxml/PrefixMap;Ljava/lang/String;)V a
+.method_map org/kxml/io/XmlWriter/attribute (Ljava/lang/String;Ljava/lang/String;)V if
+.method_map org/kxml/io/XmlWriter/writeIndent ()V do
+.method_map org/kxml/io/XmlWriter/close ()V close
+.method_map org/kxml/io/XmlWriter/writeLegacy (ILjava/lang/String;)V a
+.method_map org/kxml/io/XmlWriter/endTag ()V if
+.method_map org/kxml/io/XmlWriter/checkPending ()V for
+.method_map org/kxml/io/XmlWriter/write ([CII)V write
+.method_map org/kxml/io/XmlWriter/writeRaw (Ljava/lang/String;)V if
+.method_map org/kxml/io/XmlWriter/flush ()V flush
+.method_map org/kxml/io/XmlWriter/write (C)V a
+.class_map org/kxml/io/AbstractXmlReader b
+.field_map org/kxml/io/AbstractXmlReader/attributeCount a
+.field_map org/kxml/io/AbstractXmlReader/characterEntityTable if
+.field_map org/kxml/io/AbstractXmlReader/name do
+.field_map org/kxml/io/AbstractXmlReader/namespace for
+.field_map org/kxml/io/AbstractXmlReader/attributes int
+.field_map org/kxml/io/AbstractXmlReader/processNamespaces new
+.field_map org/kxml/io/AbstractXmlReader/current try
+.field_map org/kxml/io/AbstractXmlReader/type byte
+.field_map org/kxml/io/AbstractXmlReader/relaxed case
+.field_map org/kxml/io/AbstractXmlReader/text char
+.field_map org/kxml/io/AbstractXmlReader/degenerated else
+.method_map org/kxml/io/AbstractXmlReader/getPrefixMap ()Lorg/kxml/PrefixMap; a
+.method_map org/kxml/io/AbstractXmlReader/getAttributeCount ()I if
+.method_map org/kxml/io/AbstractXmlReader/nextImpl ()V do
+.method_map org/kxml/io/AbstractXmlReader/skip ()I for
+.method_map org/kxml/io/AbstractXmlReader/getDegenerated ()Z int
+.method_map org/kxml/io/AbstractXmlReader/getLineNumber ()I new
+.method_map org/kxml/io/AbstractXmlReader/exception (Ljava/lang/String;)V a
+.method_map org/kxml/io/AbstractXmlReader/require (ILjava/lang/String;Ljava/lang/String;)V a
+.method_map org/kxml/io/AbstractXmlReader/readText ()Ljava/lang/String; try
+.method_map org/kxml/io/AbstractXmlReader/adjustNamespace ()V byte
+.method_map org/kxml/io/AbstractXmlReader/getName ()Ljava/lang/String; case
+.method_map org/kxml/io/AbstractXmlReader/next ()I char
+.method_map org/kxml/io/AbstractXmlReader/getAttribute (Ljava/lang/String;)Lorg/kxml/Attribute; if
+.method_map org/kxml/io/AbstractXmlReader/getColumnNumber ()I else
+.method_map org/kxml/io/AbstractXmlReader/getAttribute (Ljava/lang/String;Ljava/lang/String;)Lorg/kxml/Attribute; a
+.method_map org/kxml/io/AbstractXmlReader/getType ()I goto
+.method_map org/kxml/io/AbstractXmlReader/getText ()Ljava/lang/String; long
+.method_map org/kxml/io/AbstractXmlReader/getValueDefault (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String; if
+.method_map org/kxml/io/AbstractXmlReader/getValue (Ljava/lang/String;)Ljava/lang/String; do
+.method_map org/kxml/io/AbstractXmlReader/getAttribute (I)Lorg/kxml/Attribute; a
+.method_map org/kxml/io/AbstractXmlReader/getNamespace ()Ljava/lang/String; null
+.class_map org/kxml/io/State c
+.field_map org/kxml/io/State/tag a
+.field_map org/kxml/io/State/name if
+.field_map org/kxml/io/State/namespace do
+.field_map org/kxml/io/State/prev for
+.field_map org/kxml/io/State/prefixMap int
+.class_map org/kxml/io/ParseException d
+.field_map org/kxml/io/ParseException/lineNumber a
+.field_map org/kxml/io/ParseException/columnNumber if
+.field_map org/kxml/io/ParseException/chained do
+.method_map org/kxml/io/ParseException/printStackTrace ()V printStackTrace
+.method_map org/kxml/io/ParseException/getLineNumber ()I a
+.class_map org/kxml/io/XmlReader e
+.field_map org/kxml/io/XmlReader/reader goto
+.field_map org/kxml/io/XmlReader/line long
+.field_map org/kxml/io/XmlReader/eof null
+.field_map org/kxml/io/XmlReader/buf void
+.field_map org/kxml/io/XmlReader/UNEXPECTED_EOF b
+.field_map org/kxml/io/XmlReader/column c
+.field_map org/kxml/io/XmlReader/bufCount d
+.field_map org/kxml/io/XmlReader/bufPos e
+.method_map org/kxml/io/XmlReader/readName ()Ljava/lang/String; void
+.method_map org/kxml/io/XmlReader/readTo (CLjava/lang/StringBuffer;)Ljava/lang/StringBuffer; a
+.method_map org/kxml/io/XmlReader/parseStartTag ()V b
+.method_map org/kxml/io/XmlReader/parseSpecial ()V c
+.method_map org/kxml/io/XmlReader/readText (Ljava/lang/StringBuffer;C)I a
+.method_map org/kxml/io/XmlReader/parseCData ()V d
+.method_map org/kxml/io/XmlReader/parseEndTag ()V e
+.method_map org/kxml/io/XmlReader/parseDoctype ()V f
+.method_map org/kxml/io/XmlReader/parsePI ()V g
+.method_map org/kxml/io/XmlReader/nextImpl ()V do
+.method_map org/kxml/io/XmlReader/skipWhitespace ()V h
+.method_map org/kxml/io/XmlReader/parseComment ()V i
+.method_map org/kxml/io/XmlReader/getLineNumber ()I new
+.method_map org/kxml/io/XmlReader/getColumnNumber ()I else
+.method_map org/kxml/io/XmlReader/readChar ()I j
+.method_map org/kxml/io/XmlReader/peekChar ()I k
+.class_map org/kxml/io/AbstractXmlWriter f
+.field_map org/kxml/io/AbstractXmlWriter/current a
+.method_map org/kxml/io/AbstractXmlWriter/getPrefixMap ()Lorg/kxml/PrefixMap; a
+.method_map org/kxml/io/AbstractXmlWriter/startTag (Lorg/kxml/PrefixMap;Ljava/lang/String;)V a
+.method_map org/kxml/io/AbstractXmlWriter/attribute (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V a
+.method_map org/kxml/io/AbstractXmlWriter/startTag (Ljava/lang/String;Ljava/lang/String;)V a
+.method_map org/kxml/io/AbstractXmlWriter/attribute (Ljava/lang/String;Ljava/lang/String;)V if
+.method_map org/kxml/io/AbstractXmlWriter/writeLegacy (ILjava/lang/String;)V a
+.method_map org/kxml/io/AbstractXmlWriter/endTag ()V if
+.method_map org/kxml/io/AbstractXmlWriter/startTag (Ljava/lang/String;)V a
+.method_map org/kxml/io/AbstractXmlWriter/startTag (Lorg/kxml/PrefixMap;Ljava/lang/String;Ljava/lang/String;)V a
+.class_map org/kxml/XmlIO a
+.method_map org/kxml/XmlIO/parse (Lorg/kxml/parser/AbstractXmlParser;)V a
+.method_map org/kxml/XmlIO/write (Lorg/kxml/io/AbstractXmlWriter;)V a
+.class_map org/kxml/Attribute b
+.field_map org/kxml/Attribute/name a
+.field_map org/kxml/Attribute/namespace if
+.field_map org/kxml/Attribute/value do
+.method_map org/kxml/Attribute/getValue ()Ljava/lang/String; a
+.method_map org/kxml/Attribute/getName ()Ljava/lang/String; if
+.method_map org/kxml/Attribute/toString ()Ljava/lang/String; toString
+.method_map org/kxml/Attribute/getNamespace ()Ljava/lang/String; do
+.class_map org/kxml/Xml c
+.field_map org/kxml/Xml/PROCESSING_INSTRUCTION a
+.field_map org/kxml/Xml/NO_NAMESPACE if
+.field_map org/kxml/Xml/END_TAG do
+.field_map org/kxml/Xml/WHITESPACE for
+.field_map org/kxml/Xml/WAP_EXTENSION int
+.field_map org/kxml/Xml/END_DOCUMENT new
+.field_map org/kxml/Xml/ENCODE_128 try
+.field_map org/kxml/Xml/ENCODE_QUOT byte
+.field_map org/kxml/Xml/START_DOCUMENT case
+.field_map org/kxml/Xml/START_TAG char
+.field_map org/kxml/Xml/ENCODE_MIN else
+.field_map org/kxml/Xml/TEXT goto
+.field_map org/kxml/Xml/ELEMENT long
+.field_map org/kxml/Xml/COMMENT null
+.field_map org/kxml/Xml/DOCTYPE void
+.method_map org/kxml/Xml/encode (Ljava/lang/String;)Ljava/lang/String; a
+.method_map org/kxml/Xml/encode (Ljava/lang/String;I)Ljava/lang/String; a
+.class_map org/kxml/PrefixMap d
+.field_map org/kxml/PrefixMap/DEFAULT a
+.field_map org/kxml/PrefixMap/namespace if
+.field_map org/kxml/PrefixMap/previous do
+.field_map org/kxml/PrefixMap/prefix for
+.method_map org/kxml/PrefixMap/getNamespace (Ljava/lang/String;)Ljava/lang/String; a
+.method_map org/kxml/PrefixMap/getPrevious ()Lorg/kxml/PrefixMap; a
+.method_map org/kxml/PrefixMap/getPrefix (Ljava/lang/String;)Ljava/lang/String; if
+.method_map org/kxml/PrefixMap/getPrefix ()Ljava/lang/String; if
+.method_map org/kxml/PrefixMap/getNamespace ()Ljava/lang/String; do
+.class_map org/nico/midlets/games/ListResourceBundle a
+.method_map org/nico/midlets/games/ListResourceBundle/handleGetObject (Ljava/lang/String;)Ljava/lang/Object; if
+.method_map org/nico/midlets/games/ListResourceBundle/getContents ()[[Ljava/lang/Object; a
+.class_map org/nico/midlets/games/Sudoku$3 3
+.field_map org/nico/midlets/games/Sudoku$3/this$0 this$0
+.method_map org/nico/midlets/games/Sudoku$3/run ()V run
+.class_map org/nico/midlets/games/Sudoku$1 1
+.field_map org/nico/midlets/games/Sudoku$1/this$0 this$0
+.method_map org/nico/midlets/games/Sudoku$1/run ()V run
+.field_map org/nico/midlets/games/Sudoku/instance aK
+.field_map org/nico/midlets/games/Sudoku/displayable aL
+.field_map org/nico/midlets/games/Sudoku/VERSION_FINAL E
+.field_map org/nico/midlets/games/Sudoku/display aM
+.method_map org/nico/midlets/games/Sudoku/quitApp ()V j
+.method_map org/nico/midlets/games/Sudoku/getDisplayable ()Lorg/nico/midlets/games/SudokuDisplay; k
+.method_map org/nico/midlets/games/Sudoku/pauseApp ()V pauseApp
+.method_map org/nico/midlets/games/Sudoku/destroyApp (Z)V destroyApp
+.method_map org/nico/midlets/games/Sudoku/getInstance ()Lorg/nico/midlets/games/Sudoku; l
+.method_map org/nico/midlets/games/Sudoku/startApp ()V startApp
+.class_map org/nico/midlets/games/ApplicationResources_es_ES b
+.field_map org/nico/midlets/games/ApplicationResources_es_ES/recursos if
+.method_map org/nico/midlets/games/ApplicationResources_es_ES/getContents ()[[Ljava/lang/Object; a
+.class_map org/nico/midlets/games/ResourceBundle c
+.field_map org/nico/midlets/games/ResourceBundle/parent a
+.method_map org/nico/midlets/games/ResourceBundle/getBundle (Ljava/lang/String;)Lorg/nico/midlets/games/ResourceBundle; a
+.method_map org/nico/midlets/games/ResourceBundle/handleGetObject (Ljava/lang/String;)Ljava/lang/Object; if
+.method_map org/nico/midlets/games/ResourceBundle/getBundle (Ljava/lang/String;Ljava/lang/String;)Lorg/nico/midlets/games/ResourceBundle; a
+.method_map org/nico/midlets/games/ResourceBundle/getObject (Ljava/lang/String;)Ljava/lang/Object; do
+.class_map org/nico/midlets/games/SudokuUtils d
+.method_map org/nico/midlets/games/SudokuUtils/tonoError (II)V a
+.method_map org/nico/midlets/games/SudokuUtils/longToTime (J)Ljava/lang/String; a
+.method_map org/nico/midlets/games/SudokuUtils/duracion (J)Ljava/lang/String; if
+.method_map org/nico/midlets/games/SudokuUtils/restoreCredits (Ljava/io/InputStream;)Ljava/lang/String; a
+.class_map org/nico/midlets/games/SudokuSplash$1 1
+.field_map org/nico/midlets/games/SudokuSplash$1/this$0 this$0
+.method_map org/nico/midlets/games/SudokuSplash$1/run ()V run
+.class_map org/nico/midlets/games/SudokuSplash e
+.field_map org/nico/midlets/games/SudokuSplash/next P
+.field_map org/nico/midlets/games/SudokuSplash/display Q
+.field_map org/nico/midlets/games/SudokuSplash/timer R
+.method_map org/nico/midlets/games/SudokuSplash/showNotify ()V showNotify
+.method_map org/nico/midlets/games/SudokuSplash/hideNotify ()V hideNotify
+.method_map org/nico/midlets/games/SudokuSplash/keyPressed (I)V keyPressed
+.method_map org/nico/midlets/games/SudokuSplash/paint (Ljavax/microedition/lcdui/Graphics;)V paint
+.method_map org/nico/midlets/games/SudokuSplash/access$000 (Lorg/nico/midlets/games/SudokuSplash;)V access$000
+.method_map org/nico/midlets/games/SudokuSplash/stopIntro ()V a
+.method_map org/nico/midlets/games/SudokuSplash/pointerPressed (II)V pointerPressed
+.class_map org/nico/midlets/games/SudokuSolver f
+.method_map org/nico/midlets/games/SudokuSolver/isLegalWithEmptyCheck (III[[I)Z a
+.method_map org/nico/midlets/games/SudokuSolver/parseProblem ([Ljava/lang/String;)[[I a
+.method_map org/nico/midlets/games/SudokuSolver/isSolveableByForce (II[[I)Z a
+.method_map org/nico/midlets/games/SudokuSolver/newGame ([[I)Lorg/nico/midlets/games/SudokuGen; a
+.method_map org/nico/midlets/games/SudokuSolver/isConsistent ([[I)Z if
+.method_map org/nico/midlets/games/SudokuSolver/isFullBoard ([[I)Z do
+.method_map org/nico/midlets/games/SudokuSolver/revisar ([[I[[I)Ljava/util/Vector; a
+.method_map org/nico/midlets/games/SudokuSolver/isEmptyBoard ([[I)Z for
+.method_map org/nico/midlets/games/SudokuSolver/shuffle (Ljava/util/Vector;)Ljava/util/Vector; a
+.method_map org/nico/midlets/games/SudokuSolver/newGame (II)Lorg/nico/midlets/games/SudokuGen; if
+.method_map org/nico/midlets/games/SudokuSolver/isLegal (III[[I)Z if
+.class_map org/nico/midlets/games/SudokuHint g
+.field_map org/nico/midlets/games/SudokuHint/columna a
+.field_map org/nico/midlets/games/SudokuHint/valor if
+.field_map org/nico/midlets/games/SudokuHint/fila do
+.method_map org/nico/midlets/games/SudokuHint/setFila (I)V a
+.method_map org/nico/midlets/games/SudokuHint/setColumna (I)V if
+.method_map org/nico/midlets/games/SudokuHint/getColumna ()I a
+.method_map org/nico/midlets/games/SudokuHint/getValor ()I if
+.method_map org/nico/midlets/games/SudokuHint/setValor (I)V do
+.method_map org/nico/midlets/games/SudokuHint/getFila ()I do
+.class_map org/nico/midlets/games/SudokuDisplay$6 6
+.field_map org/nico/midlets/games/SudokuDisplay$6/this$0 this$0
+.field_map org/nico/midlets/games/SudokuDisplay$6/val$y val$y
+.field_map org/nico/midlets/games/SudokuDisplay$6/val$x val$x
+.field_map org/nico/midlets/games/SudokuDisplay$6/val$ladoNovenos val$ladoNovenos
+.method_map org/nico/midlets/games/SudokuDisplay$6/run ()V run
+.class_map org/nico/midlets/games/SudokuDisplay$5 5
+.field_map org/nico/midlets/games/SudokuDisplay$5/this$0 this$0
+.method_map org/nico/midlets/games/SudokuDisplay$5/run ()V run
+.class_map org/nico/midlets/games/SudokuDisplay$4 4
+.field_map org/nico/midlets/games/SudokuDisplay$4/val$ini val$ini
+.field_map org/nico/midlets/games/SudokuDisplay$4/this$0 this$0
+.method_map org/nico/midlets/games/SudokuDisplay$4/run ()V run
+.class_map org/nico/midlets/games/SudokuDisplay$3 3
+.field_map org/nico/midlets/games/SudokuDisplay$3/val$ini val$ini
+.field_map org/nico/midlets/games/SudokuDisplay$3/this$0 this$0
+.method_map org/nico/midlets/games/SudokuDisplay$3/run ()V run
+.class_map org/nico/midlets/games/SudokuDisplay$2 2
+.field_map org/nico/midlets/games/SudokuDisplay$2/this$0 this$0
+.method_map org/nico/midlets/games/SudokuDisplay$2/run ()V run
+.class_map org/nico/midlets/games/SudokuDisplay$1 1
+.field_map org/nico/midlets/games/SudokuDisplay$1/val$ini val$ini
+.field_map org/nico/midlets/games/SudokuDisplay$1/this$0 this$0
+.field_map org/nico/midlets/games/SudokuDisplay$1/val$instance val$instance
+.method_map org/nico/midlets/games/SudokuDisplay$1/run ()V run
+.class_map org/nico/midlets/games/SudokuDisplay h
+.field_map org/nico/midlets/games/SudokuDisplay/ancho S
+.field_map org/nico/midlets/games/SudokuDisplay/activeThreads T
+.field_map org/nico/midlets/games/SudokuDisplay/titulo_creditos2 U
+.field_map org/nico/midlets/games/SudokuDisplay/revisar V
+.field_map org/nico/midlets/games/SudokuDisplay/cells W
+.field_map org/nico/midlets/games/SudokuDisplay/aGanador X
+.field_map org/nico/midlets/games/SudokuDisplay/startGame Y
+.field_map org/nico/midlets/games/SudokuDisplay/statusMessage Z
+.field_map org/nico/midlets/games/SudokuDisplay/creditos aa
+.field_map org/nico/midlets/games/SudokuDisplay/pistasGeneradas ab
+.field_map org/nico/midlets/games/SudokuDisplay/alto ac
+.field_map org/nico/midlets/games/SudokuDisplay/resolver ad
+.field_map org/nico/midlets/games/SudokuDisplay/celda_y ae
+.field_map org/nico/midlets/games/SudokuDisplay/celda_x af
+.field_map org/nico/midlets/games/SudokuDisplay/bundle ag
+.field_map org/nico/midlets/games/SudokuDisplay/MAX_PISTAS ah
+.field_map org/nico/midlets/games/SudokuDisplay/salir ai
+.field_map org/nico/midlets/games/SudokuDisplay/rsLastGame aj
+.field_map org/nico/midlets/games/SudokuDisplay/sudokuGen ak
+.field_map org/nico/midlets/games/SudokuDisplay/pointer_pressed al
+.field_map org/nico/midlets/games/SudokuDisplay/inconsistencias am
+.field_map org/nico/midlets/games/SudokuDisplay/status an
+.field_map org/nico/midlets/games/SudokuDisplay/locale ao
+.field_map org/nico/midlets/games/SudokuDisplay/pista ap
+.field_map org/nico/midlets/games/SudokuDisplay/endGame aq
+.field_map org/nico/midlets/games/SudokuDisplay/rsConfig ar
+.field_map org/nico/midlets/games/SudokuDisplay/reset as
+.field_map org/nico/midlets/games/SudokuDisplay/config at
+.field_map org/nico/midlets/games/SudokuDisplay/plantear au
+.field_map org/nico/midlets/games/SudokuDisplay/aCreditos av
+.field_map org/nico/midlets/games/SudokuDisplay/nuevo aw
+.field_map org/nico/midlets/games/SudokuDisplay/configuracion ax
+.method_map org/nico/midlets/games/SudokuDisplay/pintaFondo (Ljavax/microedition/lcdui/Graphics;)V a
+.method_map org/nico/midlets/games/SudokuDisplay/plantear ()V if
+.method_map org/nico/midlets/games/SudokuDisplay/enmarcaCelda (Ljavax/microedition/lcdui/Graphics;)V if
+.method_map org/nico/midlets/games/SudokuDisplay/access$900 (Lorg/nico/midlets/games/SudokuDisplay;)V access$900
+.method_map org/nico/midlets/games/SudokuDisplay/access$100 (Lorg/nico/midlets/games/SudokuDisplay;)[[I access$100
+.method_map org/nico/midlets/games/SudokuDisplay/commandAction (Ljavax/microedition/lcdui/Command;Ljavax/microedition/lcdui/Displayable;)V commandAction
+.method_map org/nico/midlets/games/SudokuDisplay/salir ()V do
+.method_map org/nico/midlets/games/SudokuDisplay/pintaTablero (Ljavax/microedition/lcdui/Graphics;)V do
+.method_map org/nico/midlets/games/SudokuDisplay/processPointer (II)V do
+.method_map org/nico/midlets/games/SudokuDisplay/access$702 (Lorg/nico/midlets/games/SudokuDisplay;Lorg/nico/midlets/games/SudokuGen;)Lorg/nico/midlets/games/SudokuGen; access$702
+.method_map org/nico/midlets/games/SudokuDisplay/access$802 (Lorg/nico/midlets/games/SudokuDisplay;J)J access$802
+.method_map org/nico/midlets/games/SudokuDisplay/pointerReleased (II)V pointerReleased
+.method_map org/nico/midlets/games/SudokuDisplay/access$400 (Lorg/nico/midlets/games/SudokuDisplay;)Ljavax/microedition/lcdui/Command; access$400
+.method_map org/nico/midlets/games/SudokuDisplay/configureAlertScreens ()V for
+.method_map org/nico/midlets/games/SudokuDisplay/pointerPressed (II)V pointerPressed
+.method_map org/nico/midlets/games/SudokuDisplay/restoreOldConfig ()V int
+.method_map org/nico/midlets/games/SudokuDisplay/access$000 (Lorg/nico/midlets/games/SudokuDisplay;)Ljava/util/Stack; access$000
+.method_map org/nico/midlets/games/SudokuDisplay/access$1300 (Lorg/nico/midlets/games/SudokuDisplay;)I access$1300
+.method_map org/nico/midlets/games/SudokuDisplay/access$1002 (Lorg/nico/midlets/games/SudokuDisplay;I)I access$1002
+.method_map org/nico/midlets/games/SudokuDisplay/nuevo ()V new
+.method_map org/nico/midlets/games/SudokuDisplay/keyPressed (I)V keyPressed
+.method_map org/nico/midlets/games/SudokuDisplay/access$1200 (Lorg/nico/midlets/games/SudokuDisplay;)Z access$1200
+.method_map org/nico/midlets/games/SudokuDisplay/access$202 (Lorg/nico/midlets/games/SudokuDisplay;Ljava/lang/String;)Ljava/lang/String; access$202
+.method_map org/nico/midlets/games/SudokuDisplay/processKey (I)V a
+.method_map org/nico/midlets/games/SudokuDisplay/pista ()V try
+.method_map org/nico/midlets/games/SudokuDisplay/restoreLastGame ()V byte
+.method_map org/nico/midlets/games/SudokuDisplay/access$302 (Lorg/nico/midlets/games/SudokuDisplay;I)I access$302
+.method_map org/nico/midlets/games/SudokuDisplay/ganador ()V case
+.method_map org/nico/midlets/games/SudokuDisplay/access$102 (Lorg/nico/midlets/games/SudokuDisplay;[[I)[[I access$102
+.method_map org/nico/midlets/games/SudokuDisplay/access$500 (Lorg/nico/midlets/games/SudokuDisplay;)Ljavax/microedition/lcdui/Command; access$500
+.method_map org/nico/midlets/games/SudokuDisplay/access$700 (Lorg/nico/midlets/games/SudokuDisplay;)Lorg/nico/midlets/games/SudokuGen; access$700
+.method_map org/nico/midlets/games/SudokuDisplay/jbInit ()V char
+.method_map org/nico/midlets/games/SudokuDisplay/access$1102 (Lorg/nico/midlets/games/SudokuDisplay;I)I access$1102
+.method_map org/nico/midlets/games/SudokuDisplay/creditos ()V else
+.method_map org/nico/midlets/games/SudokuDisplay/nuevoGenerado ()V goto
+.method_map org/nico/midlets/games/SudokuDisplay/keyRepeated (I)V keyRepeated
+.method_map org/nico/midlets/games/SudokuDisplay/resolver ()V long
+.method_map org/nico/midlets/games/SudokuDisplay/paint (Ljavax/microedition/lcdui/Graphics;)V paint
+.method_map org/nico/midlets/games/SudokuDisplay/revisar ()V null
+.method_map org/nico/midlets/games/SudokuDisplay/access$600 (Lorg/nico/midlets/games/SudokuDisplay;)Lorg/nico/midlets/games/SudokuConfig; access$600
+.method_map org/nico/midlets/games/SudokuDisplay/pointerDragged (II)V pointerDragged
+.method_map org/nico/midlets/games/SudokuDisplay/killPending ()V void
+.method_map org/nico/midlets/games/SudokuDisplay/keyReleased (I)V keyReleased
+.class_map org/nico/midlets/games/SudokuFormConfig i
+.field_map org/nico/midlets/games/SudokuFormConfig/gSeed ay
+.field_map org/nico/midlets/games/SudokuFormConfig/siAyudaOnLIne az
+.field_map org/nico/midlets/games/SudokuFormConfig/config aA
+.field_map org/nico/midlets/games/SudokuFormConfig/ayudaOnLine aB
+.field_map org/nico/midlets/games/SudokuFormConfig/siNivel aC
+.field_map org/nico/midlets/games/SudokuFormConfig/gNiveles aD
+.field_map org/nico/midlets/games/SudokuFormConfig/siSeed aE
+.field_map org/nico/midlets/games/SudokuFormConfig/iAyudaOnLine aF
+.method_map org/nico/midlets/games/SudokuFormConfig/itemStateChanged (Ljavax/microedition/lcdui/Item;)V itemStateChanged
+.method_map org/nico/midlets/games/SudokuFormConfig/commandAction (Ljavax/microedition/lcdui/Command;Ljavax/microedition/lcdui/Displayable;)V commandAction
+.method_map org/nico/midlets/games/SudokuFormConfig/jbInit ()V b
+.class_map org/nico/midlets/games/SudokuConfig j
+.field_map org/nico/midlets/games/SudokuConfig/seed a
+.field_map org/nico/midlets/games/SudokuConfig/ayudaOnLine if
+.field_map org/nico/midlets/games/SudokuConfig/level do
+.method_map org/nico/midlets/games/SudokuConfig/getLevel ()I a
+.method_map org/nico/midlets/games/SudokuConfig/setAyudaOnLine (Z)V a
+.method_map org/nico/midlets/games/SudokuConfig/setLevel (I)V a
+.method_map org/nico/midlets/games/SudokuConfig/isAyudaOnLine ()Z if
+.method_map org/nico/midlets/games/SudokuConfig/getSeed ()I do
+.method_map org/nico/midlets/games/SudokuConfig/setSeed (I)V if
+.class_map org/nico/midlets/games/ISudokuConstants k
+.field_map org/nico/midlets/games/ISudokuConstants/SUDOKU_GAME_URL a
+.field_map org/nico/midlets/games/ISudokuConstants/info_msg_juego_felicidades if
+.field_map org/nico/midlets/games/ISudokuConstants/SEED_INICIAL do
+.field_map org/nico/midlets/games/ISudokuConstants/EMPTY for
+.field_map org/nico/midlets/games/ISudokuConstants/info_msg_juego_inconsistente int
+.field_map org/nico/midlets/games/ISudokuConstants/COLOR_DARK_GREY new
+.field_map org/nico/midlets/games/ISudokuConstants/GAME_SOLVED try
+.field_map org/nico/midlets/games/ISudokuConstants/NIVEL_INICIAL byte
+.field_map org/nico/midlets/games/ISudokuConstants/THINKING case
+.field_map org/nico/midlets/games/ISudokuConstants/info_msg_juego_lleno char
+.field_map org/nico/midlets/games/ISudokuConstants/SPLASH_IMAGE_URL else
+.field_map org/nico/midlets/games/ISudokuConstants/DELAY_SPLASH goto
+.field_map org/nico/midlets/games/ISudokuConstants/COLOR_GREY long
+.field_map org/nico/midlets/games/ISudokuConstants/ROWS null
+.field_map org/nico/midlets/games/ISudokuConstants/gSeedMsg void
+.field_map org/nico/midlets/games/ISudokuConstants/info_msg_juego_sin_solucion b
+.field_map org/nico/midlets/games/ISudokuConstants/SEED_MAXIMA c
+.field_map org/nico/midlets/games/ISudokuConstants/ganador_retardo d
+.field_map org/nico/midlets/games/ISudokuConstants/OFFSET e
+.field_map org/nico/midlets/games/ISudokuConstants/info_msg_revision_ok f
+.field_map org/nico/midlets/games/ISudokuConstants/LAZY g
+.field_map org/nico/midlets/games/ISudokuConstants/COLOR_GREEN h
+.field_map org/nico/midlets/games/ISudokuConstants/COLOR_BLACK i
+.field_map org/nico/midlets/games/ISudokuConstants/RSLastGame j
+.field_map org/nico/midlets/games/ISudokuConstants/info_msg_no_hay_mas_pistas k
+.field_map org/nico/midlets/games/ISudokuConstants/margen_sup l
+.field_map org/nico/midlets/games/ISudokuConstants/info_msg_juego_generado m
+.field_map org/nico/midlets/games/ISudokuConstants/CELLS n
+.field_map org/nico/midlets/games/ISudokuConstants/COLOR_RED o
+.field_map org/nico/midlets/games/ISudokuConstants/OFF_IMAGE p
+.field_map org/nico/midlets/games/ISudokuConstants/imagen_ganador q
+.field_map org/nico/midlets/games/ISudokuConstants/info_msg_revision_not_ok r
+.field_map org/nico/midlets/games/ISudokuConstants/titulo_ganador2 s
+.field_map org/nico/midlets/games/ISudokuConstants/ON_IMAGE t
+.field_map org/nico/midlets/games/ISudokuConstants/titulo_creditos u
+.field_map org/nico/midlets/games/ISudokuConstants/COLOR_WHITE v
+.field_map org/nico/midlets/games/ISudokuConstants/CREDITS_XML_URL w
+.field_map org/nico/midlets/games/ISudokuConstants/MAX_VAL x
+.field_map org/nico/midlets/games/ISudokuConstants/imagen_creditos y
+.field_map org/nico/midlets/games/ISudokuConstants/COLS z
+.field_map org/nico/midlets/games/ISudokuConstants/CREDITS_WAV_URL A
+.field_map org/nico/midlets/games/ISudokuConstants/PISTAS_POR_NIVEL B
+.field_map org/nico/midlets/games/ISudokuConstants/margen_lat C
+.field_map org/nico/midlets/games/ISudokuConstants/opcionesNiveles D
+.field_map org/nico/midlets/games/ISudokuConstants/VERSION_FINAL E
+.field_map org/nico/midlets/games/ISudokuConstants/SUCCESS_WAV_URL F
+.field_map org/nico/midlets/games/ISudokuConstants/RSConfig G
+.field_map org/nico/midlets/games/ISudokuConstants/info_msg_juego_vacio H
+.field_map org/nico/midlets/games/ISudokuConstants/COLOR_BLUE I
+.field_map org/nico/midlets/games/ISudokuConstants/ayudaOnLineMsg J
+.field_map org/nico/midlets/games/ISudokuConstants/info_msg_juego_otra_vez_sera K
+.field_map org/nico/midlets/games/ISudokuConstants/info_msg_juego_pensando L
+.field_map org/nico/midlets/games/ISudokuConstants/POINTER_DELAY M
+.field_map org/nico/midlets/games/ISudokuConstants/NIVEL_MAXIMO N
+.field_map org/nico/midlets/games/ISudokuConstants/titulo_ganador O
+.class_map org/nico/midlets/games/SudokuGen l
+.field_map org/nico/midlets/games/SudokuGen/problem aG
+.field_map org/nico/midlets/games/SudokuGen/sol aH
+.field_map org/nico/midlets/games/SudokuGen/hints aI
+.field_map org/nico/midlets/games/SudokuGen/gen aJ
+.method_map org/nico/midlets/games/SudokuGen/setSol ([[I)V int
+.method_map org/nico/midlets/games/SudokuGen/getEmptyCells ()I c
+.method_map org/nico/midlets/games/SudokuGen/siguientePista ()Lorg/nico/midlets/games/SudokuHint; d
+.method_map org/nico/midlets/games/SudokuGen/setProblem ([[I)V new
+.method_map org/nico/midlets/games/SudokuGen/checkIt ([[I)Z try
+.method_map org/nico/midlets/games/SudokuGen/getGen ()[[Z e
+.method_map org/nico/midlets/games/SudokuGen/setGen ([[Z)V a
+.method_map org/nico/midlets/games/SudokuGen/getProblem ()[[I f
+.method_map org/nico/midlets/games/SudokuGen/getHints ()Ljava/util/Vector; g
+.method_map org/nico/midlets/games/SudokuGen/isPistaDisponible ()Z h
+.method_map org/nico/midlets/games/SudokuGen/setHints (Ljava/util/Vector;)V if
+.method_map org/nico/midlets/games/SudokuGen/getSol ()[[I i

@@ -1,0 +1,210 @@
+#!/bin/bash
+
+asksure() {
+echo -n "Are you sure (Y/N)? "
+while read -r -n 1 -s answer; do
+  if [[ $answer = [YyNn] ]]; then
+    [[ $answer = [Yy] ]] && retval=0
+    [[ $answer = [Nn] ]] && retval=1
+    break
+  fi
+done
+
+echo # just a final linefeed, optics...
+
+return $retval
+}
+
+DOMINI=iesebre
+
+echo "Eliminant completament el servidor LDAP i la base de dades LDAP si existeixen..."
+### using it
+if asksure; then
+  echo "Ok, realitzant:..."
+  echo "apt-get remove --purge slapd"
+  echo "rm -rf /var/lib/ldap/"
+else
+  echo "Sortint..."
+  exit 1
+fi
+
+apt-get remove --purge slapd
+rm -rf /var/lib/ldap/
+
+apt-get -y install slapd
+apt-get -y install ldap-utils
+
+#Afegir els esquemes bàsics
+ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/ldap/schema/cosine.ldif
+ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/ldap/schema/inetorgperson.ldif
+ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/ldap/schema/nis.ldif
+ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/ldap/schema/misc.ldif
+
+stty -echo
+read -p "Escolliu un password per a l'usuari admin de LDAP: " PASSWD; echo
+stty echo
+   
+#echo $PASSWD
+PASSWORD=`slappasswd -h {MD5} -s $PASSWD`
+echo "Paraula de pas xifrada :$PASSWORD"
+   
+echo "A partir d'ara cada cop que us demani la paraula de pas heu d'introduir la que heu escollit"
+echo "-------------------------------------------------------------------------------------------"
+echo ""
+echo ""
+
+#http://www.opinsys.fi/en/setting-up-openldap-on-ubuntu-10-04-alpha2
+# cn: module a seques i no pas cn: module{0} ????
+
+cat <<-EOT > db.ldif
+	###########################################################
+	# DATABASE SETUP
+	###########################################################
+	
+	# Load modules for database type
+	dn: cn=module{0},cn=config
+	objectClass: olcModuleList
+	cn: module{0}
+	olcModulePath: /usr/lib/ldap
+	olcModuleLoad: {0}back_hdb
+	
+	# Create directory database
+	dn: olcDatabase={1}hdb,cn=config
+	objectClass: olcDatabaseConfig
+	objectClass: olcHdbConfig
+	olcDatabase: {1}hdb
+	olcDbDirectory: /var/lib/ldap
+	olcSuffix: dc=$DOMINI,dc=com
+	olcRootDN: cn=admin,dc=$DOMINI,dc=com
+	olcRootPW: $PASSWD
+	olcDbConfig: {0}set_cachesize 0 2097152 0
+	olcDbConfig: {1}set_lk_max_objects 1500  
+	olcDbConfig: {2}set_lk_max_locks 1500    
+	olcDbConfig: {3}set_lk_max_lockers 1500  
+	olcLastMod: TRUE
+	olcDbCheckpoint: 512 30
+	olcDbIndex: uid pres,eq
+	olcDbIndex: cn,sn,mail pres,eq,approx,sub
+	olcDbIndex: objectClass eq
+EOT
+
+echo "ldapadd -Y EXTERNAL -H ldapi:/// -f db.ldif"
+ldapadd -Y EXTERNAL -H ldapi:/// -f db.ldif
+ 
+cat <<-EOT > base.ldif
+	# Tree root
+	dn: dc=$DOMINI,dc=com
+	objectClass: dcObject
+	objectclass: organization
+	o: $DOMINI.com
+	dc: $DOMINI
+	description: Arrel LDAP
+	
+	dn: ou=People,dc=$DOMINI,dc=com
+	objectClass: top
+	objectClass: organizationalUnit
+	ou: People
+	
+	dn: ou=Groups,dc=$DOMINI,dc=com
+	objectClass: top
+	objectClass: organizationalUnit
+	ou: Groups                        
+	
+ 	# LDAP admin
+	dn: cn=admin,dc=$DOMINI,dc=com
+	objectClass: simpleSecurityObject
+	objectClass: organizationalRole
+	cn: admin
+	userPassword: $PASSWORD
+	description: LDAP administrator
+EOT
+
+echo "ldapadd -x -D cn=admin,dc=$DOMINI,dc=com -W -f base.ldif"
+ldapadd -Y EXTERNAL -H ldapi:/// -f base.ldif
+
+echo "Creat l'usuari admin de LDAP per a cn=config amb la paraula de pas indicada..."
+
+cat <<-EOT > config.ldif
+	dn: cn=config
+	changetype: modify
+	
+	dn: olcDatabase={0}config,cn=config
+	changetype: modify
+	add: olcRootDN
+	olcRootDN: cn=admin,cn=config
+	
+	dn: olcDatabase={0}config,cn=config
+	changetype: modify
+	add: olcRootPW
+	olcRootPW: $PASSWORD
+	
+	dn: olcDatabase={0}config,cn=config
+	changetype: modify
+	delete: olcAccess
+EOT
+echo "ldapadd -Y EXTERNAL -H ldapi:/// -f config.ldif"
+
+ldapadd -Y EXTERNAL -H ldapi:/// -f config.ldif 
+
+cat <<-EOT > acl.ldif 
+#	dn: olcDatabase={1}hdb,cn=config
+#	add: olcAccess
+#	olcAccess: to attrs=userPassword,shadowLastChange by dn="cn=admin,dc=$DOMINI,dc=com" write by anonymous auth by self write by * none
+#	olcAccess: to dn.base="" by * read
+#	olcAccess: to * by dn="cn=admin,dc=$DOMINI,dc=com" write by * read
+	
+	dn: olcDatabase={1}hdb,cn=config
+	add: olcAccess
+	olcAccess: {0}to attrs=userPassword,shadowLastChange by dn="cn=admin,dc=$DOMINI,dc=com" write by anonymous auth by self write by * none
+	olcAccess: {1}to dn.subtree="" by * read
+	olcAccess: {2}to * by dn="cn=admin,dc=$DOMINI,dc=com" write by * read
+EOT
+
+echo "ldapmodify -Y EXTERNAL -H ldapi:/// -f acl.ldif..."
+ldapmodify -Y EXTERNAL -H ldapi:/// -f acl.ldif
+
+#Comprovar
+
+echo "Comprovant la base de dades i la configuració..."
+echo "################################################"
+
+echo "sudo ldapsearch -Y EXTERNAL -H ldapi:/// -b cn=config"
+ldapsearch -Y EXTERNAL -H ldapi:/// -b cn=config
+
+echo "ldapsearch -xLLL -b dc=$DOMINI,dc=com"
+ldapsearch -xLLL -b dc=$DOMINI,dc=com -D "cn=admin,dc=$DOMINI,dc=com" -W
+
+/etc/init.d/slapd restart
+
+echo "Voleu instal·lar suport SSL al servidor?"
+if asksure; then
+  echo "Ok, instal·lant SSL..."   
+        
+#SSL
+sudo apt-get -y install gnutls-bin
+sudo mkdir -p /etc/ldap/configuracioInicial/ssl
+cd  /etc/ldap/configuracioInicial/ssl
+sudo certtool --generate-privkey --outfile slapd-ca-key.pem
+sudo certtool --generate-self-signed --load-privkey slapd-ca-key.pem --outfile slapd-ca-cert.pem
+sudo certtool --generate-privkey --outfile slapd-server.key
+sudo certtool --generate-certificate --load-privkey slapd-server.key --outfile slapd-server.crt --load-ca-certificate slapd-ca-cert.pem --load-ca-privkey slapd-ca-key.pem
+sudo install -D -o openldap -g openldap -m 600 slapd-server.crt /etc/ssl/certs/slapd-server.crt
+sudo install -D -o openldap -g openldap -m 600 slapd-server.key /etc/ssl/certs/slapd-server.key
+
+ldapmodify -x -D cn=admin,cn=config -W << EOF
+dn: cn=config
+add: olcTLSCACertificateFile
+olcTLSCACertificateFile: /etc/ssl/certs/slapd-ca-cert.pem
+-
+add: olcTLSCertificateFile
+olcTLSCertificateFile: /etc/ssl/certs/slapd-server.crt
+-
+add: olcTLSCertificateKeyFile
+olcTLSCertificateKeyFile: /etc/ssl/certs/slapd-server.key
+EOF
+
+else
+ exit
+fi
+
+/etc/init.d/slapd restart

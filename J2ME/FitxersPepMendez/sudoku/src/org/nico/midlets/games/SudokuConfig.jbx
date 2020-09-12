@@ -1,0 +1,10 @@
+[PropertyInfo]
+ayudaOnLine,boolean,false,false, , ,true,<default>
+level,int,false,false, , ,true,<default>
+seed,int,false,false, , ,true,<default>
+bundle,org.nico.midlets.games.ResourceBundle,false,false,bundle,bundle,true,<default>
+[IconNames]
+
+
+
+

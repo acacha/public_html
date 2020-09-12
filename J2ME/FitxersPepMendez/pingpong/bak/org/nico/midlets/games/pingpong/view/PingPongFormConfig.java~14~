@@ -1,0 +1,159 @@
+package org.nico.midlets.games.pingpong.view;
+
+import javax.microedition.lcdui.*;
+
+import org.nico.midlets.games.pingpong.controller.PingPong;
+import org.nico.midlets.games.pingpong.interfaces.IPingPongConstants;
+import org.nico.midlets.games.pingpong.model.PingPongConfig;
+import org.nico.midlets.resources.ResourceBundle;
+
+/**
+ * <p>Title: </p>
+ * <p>Description: </p>
+ * <p>Comments: </p>
+ * <p>Date: </p>
+ * @author Pep Mendez
+ * @version 1.0
+ */
+public class PingPongFormConfig
+    extends Form implements CommandListener, ItemStateListener,
+    IPingPongConstants {
+  private Gauge gNivel;
+  private StringItem siNivel;
+  private Gauge gNumeroPelotas;
+  private StringItem siNumeroPelotas;
+  private ChoiceGroup cgReduccionProgresiva;
+  private StringItem siReduccionProgresiva;
+  private ImageItem pingpong;
+  private PingPongConfig config;
+
+  /**
+   * PingPongFormConfig
+   *
+   * @param title String
+   */
+  public PingPongFormConfig(PingPongConfig config) {
+    super( (String) config.getBundle().getObject(
+        "pantalla.configuracion.titulo"));
+    this.config = config;
+    try {
+      jbInit();
+    }
+    catch (Exception e) {
+      e.printStackTrace();
+    }
+  }
+
+  private void jbInit() throws Exception {
+    // Set up this Displayable to listen to command events
+    setCommandListener(this);
+    // Set up this Displayable to listen to gauge events
+    setItemStateListener(this);
+    ResourceBundle bundle = config.getBundle();
+    // add the Exit command
+    String s = (String) bundle.getObject("pantalla.configuracion.menu.aceptar");
+    addCommand(new Command(s, Command.EXIT, 1));
+    s = (String) bundle.getObject("pantalla.configuracion.menu.cancelar");
+    addCommand(new Command(s, Command.CANCEL, 1));
+    s = (String) bundle.getObject(
+        "pantalla.configuracion.etiqueta.selector.nivel");
+    int nivel = config.getNivel();
+    gNivel = new Gauge(s, true, NIVEL_MAXIMO, nivel);
+    s = (String) bundle.getObject(
+        "pantalla.configuracion.etiqueta.nivel.seleccionado");
+    String msg = (String) bundle.getObject("nivel.dificultad." + nivel);
+    siNivel = new StringItem(s, msg, StringItem.PLAIN);
+
+    s = (String) bundle.getObject(
+        "pantalla.configuracion.etiqueta.selector.pelotas");
+    int numeroPelotas = config.getNumeroPelotas();
+    gNumeroPelotas = new Gauge(s, true, NUMERO_PELOTAS_MAXIMO, numeroPelotas);
+    s = (String) bundle.getObject(
+        "pantalla.configuracion.etiqueta.pelotas.seleccionadas");
+    msg = "\t" + String.valueOf(config.getNumeroPelotas());
+    siNumeroPelotas = new StringItem(s, msg, StringItem.PLAIN);
+
+    s = (String) bundle.getObject(
+        "pantalla.configuracion.etiqueta.choice.reduccion.progresiva");
+    boolean reduccionProgresiva = config.isReduccionProgresiva();
+    String[] opcionesReduccionProgresiva = {
+        (String) bundle.getObject(
+        "pantalla.configuracion.etiqueta.choice.reduccion.0"),
+        (String) bundle.getObject(
+        "pantalla.configuracion.etiqueta.choice.reduccion.1"),
+    };
+
+    Image[] iReduccionProgresiva = {
+        Image.createImage(ON_IMAGE), Image.createImage(OFF_IMAGE)};
+    s = (String) bundle.getObject("pantalla.configuracion.etiqueta.choice.reduccion.progresiva");
+    cgReduccionProgresiva = new ChoiceGroup(s, ChoiceGroup.EXCLUSIVE,
+                                            opcionesReduccionProgresiva,
+                                            iReduccionProgresiva);
+    boolean b = config.isReduccionProgresiva();
+    cgReduccionProgresiva.setSelectedIndex(b ? 0 : 1, true);
+    s = (String) bundle.getObject("pantalla.configuracion.etiqueta.choice.reduccion.seleccionada");
+    siReduccionProgresiva = new StringItem(s,
+                            "\t" + (config.isReduccionProgresiva() ? opcionesReduccionProgresiva[0] : opcionesReduccionProgresiva[1]),
+                            StringItem.PLAIN);
+    Image image = Image.createImage(PINGPONG);
+    pingpong = new ImageItem("aaaaaaa", image, ImageItem.LAYOUT_CENTER, "bbbbb");
+    append(gNivel);
+    append(siNivel);
+    append(gNumeroPelotas);
+    append(siNumeroPelotas);
+    append(cgReduccionProgresiva);
+    append(siReduccionProgresiva);
+    append(pingpong);
+  }
+
+  /**
+   * commandAction (CommandListener)
+   *
+   * @param command Command
+   * @param displayable Displayable
+   * @todo Implement this javax.microedition.lcdui.CommandListener method
+   */
+  public void commandAction(Command command, Displayable displayable) {
+    // aceptar
+    if (command.getCommandType() == Command.EXIT) {
+      config.setNivel(gNivel.getValue());
+      config.setNumeroPelotas(gNumeroPelotas.getValue());
+      int index = cgReduccionProgresiva.getSelectedIndex();
+      config.setReduccionProgresiva(index == 0 ? true : false);
+    }
+    // cancelar
+    else {
+      // no hacer nada
+    }
+    Display.getDisplay(PingPong.getInstance()).setCurrent(PingPong.getInstance().
+        getDisplayable());
+  }
+
+  /**
+   * itemStateChanged (ItemStateListener)
+   *
+   * @param item Item
+   * @todo Implement this javax.microedition.lcdui.ItemStateListener method
+   */
+  public void itemStateChanged(Item item) {
+    ResourceBundle bundle = config.getBundle();
+    if (item == gNivel) {
+      int n = gNivel.getValue();
+      n = n == 0 ? 1 : n;
+      gNivel.setValue(n);
+      siNivel.setText( (String) bundle.getObject("nivel.dificultad." + n));
+    }
+    else if (item == gNumeroPelotas) {
+      int n = gNumeroPelotas.getValue(); // pantalla.configuracion.etiqueta.pelotas.seleccionadas
+      n = n == 0 ? 1 : n;
+      gNumeroPelotas.setValue(n);
+      siNumeroPelotas.setText("\t" + n);
+    }
+    else if (item == cgReduccionProgresiva) {
+      int flag = cgReduccionProgresiva.getSelectedIndex();
+      String s = (String)bundle.getObject("pantalla.configuracion.etiqueta.choice.reduccion." + flag);
+      siReduccionProgresiva.setText("\t" + s);
+    }
+  }
+
+}

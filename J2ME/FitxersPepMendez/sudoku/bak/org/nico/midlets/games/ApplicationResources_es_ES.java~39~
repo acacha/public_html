@@ -1,0 +1,89 @@
+package org.nico.midlets.games;
+
+import org.nico.midlets.resources.*;
+
+/**
+ * <p>Title: Sudoku</p>
+ * <p>Description: Juego japones</p>
+ * <p>Comments: Version recursiva</p>
+ * <p>Date: 11/08/06</p>
+ * <p>Last upate: 11/08/06</p>
+ * @author Pep Mendez
+ */
+public class ApplicationResources_es_ES extends ListResourceBundle {
+
+  public ApplicationResources_es_ES() {
+    super();
+  }
+  private Object[][] recursos = {
+      {"titulo.principal", "Sudoku"},
+      {"titulo.creditos", "Créditos"},
+      {"titulo.ganador", "Felicidades"},
+      {"subtitulo.ganador", "Ohhhhhhhhhhhhhhhhhhhhh\nFelicidades\nJuega de nuevo..."},
+      {"titulo.reglas", "Reglas del juego"},
+      {"subtitulo.reglas", "Sudoku, del japonés su 'número' i doku 'solo', se juega en un tablero de 9x9, 9 filas y 9 columnas, que está dividido en 9 cajas de 3x3 celdas.\nInicialmente, se presentan algunos números, i se trata de colocar los números del 1 al 9 que faltan en cada caja, fila y columna.\nSe recomienda empezar por la cajas con más números."},
+      {"info.pensando", "Pensando..."},
+      {"info.juego.inconsistente", "El juego no es consistente"},
+      {"info.juego.sin.solucion", "No tiene solución"},
+      {"info.juego.generado", "Juego generado en "},
+      {"info.juego.solucionado", "juego solucionado en "},
+      {"info.intentalo.de.nuevo", "Intentalo de nuevo"},
+      {"info.tablero.vacio", "El tablero está vacio, pon algunos números"},
+      {"info.tablero.lleno", "El tablero está lleno, escoge Menu/Reset"},
+      {"info.correcto", "Correcto, puedes continuar"},
+      {"info.incorrecto", "Incorrecto, corrige los errores"},
+      {"info.pistas.disponibles", "No quedan pistas disponibles"},
+      {"nivel1", "\tElemental"},
+      {"nivel2", "\tBásico"},
+      {"nivel3", "\tMuy fácil"},
+      {"nivel4", "\tFácil"},
+      {"nivel5", "\tIntermedio"},
+      {"nivel6", "\tDifícil"},
+      {"nivel7", "\tMuy difícil"},
+      {"nivel8", "\tAvanzado"},
+      {"nivel9", "\tProfesional"},
+      {"ayuda0", "\tActivada, se mostrarán mensajes de ayuda"},
+      {"ayuda1", "\tDesactivada, no se mostrarán mensajes de ayuda"},
+      {"seed1", "\t\"Aleatoriedad baja\""},
+      {"seed2", "\t\"Aleatoriedad media\""},
+      {"seed3", "\t\"Aleatoriedad óptima\" (Recomendado)"},
+      {"menu.salir", "Salir"},
+      {"menu.resolver", "Resolver"},
+      {"menu.reset", "Reset"},
+      {"menu.nuevo", "Nuevo"},
+      {"menu.plantear", "Plantear"},
+      {"menu.configuracion", "Configuración"},
+      {"menu.pista", "Pista"},
+      {"menu.creditos", "Créditos"},
+      {"menu.revisar", "Revisar"},
+      {"menu.reglas", "Reglas"},
+      {"alert.creditos", "Créditos"},
+      {"alert.felicidades", "Felicidades, juego resuelto en "},
+      {"etiqueta.fila", "En la fila "},
+      {"etiqueta.columna", " columna "},
+      {"etiqueta.un", " un "},
+      {"formulario.configuracion.titulo", "Configuración"},
+      {"formulario.configuracion.menu.aceptar", "Aceptar"},
+      {"formulario.configuracion.menu.cancelar", "Cancelar"},
+      {"formulario.configuracion.ayuda.activada", "Activada"},
+      {"formulario.configuracion.ayuda.desactivada", "Desactivada"},
+      {"formulario.configuracion.ayuda.on.line", "Ayuda en línea"},
+      {"formulario.configuracion.ayuda.interactiva", "Ayuda interactiva seleccionada: "},
+      {"formulario.configuracion.selector.nivel", "Selector de nivel"},
+      {"formulario.configuracion.nivel.juego", "Nivel de juego seleccionado: "},
+      {"formulario.configuracion.generador.aleatorio", "Generador aleatorio"},
+      {"formulario.configuracion.nivel.azar", "Nivel de azar seleccionado: "},
+      {"url.creditos.xml.file", "/org/nico/midlets/games/credits/creditos_es_ES.xml"},
+//      {"url.creditos.wav.file", "/org/nico/midlets/games/sounds/sudoku_creditos_es_ES.wav"},
+//      {"url.reglas.wav.file", "/org/nico/midlets/games/sounds/sudoku_reglas_es_ES.wav"},
+
+  };
+
+  /**
+   * getContents
+   * @return Object[][]
+   */
+  public Object[][] getContents() {
+    return recursos;
+  }
+}

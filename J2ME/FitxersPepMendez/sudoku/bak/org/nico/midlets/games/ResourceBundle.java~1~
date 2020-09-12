@@ -1,0 +1,60 @@
+package org.nico.midlets.games;
+
+/**
+ * <p>Title: Sudoku</p>
+ * <p>Description: Juego japones</p>
+ * <p>Comments: Version recursiva</p>
+ * <p>Date: 11/08/06</p>
+ * <p>Last upate: 11/08/06</p>
+ * @author Pep Mendez
+ */
+public abstract class ResourceBundle {
+  protected ResourceBundle parent;
+
+  public ResourceBundle() {
+    super();
+  }
+
+  public static ResourceBundle getBundle(String clase) throws IllegalArgumentException, RuntimeException {
+    return ResourceBundle.getBundle(clase, "");
+  }
+
+  public static ResourceBundle getBundle(String prefijo, String locale) throws IllegalArgumentException, RuntimeException {
+    Class c;
+    if (prefijo == null) {
+      throw new IllegalArgumentException("Falta el prefijo");
+    }
+    String clase = prefijo + "_" + locale;
+    ResourceBundle rb = null;
+    try {
+      c = Class.forName(clase);
+      rb = (ResourceBundle)c.newInstance();
+    }
+    catch (ClassNotFoundException ex) {
+      throw new RuntimeException("No se encuentra la clase");
+    }
+    catch (InstantiationException ex) {
+      throw new RuntimeException("Fallo al instaciar la clase");
+    }
+    catch (IllegalAccessException ex) {
+      throw new RuntimeException("Fallo al acceder a la clase");
+    }
+    return rb;
+  }
+
+  public final Object getObject(String clave) throws RuntimeException {
+    Object obj = null;
+
+    if (clave == null) {
+      throw new RuntimeException("No se ha indicado la clave");
+    }
+    obj = handleGetObject(clave);
+    if (obj == null) {
+      throw new RuntimeException("No se ha encontrado el recurso");
+    }
+    return obj;
+  }
+
+  protected abstract Object handleGetObject(String clave);
+
+}

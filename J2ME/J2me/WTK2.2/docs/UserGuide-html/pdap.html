@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.6.1058" />
+    <meta name="TEMPLATEBASE" content="book-w-index" />
+    <meta name="LASTUPDATED" content="10/27/04 10:15:27" />
+    <title>Using the PIM and FileConnection APIs</title>
+    <link rel="StyleSheet" href="document.css" type="text/css" />
+    <link rel="StyleSheet" href="catalog.css" type="text/css" />
+    <link rel="Table of Contents" href="index.html" />
+    <link rel="Previous" href="mobile3d.html" />
+    <link rel="Next" href="bluetooth.html" />
+    <link rel="Index" href="indexa.html" />
+  </head>
+
+  <body>
+
+    <table class="full-width" id="SummaryNotReq1"
+        cellspacing="0" cellpadding="0" border="0">
+	  <!-- formatting table -->
+      <tr><td class="sun-darkblue">&#160;</td></tr>
+      <tr><td class="sun-lightblue">&#160;</td></tr>
+    </table>
+    
+    <table class="full-width" id="SummaryNotReq2"
+        cellspacing="0" cellpadding="0" border="0">
+	  <!-- formatting table -->
+      <tr>
+        <td class="go-left">
+          <p class="nav-link">
+            <a accesskey="h" href="../../index.html">Documentation Home</a>
+            &gt;
+            <a accesskey="c" href="index.html"><i>User's Guide</i></a>
+            &gt;
+            Using the PIM and FileConnection APIs
+          </p>
+        </td>
+        <td class="go-right">
+        <a accesskey="c" href="index.html">
+          <img id="LongDescNotReq1" src="images/toc.gif" border="0"
+            alt="Contents" /></a>
+	<a accesskey="p" href="mobile3d.html">
+	  <img id="LongDescNotReq2" src="images/prev.gif" border="0"
+            alt="Previous" /></a>
+        <a accesskey="n" href="bluetooth.html">
+	  <img id="LongDescNotReq3" src="images/next.gif" border="0"
+            alt="Next" /></a>
+        <a accesskey="i" href="indexa.html">
+	  <img id="LongDescNotReq4" src="images/index.gif" border="0"
+            alt="Index" /></a>
+        </td>
+      </tr>
+    </table>
+
+<a name="wp27073"> </a><h2 class="pChapNum">
+Chapter &#160; 10
+</h2>
+<a name="wp21060"> </a><h2 class="pTitle">
+Using the PIM and FileConnection APIs
+</h2>
+<hr />
+<a name="wp24296"> </a><p class="pBody">
+The J2ME Wireless Toolkit supports JSR 75, the PDA Optional Packages for the J2ME Platform. JSR 75 includes two independent APIs:
+</p>
+<ul class="pBullet1"><a name="wp24677"> </a><div class="pBullet1"><li>The <code class="cCode">FileConnection</code> optional package allows MIDlets access to a local device file system.</li></div>
+<a name="wp24685"> </a><div class="pBullet1Last"><li>The Personal Information Management (PIM) optional package includes APIs for manipulating contact lists (address book), calendars, and to-do lists.</li></div>
+</ul>
+<a name="wp24658"> </a><p class="pBody">
+This chapter describes how the J2ME Wireless Toolkit implements the <code class="cCode">FileConnection</code> and PIM APIs.
+</p>
+<a name="wp24786"> </a><h2 class="pHeading1">
+10.1	The FileConnection API
+</h2>
+<a name="wp24799"> </a><p class="pBody">
+On a real device, the <code class="cCode">FileConnection</code> API typically provides access to files stored in the device&#8217;s memory or on a memory card.
+</p>
+<a name="wp24805"> </a><p class="pBody">
+In the J2ME Wireless Toolkit emulator, the <code class="cCode">FileConnection</code> API allows MIDlets to access files stored on your desktop computer&#8217;s hard disk.
+</p>
+<a name="wp24812"> </a><p class="pBody">
+The files that can be accessed using <code class="cCode">FileConnection</code> are stored in subdirectories of <em class="cEmphasis">{toolkit}</em><code class="cCode">\appdb\</code><em class="cEmphasis">{skin}</em><code class="cCode">\filesystem</code>. For example, the <code class="cCode">DefaultColorPhone</code> emulator skin comes with a root directory installed called <code class="cCode">root1</code>, which contains a file called <code class="cCode">Readme</code>. The full path of the file is <em class="cEmphasis">{toolkit}</em><code class="cCode">\appdb\DefaultColorPhone\filesystem\root1\Readme</code>.
+</p>
+<hr class="pHr"/><div class="note">
+<a name="wp25596"> </a>
+<b>Note &#8211;</b>  If multiple instances of the same emulator skin run simultaneously, the J2ME Wireless Toolkit will generate unique file paths for each one. For example, a second instance of <code class="cCode">DefaultColorPhone</code> might have a file system path name of <em class="cEmphasis">{toolkit}</em><code class="cCode">\appdb\DefaultColorPhone.1089982856218\filesystem</code>.
+<hr class="pHr"/></div>
+<a name="wp24836"> </a><p class="pBody">
+Each subdirectory of <code class="cCode">filesystem</code> is called a <em class="cEmphasis">root</em>. The J2ME Wireless Toolkit provides a mechanism for managing roots. While the emualtor is running, choose <b class="cBold">MIDlet &gt; External events</b> from the emulator window&#8217;s menu. You&#8217;ll see a utility window for adding and removing roots.
+</p>
+<a name="wp24856"> </a><div class="pFigureCaption">
+FIGURE&#160;37&#160;&#160;&#8211;&#160;&#160;Managing filesystem roots
+<br /><br />
+</div><a name="wp27158"> </a><p class="pBody">
+<img src="images/filesystem-roots.gif" alt="Managing filesystem roots" border="0" hspace="0" vspace="0"/>
+</p>
+<a name="wp24865"> </a><p class="pBody">
+The mounted roots and their contents are available to applications using the <code class="cCode">FileConnection</code> API.
+</p>
+<a name="wp24866"> </a><p class="pBody">
+To add a new root directory, click on <b class="cBold">Mount New...</b> and fill in a name for the directory. To make a directory inaccessible to the <code class="cCode">FileConnection</code> API, select it in the list and click <b class="cBold">Unmount</b>.
+</p>
+<a name="wp24800"> </a><h2 class="pHeading1">
+10.2	The PIM API
+</h2>
+<a name="wp24804"> </a><p class="pBody">
+The J2ME Wireless Toolkit emulator stores contact, calendar, and to-do information in standard files on your desktop computer&#8217;s hard disk. All information is stored in <em class="cEmphasis">{toolkit}</em><code class="cCode">\appdb\</code><em class="cEmphasis">{skin}</em><code class="cCode">\pim</code>. This directory is shared by all running emulators. Lists are stored in subdirectories of the <code class="cCode">contacts</code>, <code class="cCode">events</code>, and <code class="cCode">todo</code> directories. For example, a contact list called Contacts is contained in <em class="cEmphasis">{toolkit}</em><code class="cCode">\appdb\</code><em class="cEmphasis">{skin}</em><code class="cCode">\pim\contacts\Contacts</code>.
+</p>
+<a name="wp24878"> </a><p class="pBody">
+Inside the list directory, items are stored in vCard or vCalendar format (see <a  href="http://www.imc.org/pdi/">http://www.imc.org/pdi/</a>). Contacts are stored in vCard format, while calendar and to-do items are both stored in vCalendar format.
+</p>
+<a name="wp24692"> </a><p class="pBody">
+
+</p>
+
+    <p>&#160;</p>
+    <hr class="pHr" />
+
+    <table class="full-width" id="SummaryNotReq3">
+	  <!-- formatting table -->
+      <tr>
+        <td class="go-left">
+          <a accesskey="c" href="index.html">
+            <img id="LongDescNotReq1" src="images/toc.gif" border="0"
+              alt="Contents" /></a>
+          <a accesskey="p" href="mobile3d.html">
+            <img id="LongDescNotReq2" src="images/prev.gif" border="0"
+              alt="Previous" /></a>
+          <a accesskey="n" href="bluetooth.html">
+            <img id="LongDescNotReq3" src="images/next.gif" border="0"
+              alt="Next" /></a>
+          <a accesskey="i" href="indexa.html">
+            <img id="LongDescNotReq4" src="images/index.gif" border="0"
+              alt="Index" /></a>
+        </td>
+        <td class="go-right">
+          <span class="copyright">J2ME Wireless Toolkit User's Guide <br /> J2ME Wireless Toolkit 2.2</span>
+        </td>
+      </tr>
+    </table>
+
+    <p>&#160;</p>
+    <p class="copyright">
+      <a href="copyright.html">Copyright</a> &#169; 2004 Sun Microsystems, Inc. 
+      All rights reserved.
+      Use is subject to the <a href="../../BinaryLicense.html">license terms</a>.
+    </p>
+  </body>
+</html>

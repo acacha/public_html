@@ -1,0 +1,888 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.6.1058" />
+    <meta name="TEMPLATEBASE" content="book-w-index" />
+    <meta name="LASTUPDATED" content="10/27/04 10:16:50" />
+    <title>Skinning the Emulator</title>
+    <link rel="StyleSheet" href="document.css" type="text/css" />
+    <link rel="StyleSheet" href="catalog.css" type="text/css" />
+    <link rel="Table of Contents" href="index.html" />
+    <link rel="Previous" href="introduction.html" />
+    <link rel="Next" href="obfuscator.html" />
+    <link rel="Index" href="indexa.html" />
+  </head>
+
+  <body>
+
+    <table class="full-width" id="SummaryNotReq1"
+        cellspacing="0" cellpadding="0" border="0">
+	  <!-- formatting table -->
+      <tr><td class="sun-darkblue">&#160;</td></tr>
+      <tr><td class="sun-lightblue">&#160;</td></tr>
+    </table>
+    
+    <table class="full-width" id="SummaryNotReq1"
+        cellspacing="0" cellpadding="0" border="0">
+	  <!-- formatting table -->
+      <tr>
+        <td class="go-left">
+          <p class="nav-link">
+            <a accesskey="h" href="../../index.html">Documentation Home</a>
+            &gt;
+            <a accesskey="c" href="index.html"><i>Basic Customization Guide</i></a>
+            &gt;
+            Skinning the Emulator
+          </p>
+        </td>
+        <td class="go-right">
+        <a accesskey="c" href="index.html">
+          <img id="LongDescNotReq1" src="images/toc.gif" border="0"
+            alt="Contents" /></a>
+	<a accesskey="p" href="introduction.html">
+	  <img id="LongDescNotReq2" src="images/prev.gif" border="0"
+            alt="Previous" /></a>
+        <a accesskey="n" href="obfuscator.html">
+	  <img id="LongDescNotReq3" src="images/next.gif" border="0"
+            alt="Next" /></a>
+        <a accesskey="i" href="indexa.html">
+	  <img id="LongDescNotReq4" src="images/index.gif" border="0"
+            alt="Index" /></a>
+        </td>
+      </tr>
+    </table>
+
+<a name="wp1013331"> </a><h2 class="pChapNum">
+Chapter &#160; 2
+</h2>
+<a name="wp999800"> </a><h2 class="pTitle">
+Skinning the Emulator
+</h2>
+<hr />
+<a name="wp997440"> </a><p class="pBody">
+This chapter describes how emulator skins are defined. You can modify existing skins or create new skins for the emulator. This process is known as <em class="cEmphasis">skinning</em> the emulator.
+</p>
+<a name="wp1002617"> </a><h2 class="pHeading1">
+2.1	The Skin Property File
+</h2>
+<a name="wp1002621"> </a><p class="pBody">
+Emulator skins are defined by a single property file. Each skin property file is contained in its own subdirectory of <em class="cEmphasis">{toolkit}</em><code class="cCode">\wtklib\devices</code>, where <em class="cEmphasis">{toolkit}</em> is the installation directory of the J2ME Wireless Toolkit. The name of the property file matches the directory name.
+</p>
+<a name="wp1002628"> </a><p class="pBody">
+For example, the <code class="cCode">DefaultColorPhone</code> skin is defined by <code class="cCode">DefaultColorPhone.properties</code> in the <em class="cEmphasis">{toolkit}</em><code class="cCode">\wtklib\devices\DefaultColorPhone</code> directory.
+</p>
+<a name="wp1002631"> </a><p class="pBody">
+The skin property file defines the appearance and behavior of the emulator skin. It includes pointers to images and sounds that may or may not reside in the same directory. For example, the <code class="cCode">DefaultColorPhone</code> directory contains images for the phone itself, but the icons and sounds for <code class="cCode">DefaultColorPhone </code>are defined in <code class="cCode">wtklib\devices\Share</code>.
+</p>
+<a name="wp1002637"> </a><p class="pBody">
+The remainder of this chapter describes the contents of the skin property file. The property file is a plain text file. You can use any text editor to modify it. In general, entries in the property file have a property name followed by a value. A colon or equals sign separates the name and value. Lines that begin with a hash mark (#) are comments.
+</p>
+<a name="wp1002917"> </a><p class="pBody">
+The simplest way to create a new skin is to copy an existing one and modify it. For example:
+</p>
+<ol class="pList1"><a name="wp1002918"> </a><div class="pList1"><li>Copy the <code class="cCode">DefaultColorPhone</code> directory.</li></div>
+<a name="wp1002922"> </a><div class="pList1Plus"><li>Name the new directory with the name of your new skin. </li></div>
+<a name="wp1002923"> </a><div class="pList1Last"><li>Rename the properties file to match the directory name. If you named the directory <code class="cCode">NewSkin</code>, rename its contained property file <code class="cCode">NewSkin.properties</code>.</li></div>
+</ol>
+<a name="wp1002643"> </a><h2 class="pHeading1">
+2.2	Skin Appearance
+</h2>
+<a name="wp1002647"> </a><p class="pBody">
+The overall appearance of the emualtor skin is determined by a variety of factors, each of which is described in this section:
+</p>
+<ul class="pBullet1"><a name="wp1002650"> </a><div class="pBullet1"><li>Skin images</li></div>
+<a name="wp1002654"> </a><div class="pBullet1Plus"><li>Screen bounds and paintable area</li></div>
+<a name="wp1003306"> </a><div class="pBullet1Plus"><li>Screen characteristics</li></div>
+<a name="wp1002658"> </a><div class="pBullet1Plus"><li>Icons</li></div>
+<a name="wp1002659"> </a><div class="pBullet1Plus"><li>Fonts</li></div>
+<a name="wp1002662"> </a><div class="pBullet1Plus"><li>Commands</li></div>
+<a name="wp1002663"> </a><div class="pBullet1Last"><li>Sounds</li></div>
+</ul>
+<a name="wp1002668"> </a><h3 class="pHeading2">
+2.2.1	Skin Images
+</h3>
+<a name="wp1002692"> </a><p class="pBody">
+Much of a skin&#8217;s appearance is determined by three images:
+</p>
+<ol class="pList1"><a name="wp1002695"> </a><div class="pList1"><li>The <em class="cEmphasis">default</em> image shows the device in a neutral state.</li></div>
+<a name="wp1002699"> </a><div class="pList1Plus"><li>The <em class="cEmphasis">highlighted image</em> shows the device with all the buttons highlighted, as they are when the user moves the mouse over the buttons.</li></div>
+<a name="wp1002700"> </a><div class="pList1Last"><li>The <em class="cEmphasis">pressed</em> image shows the device will all its buttons pressed.</li></div>
+</ol>
+<a name="wp1002701"> </a><p class="pBody">
+Each of these images shows the entire device. The J2ME Wireless Toolkit uses portions of these images to show button highlights and button presses.
+</p>
+<a name="wp1002708"> </a><p class="pBody">
+For example, the three images from <code class="cCode">DefaultColorPhone</code> are shown in <a  href="skinning.html#wp1002709"><span class="cZ_Xref">FIGURE&#160;1</span></a>.
+</p>
+<a name="wp1002709"> </a><div class="pFigureCaption">
+FIGURE&#160;1&#160;&#160;&#8211;&#160;&#160;Images for DefaultColorPhone: neutral, highlighted, and pressed
+<br /><br />
+</div><a name="wp1013504"> </a><p class="pBody">
+<img src="images/neutral2.gif" alt="Images for DefaultColorPhone: neutral" border="0" hspace="0" vspace="0"/><img src="images/hilight3.gif" alt="Images for DefaultColorPhone: highlighted" border="0" hspace="0" vspace="0"/><img src="images/pressed4.gif" alt="Images for DefaultColorPhone: pressed" border="0" hspace="0" vspace="0"/>
+</p>
+<a name="wp1002693"> </a><p class="pBody">
+A close-up of the keypad is shown here so you can see the differences in the three images.
+</p>
+<a name="wp1002822"> </a><div class="pFigureCaption">
+FIGURE&#160;2&#160;&#160;&#8211;&#160;&#160;Emulator skin image details: neutral, highlighted, and pressed
+<br /><br />
+</div><a name="wp1013570"> </a><p class="pBody">
+<img src="images/neutral-t5.gif" alt="Emulator skin image details: neutral" border="0" hspace="0" vspace="0"/><img src="images/highlight-t6.gif" alt="Emulator skin image details: highlighted" border="0" hspace="0" vspace="0"/><img src="images/pressed-t7.gif" alt="Emulator skin image details: pressed" border="0" hspace="0" vspace="0"/>
+</p>
+<a name="wp1002694"> </a><p class="pBody">
+In the skin property file, the three image files are specified with the following properties:
+</p>
+<div class="pPreformatted"><pre class="pPreformatted">
+default_image=<em class="cEmphasis">&lt;image file name&gt;</em><a name="wp1002939"> </a>
+highlighted_image=<em class="cEmphasis">&lt;image file name&gt;</em><a name="wp1002941"> </a>
+pressed_buttons_image=<em class="cEmphasis">&lt;image file name&gt;</em><a name="wp1002960"> </a>
+</pre></div>
+<a name="wp1002936"> </a><p class="pBody">
+The image files can be PNG, GIF, or JPEG. They should all be the same dimensions.
+</p>
+<a name="wp1002969"> </a><p class="pBody">
+For example, <code class="cCode">DefaultColorPhone.properties</code> has the following entries:
+</p>
+<div class="pPreformatted"><pre class="pPreformatted">
+default_image=neutral.png<a name="wp1013630"> </a>
+highlighted_image=hilight.png<a name="wp1013631"> </a>
+pressed_buttons_image=pressed.png<a name="wp1013632"> </a>
+</pre></div>
+<a name="wp1002903"> </a><h3 class="pHeading2">
+2.2.2	Screen Bounds and Paintable Area
+</h3>
+<a name="wp1002931"> </a><p class="pBody">
+The screen represents the display of a real device. It is defined by the overall screen bounds, the <em class="cEmphasis">paintable</em> bounds, and other parameters that determine factors like the number of colors.
+</p>
+<a name="wp1002977"> </a><p class="pBody">
+The overall screen bounds are the total area of the display. They are defined in pixel measurements relative to the origin of the image files, which is in the upper left corner.
+</p>
+<a name="wp1002978"> </a><div class="pFigureCaption">
+FIGURE&#160;3&#160;&#160;&#8211;&#160;&#160;The bounds of the screen
+<br /><br />
+</div><a name="wp1013674"> </a><p class="pBody">
+<img src="images/neutral8.gif" height="296" width="193" alt="The bounds of the screen" border="0" hspace="0" vspace="0"/>
+</p>
+<a name="wp1002902"> </a><p class="pBody">
+The screen bounds are specified in the property file as follows:
+</p>
+<div class="pPreformatted"><pre class="pPreformatted">
+screen.x=<em class="cEmphasis">&lt;x coordinate&gt;</em><a name="wp1003028"> </a>
+screen.y=<em class="cEmphasis">&lt;y coordinate&gt;</em><a name="wp1003029"> </a>
+screen.width=<em class="cEmphasis">&lt;width&gt;</em><a name="wp1003033"> </a>
+screen.height=<em class="cEmphasis">&lt;height&gt;</em><a name="wp1003034"> </a>
+</pre></div>
+<a name="wp1003026"> </a><p class="pBody">
+For example:
+</p>
+<div class="pPreformatted"><pre class="pPreformatted">
+screen.x=60<a name="wp1003057"> </a>
+screen.y=76<a name="wp1003058"> </a>
+screen.width=240<a name="wp1003059"> </a>
+screen.height=320<a name="wp1003060"> </a>
+</pre></div>
+<a name="wp1006331"> </a><p class="pBody">
+Most devices do not make their full display area available to MIDP applications. The remainder of the screen is generally reserved for icons and indicators of various kinds. Similarly, the J2ME Wireless Toolkit emulator allows you to define a subset of the full screen, called the <em class="cEmphasis">paintable</em> area, that is available for MIDP applications. The origin of the paintable area is expressed in coordinates relative to the upper left corner of the display. For example, the <code class="cCode">DefaultColorPhone</code> emulator skin uses a top bar for icons and a bottom bar for soft labels and other icons, as shown in <a  href="skinning.html#wp1003096"><span class="cZ_Xref">FIGURE&#160;4</span></a>.
+</p>
+<a name="wp1003096"> </a><div class="pFigureCaption">
+FIGURE&#160;4&#160;&#160;&#8211;&#160;&#160;The paintable screen area in DefaultColorPhone
+<br /><br />
+</div><a name="wp1003100"> </a><p class="pBody">
+<img src="images/wj29.gif" height="379" width="359" alt="The paintable screen area in DefaultColorPhone" border="0" hspace="0" vspace="0"/>
+</p>
+<a name="wp1003054"> </a><p class="pBody">
+In the emulator skin property file, the paintable area is expressed as follows:
+</p>
+<div class="pPreformatted"><pre class="pPreformatted">
+screenPaintableRegion.x=<em class="cEmphasis">&lt;x coordinate&gt;</em><a name="wp1003137"> </a>
+screenPaintableRegion.y=<em class="cEmphasis">&lt;y coordinate&gt;</em><a name="wp1003138"> </a>
+screenPaintableRegion.width=<em class="cEmphasis">&lt;width&gt;</em><a name="wp1003139"> </a>
+screenPaintableRegion.height=<em class="cEmphasis">&lt;height&gt;</em><a name="wp1003140"> </a>
+</pre></div>
+<a name="wp1003055"> </a><p class="pBody">
+For example:
+</p>
+<div class="pPreformatted"><pre class="pPreformatted">
+screenPaintableRegion.x=0<a name="wp1003152"> </a>
+screenPaintableRegion.y=10<a name="wp1003153"> </a>
+screenPaintableRegion.width=240<a name="wp1003154"> </a>
+screenPaintableRegion.height=290<a name="wp1003155"> </a>
+</pre></div>
+<hr class="pHr"/><div class="note">
+<a name="wp1003150"> </a>
+<b>Note &#8211;</b>  For full screen mode (in MIDP 2.0), the emulator uses the area beginning at the paintable area origin and extending through the bottom right corner of the screen. In <code class="cCode">DefaultColorPhone</code>, this is the entire screen region with the exception of the top bar.
+<hr class="pHr"/></div>
+<a name="wp1003178"> </a><h3 class="pHeading2">
+2.2.3	Screen Characteristics
+</h3>
+<a name="wp1003187"> </a><p class="pBody">
+The emulator skin property file determines the number of colors supported by the screen and the aspect ratio of the pixels. First, the following property specifies whether the emulator skin uses color or grayscale.
+</p>
+<div class="pPreformatted"><pre class="pPreformatted">
+isColor=<em class="cEmphasis">&lt;true for color or false for grayscale&gt;</em><a name="wp1003217"> </a>
+</pre></div>
+<a name="wp1003228"> </a><p class="pBody">
+Another property, <code class="cCode">colorCount</code>, specifies the number of available colors. For grayscale devices it specifies the number of gray levels.
+</p>
+<div class="pPreformatted"><pre class="pPreformatted">
+colorCount=<em class="cEmphasis">&lt;number&gt;</em><a name="wp1003233"> </a>
+</pre></div>
+<a name="wp1003215"> </a><p class="pBody">
+For example, <code class="cCode">DefaultColorPhone</code> has a color screen with 4096 colors:
+</p>
+<div class="pPreformatted"><pre class="pPreformatted">
+isColor=true<a name="wp1003243"> </a>
+colorCount=0x1000<a name="wp1004463"> </a>
+</pre></div>
+<a name="wp1004470"> </a><p class="pBody">
+The emulator&#8217;s handling of alpha (transparency) is determined by the following property:
+</p>
+<div class="pPreformatted"><pre class="pPreformatted">
+enableAlphaChannel=<em class="cEmphasis">&lt;true or false&gt;</em><a name="wp1004465"> </a>
+</pre></div>
+<a name="wp1003257"> </a><p class="pBody">
+Gamma correction can also be enabled by using the following property:
+</p>
+<div class="pPreformatted"><pre class="pPreformatted">
+gamma=<em class="cEmphasis">&lt;number, where 1 means no error correction&gt;</em><a name="wp1003267"> </a>
+</pre></div>
+<a name="wp1003189"> </a><p class="pBody">
+Double buffering can be enabled or disabled with the following property:
+</p>
+<div class="pPreformatted"><pre class="pPreformatted">
+screenDoubleBuffer = <em class="cEmphasis">&lt;true or false&gt;</em><a name="wp1004432"> </a>
+</pre></div>
+<a name="wp1004431"> </a><p class="pBody">
+The background color that is used for the non-paintable areas of the screen is defined as follows:
+</p>
+<div class="pPreformatted"><pre class="pPreformatted">
+screenBorderColor=<em class="cEmphasis">&lt;color&gt;</em><a name="wp1003281"> </a>
+</pre></div>
+<a name="wp1003310"> </a><p class="pBody">
+For example, <code class="cCode">DefaultColorPhone</code> uses the following color:
+</p>
+<div class="pPreformatted"><pre class="pPreformatted">
+screenBorderColor=0xb6b6aa<a name="wp1003311"> </a>
+</pre></div>
+<a name="wp1003414"> </a><p class="pBody">
+On grayscale devices, the background color of the screen can be set using the following property:
+</p>
+<div class="pPreformatted"><pre class="pPreformatted">
+screenBGColor=<em class="cEmphasis">&lt;color&gt;</em><a name="wp1004385"> </a>
+<a name="wp1004480"> </a>
+</pre></div>
+<a name="wp1003312"> </a><h3 class="pHeading2">
+2.2.4	Icons
+</h3>
+<a name="wp1003315"> </a><p class="pBody">
+The J2ME Wireless Toolkit emulator supports the use of icons, which are small images that convey information to the user. Usually, icons are placed on the display but outside the paintable area. The emulator implements a fixed set of icons which are described in <a  href="skinning.html#wp1003340"><span class="cZ_Xref">TABLE&#160;1</span></a>.</p><div align="left">
+<table border="0" cellpadding="7" summary="Emulator icons" id="wp1003340">
+  <caption><a name="wp1003340"> </a><div class="pTableCaption">
+TABLE&#160;1&#160;&#160;&#8211;&#160;&#160;Emulator icons
+</div>
+</caption>
+<thead>
+<tr >    <th  class="sun-verylightblue" scope="col"><a name="wp1003344"> </a><div class="pTableHead">
+Name
+</div>
+
+</th>
+    <th  class="sun-verylightblue" scope="col"><a name="wp1003346"> </a><div class="pTableHead">
+Description
+</div>
+
+</th>
+</tr>
+</thead>
+  <tr>    <td><a name="wp1003348"> </a><div class="pTableText">
+battery
+</div>
+</td>
+    <td><a name="wp1003350"> </a><div class="pTableText">
+Shows battery state
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp1003393"> </a><div class="pTableText">
+domain
+</div>
+</td>
+    <td><a name="wp1003395"> </a><div class="pTableText">
+Indicates the protection domain of the running MIDlet
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp1003352"> </a><div class="pTableText">
+down
+</div>
+</td>
+    <td><a name="wp1003354"> </a><div class="pTableText">
+Indicates that scrolling is possible
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp1003356"> </a><div class="pTableText">
+inmode
+</div>
+</td>
+    <td><a name="wp1003358"> </a><div class="pTableText">
+Indicates the input mode: lower case, upper case, numbers
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp1003360"> </a><div class="pTableText">
+internet
+</div>
+</td>
+    <td><a name="wp1003362"> </a><div class="pTableText">
+Shows Internet activity
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp1003377"> </a><div class="pTableText">
+left
+</div>
+</td>
+    <td><a name="wp1003379"> </a><div class="pTableText">
+Indicates that scrolling is possible
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp1003381"> </a><div class="pTableText">
+reception
+</div>
+</td>
+    <td><a name="wp1003383"> </a><div class="pTableText">
+Shows wireless signal strength
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp1003385"> </a><div class="pTableText">
+right
+</div>
+</td>
+    <td><a name="wp1003387"> </a><div class="pTableText">
+Indicates that scrolling is possible
+</div>
+</td>
+</tr>
+  <tr>    <td><a name="wp1003389"> </a><div class="pTableText">
+up
+</div>
+</td>
+    <td><a name="wp1003391"> </a><div class="pTableText">
+Indicates that scrolling is possible
+</div>
+</td>
+</tr>
+<tr><td colspan="15"><hr class="pTableHr" /></td></tr>
+</table>
+</div>
+<p class="pBody">
+
+</p>
+<a name="wp1003320"> </a><p class="pBody">
+Icons are defined with a location (measured relative to the origin of the screen), a default state, and a list of images that correspond to the possible states. For example, here is the definition of the <code class="cCode">down</code> icon in <code class="cCode">DefaultColorPhone</code>. This icon is a downward-pointing arrow that appears when a list or form is shown that is taller than the available screen space.
+</p>
+<div class="pPreformatted"><pre class="pPreformatted">
+icon.down: 113, 314, off<a name="wp1003420"> </a>
+icon.down.off:<a name="wp1003421"> </a>
+icon.down.on: ../Share/down.gif<a name="wp1003422"> </a>
+</pre></div>
+<a name="wp1003418"> </a><p class="pBody">
+The first line specifies the location where the icon will be shown, which for <code class="cCode">DefaultColorPhone</code> is a location in the center of the bottom bar, outside the paintable screen area. The default state is <code class="cCode">off</code>.
+</p>
+<a name="wp1003426"> </a><p class="pBody">
+There is no image file that corresponds to the <code class="cCode">off</code> state, but the <code class="cCode">on</code> state uses the image <code class="cCode">down.gif</code> from the <code class="cCode">wtklib\devices\Share</code> directory.
+</p>
+<a name="wp1003433"> </a><p class="pBody">
+Another interesting example is the <code class="cCode">inmode</code> icon, which includes seven states with six corresponding image files:
+</p>
+<div class="pPreformatted"><pre class="pPreformatted">
+icon.inmode: 113, 2, off<a name="wp1003440"> </a>
+icon.inmode.off:<a name="wp1003441"> </a>
+icon.inmode.ABC: ../Share/ABC.gif<a name="wp1003442"> </a>
+icon.inmode.abc: ../Share/abc_lower.gif<a name="wp1003443"> </a>
+icon.inmode.123: ../Share/123.gif<a name="wp1003444"> </a>
+icon.inmode.kana: ../Share/kana.gif<a name="wp1003445"> </a>
+icon.inmode.hira: ../Share/hira.gif<a name="wp1003446"> </a>
+icon.inmode.sym: ../Share/sym.gif<a name="wp1003447"> </a>
+</pre></div>
+<a name="wp1003316"> </a><p class="pBody">
+Another aspect of the emulator that is similar to an icon is the network indicator. Instead of being located in the screen, the network indicator is shown on the emulator skin. In <code class="cCode">DefaultColorPhone</code>, the network indicator is shown as a small green light in the upper left of the emulator skin. The network indicator is defined using two properties:
+</p>
+<div class="pPreformatted"><pre class="pPreformatted">
+netindicator.image: <em class="cEmphasis">&lt;image&gt;</em><a name="wp1003511"> </a>
+netindicator.bounds: <em class="cEmphasis">&lt;x&gt;</em>, <em class="cEmphasis">&lt;y&gt;</em>, <em class="cEmphasis">&lt;width&gt;</em>, <em class="cEmphasis">&lt;height&gt;</em><a name="wp1003512"> </a>
+</pre></div>
+<a name="wp1003513"> </a><p class="pBody">
+For example, in <code class="cCode">DefaultColorPhone</code>, the network indicator looks like this:
+</p>
+<div class="pPreformatted"><pre class="pPreformatted">
+netindicator.image: net_indicator.png<a name="wp1013876"> </a>
+netindicator.bounds: 53, 27, 30, 30<a name="wp1013877"> </a>
+</pre></div>
+<a name="wp1003471"> </a><p class="pBody">
+The width and height should match the width and height of the network indicator image.
+</p>
+<a name="wp1003525"> </a><h3 class="pHeading2">
+2.2.5	Fonts
+</h3>
+<a name="wp1003534"> </a><p class="pBody">
+The fonts used by the emulator are defined in the skin property file. In essence you can define a font for each of the faces, styles, and sizes that are available in MIDP&#8217;s <code class="cCode">Font</code> class. The format is as follows:
+</p>
+<div class="pPreformatted"><pre class="pPreformatted">
+font.<em class="cEmphasis">&lt;face&gt;</em>.<em class="cEmphasis">&lt;style&gt;</em>.<em class="cEmphasis">&lt;size&gt;</em>: <em class="cEmphasis">&lt;font specifier&gt;</em><a name="wp1003537"> </a>
+</pre></div>
+<a name="wp1005172"> </a><p class="pBody">
+You can surmise the fact, style, and size parameters from the MIDP <code class="cCode">Font</code> API, except the identifiers are lower case in the emulator skin property file. The font face is <code class="cCode">system</code>, <code class="cCode">monospace</code>, or <code class="cCode">proportional</code>, the style is <code class="cCode">plain</code>, <code class="cCode">bold</code>, or <code class="cCode">italic</code>, and the size is <code class="cCode">small</code>, <code class="cCode">medium</code>, or <code class="cCode">large</code>.
+</p>
+<a name="wp1006398"> </a><p class="pBody">
+The font specifier follows the convention laid out in the J2SE <code class="cCode">java.awt.Font</code> class. The following example from <code class="cCode">DefaultColorPhone</code> defines the proportional italic fonts in all three sizes:
+</p>
+<div class="pPreformatted"><pre class="pPreformatted">
+font.proportional.italic.small: SansSerif-italic-9<a name="wp1006399"> </a>
+font.proportional.italic.medium: SansSerif-italic-11<a name="wp1003563"> </a>
+font.proportional.italic.large: SansSerif-italic-14<a name="wp1003564"> </a>
+</pre></div>
+<a name="wp1003560"> </a><p class="pBody">
+You need to specify a default font that will be used in case no other definition is available. In <code class="cCode">DefaultColorPhone</code>, a 10-point SansSerif font is used for the default:
+</p>
+<div class="pPreformatted"><pre class="pPreformatted">
+font.default=SansSerif-plain-10<a name="wp1003586"> </a>
+</pre></div>
+<a name="wp1003584"> </a><p class="pBody">
+Fonts may also be underlined. By default, this is supported by the MIDP implementation, but you can disable for specific fonts like this:
+</p>
+<div class="pPreformatted"><pre class="pPreformatted">
+font.<em class="cEmphasis">&lt;face&gt;</em>.<em class="cEmphasis">&lt;style&gt;</em>.<em class="cEmphasis">&lt;size&gt;</em>.underline.enabled=false<a name="wp1003594"> </a>
+</pre></div>
+<a name="wp1003599"> </a><p class="pBody">
+If you wish, you can disable underlining for all fonts like this:
+</p>
+<div class="pPreformatted"><pre class="pPreformatted">
+font.all.underline.enabled=false<a name="wp1003616"> </a>
+</pre></div>
+<a name="wp1003677"> </a><p class="pBody">
+Instead of using system fonts, you have an additional option of using a <em class="cEmphasis">bitmap</em> font. A bitmap font is simply an image that contains character shapes for a font. The bitmap font image is a single line of text containing one of each character shape. To define a bitmap font, use the following property:
+</p>
+<div class="pPreformatted"><pre class="pPreformatted">
+font.<em class="cEmphasis">&lt;name&gt;</em>=<em class="cEmphasis">&lt;font property file&gt;</em><a name="wp1005180"> </a>
+</pre></div>
+<a name="wp1005208"> </a><p class="pBody">
+The font property file contains the following property definitions:
+</p>
+<div class="pPreformatted"><pre class="pPreformatted">
+font_image = <em class="cEmphasis">&lt;image file&gt;</em><a name="wp1005214"> </a>
+font_height = <em class="cEmphasis">&lt;font height&gt;</em><a name="wp1005215"> </a>
+font_ascent = <em class="cEmphasis">&lt;font ascent&gt;</em><a name="wp1005216"> </a>
+font_descent = <em class="cEmphasis">&lt;font descent&gt;</em><a name="wp1005217"> </a>
+font_leading = <em class="cEmphasis">&lt;font leading&gt;</em><a name="wp1005218"> </a>
+</pre></div>
+<a name="wp1005219"> </a><p class="pBody">
+The image file should be in PNG, GIF or JPEG format. It should contain a row of characters:
+</p>
+<a name="wp1005270"> </a><div class="pFigureCaption">
+FIGURE&#160;5&#160;&#160;&#8211;&#160;&#160;Bitmap font image
+<br /><br />
+</div><a name="wp1005274"> </a><p class="pBody">
+<img src="images/palm_font.gif" alt="Bitmap font image" border="0" hspace="0" vspace="0"/>
+</p>
+<a name="wp1005283"> </a><p class="pBody">
+The height, ascent, descent, and leading are all specified in pixels. If you are unfamiliar with these font terms, refer to the J2SE documentation for <code class="cCode">java.awt.FontMetrics</code>.
+</p>
+<a name="wp1005284"> </a><p class="pBody">
+The font property file should also contain a list of mappings between ASCII character codes and horizontal pixel offsets into the image. In the following example, the ASCII code 65 is mapped to the horizontal offset 124:
+</p>
+<div class="pPreformatted"><pre class="pPreformatted">
+ascii_x-65=124<a name="wp1005285"> </a>
+</pre></div>
+<a name="wp1005286"> </a><p class="pBody">
+Once a bitmap font is defined, its name may be used as a font specifier.
+</p>
+<a name="wp1005210"> </a><h3 class="pHeading2">
+2.2.6	Soft Button Labels
+</h3>
+<a name="wp1004482"> </a><p class="pBody">
+Soft buttons are buttons without a fixed function. They will be fully discussed later in this chapter. Labels for the soft buttons are shown on the screen. The emulator skin property file determines where and how the soft button labels are shown.
+</p>
+<a name="wp1005074"> </a><p class="pBody">
+The fonts for the soft button labels are defined using font aliases, which are short names that you assign to a font. Each soft button label is described by a property:
+</p>
+<div class="pPreformatted"><pre class="pPreformatted">
+softbutton.<em class="cEmphasis">&lt;n&gt;</em>=<em class="cEmphasis">&lt;x&gt;</em>, <em class="cEmphasis">&lt;y&gt;</em>, <em class="cEmphasis">&lt;width&gt;</em>, <em class="cEmphasis">&lt;height&gt;</em>, <em class="cEmphasis">&lt;font alias&gt;</em>, <em class="cEmphasis">&lt;alignment&gt;</em><a name="wp1005113"> </a>
+</pre></div>
+<a name="wp1005090"> </a><p class="pBody">
+Valid values for <em class="cEmphasis">alignment</em> are <code class="cCode">left</code>, <code class="cCode">right</code>, and <code class="cCode">center</code>.
+</p>
+<a name="wp1005091"> </a><p class="pBody">
+For example, the following properties tell the toolkit to use a Courier 12-point font for the soft button labels. First the font alias <code class="cCode">softButton</code> is defined. The first label is left-justified, while the second is right-justified.
+</p>
+<div class="pPreformatted"><pre class="pPreformatted">
+font.softButton=Courier-plain-12<a name="wp1005093"> </a>
+softbutton.0=1,306,78,16, softButton, left<a name="wp1005095"> </a>
+softbutton.1=160,306,78,16, softButton, right<a name="wp1005096"> </a>
+</pre></div>
+<a name="wp1004481"> </a><h3 class="pHeading2">
+2.2.7	Sounds
+</h3>
+<a name="wp1002666"> </a><p class="pBody">
+MIDP alerts have associated sounds. In the J2ME Wireless Toolkit emulator, sounds are defined using files, one for each type enumerated in the MIDP <code class="cCode">AlertType</code> class. The emulator can use any sound file type that is supported by the underlying J2SE implementation. In J2SE SDK 1.4, this includes AIFF, AU, WAV, MIDI, and RMF. For example, here are the definitions in <code class="cCode">DefaultColorPhone</code>:
+</p>
+<div class="pPreformatted"><pre class="pPreformatted">
+alert.alarm.sound:   ../Share/mid_alarm.wav<a name="wp1003691"> </a>
+alert.info.sound:    ../Share/mid_info.wav<a name="wp1003692"> </a>
+alert.warning.sound: ../Share/mid_warn.wav<a name="wp1003693"> </a>
+alert.error.sound:   ../Share/mid_err.wav<a name="wp1003694"> </a>
+alert.confirmation.sound: ../Share/mid_confirm.wav<a name="wp1003695"> </a>
+</pre></div>
+<a name="wp1003689"> </a><p class="pBody">
+A <em class="cEmphasis">default</em> sound will be played if no sound is defined for a specific alert type:
+</p>
+<div class="pPreformatted"><pre class="pPreformatted">
+alert.confirmation.sound: <em class="cEmphasis">&lt;sound file&gt;</em><a name="wp1004503"> </a>
+</pre></div>
+<a name="wp1004500"> </a><p class="pBody">
+In addition, you can define a sound that will be played to simulate a phone&#8217;s vibration. In <code class="cCode">DefaultColorPhone</code>, it looks like this:
+</p>
+<div class="pPreformatted"><pre class="pPreformatted">
+vibrator.sound: ../Share/vibrate.wav<a name="wp1003707"> </a>
+</pre></div>
+<a name="wp1002683"> </a><h2 class="pHeading1">
+2.3	Mapping User Input
+</h2>
+<a name="wp1003759"> </a><p class="pBody">
+There are two parts to describing an emulator skin. The first part is the appearance, which is described above. The second part defines how user input is mapped in the emulator.
+</p>
+<a name="wp1003902"> </a><h3 class="pHeading2">
+2.3.1	The Keyboard Handler
+</h3>
+<a name="wp1003909"> </a><p class="pBody">
+A <em class="cEmphasis">keyboard handler</em> takes button presses and performs an appropriate action in the emulator. For example, if you use the mouse to press one of the soft buttons, it is the keyboard handler that makes the appropriate action happen in the emulator.
+</p>
+<a name="wp1003921"> </a><p class="pBody">
+The keyboard handler defines a set of standard button names, which you will use when you define buttons. You just have to tell the emulator where the buttons are located in the skin and the keyboard handler takes care of the rest.
+</p>
+<a name="wp1003925"> </a><p class="pBody">
+The J2ME Wireless Toolkit emulator includes two keyboard handlers, one for phone devices with an ITU-T keypad (<code class="cCode">DefaultKeyboardHandler</code>) and one for devices with a full Qwerty keyboard. For example, <code class="cCode">DefaultColorPhone</code> includes this keyboard handler property:
+</p>
+<div class="pPreformatted"><pre class="pPreformatted">
+keyboard.handler = com.sun.kvem.midp.DefaultKeyboardHandler<a name="wp1003937"> </a>
+</pre></div>
+<a name="wp1003935"> </a><p class="pBody">
+<code class="cCode">DefaultKeyboardHandler</code> recognizes the following standard button names: <code class="cCode">0</code> through <code class="cCode">9</code>, <code class="cCode">POUND</code>, <code class="cCode">ASTERISK</code>, <code class="cCode">POWER</code>, <code class="cCode">SEND</code>, <code class="cCode">END</code>, <code class="cCode">LEFT</code>, <code class="cCode">RIGHT</code>, <code class="cCode">UP</code>, <code class="cCode">DOWN</code>, <code class="cCode">SELECT</code>, <code class="cCode">SOFT1</code>, <code class="cCode">SOFT2</code>, <code class="cCode">SOFT3</code>, <code class="cCode">SOFT4</code>, <code class="cCode">USER1</code> through <code class="cCode">USER10</code>.
+</p>
+<a name="wp1003961"> </a><p class="pBody">
+In <code class="cCode">QwertyDevice</code>, the keyboard handler looks like this:
+</p>
+<div class="pPreformatted"><pre class="pPreformatted">
+keyboard.handler = com.sun.kvem.midp.QwertyKeyboardHandler<a name="wp1003943"> </a>
+</pre></div>
+<a name="wp1003941"> </a><p class="pBody">
+<code class="cCode">QwertyKeyboardHandler</code> supports the same buttons as <code class="cCode">DefaultKeyboardHandler</code> and also includes buttons found on a standard keyboard like alphabetic keys, shift, and alt.
+</p>
+<a name="wp1003926"> </a><h3 class="pHeading2">
+2.3.2	Buttons
+</h3>
+<a name="wp1003927"> </a><p class="pBody">
+Buttons are defined using a name and a set of coordinates. If two sets of coordinates are supplied, a rectangular button is defined. If more than two sets of coordinates are present, a polygonal area is used for the button.
+</p>
+<a name="wp1003843"> </a><p class="pBody">
+The button region is defined relative to the device skin image. When the user moves the mouse over a defined button region, the corresponding region from the skin highlight image is shown. If the user presses a button, the corresponding region from the skin pressed image is shown.
+</p>
+<a name="wp1003844"> </a><p class="pBody">
+By themselves, buttons aren&#8217;t very interesting. They just associate a button name with a rectangular or polygonal region. It&#8217;s the keyboard handler&#8217;s job to map the button name to a function in the emulator. Later, you&#8217;ll see how keys on your desktop computer&#8217;s keyboard can be mapped to buttons.
+</p>
+<a name="wp1003845"> </a><p class="pBody">
+The following property shows how to define a rectangular region for the 5 button. Its origin is <code class="cCode">140, 553</code>, with a width of <code class="cCode">84</code> and a height of <code class="cCode">37</code>.
+</p>
+<div class="pPreformatted"><pre class="pPreformatted">
+button.5 = 140, 553,  84,  37<a name="wp1003847"> </a>
+</pre></div>
+<a name="wp1003765"> </a><p class="pBody">
+Here is an example polygonal definition for the asterisk button:
+</p>
+<div class="pPreformatted"><pre class="pPreformatted">
+button.ASTERISK = 66, 605, 110, 606, 140, 636, 120, 647, 70, 637<a name="wp1003865"> </a>
+</pre></div>
+<a name="wp1003766"> </a><p class="pBody">
+This polygon is defined using straight line segments connecting the listed points:
+</p>
+<div class="pPreformatted"><pre class="pPreformatted">
+66, 105<a name="wp1003878"> </a>
+110, 606<a name="wp1003879"> </a>
+140, 636<a name="wp1003880"> </a>
+120, 647<a name="wp1003881"> </a>
+70, 637<a name="wp1003882"> </a>
+</pre></div>
+<a name="wp1003898"> </a><h3 class="pHeading2">
+2.3.3	Assigning Desktop Keyboard Keys to Buttons
+</h3>
+<a name="wp1003996"> </a><p class="pBody">
+Buttons can have one or more associated desktop keyboard keys. This means that you can use your desktop keyboard to control the emulator instead of having to move the mouse over on the device skin and press the mouse button.
+</p>
+<a name="wp1003999"> </a><p class="pBody">
+For example, <code class="cCode">DefaultColorPhone</code> allows you to press F1 on your desktop keyboard to simulate the left soft button. The left soft button is defined as <code class="cCode">SOFT1</code> in the property file:
+</p>
+<div class="pPreformatted"><pre class="pPreformatted">
+button.SOFT1 = 78, 417, 120, 423, 126, 465, 74, 440<a name="wp1014004"> </a>
+</pre></div>
+<a name="wp1004000"> </a><p class="pBody">
+And the desktop keyboard shortcut is defined thus:
+</p>
+<div class="pPreformatted"><pre class="pPreformatted">
+key.SOFT1 = VK_F1<a name="wp1004015"> </a>
+</pre></div>
+<a name="wp1004006"> </a><p class="pBody">
+The actual key definitions are <em class="cEmphasis">virtual key codes</em>, which are defined in J2SE&#8217;s <code class="cCode">java.awt.event.KeyEvent</code> class. See the J2SE documentation for details.
+</p>
+<a name="wp1004025"> </a><p class="pBody">
+You can assign multiple desktop keyboard keys to a button, if you wish. In the following example from <code class="cCode">DefaultColorPhone</code>, the <code class="cCode">5</code> key or the the number pad <code class="cCode">5</code> key on your desktop keyboard are both defined as shortcuts for the <code class="cCode">5</code> button on the emulator skin:
+</p>
+<div class="pPreformatted"><pre class="pPreformatted">
+key.5 = VK_5 VK_NUMPAD5<a name="wp1004031"> </a>
+</pre></div>
+<a name="wp1004029"> </a><h3 class="pHeading2">
+2.3.4	Mapping Game Keys
+</h3>
+<a name="wp1004059"> </a><p class="pBody">
+Game actions are already defined in <code class="cCode">DefaultKeyboardHandler</code>, but you can specify your own game actions with <code class="cCode">QwertyKeyboardHandler</code>. Use lines of the form:
+</p>
+<div class="pPreformatted"><pre class="pPreformatted">
+game.<em class="cEmphasis">&lt;function&gt;</em> = <em class="cEmphasis">&lt;button name&gt;</em><a name="wp1005293"> </a>
+</pre></div>
+<a name="wp1005294"> </a><p class="pBody">
+The function can be one of <code class="cCode">LEFT</code>, <code class="cCode">RIGHT</code>, <code class="cCode">UP</code>, <code class="cCode">DOWN</code> and <code class="cCode">SELECT</code>. Standard button names are described earlier in this chapter.
+</p>
+<a name="wp1005296"> </a><p class="pBody">
+The default settings are:
+</p>
+<div class="pPreformatted"><pre class="pPreformatted">
+game.UP = UP<a name="wp1005297"> </a>
+game.DOWN = DOWN<a name="wp1005298"> </a>
+game.LEFT = LEFT<a name="wp1005299"> </a>
+game.RIGHT = RIGHT<a name="wp1005300"> </a>
+game.SELECT = SELECT<a name="wp1004840"> </a>
+</pre></div>
+<a name="wp1004454"> </a><h3 class="pHeading2">
+2.3.5	Mapping Keys to Characters
+</h3>
+<a name="wp1005361"> </a><p class="pBody">
+With <code class="cCode">QwertyKeyboardHandler</code>, you can specify which character is generated by a button press either alone or in combination with the shift or alt buttons.
+</p>
+<a name="wp1005367"> </a><p class="pBody">
+Use a line of the form:
+</p>
+<div class="pPreformatted"><pre class="pPreformatted">
+keyboard.handler.qwerty.<em class="cEmphasis">&lt;button&gt;</em> = &#39;<em class="cEmphasis">&lt;base character&gt;</em>&#39; &#39;<em class="cEmphasis">&lt;shift character&gt;</em>&#39; &#39;<em class="cEmphasis">&lt;alternate character&gt;</em>&#39;<a name="wp1005368"> </a>
+</pre></div>
+<a name="wp1005370"> </a><p class="pBody">
+The base character is the character the button normally generates, shift character is the character used when the button is pressed at the same time as shift, and alternate character is the character generated when the button is pressed at the same time as alt.
+</p>
+<a name="wp1005375"> </a><p class="pBody">
+There are two ways you can do a button press at the same time as pressing shift or alt:
+</p>
+<ul class="pBullet1"><a name="wp1005445"> </a><div class="pBullet1"><li>Map the buttons to the keyboard, as in the previous section, and press the key associated with the button at the same time as the shift or alt keys.</li></div>
+<a name="wp1005379"> </a><div class="pBullet1Last"><li> Press the button shift-lock or alt-lock and then do the button press. Press shift-lock or alt-lock again to revert to the initial state.</li></div>
+</ul>
+<a name="wp1005381"> </a><p class="pBody">
+For example:
+</p>
+<div class="pPreformatted"><pre class="pPreformatted">
+keyboard.handler.qwerty.A = &#39;a&#39; &#39;A&#39; &#39;?&#39;<a name="wp1005362"> </a>
+</pre></div>
+<a name="wp1004051"> </a><h3 class="pHeading2">
+2.3.6	Mapping Commands to Soft Buttons
+</h3>
+<a name="wp1004068"> </a><p class="pBody">
+<em class="cEmphasis">Commands</em> are part of the MIDP specification. They are a flexible way to specify actions that should be available to the user, without mandating how a particular device makes them available.
+</p>
+<a name="wp1004069"> </a><p class="pBody">
+In general, MIDP devices use soft buttons to invoke commands. The command text is shown on the display, somwhere physically near to the soft buttons. If there are more commands than available soft buttons, the implementation will show one soft button label as a menu. Pressing the menu soft button brings up a menu of available commands.
+</p>
+<a name="wp1004072"> </a><p class="pBody">
+The J2ME Wireless Toolkit emulator allows you to specify where you want certain types of commands to appear, based on the command types specified in <code class="cCode">javax.microedition.lcdui.Command</code>. For example, on an emulator skin with two soft buttons, you might prefer that <code class="cCode">BACK</code> and <code class="cCode">EXIT</code> commands always appear on the left soft button, while <code class="cCode">OK</code> commands should appear on the right soft button.
+</p>
+<a name="wp1004076"> </a><p class="pBody">
+You can specify these types of preferences in the emulator skin property file, using lines like the following:
+</p>
+<div class="pPreformatted"><pre class="pPreformatted">
+command.keys.<em class="cEmphasis">&lt;command type&gt;</em>=<em class="cEmphasis">&lt;button&gt;</em><a name="wp1004101"> </a>
+</pre></div>
+<a name="wp1004077"> </a><p class="pBody">
+For example, <code class="cCode">DefaultColorPhone</code> defines command preferences this way:
+</p>
+<div class="pPreformatted"><pre class="pPreformatted">
+command.keys.BACK = SOFT1<a name="wp1004080"> </a>
+command.keys.EXIT = SOFT1<a name="wp1004081"> </a>
+command.keys.CANCEL = SOFT1<a name="wp1004082"> </a>
+command.keys.STOP = SOFT1<a name="wp1004083"> </a>
+<a name="wp1004084"> </a>
+command.keys.OK = SOFT2<a name="wp1004085"> </a>
+command.keys.SCREEN = SOFT2<a name="wp1004086"> </a>
+command.keys.ITEM = SOFT2<a name="wp1004087"> </a>
+command.keys.HELP = SOFT2<a name="wp1004088"> </a>
+</pre></div>
+<a name="wp1004133"> </a><p class="pBody">
+By specifying additional button names, you can specify other preferred buttons for a particular command type. For example, this line tells the emulator that <code class="cCode">BACK</code> commands should be mapped to <code class="cCode">END</code>, if it is available, or <code class="cCode">SOFT1</code> otherwise.
+</p>
+<div class="pPreformatted"><pre class="pPreformatted">
+command.keys.BACK = END SOFT1<a name="wp1004139"> </a>
+</pre></div>
+<a name="wp1004157"> </a><p class="pBody">
+Finally, if you wish, you can specify that a soft button will only be used for specific command types. The following definition allows only the command types <code class="cCode">BACK</code>, <code class="cCode">EXIT</code>, <code class="cCode">CANCEL</code>, and <code class="cCode">STOP</code> to be mapped to the <code class="cCode">SOFT1</code> key.
+</p>
+<div class="pPreformatted"><pre class="pPreformatted">
+command.exclusive.SOFT1 = BACK EXIT CANCEL STOP<a name="wp1004152"> </a>
+</pre></div>
+<a name="wp1004182"> </a><h3 class="pHeading2">
+2.3.7	The Command Menu
+</h3>
+<a name="wp1004186"> </a><p class="pBody">
+When there are more commands than available soft buttons, commands are placed in a menu. The J2ME Wireless Toolkit emulator offers control over the command menu. You can choose the button which is used to show the menu, the buttons that are used to traverse the items in the menu, and the text labels that are shown for the menu.
+</p>
+<a name="wp1004192"> </a><p class="pBody">
+The following property, from <code class="cCode">DefaultColorPhone</code>, tells the emulator skin to use the second soft button to show or hide the menu.
+</p>
+<div class="pPreformatted"><pre class="pPreformatted">
+command.menu.activate = SOFT2<a name="wp1004197"> </a>
+</pre></div>
+<a name="wp1004195"> </a><p class="pBody">
+By default, the <code class="cCode">UP</code> and <code class="cCode">DOWN</code> buttons are used to traverse the menu, while <code class="cCode">SELECT</code> is used to choose a command. You can change these assignments using the following properties:
+</p>
+<div class="pPreformatted"><pre class="pPreformatted">
+command.menu.select = <em class="cEmphasis">&lt;button&gt;</em><a name="wp1004210"> </a>
+command.menu.up = <em class="cEmphasis">&lt;button&gt;</em><a name="wp1004211"> </a>
+command.menu.down = <em class="cEmphasis">&lt;button&gt;</em><a name="wp1004212"> </a>
+</pre></div>
+<a name="wp1004396"> </a><h3 class="pHeading2">
+2.3.8	Pausing and Resuming
+</h3>
+<a name="wp1004400"> </a><p class="pBody">
+The MIDP specification allows applications (<code class="cCode">MIDlet</code>s) to be paused at any time, possibly in response to other phone events like incoming calls.
+</p>
+<a name="wp1004404"> </a><p class="pBody">
+You can use the emualtor skin property file to define desktop keyboard shortcuts for pausing and resuming MIDlets. <code class="cCode">DefaultColorPhone</code>, for example, uses F6 for pausing (suspending) and F7 for resuming:
+</p>
+<div class="pPreformatted"><pre class="pPreformatted">
+midlet.SUSPEND_ALL = VK_F6<a name="wp1004407"> </a>
+midlet.RESUME_ALL = VK_F7<a name="wp1004408"> </a>
+</pre></div>
+<a name="wp1003889"> </a><h3 class="pHeading2">
+2.3.9	Pointer Events
+</h3>
+<a name="wp1004347"> </a><p class="pBody">
+A single property determines whether the emulator skin has a touch screen. If it does, pointer events will be delivered to <code class="cCode">Canvas</code>es.
+</p>
+<div class="pPreformatted"><pre class="pPreformatted">
+touch_screen=&lt;true or false&gt;<a name="wp1004352"> </a>
+</pre></div>
+<a name="wp1004587"> </a><h2 class="pHeading1">
+2.4	Locale and Character Encoding
+</h2>
+<a name="wp1004592"> </a><p class="pBody">
+A locale is a geographic or political region or community that shares the same language, customs, or cultural convention. In software, a locale is a collection of files, data, and code, which contains the information necessary to adapt software to a specific geographical location.
+</p>
+<a name="wp1004596"> </a><p class="pBody">
+Some operations are locale-sensitive and require a specified locale to tailor information for users, such as:
+</p>
+<a name="wp1004598"> </a><div class="pBullet1Plus"><li>Messages displayed to the user</li></div>
+<a name="wp1004599"> </a><div class="pBullet1Plus"><li>Cultural information such as, dates and currency formats</li></div>
+<a name="wp1004600"> </a><p class="pBody">
+In the J2ME Wireless Toolkit emulator, the default locale is determined by the platform&#8217;s locale.
+</p>
+<a name="wp1004601"> </a><p class="pBody">
+To define a specific locale, use the following definition:
+</p>
+<div class="pPreformatted"><pre class="pPreformatted">
+microedition.locale: <em class="cEmphasis">&lt;locale name&gt;</em><a name="wp1004602"> </a>
+</pre></div>
+<a name="wp1004603"> </a><p class="pBody">
+A locale name is comprised of two parts separated by an dash (-), for example, <code class="cCode">en-US</code> is the locale designation for English/United States while <code class="cCode">en-AU</code> is the designation for English/Australia.
+</p>
+<a name="wp1004606"> </a><p class="pBody">
+The first part is a valid ISO Language Code. These codes are the lower-case two-letter codes defined by ISO-639. You can find a full list of these codes at a number of sites, such as:
+</p>
+<a name="wp1004609"> </a><p class="pBody">
+<a  href="http://www.ics.uci.edu/pub/ietf/http/related/iso639.txt">http://www.ics.uci.edu/pub/ietf/http/related/iso639.txt</a>
+</p>
+<a name="wp1004610"> </a><p class="pBody">
+The second part is a valid ISO Country Code. These codes are the upper-case two-letter codes defined by ISO-3166. You can find a full list of these codes at a number of sites, such as:
+</p>
+<a name="wp1004709"> </a><p class="pBody">
+<a  href="http://www.chemie.fu-berlin.de/diverse/doc/ISO_3166.html">http://www.chemie.fu-berlin.de/diverse/doc/ISO_3166.html</a>
+</p>
+<a name="wp1004714"> </a><p class="pBody">
+The input and output APIs in CLDC use named character encodings to convert between 8-bit characters and 16-bit Unicode characters. Specific MIDP implementation might make only a small set of encodings available for MIDlets to use.
+</p>
+<a name="wp1004760"> </a><p class="pBody">
+In the emulator, the default encoding is default encoder of the platform you are running on. Your emulator might use other encodings, such as UTF-8 and UTF-16, providing they are available in the J2SE platform.
+</p>
+<a name="wp1004720"> </a><p class="pBody">
+To define the character encoding used by an emulator skin, use the following definition:
+</p>
+<div class="pPreformatted"><pre class="pPreformatted">
+microedition.encoding: <em class="cEmphasis">&lt;encoding&gt;</em><a name="wp1004722"> </a>
+</pre></div>
+<a name="wp1004723"> </a><p class="pBody">
+To define the set of all available encodings, use the following definition:
+</p>
+<div class="pPreformatted"><pre class="pPreformatted">
+microedition.encoding.supported: <em class="cEmphasis">&lt;list of encodings&gt;</em><a name="wp1004724"> </a>
+</pre></div>
+<a name="wp1004781"> </a><p class="pBody">
+For example:
+</p>
+<div class="pPreformatted"><pre class="pPreformatted">
+microedition.encoding: UTF-8<a name="wp1004789"> </a>
+microedition.encoding.supported: UTF-8, UTF-16, ISO-8859-1,ISO-8859-2, Shift_JIS<a name="wp1004790"> </a>
+</pre></div>
+<a name="wp1004733"> </a><p class="pBody">
+To support all encodings supported by the J2SE platform, leave the <code class="cCode">microedition.encoding.supported</code> definition blank, as in:
+</p>
+<div class="pPreformatted"><pre class="pPreformatted">
+microedition.encoding.supported:<a name="wp1004803"> </a>
+</pre></div>
+<hr class="pHr"/><div class="note">
+<a name="wp1004736"> </a>
+<b>Note &#8211;</b>   The encoding ISO-8859-1 is always available to applications running on emulated devices, whether or not it is listed in the <code class="cCode">microedition.encoding.supported</code> entry.
+<hr class="pHr"/></div>
+
+    <p>&#160;</p>
+    <hr class="pHr" />
+
+    <table class="full-width" id="SummaryNotReq2">
+	  <!-- formatting table -->
+      <tr>
+        <td class="go-left">
+          <a accesskey="c" href="index.html">
+            <img id="LongDescNotReq1" src="images/toc.gif" border="0"
+              alt="Contents" /></a>
+          <a accesskey="p" href="introduction.html">
+            <img id="LongDescNotReq2" src="images/prev.gif" border="0"
+              alt="Previous" /></a>
+          <a accesskey="n" href="obfuscator.html">
+            <img id="LongDescNotReq3" src="images/next.gif" border="0"
+              alt="Next" /></a>
+          <a accesskey="i" href="indexa.html">
+            <img id="LongDescNotReq4" src="images/index.gif" border="0"
+              alt="Index" /></a>
+        </td>
+        <td class="go-right">
+          <span class="copyright">J2ME Wireless Toolkit Basic Customization Guide <br /> J2ME Wireless Toolkit 2.2</span>
+        </td>
+      </tr>
+    </table>
+
+    <p>&#160;</p>
+    <p class="copyright">
+      <a href="copyright.html">Copyright</a> &#169; 2004 Sun Microsystems, Inc. 
+      All rights reserved.
+      Use is subject to the <a href="../../BinaryLicense.html">license terms</a>.
+    </p>
+  </body>
+</html>

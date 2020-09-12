@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.6.1058" />
+    <meta name="TEMPLATEBASE" content="book-w-index" />
+    <meta name="LASTUPDATED" content="10/27/04 10:15:21" />
+    <title>Security and MIDlet Signing</title>
+    <link rel="StyleSheet" href="document.css" type="text/css" />
+    <link rel="StyleSheet" href="catalog.css" type="text/css" />
+    <link rel="Table of Contents" href="index.html" />
+    <link rel="Previous" href="monitoring.html" />
+    <link rel="Next" href="wma.html" />
+    <link rel="Index" href="indexa.html" />
+  </head>
+
+  <body>
+
+    <table class="full-width" id="SummaryNotReq1"
+        cellspacing="0" cellpadding="0" border="0">
+	  <!-- formatting table -->
+      <tr><td class="sun-darkblue">&#160;</td></tr>
+      <tr><td class="sun-lightblue">&#160;</td></tr>
+    </table>
+    
+    <table class="full-width" id="SummaryNotReq2"
+        cellspacing="0" cellpadding="0" border="0">
+	  <!-- formatting table -->
+      <tr>
+        <td class="go-left">
+          <p class="nav-link">
+            <a accesskey="h" href="../../index.html">Documentation Home</a>
+            &gt;
+            <a accesskey="c" href="index.html"><i>User's Guide</i></a>
+            &gt;
+            Security and MIDlet Signing
+          </p>
+        </td>
+        <td class="go-right">
+        <a accesskey="c" href="index.html">
+          <img id="LongDescNotReq1" src="images/toc.gif" border="0"
+            alt="Contents" /></a>
+	<a accesskey="p" href="monitoring.html">
+	  <img id="LongDescNotReq2" src="images/prev.gif" border="0"
+            alt="Previous" /></a>
+        <a accesskey="n" href="wma.html">
+	  <img id="LongDescNotReq3" src="images/next.gif" border="0"
+            alt="Next" /></a>
+        <a accesskey="i" href="indexa.html">
+	  <img id="LongDescNotReq4" src="images/index.gif" border="0"
+            alt="Index" /></a>
+        </td>
+      </tr>
+    </table>
+
+<a name="wp43384"> </a><h2 class="pChapNum">
+Chapter &#160; 6
+</h2>
+<a name="wp39771"> </a><h2 class="pTitle">
+Security and MIDlet Signing
+</h2>
+<hr />
+<a name="wp34657"> </a><p class="pBody">
+MIDP 2.0 includes a comprehensive security model based on protection domains. MIDlet suites are installed into a protection domain which determines access to protected functions. The MIDP 2.0 specification also includes a recommended practice for using public key cryptography to verify and authenticate MIDlet suites.
+</p>
+<a name="wp36410"> </a><p class="pBody">
+For definitive information, consult the MIDP 2.0 specification. For an overview of MIDlet signing using the J2ME Wireless Toolkit, read this article:
+</p>
+<a name="wp36414"> </a><p class="pIndented1">
+<em class="cEmphasis">Understanding MIDP 2.0&#39;s Security Architecture</em>
+</p>
+<a name="wp37277"> </a><p class="pIndented1">
+<a  href="http://developers.sun.com/techtopics/mobility/midp/articles/permissions/">http://developers.sun.com/techtopics/mobility/midp/articles/permissions/</a>
+</p>
+<a name="wp36423"> </a><p class="pBody">
+If you need more background on public key cryptography, try this article:
+</p>
+<a name="wp36454"> </a><p class="pIndented1">
+<em class="cEmphasis">MIDP Application Security 1: Design Concerns and Cryptography</em>
+</p>
+<a name="wp37297"> </a><p class="pIndented1">
+<a  href="http://developers.sun.com/techtopics/mobility/midp/articles/security1/">http://developers.sun.com/techtopics/mobility/midp/articles/security1/</a>
+</p>
+<a name="wp36453"> </a><p class="pBody">
+This chapter describes support for protection domains, permissions, and MIDlet signing in the J2ME Wireless Toolkit.
+</p>
+<a name="wp36511"> </a><h2 class="pHeading1">
+6.1	Permissions
+</h2>
+<a name="wp36515"> </a><p class="pBody">
+MIDlets must have permission to perform sensitive operations, like connecting to the network. Permissions have specific names, and MIDlet suites can indicate their need for certain kinds of permissions through attributes in the MIDlet suite descriptor.
+</p>
+<a name="wp36516"> </a><p class="pBody">
+In the J2ME Wireless Toolkit, you can add these permission attributes to a project by clicking on the <b class="cBold">Settings...</b> button in KToolbar. Select the <b class="cBold">Permissions</b> tab. The <b class="cBold">MIDlet-Permissions</b> box shows permissions which the MIDlet must possess, while the <b class="cBold">MIDlet-Permissions-Opt</b> box contains permissions that the MIDlet would like to have but does not need absolutley.
+</p>
+<a name="wp36520"> </a><div class="pFigureCaption">
+FIGURE&#160;25&#160;&#160;&#8211;&#160;&#160;MIDlet suite permissions
+<br /><br />
+</div><a name="wp43397"> </a><p class="pBody">
+<img src="images/permissions.gif" alt="MIDlet suite permissions" border="0" hspace="0" vspace="0"/>
+</p>
+<a name="wp36529"> </a><p class="pBody">
+To add a permission to either box, click on <b class="cBold">Add</b> and choose the permission you want to add. To remove a permission, highlight it and click on <b class="cBold">Remove</b>.
+</p>
+<a name="wp36436"> </a><h2 class="pHeading1">
+6.2	Protection Domains
+</h2>
+<a name="wp36483"> </a><p class="pBody">
+The J2ME Wireless Toolkit includes four protection domains:
+</p>
+<ul class="pBullet1"><a name="wp43441"> </a><div class="pBullet1"><li>MIDlets in the <code class="cCode">minimum</code> domain are denied all permissions.</li></div>
+<a name="wp39138"> </a><div class="pBullet1Plus"><li>The <code class="cCode">untrusted</code> domain provides a high level of security for applications whose origins and authenticity cannot be determined. The user is prompted frequently when the application attempts a sensitive operation</li></div>
+<a name="wp43446"> </a><div class="pBullet1Plus"><li>The <code class="cCode">trusted</code> domain is a happy place for MIDlets where all permissions are granted.</li></div>
+<a name="wp43447"> </a><div class="pBullet1Last"><li>The <code class="cCode">maximum</code> domain is equivalent to <code class="cCode">trusted</code>.</li></div>
+</ul>
+<a name="wp36544"> </a><p class="pBody">
+When you press the <b class="cBold">Run</b> button to run your application in the emulator, your code runs in the <code class="cCode">untrusted</code> protection domain by default. You can change which protection domain is used by choosing <b class="cBold">Edit &gt; Preferences...</b> from the KToolbar menu. Select the <b class="cBold">Security</b> tab. You can now choose the default protection domain from the combo box.
+</p>
+<a name="wp36565"> </a><p class="pBody">
+Things are different when you use <b class="cBold">Run via OTA</b>. Your packaged MIDlet suite is installed directly into the emulator, and it is placed in a protection domain at installation time. The emulator uses public key cryptography to determine the protection domain of installed MIDlet suites.
+</p>
+<a name="wp36568"> </a><p class="pBody">
+If the MIDlet suite is not signed, it is placed in the <code class="cCode">untrusted</code> domain. If the MIDlet is signed, it is placed in whatever protection domain is associated with the root certificate of the signing key&#8217;s certificate chain.
+</p>
+<a name="wp36569"> </a><p class="pBody">
+For example, suppose Respectable Software, a hypothetical company, wants to distribute a cryptographically signed MIDlet suite. Respectable Software buys a signing key pair from Super-Trustee, a hyptothetical certificate authority. Using the signing key, Respectable Software signs the MIDlet suite, and distributes their certificate with the MIDlet suite. When the MIDlet suite is installed on the emulator, or on a device, the implementation verifies Respectable&#8217;s certificate using its own copy of Super-Trustee&#8217;s root certificate. Then it uses Respectable&#8217;s certificate to verify the signature on the MIDlet suite. Assuming everything checks out, the device or emulator installs the MIDlet suite into whatever protection domain is associated with Super-Trustee&#8217;s root certificate.
+</p>
+<a name="wp36596"> </a><p class="pBody">
+The J2ME Wireless Toolkit provides tools to sign MIDlet suites, manage keys, and manage root certificates.
+</p>
+<a name="wp36606"> </a><h2 class="pHeading1">
+6.3	Signing a MIDlet Suite
+</h2>
+<a name="wp36603"> </a><p class="pBody">
+To sign a MIDlet suite, you must package it first. Then choose <b class="cBold">Project &gt; Sign</b> from the KToolbar menu. The signing window appears.
+</p>
+<a name="wp36623"> </a><div class="pFigureCaption">
+FIGURE&#160;26&#160;&#160;&#8211;&#160;&#160;The MIDlet suite signing window
+<br /><br />
+</div><a name="wp43474"> </a><p class="pBody">
+<img src="images/sign2.gif" alt="The MIDlet suite signing window" border="0" hspace="0" vspace="0"/>
+</p>
+<a name="wp39526"> </a><p class="pBody">
+Signing is very easy. Just select the key you want to use in the <b class="cBold">Alias List</b> and click on the <b class="cBold">Sign MIDlet Suite...</b> button.
+</p>
+<a name="wp36632"> </a><h2 class="pHeading1">
+6.4	Managing Keys
+</h2>
+<a name="wp36636"> </a><p class="pBody">
+The MIDlet signing window can also be used to manage keys.
+</p>
+<a name="wp36706"> </a><h3 class="pHeading2">
+6.4.1	Creating a New Key Pair
+</h3>
+<a name="wp36637"> </a><p class="pBody">
+To create an entirely new key pair, click on <b class="cBold">New Key Pair...</b> The toolkit prompts you for a key alias and information that will be associated with the key pair.
+</p>
+<a name="wp36641"> </a><div class="pFigureCaption">
+FIGURE&#160;27&#160;&#160;&#8211;&#160;&#160;Creating a new key pair
+<br /><br />
+</div><a name="wp43508"> </a><p class="pBody">
+<img src="images/newkeypair3.gif" alt="Creating a new key pair" border="0" hspace="0" vspace="0"/>
+</p>
+<a name="wp36638"> </a><p class="pBody">
+After you click on <b class="cBold">Create</b>, the toolkit prompts you to choose a protection domain. The connection between the key pair you just created and a protection domain might seem oblique, but it makes perfect sense:
+</p>
+<ul class="pBullet1"><a name="wp36650"> </a><div class="pBullet1"><li>The toolkit creates a self-signed root certficate using the key pair you just created.</li></div>
+<a name="wp36654"> </a><div class="pBullet1Plus"><li>The root certificate is added to the emulator&#8217;s list of root certificates.</li></div>
+<a name="wp36658"> </a><div class="pBullet1Last"><li>The toolkit needs to associate the root certificate with a protection domain.</li></div>
+</ul>
+<a name="wp36659"> </a><p class="pBody">
+Now imagine what happens when you install a MIDlet suite signed with your new key:
+</p>
+<ul class="pBullet1"><a name="wp36668"> </a><div class="pBullet1"><li>The implementation examines the certificate chain in the MIDlet suite descriptor. In this case the certificate chain is a single certificate, the self-signed root.</li></div>
+<a name="wp36672"> </a><div class="pBullet1Plus"><li>The implementation tries to find the root of the certificate chain in its internal list. This succeeds because the root certificate was added when you create the key pair.</li></div>
+<a name="wp36678"> </a><div class="pBullet1Plus"><li>The implementation considers the certificate valid and uses it to verify the signature on the MIDlet suite.</li></div>
+<a name="wp36686"> </a><div class="pBullet1Last"><li>The MIDlet suite is installed into whatever protection domain you picked.</li></div>
+</ul>
+<a name="wp36762"> </a><h3 class="pHeading2">
+6.4.2	Getting Real Keys
+</h3>
+<a name="wp41808"> </a><p class="pBody">
+The ability to create a key pair and sign a MIDlet within the J2ME Wireless Toolkit environment is for testing purposes only. When you run your application on an actual device, you must obtain a signing key pair from a certificate authority recognized by the device.
+</p>
+<a name="wp43194"> </a><p class="pBody">
+The procedure for signing MIDlet suites with real keys works like this:
+</p>
+<ol class="pList1"><a name="wp43224"> </a><div class="pList1"><li>Generate a new key pair. In the J2ME Wireless Toolkit you can do this by pressing <b class="cBold">New Key Pair...</b> in the MIDlet signing window, as described above.</li></div>
+<a name="wp43239"> </a><div class="pList1Plus"><li>Generate a Certificate Signing Request (CSR). Press <b class="cBold">Generate CSR...</b> in the signing window. To change the location of the CSR file, enter a new path or press <b class="cBold">Browse...</b> and choose a new file location. Press <b class="cBold">Create</b> to write the CSR file. After the CSR is written, you&#8217;ll see a message that indicates success.</li></div>
+<a name="wp43258"> </a><div class="pList1Plus"><li>Send the CSR to a certificate authority (CA). The CA will need more information from you to verify your identity. You will also need to pay the CA for the certificate they generate for you.</li></div>
+<a name="wp43264"> </a><div class="pList1Plus"><li>Once the CA has verified your identity and taken your money, you will receive a certificate from the CA that certifies your public key.</li></div>
+<a name="wp43268"> </a><div class="pList1Last"><li>Import the certificate into the J2ME Wireless Toolkit by pressing <b class="cBold">Import Certificate...</b> in the MIDlet signing window.</li></div>
+</ol>
+<a name="wp43294"> </a><p class="pBody">
+You can now use your own private key to sign MIDlet suites. The J2ME Wireless Toolkit will take care of the details of placing the signature and your certificate into the MIDlet suite.
+</p>
+<a name="wp41831"> </a><h3 class="pHeading2">
+6.4.3	Importing an Existing Key Pair
+</h3>
+<a name="wp41832"> </a><p class="pBody">
+You may have keys in a J2SE keystore that you would like to use for MIDlet signing. In this case, you need to import your signing keys to the J2ME Wireless Toolkit so that you can sign your MIDlet suite. To do this from the MIDlet signing window, click on <b class="cBold">Import Key Pair...</b> Select a file that contains a J2SE keystore. You will be prompted for the keystore passphrase. Then select the alias for the key pair you wish to import. Finally, you will need to select a protection domain for the key pair&#8217;s root certificate.
+</p>
+<a name="wp36718"> </a><h3 class="pHeading2">
+6.4.4	Removing a Key Pair
+</h3>
+<a name="wp36722"> </a><p class="pBody">
+To remove a key pair from the MIDlet signing window, select its alias and choose <b class="cBold">Action &gt; Delete Selection</b>.
+</p>
+<a name="wp36714"> </a><h2 class="pHeading1">
+6.5	Managing Certificates
+</h2>
+<a name="wp36479"> </a><p class="pBody">
+You&#8217;ve already heard about the emulator&#8217;s list of root certificates. In this section, you&#8217;ll learn how you can manage this list using the J2ME Wireless Toolkit.
+</p>
+<a name="wp36773"> </a><p class="pBody">
+Real devices have similar lists of root certificates, although they cannot usually be modified by the user. When you want to deploy your application on a real device, you&#8217;ll have to use signing keys issued by a certificate authority whose root certificate is present on the device. Otherwise, the device will be unable to verify your application.
+</p>
+<a name="wp36774"> </a><p class="pBody">
+While you&#8217;re developing your application, the toolkit&#8217;s certificate management utility provides a convenient way to manipulate the emulator&#8217;s list of root certificates for testing purposes.
+</p>
+<a name="wp36775"> </a><p class="pBody">
+Choose <b class="cBold">File &gt; Utilities...</b> from the KToolbar menu. Click on the <b class="cBold">Manage Certificates</b> button to open up the certificate manager window.
+</p>
+<a name="wp36793"> </a><div class="pFigureCaption">
+FIGURE&#160;28&#160;&#160;&#8211;&#160;&#160;The certificate manager
+<br /><br />
+</div><a name="wp43542"> </a><p class="pBody">
+<img src="images/certificatemanager4.gif" alt="The certificate manager" border="0" hspace="0" vspace="0"/>
+</p>
+<a name="wp36809"> </a><p class="pBody">
+Each certificate is shown as a single line in the left part of the window, the <b class="cBold">Certificate List</b>. When you click on a certificate, its details are shown in the right part of the window. You&#8217;ll also see the certificate&#8217;s associated protection domain.
+</p>
+<a name="wp36820"> </a><h3 class="pHeading2">
+6.5.1	Importing Certificates
+</h3>
+<a name="wp36876"> </a><p class="pBody">
+You can import certficates either from certificate files or from J2SE keystore files.
+</p>
+<a name="wp36883"> </a><p class="pBody">
+To import a certificate from a file, click on <b class="cBold">Import Certificate...</b> in the certificate manager window. After you locate the certificate file, choose which protection domain is associated with the certificate.
+</p>
+<a name="wp36884"> </a><p class="pBody">
+To import a certificate from a J2SE keystore, choose <b class="cBold">Action &gt; Import J2SE Certificate</b> from the menu in the certificate manager window. First, choose a protection domain for the certificate. Then select the keystore file and enter the keystore password. Finally, select the alias for the certificate you wish to import.
+</p>
+<a name="wp36828"> </a><h3 class="pHeading2">
+6.5.2	Removing Certificates
+</h3>
+<a name="wp36832"> </a><p class="pBody">
+To remove a certificate from the list, select the certificate and choose <b class="cBold">Action &gt; Delete Selection</b>.
+</p>
+<a name="wp36738"> </a><p class="pBody">
+
+</p>
+
+    <p>&#160;</p>
+    <hr class="pHr" />
+
+    <table class="full-width" id="SummaryNotReq3">
+	  <!-- formatting table -->
+      <tr>
+        <td class="go-left">
+          <a accesskey="c" href="index.html">
+            <img id="LongDescNotReq1" src="images/toc.gif" border="0"
+              alt="Contents" /></a>
+          <a accesskey="p" href="monitoring.html">
+            <img id="LongDescNotReq2" src="images/prev.gif" border="0"
+              alt="Previous" /></a>
+          <a accesskey="n" href="wma.html">
+            <img id="LongDescNotReq3" src="images/next.gif" border="0"
+              alt="Next" /></a>
+          <a accesskey="i" href="indexa.html">
+            <img id="LongDescNotReq4" src="images/index.gif" border="0"
+              alt="Index" /></a>
+        </td>
+        <td class="go-right">
+          <span class="copyright">J2ME Wireless Toolkit User's Guide <br /> J2ME Wireless Toolkit 2.2</span>
+        </td>
+      </tr>
+    </table>
+
+    <p>&#160;</p>
+    <p class="copyright">
+      <a href="copyright.html">Copyright</a> &#169; 2004 Sun Microsystems, Inc. 
+      All rights reserved.
+      Use is subject to the <a href="../../BinaryLicense.html">license terms</a>.
+    </p>
+  </body>
+</html>

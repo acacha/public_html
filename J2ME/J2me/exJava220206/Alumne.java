@@ -1,0 +1,38 @@
+import java.util.ArrayList;
+import java.util.Iterator;
+public class Alumne {
+	private String matricula;
+	private ArrayList<Assignatura> assignatura;
+	
+	public Alumne(String m) {
+		matricula = m;
+		assignatura = new ArrayList<Assignatura>();
+	}
+	public String getMatricula(){
+		return this.matricula;
+	}
+	public ArrayList<Assignatura> getAssignatura(){
+		return this.assignatura;		
+	}
+
+	public void addAssignatura(Assignatura a ){
+		Iterator<Assignatura> it = assignatura.iterator(); 
+		while ( it.hasNext() ) {
+
+			if ( ( (it.next()).getId()).equals(a.getId() ) )  {
+//			if (  it.next().getId() == a.getId()  )  {
+				System.out.println("Aquesta Assignatura ja existeix");
+				return;
+			}
+		}
+		assignatura.add(a);
+	}
+	public String toString() {
+		String str = this.getMatricula() + ":";
+		Iterator<Assignatura> it = assignatura.iterator();
+		while (it.hasNext()) {
+			str = str + "\n" + it.next(); 
+		}
+		return str;
+	}
+}

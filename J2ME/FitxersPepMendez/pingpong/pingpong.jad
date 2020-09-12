@@ -1,0 +1,11 @@
+MIDlet-1: PingPong, /org/nico/midlets/games/pingpong/images/icon.png, org.nico.midlets.games.pingpong.controller.PingPong
+MIDlet-Description: Ping pong interactivo
+MIDlet-Icon: /org/nico/midlets/games/pingpong/images/icon.png
+MIDlet-Delete-Confirm: Por favor, enviar comentarios a jmendez1@xtec.cat
+MIDlet-Jar-Size: 508736
+MIDlet-Jar-URL: pingpong.jar
+MIDlet-Name: Ping Pong Midlet Suite
+MIDlet-Vendor: Pep Mendez & Associates
+MIDlet-Version: 3.0
+MicroEdition-Configuration: CLDC-1.1
+MicroEdition-Profile: MIDP-2.0

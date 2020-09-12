@@ -1,0 +1,90 @@
+package org.nico.midlets.games.sudoku.resources;
+
+import org.nico.midlets.resources.ListResourceBundle;
+
+/**
+ * <p>Title: Sudoku</p>
+ * <p>Description: Juego japones</p>
+ * <p>Comments: Version recursiva</p>
+ * <p>Date: 06/07/06</p>
+ * @author Pep Mendez
+ */
+public class ApplicationResources_fr_FR extends ListResourceBundle {
+
+  public ApplicationResources_fr_FR() {
+    super();
+  }
+  private Object[][] recursos = {
+      {"titulo.principal", "Sudoku"},
+      {"titulo.creditos", "Crèdits"},
+      {"titulo.ganador", "Felicitacions"},
+      {"subtitulo.ganador", "Ohhhhhhhhhhhhhhhhhhhhh\nFelicitacions\nJouez de nouveau..."},
+      {"titulo.reglas", "Regles du jeu"},
+      {"subtitulo.reglas", "Sudoku, du japon su 'numero' et doku 'solitaire', est joué en une table de 9x9, 9 files i 9 colonnes, qui sont divisés par 9 cofre de 3x3 cellules.\nIniciamant, se presente quelque numeros, et est traité de superposer les numeros de 1 a 9 qui manque dans chaque cofre, file et colonne.\nEst recomander de comencer par les cofres avec plus de numeros."},
+      {"info.pensando", "Pensé..."},
+      {"info.juego.inconsistente", "Le jeu n´est pas consistant"},
+      {"info.juego.sin.solucion", "Il n´y a pas de solution"},
+      {"info.juego.generado", "Jeu generé en "},
+      {"info.juego.solucionado", "Jeu solutionée en "},
+      {"info.intentalo.de.nuevo", "Intante le de nouveau"},
+//      {"info.tablero.vacio", "La table est vide, pose quelque numeros"},
+      {"info.tablero.vacio", "La table est vide"},
+//      {"info.tablero.lleno", "La table est pleine, choisi le menu/Reset"},
+      {"info.tablero.lleno", "La table est pleine"},
+      {"info.correcto", "Correcte, tu peux continuer"},
+      {"info.incorrecto", "Incorrecte, corrige les erreurs"},
+      {"info.pistas.disponibles", "Il n´y a plus de piste"},
+      {"nivel1", "\tElemental"},
+      {"nivel2", "\tBasic"},
+      {"nivel3", "\tFacil"},
+      {"nivel4", "\tTrés facil"},
+      {"nivel5", "\tIntermilieu"},
+      {"nivel6", "\tDificil"},
+      {"nivel7", "\tTrés dificil"},
+      {"nivel8", "\tAvancé"},
+      {"nivel9", "\tProfessional"},
+      {"ayuda0", "\tActivée, montre les messages d´aide"},
+      {"ayuda1", "\tDesactivée, ne montre pas de messege d´aide"},
+      {"presentacion0", "\tMontre numeros \"1-9\""}, // !!!
+      {"presentacion1", "\tMontre letras \"A-I\""}, // !!!
+      {"menu.salir", "Sortir"},
+      {"menu.resolver", "Resoudre"},
+      {"menu.reset", "Reset"},
+      {"menu.nuevo", "Nouveau"},
+      {"menu.plantear", "suggérer"},
+      {"menu.configuracion", "Configuration"},
+      {"menu.pista", "Piste"},
+      {"menu.creditos", "Crèdits"},
+      {"menu.revisar", "Reviser"},
+      {"menu.reglas", "Instructions"},
+      {"alert.creditos", "Crèdits"},
+      {"alert.felicidades", "Felicitacions, jeu resolu en "},
+      {"etiqueta.fila", "A la file "},
+      {"etiqueta.columna", " colonne "},
+      {"etiqueta.un", " un "},
+      {"etiqueta.numero", " el número "},
+      {"etiqueta.letra", " la letra "},
+      {"formulario.configuracion.titulo", "Configuratio"},
+      {"formulario.configuracion.menu.aceptar", "Accepter"},
+      {"formulario.configuracion.menu.cancelar", "Annuler"},
+      {"formulario.configuracion.ayuda.activada", "Activée"},
+      {"formulario.configuracion.ayuda.desactivada", "Desactivée"},
+      {"formulario.configuracion.ayuda.on.line", "Aide en ligne"},
+      {"formulario.configuracion.ayuda.interactiva", "Aide interactive selectionée: "},
+      {"formulario.configuracion.selector.nivel", "Selecteur de nivel"},
+      {"formulario.configuracion.nivel.juego", "Nivel de jeu seleccioné: "},
+      {"formulario.configuracion.presentacion.titulo", "Representación gráfica"}, // !!!
+      {"formulario.configuracion.presentacion.comentario", "Símbolos seleccionados: "}, // !!!
+      {"formulario.configuracion.presentacion.numeros", "Números"}, // !!!
+      {"formulario.configuracion.presentacion.letras", "Letras"}, // !!!
+      {"url.creditos.xml.file", "/org/nico/midlets/games/sudoku/credits/creditos_fr_FR.xml"},
+  };
+
+  /**
+   * getContents
+   * @return Object[][]
+   */
+  public Object[][] getContents() {
+    return recursos;
+  }
+}

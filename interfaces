@@ -1,0 +1,247 @@
+# network interface settings
+auto lo
+iface lo inet loopback
+
+iface eth0 inet manual
+
+iface eth1 inet manual
+
+#############
+# BONDING
+#############
+auto bond0
+iface bond0 inet manual
+        slaves eth0 eth1 
+        bond_miimon 100 
+        bond_mode 802.3ad
+
+
+#############
+#VLANS
+#############
+
+# VLAN1. VLAN per defecte dels commutadors DLINK. No l'utilitzarem
+auto bond0.1  
+iface bond0.1 inet manual
+       vlan_raw_device bond0
+
+# VLAN 2. docent/professorat
+auto bond0.2
+iface bond0.2 inet manual
+       vlan_raw_device bond0
+
+# VLAN 3. docent-wifi
+auto bond0.3
+iface bond0.3 inet manual
+       vlan_raw_device bond0
+
+# VLAN 4. gestio/devices
+auto bond0.4
+iface bond0.4 inet manual
+       vlan_raw_device bond0
+
+# VLAN 5. eduroam
+auto bond0.5
+iface bond0.5 inet manual
+       vlan_raw_device bond0
+ 
+# VLAN 6. voip
+auto bond0.6
+iface bond0.6 inet manual
+       vlan_raw_device bond0
+
+# VLAN 7. educat
+auto bond0.7
+iface bond0.7 inet manual
+       vlan_raw_device bond0
+
+# VLAN 10. administracio (xarxa de gestió/direcció/secretaria/administració)
+auto bond0.10
+iface bond0.10 inet manual
+       vlan_raw_device bond0
+
+# VLAN 11. Servidors
+auto bond0.11
+iface bond0.11 inet manual
+       vlan_raw_device bond0
+
+# VLAN 12. Guifi.net
+auto bond0.12
+iface bond0.12 inet manual
+       vlan_raw_device bond0
+  
+# VLAN 13. alumnat
+auto bond0.13
+iface bond0.13 inet manual
+       vlan_raw_device bond0
+
+# VLAN 14. AULA 20.1
+auto bond0.14 
+iface bond0.14 inet manual
+       vlan_raw_device bond0
+
+# VLAN 15. AULA 20.2
+auto bond0.15 
+iface bond0.15 inet manual
+       vlan_raw_device bond0
+
+# VLAN 16. AULA 20.3
+auto bond0.16 
+iface bond0.16 inet manual
+       vlan_raw_device bond0
+
+# VLAN 17. AULA 20.4
+auto bond0.17 
+iface bond0.17 inet manual
+       vlan_raw_device bond0
+
+# VLAN 18. Aula 23
+auto bond0.18 
+iface bond0.18 inet manual
+       vlan_raw_device bond0
+
+# VLAN 19. ELECTRICS
+auto bond0.19
+iface bond0.19 inet manual
+       vlan_raw_device bond0
+
+####################
+##     BRIDGES    ##
+####################
+
+#Proxmox espera tenir una interfície de xarxa per defecte anomenada vmbr0. La connectem a la VLAN de servidors - VLAN 11
+auto vmbr0
+iface vmbr0 inet static
+       address 192.168.50.11  
+       netmask 255.255.255.0
+       gateway 192.168.50.1
+       bridge_ports bond0.11
+       bridge_stp off
+       bridge_fd 0
+
+# VLAN 1 
+auto vmbr1
+iface vmbr1 inet manual
+       bridge_ports bond0.1
+       bridge_stp off
+       bridge_fd 0
+
+# VLAN 2 DOCENT
+auto vmbr2
+iface vmbr2 inet manual
+       bridge_ports bond0.2
+       bridge_stp off
+       bridge_fd 0
+
+# VLAN 3 DOCENT-WIFI
+auto vmbr3
+iface vmbr3 inet manual
+       bridge_ports bond0.3
+       bridge_stp off
+       bridge_fd 0
+
+# VLAN 4 GESTIO
+auto vmbr4
+iface vmbr4 inet manual
+       bridge_ports bond0.4
+       bridge_stp off
+       bridge_fd 0
+
+# VLAN 5 EDUROAM
+auto vmbr5
+iface vmbr5 inet manual
+       bridge_ports bond0.5
+       bridge_stp off
+       bridge_fd 0
+
+# VLAN 6 VOIP
+auto vmbr6
+iface vmbr6 inet manual
+       bridge_ports bond0.6
+       bridge_stp off
+       bridge_fd 0
+
+# VLAN 7 EDUCAT
+auto vmbr7
+iface vmbr7 inet manual
+       bridge_ports bond0.7
+       bridge_stp off
+       bridge_fd 0
+
+# VLAN 10 ADMIN
+auto vmbr10
+iface vmbr10 inet manual
+       bridge_ports bond0.10
+       bridge_stp off
+       bridge_fd 0
+
+# VLAN 11 SERVIDORS
+auto vmbr11
+iface vmbr11 inet manual
+       bridge_ports bond0.11
+       bridge_stp off
+       bridge_fd 0
+
+# VLAN 12 GUIFI.NET
+auto vmbr12
+iface vmbr12 inet manual
+       bridge_ports bond0.12
+       bridge_stp off
+       bridge_fd 0
+
+# VLAN 13 ALUMNES
+auto vmbr13
+iface vmbr13 inet manual
+       bridge_ports bond0.13
+       bridge_stp off
+       bridge_fd 0
+
+# VLAN 14 AULA 20.1
+auto vmbr14
+iface vmbr14 inet manual
+       bridge_ports bond0.14
+       bridge_stp off
+       bridge_fd 0
+
+# VLAN 15 AULA 20.2
+auto vmbr15
+iface vmbr15 inet manual
+       bridge_ports bond0.15
+       bridge_stp off
+       bridge_fd 0
+
+# VLAN 16 AULA 20.3
+auto vmbr16
+iface vmbr16 inet manual
+       bridge_ports bond0.16
+       bridge_stp off
+       bridge_fd 0
+
+# VLAN 17 AULA 20.4
+auto vmbr17
+iface vmbr17 inet manual
+       bridge_ports bond0.17
+       bridge_stp off
+       bridge_fd 0
+
+# VLAN 18 AULA 23
+auto vmbr18
+iface vmbr18 inet manual
+       bridge_ports bond0.18
+       bridge_stp off
+       bridge_fd 0
+
+# VLAN 19 ELECTRICS
+auto vmbr19
+iface vmbr19 inet manual
+       bridge_ports bond0.19
+       bridge_stp off
+       bridge_fd 0   
+
+# VLAN 14 Altres1
+#auto vmbr13
+#iface vmbr13 inet manual
+#       bridge_ports bond0.13
+#       bridge_stp off
+#       bridge_fd 0
+

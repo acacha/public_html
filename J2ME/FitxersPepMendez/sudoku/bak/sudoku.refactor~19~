@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refactor PUBLIC "-//Borland Software Corporation//Refactor 1.0//EN" "http://www.borland.com/devsupport/jbuilder/dtds/refactor_1_0.dtd">
+
+<refactor>
+  <rename-class id="6AP0YXQV0BPE851KGTLFK8Z" creation-time="Thu Jul 06 14:30:07.716 CEST 2006">
+    <old-class-name>org.nico.midlets.games.SudokuMidlet</old-class-name>
+    <new-class-name>org.nico.midlets.games.Sudoku</new-class-name>
+  </rename-class>
+  <rename-class id="7AP0LGSL7CPEYI2B9TLFK8Z" creation-time="Fri Jul 07 09:10:23.819 CEST 2006">
+    <old-class-name>org.nico.midlets.games.SookuSolver</old-class-name>
+    <new-class-name>org.nico.midlets.games.SudokuSolver</new-class-name>
+  </rename-class>
+  <rename-class id="7AP0ALI22MQETY06HTLFK8Z" creation-time="Tue Aug 08 11:12:50.580 CEST 2006">
+    <old-class-name>org.nico.midlets.games.Configuration</old-class-name>
+    <new-class-name>org.nico.midlets.games.SudokuConfig</new-class-name>
+  </rename-class>
+  <rename-class id="6AP0ALI22MQETY06HTLFK8Z" creation-time="Tue Aug 08 11:14:31.375 CEST 2006">
+    <old-class-name>org.nico.midlets.games.Hint</old-class-name>
+    <new-class-name>org.nico.midlets.games.SudokuHint</new-class-name>
+  </rename-class>
+  <rename-class id="5AP0ALI22MQETY06HTLFK8Z" creation-time="Tue Aug 08 11:15:51.851 CEST 2006">
+    <old-class-name>org.nico.midlets.games.Splash</old-class-name>
+    <new-class-name>org.nico.midlets.games.SudokuSplash</new-class-name>
+  </rename-class>
+  <rename-field id="4AP0ALI22MQETY06HTLFK8Z" creation-time="Tue Aug 08 11:27:30.185 CEST 2006">
+    <declaring-class-name>org.nico.midlets.games.ISudokuConstants</declaring-class-name>
+    <old-field-name>color_fondo</old-field-name>
+    <declared-field-type>I</declared-field-type>
+    <new-field-name>COLOR_BLACK</new-field-name>
+  </rename-field>
+  <rename-field id="3AP0ALI22MQETY06HTLFK8Z" creation-time="Tue Aug 08 11:28:05.586 CEST 2006">
+    <declaring-class-name>org.nico.midlets.games.ISudokuConstants</declaring-class-name>
+    <old-field-name>color_primer_plano</old-field-name>
+    <declared-field-type>I</declared-field-type>
+    <new-field-name>COLOR_WHITE</new-field-name>
+  </rename-field>
+  <rename-field id="2AP0ALI22MQETY06HTLFK8Z" creation-time="Tue Aug 08 11:29:21.325 CEST 2006">
+    <declaring-class-name>org.nico.midlets.games.ISudokuConstants</declaring-class-name>
+    <old-field-name>color_pantalla</old-field-name>
+    <declared-field-type>I</declared-field-type>
+    <new-field-name>COLOR_GREY</new-field-name>
+  </rename-field>
+  <rename-field id="1AP0ALI22MQETY06HTLFK8Z" creation-time="Tue Aug 08 11:29:42.725 CEST 2006">
+    <declaring-class-name>org.nico.midlets.games.ISudokuConstants</declaring-class-name>
+    <old-field-name>color_rojo</old-field-name>
+    <declared-field-type>I</declared-field-type>
+    <new-field-name>COLOR_RED</new-field-name>
+  </rename-field>
+  <rename-field id="0AP0ALI22MQETY06HTLFK8Z" creation-time="Tue Aug 08 11:29:55.354 CEST 2006">
+    <declaring-class-name>org.nico.midlets.games.ISudokuConstants</declaring-class-name>
+    <old-field-name>color_verde</old-field-name>
+    <declared-field-type>I</declared-field-type>
+    <new-field-name>COLOR_GREEN</new-field-name>
+  </rename-field>
+  <rename-field id="Z9P0ALI22MQETY06HTLFK8Z" creation-time="Tue Aug 08 11:30:06.029 CEST 2006">
+    <declaring-class-name>org.nico.midlets.games.ISudokuConstants</declaring-class-name>
+    <old-field-name>color_azul</old-field-name>
+    <declared-field-type>I</declared-field-type>
+    <new-field-name>COLOR_BLUE</new-field-name>
+  </rename-field>
+  <rename-field id="Y9P0ALI22MQETY06HTLFK8Z" creation-time="Tue Aug 08 11:30:19.989 CEST 2006">
+    <declaring-class-name>org.nico.midlets.games.ISudokuConstants</declaring-class-name>
+    <old-field-name>color_gris_oscuro</old-field-name>
+    <declared-field-type>I</declared-field-type>
+    <new-field-name>COLOR_DARK_GREY</new-field-name>
+  </rename-field>
+  <rename-field id="X9P0ALI22MQETY06HTLFK8Z" creation-time="Tue Aug 08 11:31:22.719 CEST 2006">
+    <declaring-class-name>org.nico.midlets.games.ISudokuConstants</declaring-class-name>
+    <old-field-name>despl</old-field-name>
+    <declared-field-type>I</declared-field-type>
+    <new-field-name>OFFSET</new-field-name>
+  </rename-field>
+  <rename-class id="7AP0UNR8FQQEY778CTLFK8Z" creation-time="Fri Aug 11 12:32:41.924 CEST 2006">
+    <old-class-name>org.nico.midlets.games.ApplicationResources</old-class-name>
+    <new-class-name>org.nico.midlets.games.ApplicationResources_es_ES</new-class-name>
+  </rename-class>
+  <rename-field id="6AP0UNR8FQQEY778CTLFK8Z" creation-time="Fri Aug 11 12:37:20.285 CEST 2006">
+    <declaring-class-name>org.nico.midlets.games.ISudokuConstants</declaring-class-name>
+    <old-field-name>error_msg_juego_inconsistente</old-field-name>
+    <declared-field-type>Ljava/lang/String;</declared-field-type>
+    <new-field-name>info_msg_juego_inconsistente</new-field-name>
+  </rename-field>
+  <rename-field id="5AP0UNR8FQQEY778CTLFK8Z" creation-time="Fri Aug 11 12:37:46.172 CEST 2006">
+    <declaring-class-name>org.nico.midlets.games.ISudokuConstants</declaring-class-name>
+    <old-field-name>error_msg_juego_sin_solucion</old-field-name>
+    <declared-field-type>Ljava/lang/String;</declared-field-type>
+    <new-field-name>info_msg_juego_sin_solucion</new-field-name>
+  </rename-field>
+  <rename-class id="7AP02L39UQQEWSFLTLFK8Z" creation-time="Fri Aug 11 19:32:51.676 CEST 2006">
+    <old-class-name>org.nico.midlets.games.ApplicationResources_en__US</old-class-name>
+    <new-class-name>org.nico.midlets.games.ApplicationResources_en_US</new-class-name>
+  </rename-class>
+  <rename-class id="7AP009TLHWQE91ZFITLFK8Z" creation-time="Tue Aug 15 18:25:26.848 CEST 2006">
+    <old-class-name>org.nico.midlets.games.ApplicationResources_ca_ES</old-class-name>
+    <new-class-name>org.nico.midlets.games.sudoku.resources.ApplicationResources_ca_ES</new-class-name>
+  </rename-class>
+  <rename-class id="6AP009TLHWQE91ZFITLFK8Z" creation-time="Tue Aug 15 18:25:46.816 CEST 2006">
+    <old-class-name>org.nico.midlets.games.ApplicationResources_en_US</old-class-name>
+    <new-class-name>org.nico.midlets.games.sudoku.resources.ApplicationResources_en_US</new-class-name>
+  </rename-class>
+  <rename-class id="5AP009TLHWQE91ZFITLFK8Z" creation-time="Tue Aug 15 18:26:04.001 CEST 2006">
+    <old-class-name>org.nico.midlets.games.ApplicationResources_es_ES</old-class-name>
+    <new-class-name>org.nico.midlets.games.sudoku.resources.ApplicationResources_es_ES</new-class-name>
+  </rename-class>
+</refactor>
+

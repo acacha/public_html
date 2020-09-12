@@ -1,0 +1,68 @@
+package org.nico.midlets.games;
+
+import javax.microedition.lcdui.Display;
+import javax.microedition.midlet.MIDlet;
+
+import org.nico.midlets.multimedia.PlayMelodyThread;
+import org.nico.midlets.multimedia.PlayThread;
+
+/**
+ * <p>Title: Sudoku</p>
+ * <p>Description: Juego japones</p>
+ * <p>Comments: Version recursiva</p>
+ * <p>Date: 06/07/06</p>
+ * <p>Last update: 13/08/06</p>
+ * @author Pep Mendez
+ */
+public class Sudoku extends MIDlet implements ISudokuConstants {
+  // El midlet
+  private static Sudoku instance;
+  // Display del midlet
+  // Display represents the manager of the display and input devices of the system
+  private Display display = null;
+  // Canvas con el juego
+  private SudokuDisplay displayable = new SudokuDisplay(true);
+  private final boolean VERSION_FINAL = false;
+
+  public Sudoku() {
+    instance = this;
+  }
+
+  public void startApp() {
+    if (display == null) {
+      display = Display.getDisplay(this);
+      new SudokuSplash(display, displayable);
+    }
+//    Display.getDisplay(this).setCurrent(displayable);
+    new Thread(new PlayThread(SUDOKU_GAME_URL)).start();
+    if (VERSION_FINAL) {
+      // toca melodia, del libro j2me java 2 micro edition completa
+      new Thread(new PlayMelodyThread(melodiaCompleta)).start();
+    }
+    else {
+      // toca melodia, del libro j2me java 2 micro edition reducida
+      new Thread(new PlayMelodyThread(melodiaCorta)).start();
+    }
+  }
+
+  public void pauseApp() {
+  }
+
+  public void destroyApp(boolean unconditional) {
+  }
+
+  public static void quitApp() {
+    instance.destroyApp(true);
+    instance.notifyDestroyed();
+    instance = null;
+  }
+
+  public static Sudoku getInstance() {
+    return instance;
+  }
+
+  public SudokuDisplay getDisplayable() {
+    return displayable;
+  }
+
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+	<title>JavaGraph 5.0</title>
+</head>
+
+
+<style>
+BODY { background-color: "#FFFFFF";
+       font-family: Arial,Verdana;}
+                
+A {text-decoration: none; } 
+A:link    { color: #000080; }   /* unvisited links */
+A:visited { color: #3366CC; }   /* visited links */
+A:active  { color: #000080; }   /* active links */
+A:hover {text-decoration: none; color="#ef0000"}
+
+.capTD {background-color:#336699; font-weight:bold; font-family:arial,verdana; font-size:16pt; color:#FFFFCC; text-align:left;}
+.celaTD {background-color:#FFFFFF; font-weight:normal; font-family:arial,verdana; font-size:8pt; color:#003366; text-align:left;}
+.assigTD {background-color:#E9E9E9; font-weight:bold; font-family:arial,verdana; font-size:12pt; color:#003366; text-align:left;}
+.copyTD {background-color:#E9E9E9; font-weight:normal; font-family:arial,verdana; font-size:8pt; color:#003366; text-align:left;}
+.taulaTD {background-color:#E9E9E9; font-weight:bold; font-family:arial,verdana; font-size:10pt; color:#003366; text-align:center;}
+.par {background-color:#FFFFFF; font-weight:normal; font-family:arial,verdana; font-size:10pt; color:#003366;}
+
+</style>
+<BODY BGCOLOR="#FFFFFF">
+<h3>Java Graph Applet, 5.0</h3>
+
+<p class="par" align="justify"> Java Graph és un projecte de l'assignatura de <b>Matemàtica Discreta</b> de la <a href="http://www.uoc.edu">Universitat Oberta de Catalunya</a>.</p>
+
+<p class="par" align="justify"> Aquest Applet permet representar un graf i mostrar el funcionament de diferents algorismes. En la versió actual, 
+podeu representar deu tipus de grafs amb un nombre variable de vèrtexs (entre 3 i 15), amb pesos i sense pesos. 
+També podeu seleccionar sis algorismes i interactuar amb els grafs. Premeu el símbol <b>?</b> per obtenir-ne les instruccions.</p>
+<table width="700" border="0" align="center">
+<tr>
+<td align="center">
+<!--<APPLET code="StartGraph.class" width="700" height="500">-->
+<APPLET code="StartGraph.class" archive="graphgui.jar" width="700" height="500">
+	<param name="probability" value="0.6">
+	<param name="ClassAlgorithms" value="0">
+	<param name="speed" value="3">
+	<param name="language" value="0">
+
+</APPLET>
+</td>
+</tr>
+</table>
+<p class="copyTD" align="justify"><b>Nota tècnica</b>: Per a una correcta simulació s'aconsella utilitzar un navegador amb suport per a <a href="http://java.sun.com">Java 1.2x</a>.  També recomanem una resolució de 1200x768.</p>
+
+<p class="celaTD" align="justify">&copy; Professors de Matemàtica Discreta, 2000-2006 (Universitat Oberta de Catalunya)</p>
+</BODY>
+</HTML>
